@@ -29,7 +29,7 @@ In addition the site uses the [Remove Dashboard Access](https://wordpress.org/pl
 
 (2) Create a User with login name of "collector" with Author role. No one actually uses the account, the site invisible logs in guests as this user. Make note of the password. Make it cryptic.
 
-** SUPER IMPORTANT ** For the account to log a visitor in, you must edit the file /includes/misc.php to match the password of this account
+** SUPER IMPORTANT ** For the account to log a visitor in, you must edit the file [/includes/misc.php](https://github.com/cogdog/tru-collector/blob/master/wp-content/tru-collector/includes/misc.php) to match the password of this account
 
 *Yes, I know this is ugly. There's not much this account can do, and one day I may find the way to store this more securely. Or you might fork this code, and show me how it can be done*
 
