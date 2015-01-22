@@ -7,6 +7,13 @@ by Alan Levine http://cogdog.info/ or http://cogdogblog.com/
 ## What is this?
 This Wordpress Theme powers [TRU Collector](http://splot.ca/collector/) a site to allow collections of images (termed "collectables") where contributions can be made without any silly logins. This is done by using a generic author account that is silently activated. The user never sees any sign of the innards of Wordpress but can create posts for each collectable.
 
+A future version might be able to accept video URLs as sources as well (using the Video Content type of the theme), and more options to control appearance/requirement of form fields.
+
+### See It In Action
+
+* SPLOT Collector (my development site) [http://splot.ca/collector/](http://splot.ca/collector/)
+* Image Pool (used for workshops on finding images on the web) [http://imagepool.trubox.ca/](http://imagepool.trubox.ca/)
+
 
 ## Requirements
 I will make the big leap in that you have a self hosted Wordpress site and can install themes. The TRU Collector is a child theme based on [the free Fukawasa theme by Anders Noren](https://wordpress.org/themes/fukawasa) 
