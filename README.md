@@ -5,18 +5,22 @@ by Alan Levine http://cogdog.info/ or http://cogdogblog.com/
 ![Sample Collectables Site](images/collector-site.jpg "Sample Collectables Site")
 
 ## What is this?
-This Wordpress Theme powers [TRU Collector](http://splot.ca/collector/) a site to allow collections of images (termed "collectables") where contributions can be made without any silly logins. This is done by using a generic author account that is silently activated. The user never sees any sign of the innards of Wordpress but can create posts for each collectable.
+This Wordpress Theme  powers [TRU Collector](http://splot.ca/collector/) a site to allow collections of images (termed "collectables") where contributions can be made without any silly logins. This is done by using a generic author account that is silently activated. The user never sees any sign of the innards of Wordpress but can create posts for each collectable. 
 
 The options can allow you to create a simple Upload and go mode, but you can also allow (and require or not), captions, a source description (where the person for the image from *hey, I found it on GOOGLE*), and a selection of a usage rights.
 
 And to be super slick, you can even enable an email address that allows people to publish directly to your collection by old fashioned email.
 
-*Why TRU?* I developed these initially [while on a fellowship](http://cogdog.trubox.ca) at [Thompson Rivers University](http://tru.ca/).
+*Why TRU?* I developed these initially [while on a fellowship](http://cogdog.trubox.ca) at [Thompson Rivers University](http://tru.ca/) as one of of a suite of [SPLOT tools](http://splot.ca/splots/).
 
 ### See It In Action
 
-* SPLOT Collector (the development site, stuff may break) [http://splot.ca/collector/](http://splot.ca/collector/)
-* Image Pool (used for TRU workshops on finding images on the web) [http://imagepool.trubox.ca/](http://imagepool.trubox.ca/)
+* [SPLOT Collecto](http://splot.ca/collector/) - the development site, stuff can and will break
+* [Image Pool](http://imagepool.trubox.ca/) - used for TRU workshops on finding images on the web 
+* [Animal Body Plans](http://bio2290.trubox.ca/) (for Biology 2290 at TRU)
+* [Imagery VISA 1101_01](http://imagery.trubox.ca/) collecting images from participants in TRU’s VISA 1110 Course: History of Art
+* [GEOG 2221 Photo Collector](http://geog2221.trubox.ca/)  collecting images from participants in TRU’s GEOG 2221 Course: Regional Geography of Canada
+* [UDG Agora Image Pool](http://udg.theagoraonline.net/imagepool) used by University of Guadalajara faculty and students sharing media in the UDG Agora Project
 
 
 ## Requirements
