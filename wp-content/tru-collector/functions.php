@@ -1,9 +1,4 @@
 <?php
-
-// get the key, lee
-// ---- you will need to edit your own version
-require get_stylesheet_directory() . '/includes/misc.php';
-
 # -----------------------------------------------------------------
 # Theme activation
 # -----------------------------------------------------------------
@@ -77,8 +72,8 @@ function trucollector_setup () {
 # Set up the table and put the napkins out
 # -----------------------------------------------------------------
 
-
-add_action( 'init', 'trucollector_load_theme_options' );
+// we need to load the options this before the auto login so we can use the pass
+add_action( 'after_setup_theme', 'trucollector_load_theme_options', 9 );
 
 // change the name of admin menu items from "New Posts"
 // -- h/t http://wordpress.stackexchange.com/questions/8427/change-order-of-custom-columns-for-edit-panels
@@ -120,21 +115,6 @@ function trucollector_change_post_object() {
     $labels->menu_name =  $thing_name;
     $labels->name_admin_bar =  $thing_name;
 }
- 
-
-function trucollector_cookie_expiration( $expiration, $user_id, $remember ) {
-
-	if ( current_user_can( 'edit_pages' )  ) {
-		// default 14 day logout function 
-    	return $remember ? $expiration : 1209600; 
-    } else {
-    	// shorter auto logout for guests (2 hours)
-      	return $remember ? $expiration : 7200; 
-    }
-}
-
-add_filter( 'auth_cookie_expiration', 'trucollector_cookie_expiration', 99, 3 );
-
 
 add_filter('comment_form_defaults', 'trucollector_comment_mod');
 
@@ -147,18 +127,19 @@ function trucollector_comment_mod( $defaults ) {
 
 
 function trucollector_get_licences() {
-	// return as an array the types of licenses availableFonts()
+	// return as an array the types of licenses available
 	
 	return ( array (
-				'c' => 'All Rights Reserved (fully copyrighted)',
+				'?' => 'Rights Status Unknown',
+				'c' => 'All Rights Reserved (copyrighted)',
 				'pd'	=> 'Public Domain',
 				'cc0'	=> 'CC0 No Rights Reserved',
-				'cc-by' => 'CC By Creatitve Commons By Attribution',
-				'cc-by-sa' => 'CC BY SA Creatitve Commons Attribution-ShareAlike',
-				'cc-by-nd' => 'CC BY ND Creatitve Commons Attribution-NoDerivs',
-				'cc-by-nc' => 'CC BY NC Creatitve Commons Attribution-NonCommercial',
-				'cc-by-nc-sa' => 'CC BY NC SA Creatitve Commons Attribution-NonCommercial-ShareAlike',
-				'cc-by-nc-nd' => 'CC By NC ND Creatitve Commons Attribution-NonCommercial-NoDerivs',
+				'cc-by' => 'CC BY Creative Commons By Attribution',
+				'cc-by-sa' => 'CC BY SA Creative Commons Attribution-ShareAlike',
+				'cc-by-nd' => 'CC BY ND Creative Commons Attribution-NoDerivs',
+				'cc-by-nc' => 'CC BY NC Creative Commons Attribution-NonCommercial',
+				'cc-by-nc-sa' => 'CC BY NC SA Creative Commons Attribution-NonCommercial-ShareAlike',
+				'cc-by-nc-nd' => 'CC By NC ND Creative Commons Attribution-NonCommercial-NoDerivs',
 			)
 		);
 }
@@ -168,6 +149,46 @@ function trucollector_the_license( $lcode ) {
 	$all_licenses = trucollector_get_licences();
 	
 	echo $all_licenses[$lcode];
+
+}
+
+function trucollector_attributor( $license, $work_title, $work_creator='') {
+
+	$all_licenses = trucollector_get_licences();
+		
+	$work_str = ( $work_creator == '') ? '"' . $work_title . '"' : '"' . $work_title . '" by or via "' . $work_creator  . '" ';
+	
+	switch ( $license ) {
+	
+		case '?': 	
+			return ( array( 
+						$work_str .  '" license status: unknown.', 		
+					)
+			 );
+			break;
+
+
+		case 'c': 	
+			return ( array( 
+						$work_str .  '" is &copy; All Rights Reserved.', 
+					)
+			 );
+			break;
+		
+		case 'cc0':
+			return ( $work_str . ' is made available under the Creative Commons CC0 1.0 Universal Public Domain Dedication.');
+			break;
+	
+		case 'pd':
+			return ( $work_str . ' has been explicitly released into the public domain.');
+			break;
+		
+		default:
+			//find position in license where name of license starts
+			$lstrx = strpos( $all_licenses[$license] , 'Creative Commons');
+			return ( $work_str . ' is licensed under a ' .  substr( $all_licenses[$license] , $lstrx)  . ' 4.0 International license.');
+	}
+
 
 }
 
@@ -254,21 +275,31 @@ function trucollector_autologin() {
 	
 	// URL Paramter to check for to trigger login
 	if ($_GET['autologin'] == 'collector') {
-		
+	
+		// change to short auto logout time
+		add_filter( 'auth_cookie_expiration', 'trucollector_change_cookie_logout', 99, 3 );
+
 		// ACCOUNT USERNAME TO LOGIN TO
 		$creds['user_login'] = 'collector';
 		
-		// ACCOUNT PASSWORD TO USE- lame hard coded... I do not know how to get this
-		// any other way since options  are not loaded yet
-		$creds['user_password'] = 'Alj4ill2Ag6';
+		// ACCOUNT PASSWORD TO USE- stored as option
+		$creds['user_password'] = trucollector_option('pkey');
+
 			
 		$creds['remember'] = true;
 		$autologin_user = wp_signon( $creds, false );
+		
+		
 		
 		if ( !is_wp_error($autologin_user) ) 
 			wp_redirect ( site_url() . '/collect' );
 	}
 }
+
+function trucollector_change_cookie_logout( $expiration, $user_id, $remember ) {
+    return $remember ? $expiration : 120;
+}
+
 
 // remove admin tool bar for non-admins, remove access to dashboard
 // -- h/t http://www.wpbeginner.com/wp-tutorials/how-to-disable-wordpress-admin-bar-for-all-users-except-administrators/
@@ -283,7 +314,7 @@ function remove_admin_bar() {
 }
 
 # -----------------------------------------------------------------
-# For the Writing Form
+# For the Collection Form
 # -----------------------------------------------------------------
 
 add_action('wp_enqueue_scripts', 'add_trucollector_scripts');
@@ -304,14 +335,6 @@ function add_trucollector_scripts() {
 		wp_register_script( 'jquery.collector' , get_stylesheet_directory_uri() . '/js/jquery.collector.js', null , '1.0', TRUE );
 		wp_enqueue_script( 'jquery.collector' );
 		
-		// add scripts for fancybox (used for help) 
-		//-- h/t http://code.tutsplus.com/tutorials/add-a-responsive-lightbox-to-your-wordpress-theme--wp-28100
-		wp_enqueue_script( 'fancybox', get_stylesheet_directory_uri() . '/includes/lightbox/js/jquery.fancybox.pack.js', array( 'jquery' ), false, true );
-    	wp_enqueue_script( 'lightbox', get_stylesheet_directory_uri() . '/includes/lightbox/js/lightbox.js', array( 'fancybox' ), '1.1',
-    null , '1.0', TRUE );
-    
-    	wp_enqueue_style( 'lightbox-style', get_stylesheet_directory_uri() . '/includes/lightbox/css/jquery.fancybox.css' );
-
 	}
 
 }
@@ -328,20 +351,42 @@ function get_attachment_caption_by_id( $post_id ) {
     return ( $the_attachment->post_excerpt ); 
 }
 
+function trucollector_author_user_check( $expected_user = 'collector' ) {
+// checks for the proper authoring account set up
 
-function trucollector_author_user_check() {
-// checks for an authoring account set up
-
-	$auser = get_user_by( 'login', 'collector' );
+	$auser = get_user_by( 'login', $expected_user );
+		
 	
 	if ( !$auser) {
-		return ('Authoring account not set up. You need to <a href="' . admin_url( 'user-new.php') . '">create a user account</a> with login name <strong>collector</strong> with a role of <strong>Author</strong>. Make a killer strong password; no one uses it.');
+		return ('Authoring account not set up. You need to <a href="' . admin_url( 'user-new.php') . '">create a user account</a> with login name <strong>' . $expected_user . '</strong> with a role of <strong>Author</strong>. Make a killer strong password; no one uses it.');
 	} elseif ( $auser->roles[0] != 'author') {
-		return ('The user account <strong>collector</strong> is set up but needs to have it\'s role set to <strong>Author</strong>. You can <a href="' . admin_url( 'user-edit.php?user_id=' . $auser->ID ) . '">edit it now</a>'); 
+	
+		// for multisite lets check if user is not member of blog
+		if ( is_multisite() AND !is_user_member_of_blog( $auser->ID, get_current_blog_id() ) )  {
+			return ('The user account <strong>' . $expected_user . '</strong> is set up but has not been added as a user to this site (and needs to have a role of <strong>Author</strong>). You can <a href="' . admin_url( 'user-edit.php?user_id=' . $auser->ID ) . '">edit it now</a>'); 
+			
+		} else {
+		
+			return ('The user account <strong>' . $expected_user . '</strong> is set up but needs to have it\'s role set to <strong>Author</strong>. You can <a href="' . admin_url( 'user-edit.php?user_id=' . $auser->ID ) . '">edit it now</a>'); 
+		}
+		
+		
+		
 	} else {
-		return ('The authoring account <strong>collector</strong> is correctly set up.');
+		return ('The authoring account <strong>' .$expected_user . '</strong> is correctly set up.');
 	}
 }
+
+function splot_jetpack_post_email_check ( ) {
+// returns a status check for the Jetpack plugin and that post by email module is active
+
+	if ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'post-by-email' ) ) {
+		return  ('The Jetpack plugin is installed and Post By Email module is active. You may proceed to setup posting by email. You will need to install and/or activate a plugin that automatically creates thumbnails from post images such as <a href="https://wordpress.org/plugins/auto-thumbnailer/" target="_blank">Auto Thumbnailer</a>.'); 
+	} else {
+		return  ('The Jetpack plugin is <strong>not installed</strong> or the Post By Email module is <strong>not active</strong>. Check your  <a href="' . admin_url( 'plugins.php') . '">plugins</a>  or JetPack settings'); 
+	}
+}
+
 
 function trucollector_check_user( $allowed='collector' ) {
 	// checks if the current logged in user is who we expect
@@ -365,7 +410,6 @@ function splot_the_author() {
 	}
 
 }
-
 
 function set_html_content_type() {
 	// from http://codex.wordpress.org/Function_Reference/wp_mail

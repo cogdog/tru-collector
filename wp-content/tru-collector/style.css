@@ -13,11 +13,15 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html http://www.apache.org/lice
 
 @import url(../fukasawa/style.css);
 
-
 .siteblurb {
 	padding: 0 10px;
 	margin: 10px 0;
 	text-align: center;
+}
+
+/* no images in post (hides submissions by email) */
+.post-content img {
+	display: none;
 }
 
 /* some pretty buttons all done in CSS

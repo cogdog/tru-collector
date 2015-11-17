@@ -3,8 +3,8 @@
 //  get post meta
 
 $wSource = get_post_meta( $post->ID, 'source', 1 );
-$wCredit = get_post_meta( $post->ID, 'credit', 1 );
 $wAuthor = get_post_meta( $post->ID, 'shared_by', 1 );
+$wLicense = get_post_meta( $post->ID, 'license', 1 );
 $wExtraNotes = get_post_meta( $post->ID, 'extra_notes', 1 );
 
 ?>
@@ -101,21 +101,46 @@ $wExtraNotes = get_post_meta( $post->ID, 'extra_notes', 1 );
 			    	
 			    	<hr />
 			    	
+			    	<?php if ( $wAuthor == '')  : // empty meta data means post by email?>
 			    	
-			    	<?php
+			    	<p><em>This item was posted by email.</em></p>
 			    	
-			    	?>
+			    	
+			    	<?php else:?>
+			    	
 			    	<p>
 			    	<?php 
+			    		// show extra notes
+			    		if ( $wExtraNotes ) echo '<strong>Extra Notes:</strong> ' .  $wExtraNotes . '<br />';
+			    		
+			    		// Sharer
 			    		echo '<strong>Shared by:</strong> ' . $wAuthor . '<br />';
-			    		echo '<strong>Image Credit:</strong> ' . $wCredit . '<br />';
-			    		if ( $wSource ) echo '<strong>Source:</strong> ' .  make_links_clickable( $wSource ) . '<br />';
-			    		echo '<strong>License:</strong> ';
-			    		trucollector_the_license( get_post_meta( $post->ID, 'license', 1 ) );
-			    		echo '<br />';
-			    		if ( $wExtraNotes ) echo '<strong>Extra Notes:</strong> ' .  $wExtraNotes;
+			    		
+			    		
+			    		if ( ( trucollector_option('use_source') > 0 )  AND $wSource ) echo '<strong>Image Credit:</strong> ' .  make_links_clickable($wSource)  . '<br />';
+			    		
+			    		
+			    		if  ( trucollector_option('use_license') > 0 ) {
+			    			echo '<strong>Reuse License:</strong> ';
+			    			trucollector_the_license( $wLicense );
+			    			echo '<br />';
+			    			
+			    			// display attribution?
+			    			if  ( trucollector_option( 'show_attribution' ) == 1 ) {
+			    				echo '<strong>Attribution Text:</strong><br /><textarea rows="2" onClick="this.select()" style="height:80px;">' . trucollector_attributor( $wLicense, get_the_title(), $wSource ) . '</textarea>';
+			    			}
+			    		}
+			    		
+			    		
+			    		
 			    	?>
 			    	</p>
+			    	<?php endif;?>
+			    	
+			    	<form>
+			    	<label for="link">Link to image:</label>
+						<input type="text" class="form-control" id="link" value="<?php $iurl = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' ); echo $iurl[0];  ?>" onClick="this.select();" />
+			    	</form>
 			    	
 			    	
 			    	

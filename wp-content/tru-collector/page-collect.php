@@ -21,14 +21,14 @@ if ( !is_user_logged_in() ) {
 // ------------------------ defaults ------------------------
 
 // default welcome message
-$feedback_msg = 'Add an image to this collection? We have a form for you!';
+$feedback_msg = 'Add an image to this collection? Use the form below to share it. Items marked  <strong>*</strong> are required.';
 
-$wTitle = 'Descriptive Title for the Image';
+$wTitle = '';
 $wAuthor = 'Anonymous';
 				
 $wFeatureImageID = 0;
-$wCats = array( trucollector_option('def_cat')); // preload default category
-$wLicense = 'cc-by';
+$wCats = array( trucollector_option('def_cat') ); // preload default category
+$wLicense = '--'; // default license
 $all_licenses = trucollector_get_licences();
 
 
@@ -48,15 +48,12 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
  		$wTags = 					sanitize_text_field( $_POST['wTags'] );	
  		$wText = 					sanitize_text_field( stripslashes( $_POST['wText'] ) );
  		$wSource = 					sanitize_text_field( stripslashes( $_POST['wSource'] ) );
- 		$wCredit = 					sanitize_text_field( $_POST['wCredit']  );
  		$wNotes = 					sanitize_text_field( stripslashes( $_POST['wNotes'] ) );
- 		$wExtraNotes = 				sanitize_text_field( stripslashes( $_POST['wExtraNotes'] ) );
  		$wFeatureImageID = 			$_POST['wFeatureImage'];
  		$post_id = 					$_POST['post_id'];
  		$wCats = 					( isset ($_POST['wCats'] ) ) ? $_POST['wCats'] : array();
+ 		$wLicense = 				$_POST['wLicense'];
  		
- 		
-
  		
  		// let's do some validation, store an error message for each problem found
  		$errors = array();
@@ -65,10 +62,13 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
  		if ( $wFeatureImageID == 0) $errors[] = '<strong>Image File Missing</strong> - upload the image you wish to add.';
  		if ( $wTitle == '' ) $errors[] = '<strong>Title Missing</strong> - enter an interesting title.'; 
  		
- 		if ( $wCredit == '' ) $errors[] = '<strong>Credit Missing</strong> - enter the name of someone to give credit for the image.'; 
- 		
- 		if ( strlen($wText) < 20 ) $errors[] = '<strong>Caption Too Brief</strong> - that\'s not much text, eh? Please provide at least a good sentence for the caption of the image.';	
- 		
+ 		if (  trucollector_option('use_caption') == '2' AND $wText == '' ) $errors[] = '<strong>Caption Missing</strong> - please enter a descriptive caption for this image.';
+ 
+  		if (  trucollector_option('use_source') == '2' AND $wSource == '' ) $errors[] = '<strong>Source Missing</strong> - please the name or description for the source of this image.';
+  		
+  		if (  trucollector_option('use_license') == '2' AND $wLicense == '--' ) $errors[] = '<strong>License Not Selected</strong> - select an appropriate license for this image.'; 
+		
+ 		 		
  		if ( count($errors) > 0 ) {
  			// form errors, build feedback string to display the errors
  			$feedback_msg = 'Sorry, but there are a few errors in your information. Please correct and try again. We really want to add your entry.<ul>';
@@ -100,17 +100,15 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 			add_post_meta($post_id, 'shared_by', $wAuthor);
 
 			// store the source of the image (text or URL)
-			add_post_meta($post_id, 'source', $wSource);
+			if ( trucollector_option('use_source') > 0 ) {
+				add_post_meta($post_id, 'source', $wSource);
+			}
 			
-			// store the name of person to credit
-			add_post_meta($post_id, 'credit', $wCredit);
-
 			// store the license code
-			add_post_meta($post_id, 'license', $wLicense);
-
-			// store extra notes
-			if ( $wExtraNotes ) add_post_meta($post_id, 'extra_notes', $wExtraNotes);
-			
+			if ( trucollector_option('use_license') > 0 ) {
+				add_post_meta($post_id, 'license', $wLicense);
+			}
+		
 			// store notes for editor
 			if ( $wNotes ) add_post_meta($post_id, 'editor_notes', $wNotes);
 
@@ -120,41 +118,45 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 			// set featured image
 			set_post_thumbnail( $post_id, $wFeatureImageID);
 							
-			
-
 			if ( trucollector_option('new_item_status') == 'publish' ) {
 				// feed back for published item
 				$feedback_msg = 'Your entry for <strong>' . $wTitle . '</strong> has been published!  You can <a href="'. wp_logout_url( site_url() . '/?p=' . $post_id  )  . '">view it now</a>. Or you can <a href="' . site_url() . '/collect">add another</a>.';
 			
 			} else {
 				// feed back for item left in draft
-				$feedback_msg = 'Your entry for <strong>' . $wTitle . '</strong> has been submitted as a draft  YYou can <a href="'. wp_logout_url( site_url() . '/?p=' . $post_id  )  . '">preview it now</a>. Once it has been approved by a moderator, everyone can see it.';	
+				$feedback_msg = 'Your entry for <strong>' . $wTitle . '</strong> has been submitted as a draft. You can <a href="'. wp_logout_url( site_url() . '/?p=' . $post_id  )  . '">preview it now</a>. Once it has been approved by a moderator, everyone can see it.';	
 			
 			}		
 			
-			/*
 			
+			if ( trucollector_option( 'notify' ) != '') {
 			// Let's do some EMAIL!
 		
-			// who gets mail? They do.
-			$to_recipients = explode( "," ,  trucollector_option( 'notify' ) );
+				// who gets mail? They do.
+				$to_recipients = explode( "," ,  trucollector_option( 'notify' ) );
 		
-			$subject = 'Review newly submitted writing at ' . get_bloginfo();
+				$subject = 'New image submitted to ' . get_bloginfo();
 		
-			$message = 'An image <strong>"' . $wTitle . '"</strong> shared by <strong>' . $wAuthor . '</strong>  has been submitted to ' . get_bloginfo() . '. You can <a href="'. site_url() . '/?p=' . $post_id . 'preview=true' . '">preview it now</a>.<br /><br /> To  publish it, simply <a href="' . admin_url( 'edit.php?post_status=pending&post_type=post') . '">find it in the submitted works</a> and change it\'s status from <strong>Draft</strong> to <strong>Publish</strong>';
+				if ( trucollector_option('new_item_status') == 'publish' ) {
+					$message = 'An image <strong>"' . $wTitle . '"</strong> shared by <strong>' . $wAuthor . '</strong> has been published to ' . get_bloginfo() . '. You can <a href="'. site_url() . '/?p=' . $post_id  . '">see view it now</a>';
+				
+
+				} else {
+					$message = 'An image <strong>"' . $wTitle . '"</strong> shared by <strong>' . $wAuthor . '</strong> has been submitted to ' . get_bloginfo() . '. You can <a href="'. site_url() . '/?p=' . $post_id . 'preview=true' . '">preview it now</a>.<br /><br /> To  publish it, simply <a href="' . admin_url( 'edit.php?post_status=draft&post_type=post') . '">find it in the drafts</a> and change it\'s status from <strong>Draft</strong> to <strong>Publish</strong>';
+				}
+				
+				if ( $wNotes ) $message .= '<br /><br />There are some extra notes from the author:<blockquote>' . $wNotes . '</blockquote>';
 		
-			if ( $wNotes ) $message .= '<br /><br />There are some extra notes from the author:<blockquote>' . $wNotes . '</blockquote>';
+				// turn on HTML mail
+				add_filter( 'wp_mail_content_type', 'set_html_content_type' );
 		
-			// turn on HTML mail
-			add_filter( 'wp_mail_content_type', 'set_html_content_type' );
+				// mail it!
+				wp_mail( $to_recipients, $subject, $message);
 		
-			// mail it!
-			wp_mail( $to_recipients, $subject, $message);
-		
-			// Reset content-type to avoid conflicts -- http://core.trac.wordpress.org/ticket/23578
-			remove_filter( 'wp_mail_content_type', 'set_html_content_type' );	
+				// Reset content-type to avoid conflicts -- http://core.trac.wordpress.org/ticket/23578
+				remove_filter( 'wp_mail_content_type', 'set_html_content_type' );	
 			
-			*/
+				}
 				
 			// set the gate	open, we are done.
 			
@@ -200,7 +202,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 	
 			    	<?php 
 					if ( !is_user_logged_in() ) :?>
-						<a href="<?php echo get_bloginfo('url')?>/wp-login.php?autologin=writer">activate lasers</a>
+						<a href="<?php echo get_bloginfo('url')?>/wp-login.php?autologin=collector">activate lasers</a>
 					<?php endif?>
 		    	
 		    		<?php echo $box_style . $feedback_msg . '</div>';?>   
@@ -211,14 +213,27 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 	<?php if ( is_user_logged_in() and !$is_published ) : // show form if logged in and it has not been published ?>
 			
 		<form  id="collectorform" class="collectorform" method="post" action="" enctype="multipart/form-data">
+		
 
 				<fieldset>
-					<label for="headerImage"><?php _e('Upload an Image', 'wpbootstrap') ?></label>
+					<label for="headerImage"><?php _e('Upload an Image', 'wpbootstrap') ?> <strong>*</strong></label>
 					
 					<div class="uploader">
-						<input id="wFeatureImage" name="wFeatureImage" type="hidden" value="<?php echo $wFeatureImage_id?>" />
+						<input id="wFeatureImage" name="wFeatureImage" type="hidden" value="<?php echo $wFeatureImageID?>" />
 
-						<img src="http://placehold.it/150x150" alt="uploaded image" id="featurethumb" /><br />
+						<?php if ( $wFeatureImageID ):
+							 echo wp_get_attachment_image( $wFeatureImageID, 'thumbnail' );
+						?>
+						
+						<?php else:?>
+						
+						<img src="http://placehold.it/150x150" alt="uploaded image" id="featurethumb" />
+						
+						<?php endif?>
+						
+						
+						
+						<br />
 					
 						<input type="button" id="wFeatureImage_button"  class="btn btn-success btn-medium  upload_image_button" name="_wImage_button"  data-uploader_title="Add a New Image" data-uploader_button_text="Select Image" value="Select Image" tabindex="1" />
 						
@@ -230,7 +245,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 
 				<fieldset>
-					<label for="wTitle"><?php _e('Title for the Image', 'wpbootstrap' ) ?></label><br />
+					<label for="wTitle"><?php _e('Title for the Image', 'wpbootstrap' ) ?> <strong>*</strong></label><br />
 					<p>An interesting title goes a long way; it's the headline.</p>
 					<input type="text" name="wTitle" id="wTitle" class="required" value="<?php echo $wTitle; ?>" tabindex="2" />
 				</fieldset>	
@@ -241,59 +256,66 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 					<p>Take credit for sharing with your name, twitter handle, secret agent name, or remain "Anonymous".</p>
 					<input type="text" name="wAuthor" id="wAuthor" class="required" value="<?php echo $wAuthor; ?>" tabindex="3" />
 				</fieldset>	
-				
-				<fieldset>
-						<label for="wText"><?php _e('Caption', 'wpbootstrap') ?></label>
-						<p>Enter a descriptive caption to include with the image. </p>
-						<textarea name="wText" id="wText" rows="15"  tabindex="4"><?php echo stripslashes( $wText );?></textarea>
+  		
+  				
+  				<?php if (  trucollector_option('use_caption') > '0'):	
+  					$required = (trucollector_option('use_caption') == 2) ? '<strong>*</strong>' : '';
+  				?>
+  						
+					<fieldset>
+							<label for="wText"><?php _e('Image Caption', 'wpbootstrap') ?> <?php echo $required?> </label>
+							<p><?php echo  trucollector_option('caption_prompt')?></p>
+							<textarea name="wText" id="wText" rows="15"  tabindex="4"><?php echo stripslashes( $wText );?></textarea>
 
-				</fieldset>
+					</fieldset>	
 				
-				<fieldset>
-						<label for="wText"><?php _e('How was it found?', 'wpbootstrap') ?></label>
-						<p>How did you find the image? What search words worked? What search tool did you use?</p>
-						<textarea name="wExtraNotes" id="wExtraNotes" rows="15"  tabindex="4"><?php echo stripslashes( $wExtraNotes );?></textarea>
-				</fieldset>
+				<?php endif?>			
+
+
+  				<?php if (  trucollector_option('use_source') > '0'):	
+  					$required = (trucollector_option('use_source') == 2) ? '<strong>*</strong>' : '';
+  				?>
 				
+					<fieldset>
+						<label for="wSource"><?php _e('Source of Image', 'wpbootstrap' ) ?> <?php echo $required?></label> 
+						<p>Enter name of a person, web site, etc to give credit for the image.</p>
+						<input type="text" name="wSource" id="wSource" class="required" value="<?php echo $wSource; ?>" tabindex="5" />
+				</fieldset>		
 				
-				<fieldset>
-					<label for="wSource"><?php _e('Source of Image', 'wpbootstrap' ) ?></label><br />
-					<p>If image is online, enter the URL for where you found it. Otherwise enter where it came from (e.g. 'Personal Photo'). Or leave blank.</p>
-					<input type="text" name="wSource" id="wSource" class="required" value="<?php echo $wSource; ?>" tabindex="5" />
-				</fieldset>					
+				<?php endif?>	
 				
-				<fieldset>
-					<label for="wCredit"><?php _e('Creator Name', 'wpbootstrap' ) ?></label><br />
-					<p>Enter a name of a person, web site, etc to give credit for the image.</p>
-					<input type="text" name="wCredit" id="wCredit" class="required" value="<?php echo $wCredit; ?>" tabindex="6" />
-				</fieldset>					
+  				<?php if (  trucollector_option('use_license') > '0'):	
+  					$required = (trucollector_option('use_license') == 2) ? '<strong>*</strong>' : '';
+  				?>
+							
 				
-				<fieldset>
-					<label for="wLicense"><?php _e('License for Reuse', 'wpbootstrap' ) ?></label><br />
-					<p>If found online, indicate the license attached to it. If this is an original image, then select a license to attach to it.</p>
-					<select name="wLicense" id="wLicense" tabindex="7" />
+					<fieldset>
+						<label for="wLicense"><?php _e('License for Reuse', 'wpbootstrap' ) ?> <?php echo $required?></label>
+						<p>Indicate the license associated with the image. If this is an original image, then select a license to share it under.</p>
+						<select name="wLicense" id="wLicense" tabindex="7" />
+						<option value="--">Select a License</option>
 					
-					<?php
-						foreach ($all_licenses as $key => $value) {
-							$selected = ( $key == $wLicense ) ? ' selected' : '';
-							echo '<option value="' . $key . '"' . $selected . '>' . $value . '</option>';
-						}
-					?>
+						<?php
+							foreach ($all_licenses as $key => $value) {
+								$selected = ( $key == $wLicense ) ? ' selected' : '';
+								echo '<option value="' . $key . '"' . $selected . '>' . $value . '</option>';
+							}
+						?>
 					
-					</select>
-				</fieldset>					
+						</select>
+					</fieldset>					
 
-
+				<?php endif?>	
 
 				
 				<fieldset>
 					<label for="wCats"><?php _e( 'Categories', 'wpbootstrap' ) ?></label>
-					<p>Check all that apply.</p>
+					<p>Check all categories that will help organize your image.</p>
 					<?php 
 					
-					// set up arguments to get all categories that are children of "Published"
+					// arguments for request of categories
 					$args = array(
-						'hide_empty'               => 0,
+						'hide_empty' => 0,
 					); 
 					
 					$article_cats = get_categories( $args );
@@ -311,7 +333,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 				<fieldset>
 					<label for="wTags"><?php _e( 'Tags', 'wpbootstrap' ) ?></label>
-					<p>Descriptive tags, separate multiple ones with commas</p>
+					<p>Add any descriptive tags for the image, separate multiple ones with commas</p>
 					
 					<input type="text" name="wTags" id="wTags" value="<?php echo $wTags; ?>" tabindex="9"  />
 				</fieldset>
@@ -319,7 +341,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 				<fieldset>
 						<label for="wNotes"><?php _e('Notes to the Editor', 'wpbootstrap') ?></label>						
-						<p>Add any notes or messages to the site manager; this will not be part of what is published. If you want to be contacted, you will have to leave some means of contact.</p>
+						<p>Add any notes or messages to the site manager; this will not be part of what is published. If you wish to be contacted, leave an email address or twitter handle. Otherwise you are completely anonymous.</p>
 						<textarea name="wNotes" id="wNotes" rows="10"  tabindex="9"><?php echo stripslashes( $wNotes );?></textarea>
 				</fieldset>
 

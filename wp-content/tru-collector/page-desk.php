@@ -8,7 +8,6 @@ $feedback_msg = '';
 // the passcode to enter
 $wAccessCode = trucollector_option('accesscode');
 
-
 // ------------------------ door check -----------------------
 
 

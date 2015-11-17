@@ -183,23 +183,76 @@ class trucollector_Theme_Options {
 
 		$this->settings['accesshint'] = array(
 			'title'   => __( 'Access Hint' ),
-			'desc'    => __( 'Suggestion if someone cannot guess the code. Not super secure, but hey.' ),
+			'desc'    => __( 'Provide a suggestion if someone cannot guess the code. Not super secure, but hey.' ),
 			'std'     => 'Name of this site (lower the case, Ace!)',
 			'type'    => 'text',
 			'section' => 'general'
 		);
-		
-		$this->settings['allow_comments'] = array(
+
+		$this->settings['use_caption'] = array(
 			'section' => 'general',
-			'title'   => __( 'Allow Comments?' ),
-			'desc'    => __( 'Enable comments on items.' ),
-			'type'    => 'checkbox',
-			'std'     => 0 // Set to 1 to be checked by default, 0 to be unchecked by default.
+			'title'   => __( 'Use caption field on submission form and item display?'),
+			'desc'    => '',
+			'type'    => 'radio',
+			'std'     => '1',
+			'choices' => array (
+							'0' => 'No',
+							'1' => 'Yes, but make it optional',
+							'2' => 'Yes, and make it required'
+					)
 		);
+		
+		$this->settings['caption_prompt'] = array(
+			'title'   => __( 'Caption Field Prompt' ),
+			'desc'    => __( 'If using captions, this is the prompt that will appear on the form, customize to fit your site.' ),
+			'std'     => 'Enter a descriptive caption to include with the image.',
+			'type'    => 'text',
+			'section' => 'general'
+		);
+	
+		$this->settings['use_source'] = array(
+			'section' => 'general',
+			'title'   => __( 'Use source field (e.g. to provide credit for images) on submission form and item display?'),
+			'desc'    => '',
+			'type'    => 'radio',
+			'std'     => '1',
+			'choices' => array (
+							'0' => 'No',
+							'1' => 'Yes, but make it optional',
+							'2' => 'Yes, and make it required'
+					)
+		);
+
+		$this->settings['use_license'] = array(
+			'section' => 'general',
+			'title'   => __( 'Use rights license on submission form and item display?'),
+			'desc'    => '',
+			'type'    => 'radio',
+			'std'     => '0',
+			'choices' => array (
+							'0' => 'No',
+							'1' => 'Yes, but make it optional',
+							'2' => 'Yes, and make it required'
+					)
+		);
+		
+		$this->settings['show_attribution'] = array(
+			'section' => 'general',
+			'title'   => __( 'Cut and Paste Attribution' ),
+			'desc'    => __( 'If license options used, show cut and past attribution on single item displays?' ),
+			'type'    => 'radio',
+			'std'     => '0',
+			'choices' => array(
+				'0' => 'No',
+				'1' => 'Yes',
+			)
+		);		
+		
+		
 		
 		$this->settings['new_item_status'] = array(
 			'section' => 'general',
-			'title'   => __( 'Status For New Collectables' ),
+			'title'   => __( 'Status For New Items' ),
 			'desc'    => __( 'Set to draft to moderate submissions via web form' ),
 			'type'    => 'radio',
 			'std'     => 'publish',
@@ -209,7 +262,15 @@ class trucollector_Theme_Options {
 			)
 		);		
  
- 
+ 		$this->settings['allow_comments'] = array(
+			'section' => 'general',
+			'title'   => __( 'Allow Comments?' ),
+			'desc'    => __( 'Enable comments on items' ),
+			'type'    => 'checkbox',
+			'std'     => 0 // Set to 1 to be checked by default, 0 to be unchecked by default.
+		);
+		
+
   		// Build array to hold options for select, an array of post categories
 
 		// Walk those cats, store as array index=ID 
@@ -220,7 +281,7 @@ class trucollector_Theme_Options {
  
 		$this->settings['def_cat'] = array(
 			'section' => 'general',
-			'title'   => __( 'Default Category for New Collectable'),
+			'title'   => __( 'Default Category for New Items'),
 			'desc'    => '',
 			'type'    => 'select',
 			'std'     => get_option('default_category'),
@@ -229,8 +290,8 @@ class trucollector_Theme_Options {
 
 		$this->settings['notify'] = array(
 			'title'   => __( 'Notification Emails' ),
-			'desc'    => __( 'Send notifications to these addresses (separate multiple wth commas). They must have an Editor Role on this site to be able to moderate' ),
-			'std'     => get_option( 'admin_email' ),
+			'desc'    => __( 'Send notifications to these addresses (separate multiple ones wth commas). They must have an Editor Role on this site. Leave empty to disable notifications.' ),
+			'std'     => '',
 			'type'    => 'text',
 			'section' => 'general'
 		);
@@ -239,75 +300,37 @@ class trucollector_Theme_Options {
 		'section' => 'general',
 		'title' 	=> '' ,// Not used for headings.
 		'desc'   => 'Author Account', 
-		'std'    =>  trucollector_author_user_check(),
+		'std'    =>  trucollector_author_user_check( 'collector' ),
 		'type'    => 'heading'
-		);	
-		
-		/*
-		$this->settings['apass'] = array(
+		);					
+
+
+		$this->settings['pkey'] = array(
 			'title'   => __( 'Author Account Password' ),
-			'desc'    => __( 'The password used on the author account (needed to correctly autologin)' ),
-			'std'     => '',
+			'desc'    => __( 'The password for the collector user account. When you create the account, we suggest using the generated strong password, make sure you copy it to  safe place so you can paste it here.' ),
+			'std'     => 'xxxxxxxxxxxx',
 			'type'    => 'password',
 			'section' => 'general'
-		);		
-*/
+		);
 
-/*
-		$this->settings['captcha_heading'] = array(
+
+		$this->settings['jetpackcheck'] = array(
 		'section' => 'general',
 		'title' 	=> '' ,// Not used for headings.
-		'desc'   => 'Captcha Settings', 
-		'std'    => 'Not current used, but may set up in future.',
+		'desc'   => 'JetPack Post By Email', 
+		'std'    =>  splot_jetpack_post_email_check (),
 		'type'    => 'heading'
-		);		
+		);					
 
-				
-		$this->settings['use_captcha'] = array(
-			'section' => 'general',
-			'title'   => __( 'Use reCaptcha' ),
-			'desc'    => __( 'Activate a google captcha for all submission forms; <a href="https://www.google.com/recaptcha/admin/create" target="_blank">get your access keys</a>' ),
-			'type'    => 'checkbox',
-			'std'     => 0 // Set to 1 to be checked by default, 0 to be unchecked by default.
-		);
-		
-		
-		$this->settings['captcha_style'] = array(
-		'section' => 'general',
-		'title'   => __( 'Captcha Style' ),
-		'desc'    => __( 'Visual style for captchas, see <a href="https://developers.google.com/recaptcha/docs/customization?csw=1" target="_blank">examples of styles</a>.' ),
-		'type'    => 'select',
-		'std'     => 'red',
-		'choices' => array(
-			'red' => 'Red',
-			'white' => 'White',
-			'blackglass' => 'Black',
-			'clean' => 'Clean',
-		)
-	);
-	
-		
-		$this->settings['captcha_pub'] = array(
-			'title'   => __( 'reCaptcha Public Key' ),
-			'desc'    => __( '' ),
-			'std'     => '',
-			'type'    => 'text',
-			'section' => 'general'
-		);
-		
-		$this->settings['captcha_pri'] = array(
-			'title'   => __( 'reCaptcha Private Key' ),
-			'desc'    => __( '' ),
+		$this->settings['postbyemail'] = array(
+			'title'   => __( 'Post By Email Address' ),
+			'desc'    => __( 'Email address set up for posting by email; it can be any account on this site. We suggest creating a forwarding domain address to the one generated by the Jetpack Post BY Email plugin. This info is not use, it is just here to store the email address.' ),
 			'std'     => '',
 			'type'    => 'text',
 			'section' => 'general'
 		);
 
-*/
 
-				
-
-			
 		/* Reset
 		===========================================*/
 		
@@ -540,6 +563,12 @@ class trucollector_Theme_Options {
 			
 			if ( $input['notify'] != $options['notify'] ) {
 				$input['notify'] = str_replace(' ', '', $input['notify']);
+			}
+			
+			// if licenses not used, then show attribution must be false
+			
+			if ( $input['use_license'] == '0') {
+				$input['show_attribution'] == '0';
 			}
 
 					
