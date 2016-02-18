@@ -19,8 +19,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html http://www.apache.org/lice
 	text-align: center;
 }
 
-/* no images in post (hides submissions by email) */
-.post-content img {
+/* no images in single posts (hides submissions by email) */
+.single-post img {
 	display: none;
 }
 
