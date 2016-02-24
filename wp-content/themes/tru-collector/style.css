@@ -19,9 +19,9 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html http://www.apache.org/lice
 	text-align: center;
 }
 
-/* no images in single posts (hides submissions by email) */
-.single-post img {
-	display: none;
+/* no images content area of single posts (hides submissions by email) */
+.single-post .post-content img {
+    display: none;
 }
 
 /* some pretty buttons all done in CSS

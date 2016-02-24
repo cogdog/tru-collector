@@ -164,7 +164,6 @@ function trucollector_attributor( $license, $work_title, $work_creator='') {
 			return ( $work_str .  '" license status: unknown.' );
 			break;
 
-
 		case 'c': 	
 			return ( $work_str .  '" is &copy; All Rights Reserved.' );
 			break;
