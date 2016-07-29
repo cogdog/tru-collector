@@ -43,7 +43,7 @@ In this theme Wordpress `Posts` are renamed `Collectables` but have all the attr
 
 (2) Create a User with login name of "collector" with Author role. No one actually uses the account, the site invisible logs in guests as this user. Make note of the password. Make it cryptic.
 
-(3) Install the [Fukasawa theme](https://wordpress.org/themes/fukasawa).
+(3) Install the [Fukasawa theme](https://wordpress.org/themes/fukasawa). It does not need to be activated, it just needs to be present.
 
 (4) Install the [https://github.com/cogdog/tru-collector/blob/master/upload-to-wordpress-tru-collector.zip](TRU Collector theme) downloaded as part of this repo.
 
