@@ -25,13 +25,11 @@ And to be super slick, you can even enable an email address that allows people t
 
 
 ## Requirements
-I will make the big leap in that you have a self hosted Wordpress site and can install themes. The TRU Collector is a child theme based on [the free and lovely Fukawasa theme by Anders Noren](https://wordpress.org/themes/fukawasa) 
+I will make the big leap in that you have a self hosted Wordpress site and can install themes. The TRU Collector is a child theme based on [the free and lovely Fukasawa theme by Anders Noren](https://wordpress.org/themes/fukasawa). Install that first from your Wordpress Dashboard.
 
-**Very very crucial** Do not just use the zip of this repo as a theme upload. It will not work. You will get mad at me.
+**Very very crucial** Do not just use the zip of if you download this repo from GitHub. It will not work as a Wordpress theme. You might get mad at me. *What you should do* is upload [https://github.com/cogdog/tru-collector/blob/master/upload-to-wordpress-tru-collector.zip](the enclosed zip of just the tru-collector theme).
 
-If you are uploading in the wordpress admin, you will need to make separate zips of the two themes (tru-collector and fukawasa) the latter only if not installed via the Wordpress theme manager, and upload each as its own zip.
-
-In addition the site uses the [Remove Dashboard Access](https://wordpress.org/plugins/remove-dashboard-access-for-non-admins/) which can be installed directly in your site The theme will nudge you to install it. It is used to keep the logged in user from seeing the admin side of Wordpress. Any attempt to reach the dashboard outside of Administrators or editors results in a redirect to the front of the site.
+Alsom the site uses the [Remove Dashboard Access](https://wordpress.org/plugins/remove-dashboard-access-for-non-admins/) which can be installed directly in your site, The tru-collector theme's options panel will nudge you to install it. It is used to keep the logged in user from seeing the admin side of Wordpress. Any attempt to reach the dashboard outside of Administrators or editors results in a redirect to the front of the site.
 
 
 ## Setting Up a New Collector site
@@ -45,9 +43,9 @@ In this theme Wordpress `Posts` are renamed `Collectables` but have all the attr
 
 (2) Create a User with login name of "collector" with Author role. No one actually uses the account, the site invisible logs in guests as this user. Make note of the password. Make it cryptic.
 
-(3) Install the [Fukawasa theme](https://wordpress.org/themes/fukawasa).
+(3) Install the [Fukasawa theme](https://wordpress.org/themes/fukasawa).
 
-(4) Install the TRU Collector theme downloaded as part of this repo; either by uploading to your wp-content/themes directory or making  ZIP if just the tru-collector contents and uploading as a theme.
+(4) Install the [https://github.com/cogdog/tru-collector/blob/master/upload-to-wordpress-tru-collector.zip](TRU Collector theme) downloaded as part of this repo.
 
 (5) Activate TRU Collector as the site's theme. In this theme, Posts are renamed **collectables** and thus on the dashboard:
 
