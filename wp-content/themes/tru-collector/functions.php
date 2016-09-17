@@ -1,27 +1,28 @@
 <?php
 # -----------------------------------------------------------------
-# Theme activation
+# Theme activation, let's go!
 # -----------------------------------------------------------------
 
 // run when this theme is activated
 add_action('after_switch_theme', 'trucollector_setup');
 
 function trucollector_setup () {
-  // make sure our categories are present
   
-  // create pages if they do not exist
-  
+	// create special pages if they do not exist
+	// backdate creation date 2 days just to make sure they do not end up future dated
+	// which causes all kinds of disturbances in the force
+
   if (! get_page_by_path( 'collect' ) ) {
   
-  	// create the Write page if it does not exist
+  	// create the Collect form page if it does not exist
   	$page_data = array(
   		'post_title' 	=> 'Collect',
-  		'post_content'	=> 'Add Your Collectable',
+  		'post_content'	=> 'Here is the place to add a new photo to thos collection. If you are building this site, maybe edit this page to make it special.',
   		'post_name'		=> 'collect',
   		'post_status'	=> 'publish',
   		'post_type'		=> 'page',
   		'post_author' 	=> 1,
-  		'post_date' 	=> date('Y-m-d H:i:s'),
+  		'post_date' 	=> date('Y-m-d H:i:s', time() - 172800),
   		'page_template'	=> 'page-collect.php',
   	);
   	
@@ -31,15 +32,15 @@ function trucollector_setup () {
 
   if (! get_page_by_path( 'desk' ) ) {
 
-  	// create the Write page if it does not exist
+  	// create the welcome desk page if it does not exist
   	$page_data = array(
   		'post_title' 	=> 'Welcome Desk',
-  		'post_content'	=> 'Welcome to the place to add your images to this collection.',
+  		'post_content'	=> 'You are but one special key word away from being able to add images to this collection. Hopefully the kind owner of this site has provided you the key phrase. Spelling and capitalization do count. If you are said owner, editing this page will let you personalize this bit.',
   		'post_name'		=> 'desk',
   		'post_status'	=> 'publish',
   		'post_type'		=> 'page',
   		'post_author' 	=> 1,
-  		'post_date' 	=> date('Y-m-d H:i:s'),
+  		'post_date' 	=> date('Y-m-d H:i:s', time() - 172800),
   		'page_template'	=> 'page-desk.php',
   	);
   	
@@ -52,12 +53,12 @@ function trucollector_setup () {
   	// create the Write page if it does not exist
   	$page_data = array(
   		'post_title' 	=> 'Random',
-  		'post_content'	=> '(Place holder for random page)',
+  		'post_content'	=> 'You should never see this page, it is for random redirects. What are you doing looking at this page? Get back to writing, willya?',
   		'post_name'		=> 'random',
   		'post_status'	=> 'publish',
   		'post_type'		=> 'page',
   		'post_author' 	=> 1,
-  		'post_date' 	=> date('Y-m-d H:i:s'),
+  		'post_date' 	=> date('Y-m-d H:i:s', time() - 172800),
   		'page_template'	=> 'page-random.php',
   	);
   	
@@ -82,6 +83,7 @@ add_action( 'after_setup_theme', 'trucollector_load_theme_options', 9 );
 add_action( 'admin_menu', 'trucollector_change_post_label' );
 add_action( 'init', 'trucollector_change_post_object' );
 
+// turn 'em from Posts to Collectables
 function trucollector_change_post_label() {
     global $menu;
     global $submenu;
@@ -95,6 +97,8 @@ function trucollector_change_post_label() {
     $submenu['edit.php'][16][0] = $thing_name .' Tags';
     echo '';
 }
+
+// change the prompts and stuff for posts to be relevant to collectables
 function trucollector_change_post_object() {
 
     $thing_name = 'Collectable';
@@ -116,6 +120,7 @@ function trucollector_change_post_object() {
     $labels->name_admin_bar =  $thing_name;
 }
 
+// modify the comment form
 add_filter('comment_form_defaults', 'trucollector_comment_mod');
 
 function trucollector_comment_mod( $defaults ) {
@@ -149,10 +154,10 @@ function trucollector_the_license( $lcode ) {
 	$all_licenses = trucollector_get_licences();
 	
 	echo $all_licenses[$lcode];
-
 }
 
 function trucollector_attributor( $license, $work_title, $work_creator='') {
+	// create an attribution string for the license
 
 	$all_licenses = trucollector_get_licences();
 		
@@ -181,8 +186,6 @@ function trucollector_attributor( $license, $work_title, $work_creator='') {
 			$lstrx = strpos( $all_licenses[$license] , 'Creative Commons');
 			return ( $work_str . ' is licensed under a ' .  substr( $all_licenses[$license] , $lstrx)  . ' 4.0 International license.');
 	}
-
-
 }
 
 
@@ -218,7 +221,7 @@ function trucollector_enqueue_options_scripts() {
 }
 
 function trucollector_load_theme_options() {
-	// load theme options Settings
+	// load theme options settings
 
 	if ( file_exists( get_stylesheet_directory()  . '/class.trucollector-theme-options.php' ) ) {
 		include_once( get_stylesheet_directory()  . '/class.trucollector-theme-options.php' );		
@@ -234,6 +237,8 @@ function trucollector_load_theme_options() {
 
 // Add custom logo to entry screen... because we can
 // While we are at it, use CSS to hide the back to blog and retried password links
+
+// If you hate the splot logo, change the file in the theme directory images/site-login-logo.png
 add_action( 'login_enqueue_scripts', 'my_login_logo' );
 
 function my_login_logo() { ?>
@@ -248,7 +253,7 @@ function my_login_logo() { ?>
 <?php }
 
 
-// Make logo link points to blog, not Wordpress.org Change Dat
+// Make logo link points to blog, not Wordpress.org Change Dat!
 // -- h/t http://www.sitepoint.com/design-a-stylized-custom-wordpress-login-screen/
 
 add_filter( 'login_headerurl', 'login_link' );
@@ -289,6 +294,7 @@ function trucollector_autologin() {
 	}
 }
 
+// not sure if this works to shorten the logout time
 function trucollector_change_cookie_logout( $expiration, $user_id, $remember ) {
     return $remember ? $expiration : 120;
 }
@@ -337,19 +343,19 @@ function add_trucollector_scripts() {
 # -----------------------------------------------------------------
 
 
-// function to get the caption for an attachment (stored as post_excerpt)
-// -- h/t http://wordpress.stackexchange.com/a/73894/14945
 function get_attachment_caption_by_id( $post_id ) {
+	// function to get the caption for an attachment (stored as post_excerpt)
+	// -- h/t http://wordpress.stackexchange.com/a/73894/14945
+
     $the_attachment = get_post( $post_id );
     return ( $the_attachment->post_excerpt ); 
 }
 
 function trucollector_author_user_check( $expected_user = 'collector' ) {
-// checks for the proper authoring account set up
+	// checks for the proper authoring account set up
 
 	$auser = get_user_by( 'login', $expected_user );
 		
-	
 	if ( !$auser) {
 		return ('Authoring account not set up. You need to <a href="' . admin_url( 'user-new.php') . '">create a user account</a> with login name <strong>' . $expected_user . '</strong> with a role of <strong>Author</strong>. Make a killer strong password; no one uses it.');
 	} elseif ( $auser->roles[0] != 'author') {
@@ -362,8 +368,6 @@ function trucollector_author_user_check( $expected_user = 'collector' ) {
 		
 			return ('The user account <strong>' . $expected_user . '</strong> is set up but needs to have it\'s role set to <strong>Author</strong>. You can <a href="' . admin_url( 'user-edit.php?user_id=' . $auser->ID ) . '">edit it now</a>'); 
 		}
-		
-		
 		
 	} else {
 		return ('The authoring account <strong>' .$expected_user . '</strong> is correctly set up.');

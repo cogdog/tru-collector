@@ -1,6 +1,8 @@
 <?php
 // manages all of the theme options
 // heavy lifting via http://alisothegeek.com/2011/01/wordpress-settings-api-tutorial-1/
+// Revision Sept 16, 2016 as jQuery update killed TAB UI
+
 
 class trucollector_Theme_Options {
 
@@ -18,8 +20,12 @@ class trucollector_Theme_Options {
 		$this->get_settings();
 		
 		$this->sections['general'] = __( 'General Settings' );
-		$this->sections['docs']        = __( 'Documentation' );
 		$this->sections['reset']   = __( 'Reset to Defaults' );
+
+		// create a colllection of callbacks for each section heading
+		foreach ( $this->sections as $slug => $title ) {
+			$this->section_callbacks[$slug] = 'display_' . $slug;
+		}
 
 		// enqueue scripts for media uploader
         add_action( 'admin_enqueue_scripts', 'trucollector_enqueue_options_scripts' );
@@ -35,57 +41,35 @@ class trucollector_Theme_Options {
 	public function add_pages() {
 		$admin_page = add_theme_page( 'TRU Collector Options', 'TRU Collector Options', 'manage_options', 'trucollector-options', array( &$this, 'display_page' ) );
 		
-		// give us javascript for this page
-		add_action( 'admin_print_scripts-' . $admin_page, array( &$this, 'scripts' ) );
+		// documents page, but don't add to menu		
+		$docs_page = add_theme_page( 'TRU Collector Documentation', '', 'manage_options', 'trucollector-docs', array( &$this, 'display_docs' ) );
 		
-		// and some pretty styling
-		add_action( 'admin_print_styles-' . $admin_page, array( &$this, 'styles' ) );
 	}
 
 	/* HTML to display the theme options page */
 	public function display_page() {
 		echo '<div class="wrap">
-		<div class="icon32" id="icon-options-general"></div>
-		<h2>TRU Collector Options</h2>';
+		<h1>TRU Collector Options</h1>';
 		
 		if ( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] == true )
 			echo '<div class="updated fade"><p>' . __( 'Theme options updated.' ) . '</p></div>';
 				
 		echo '<form action="options.php" method="post" enctype="multipart/form-data">';
 
-			settings_fields( 'trucollector_options' );
-			echo '<div class="ui-tabs">
-				<ul class="ui-tabs-nav">';
+		settings_fields( 'trucollector_options' );
 
-			foreach ( $this->sections as $section_slug => $section )
-				echo '<li><a href="#' . $section_slug . '">' . $section . '</a></li>';
+		echo  '<h2 class="nav-tab-wrapper"><a class="nav-tab nav-tab-active" href="?page=trucollector-options">Settings</a>
+	<a class="nav-tab" href="?page=trucollector-docs">Documentation</a></h2>';
 
-			echo '</ul>';
-			do_settings_sections( $_GET['page'] );
+		do_settings_sections( $_GET['page'] );
 
-			echo '</div>
-			<p class="submit"><input name="Submit" type="submit" class="button-primary" value="' . __( 'Save Changes' ) . '" /></p>
 
-		</form>';
-		echo '<script type="text/javascript">
+		echo '<p class="submit"><input name="Submit" type="submit" class="button-primary" value="' . __( 'Save Changes' ) . '" /></p>			
+		</form>
+		</div>
+		
+		<script type="text/javascript">
 		jQuery(document).ready(function($) {
-			var sections = [];';
-			
-			foreach ( $this->sections as $section_slug => $section )
-				echo "sections['$section'] = '$section_slug';";
-			
-			echo 'var wrapped = $(".wrap h3").wrap("<div class=\"ui-tabs-panel\">");
-			wrapped.each(function() {
-				$(this).parent().append($(this).parent().nextUntil("div.ui-tabs-panel"));
-			});
-			$(".ui-tabs-panel").each(function(index) {
-				$(this).attr("id", sections[$(this).children("h3").text()]);
-				if (index > 0)
-					$(this).addClass("ui-tabs-hide");
-			});
-			$(".ui-tabs").tabs({
-				fx: { opacity: "toggle", duration: "fast" }
-			});
 			
 			$("input[type=text], textarea").each(function() {
 				if ($(this).val() == $(this).attr("placeholder") || $(this).val() == "")
@@ -104,8 +88,6 @@ class trucollector_Theme_Options {
 				}
 			});
 			
-			$(".wrap h3, .wrap table").show();
-			
 			// This will make the "warning" checkbox class really stand out when checked.
 			// I use it here for the Reset checkbox.
 			$(".warning").change(function() {
@@ -114,57 +96,27 @@ class trucollector_Theme_Options {
 				else
 					$(this).parent().css("background", "none").css("color", "inherit").css("fontWeight", "normal");
 			});
-			
-			// Browser compatibility
-			if ($.browser.mozilla) 
-			         $("form").attr("autocomplete", "off");
-			         
-		
-				//  via http://stackoverflow.com/a/14467706/2418186
-	
-				//  jQueryUI 1.10 and HTML5 ready
-				//      http://jqueryui.com/upgrade-guide/1.10/#removed-cookie-option 
-				//  Documentation
-				//      http://api.jqueryui.com/tabs/#option-active
-				//      http://api.jqueryui.com/tabs/#event-activate
-				//      http://balaarjunan.wordpress.com/2010/11/10/html5-session-storage-key-things-to-consider/
-				//
-				//  Define friendly index name
-				var index = "key";
-				//  Define friendly data store name
-				var dataStore = window.sessionStorage;
-				//  Start magic!
-				try {
-					// getter: Fetch previous value
-					var oldIndex = dataStore.getItem(index);
-				} catch(e) {
-					// getter: Always default to first tab in error state
-					var oldIndex = 0;
-				}
-				$(".ui-tabs").tabs({
-					// The zero-based index of the panel that is active (open)
-					active : oldIndex,
-					// Triggered after a tab has been activated
-					activate : function( event, ui ){
-						//  Get future value
-						var newIndex = ui.newTab.parent().children().index(ui.newTab);
-						//  Set future value
-						dataStore.setItem( index, newIndex ) 
-					}
-				}); 
-					 
-			});
-	</script>
-</div>';	
+		});
+		</script>';	
+
 	}
-			
-		/* Insert custom CSS */
-		public function styles() {
 
-			wp_register_style( 'trucollector-admin', get_stylesheet_directory_uri() . '/trucollector-options.css' );
-			wp_enqueue_style( 'trucollector-admin' );
+	/*  display documentation in a tab */
+	public function display_docs() {	
+		// This displays on the "Documentation" tab. 
+		
+	 	echo '<div class="wrap">
+		<h1>TRU Collector Documentation</h1>
+		<h2 class="nav-tab-wrapper">
+		<a class="nav-tab" href="?page=trucollector-options">Settings</a>
+		<a class="nav-tab nav-tab-active" href="?page=trucollector-docs">Documentation</a></h2>';
+		
+		include( get_stylesheet_directory() . '/includes/trucollector-theme-options-docs.php');
+		
+		echo '</div>';		
+	}
 
-		}
+
 
 	/* Define all settings and their defaults */
 	public function get_settings() {
@@ -247,8 +199,6 @@ class trucollector_Theme_Options {
 				'1' => 'Yes',
 			)
 		);		
-		
-		
 		
 		$this->settings['new_item_status'] = array(
 			'section' => 'general',
@@ -346,9 +296,14 @@ class trucollector_Theme_Options {
 		
 	}
 	
-	/* Description for section */
-	public function display_section() {
-		// code
+	public function display_general() {
+		// section heading for general setttings
+		echo '<p>These settings manaage the behavior and appearance of your TRU Writer site. There are quite a few of them!</p>';		
+	}
+
+
+	public function display_reset() {
+		// section heading for reset section setttings
 	}
 
 	/* HTML output for individual settings */
@@ -362,8 +317,6 @@ class trucollector_Theme_Options {
 			$options[$id] = $std;
 		elseif ( ! isset( $options[$id] ) )
 			$options[$id] = 0;
-
-		$options['new_types'] = 'New Type Name'; // always reset
 		
 		$field_class = '';
 		if ( $class != '' )
@@ -396,6 +349,9 @@ class trucollector_Theme_Options {
 				break;
 
 			case 'radio':
+			
+					if ( $desc != '' ) echo '<br /><span class="description">' . $desc . '</span>';
+
 				$i = 0;
 				foreach ( $choices as $value => $label ) {
 					echo '<input class="radio' . $field_class . '" type="radio" name="trucollector_options[' . $id . ']" id="' . $id . $i . '" value="' . esc_attr( $value ) . '" ' . checked( $options[$id], $value, false ) . '> <label for="' . $id . $i . '">' . $label . '</label>';
@@ -404,8 +360,6 @@ class trucollector_Theme_Options {
 					$i++;
 				}
 
-				if ( $desc != '' )
-					echo '<br /><span class="description">' . $desc . '</span>';
 
 				break;
 
@@ -419,11 +373,8 @@ class trucollector_Theme_Options {
 				
 			case 'medialoader':
 			
-			
 				echo '<div id="uploader_' . $id . '">';
-				
-				
-				
+
 				if ( $options[$id] )  {
 					$front_img = wp_get_attachment_image_src( $options[$id], 'radcliffe' );
 					echo '<img id="previewimage_' . $id . '" src="' . $front_img[0] . '" width="640" height="300" alt="default thumbnail" />';
@@ -462,22 +413,6 @@ class trucollector_Theme_Options {
 		}
 	}	
 			
-
-
-	/**
-	 * Description for Docs section
-	 *
-	 * @since 1.0
-	 */
-	public function display_docs_section() {
-		
-		// This displays on the "Documentation" tab. 
-		
-		include( get_stylesheet_directory() . '/includes/trucollector-theme-options-docs.php');
-		
-		
-	}
-
 	/* Initialize settings to their default values */
 	public function initialize_settings() {
 	
@@ -496,15 +431,10 @@ class trucollector_Theme_Options {
 	public function register_settings() {
 
 		register_setting( 'trucollector_options', 'trucollector_options', array ( &$this, 'validate_settings' ) );
-		//register_setting( 'trucollector_options', 'trucollector_options' );
 
-		foreach ( $this->sections as $slug => $title )
-		
-			if ( $slug == 'docs' ) {
-				add_settings_section( $slug, $title, array( &$this, 'display_docs_section' ), 'trucollector-options' );
-			} else {
-				add_settings_section( $slug, $title, array( &$this, 'display_section' ), 'trucollector-options' );
-			}
+		foreach ( $this->sections as $slug => $title ) {
+			add_settings_section( $slug, $title, array( &$this, $this->section_callbacks[$slug] ), 'trucollector-options' );
+		}
 
 		$this->get_settings();
 	
@@ -582,8 +512,7 @@ class trucollector_Theme_Options {
 		}
 		
 		return false;
-		
-		
+
 	}
  }
  

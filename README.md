@@ -5,7 +5,7 @@ by Alan Levine http://cogdog.info/ or http://cogdogblog.com/
 ![Sample Collectables Site](images/collector-site.jpg "Sample Collectables Site")
 
 ## What is this?
-This Wordpress Theme  powers [TRU Collector](http://splot.ca/collector/) a site to allow collections of images (termed "collectables") where contributions can be made without any silly logins. This is done by using a generic author account that is silently activated. The user never sees any sign of the innards of Wordpress but can create posts for each collectable. 
+This Wordpress Theme powers [TRU Collector](http://splot.ca/collector/) a site to allow collections of images (termed "collectables") where contributions can be made without any silly logins. This is done by using a generic author account that is silently activated. The user never sees any sign of the innards of Wordpress but can create posts for each collectable. 
 
 The options can allow you to create a simple Upload and go mode, but you can also allow (and require or not), captions, a source description (where the person for the image from *hey, I found it on GOOGLE*), and a selection of a usage rights.
 
@@ -23,13 +23,22 @@ And to be super slick, you can even enable an email address that allows people t
 * [UDG Agora Image Pool](http://udg.theagoraonline.net/imagepool) used by University of Guadalajara faculty and students sharing media in the UDG Agora Project
 * [Oh No Not the Followers of the Apocalypse](http://ohnonotthe.followersoftheapocalyp.se/) FOTA Images from David Kernohan
 
+And if you make a TRU Collector site, please pleas pretty please fork this repo to edit this Readme with a link to your new site.
+
+If you have problems, feature suggestions, piles of unmarked bills to send my way, please [contact me via the issues area](https://github.com/cogdog/tru-collector/issues) on this repo.
+
+## Relatively New Features
+
+**Options Refreshed** Recoded the theme options so documentation in its own tab.
+
+**Installable ZIP of TRU Collector Theme  only** added to repo to make it easier to add to sites. In fact, that is all you need from here.
 
 ## Requirements
 I will make the big leap in that you have a self hosted Wordpress site and can install themes. The TRU Collector is a child theme based on [the free and lovely Fukasawa theme by Anders Noren](https://wordpress.org/themes/fukasawa). Install that first from your Wordpress Dashboard.
 
-**Very very crucial** Do not just use the zip of if you download this repo from GitHub. It will not work as a Wordpress theme. You might get mad at me. *What you should do* is upload [https://github.com/cogdog/tru-collector/blob/master/upload-to-wordpress-tru-collector.zip](the enclosed zip of just the tru-collector theme).
+**Very very crucial** Do not just use the zip of if you download this repo from GitHub. It will not work as a Wordpress theme. You might get mad at me. *What you should do* is upload [the enclosed zip of just the tru-collector theme](https://github.com/cogdog/tru-collector/blob/master/installable-tru-collector.zip).
 
-Alsom the site uses the [Remove Dashboard Access](https://wordpress.org/plugins/remove-dashboard-access-for-non-admins/) which can be installed directly in your site, The tru-collector theme's options panel will nudge you to install it. It is used to keep the logged in user from seeing the admin side of Wordpress. Any attempt to reach the dashboard outside of Administrators or editors results in a redirect to the front of the site.
+Also recommended is the [Remove Dashboard Access](https://wordpress.org/plugins/remove-dashboard-access-for-non-admins/) plugin which can be installed directly in your site. The tru-collector theme's options panel will nudge you to install it. It is used to keep the logged in user from seeing the admin side of Wordpress. Any attempt to reach the dashboard outside of Administrators or editors results in a redirect to the front of the site. The site will work without it, but it makes your collector site a tad more bullet proof.
 
 
 ## Setting Up a New Collector site
@@ -38,14 +47,13 @@ Alsom the site uses the [Remove Dashboard Access](https://wordpress.org/plugins/
 
 In this theme Wordpress `Posts` are renamed `Collectables` but have all the attributes of garden variety blog posts.
 
+(1) Create a fresh new Wordpress site. 
 
-(1) Create a fresh Wordpress site. 
+(2) Create a user with login name of "collector" with Author role. No one actually uses the account, the site invisible logs in guests as this user. Make note of the password that Wordpress generated. Make it cryptic.
 
-(2) Create a User with login name of "collector" with Author role. No one actually uses the account, the site invisible logs in guests as this user. Make note of the password. Make it cryptic.
+(3) Install the [Fukasawa theme](https://wordpress.org/themes/fukasawa) from the Wordpress Dashboard (I'll gamble that you know how to install themes, search on `Fukasawa` from Appearance -- Themes. It does not need to be activated, it just needs to be present.
 
-(3) Install the [Fukasawa theme](https://wordpress.org/themes/fukasawa). It does not need to be activated, it just needs to be present.
-
-(4) Install the [https://github.com/cogdog/tru-collector/blob/master/upload-to-wordpress-tru-collector.zip](TRU Collector theme) downloaded as part of this repo.
+(4) Install the [TRU Collector theme](https://github.com/cogdog/tru-collector/blob/master/installable-tru-collector.zip) downloaded as part of this repo.
 
 (5) Activate TRU Collector as the site's theme. In this theme, Posts are renamed **collectables** and thus on the dashboard:
 
@@ -55,7 +63,7 @@ In this theme Wordpress `Posts` are renamed `Collectables` but have all the attr
 
 ![Remove Dashboard Access settings](images/dashboard-access-settings.jpg "Remove Dashboard Access settings")
 
-(7) If you wish to set up a feature to let visitors send photos to your collector via email, install the [Wordpress Jetpack plugin](http://jetpack.me/). You will also need a plugin the converts the first image of a post to a Featured Image;  we like Auto Thumbailer](https://wordpress.org/plugins/auto-thumbnailer/). See below for setup instructions.
+(7) If you wish to set up a feature to let visitors send photos to your collector via email, install the [Wordpress Jetpack plugin](http://jetpack.me/). You will also need a plugin the converts the first image of a post to a Featured Image;  I like [Auto Thumbailer](https://wordpress.org/plugins/auto-thumbnailer/). See below for setup instructions.
 
 (8) You might want to set up in advance some Wordpress Categories for your Collectables; in the options you will choose one as default (and for all that is holy, *change the name of the Uncategorized category*!
 
@@ -104,9 +112,6 @@ If you have not set up any categories, the **Default Category for New Collectabl
 ![](wp-content/themes/tru-collector/images/notification.jpg)
 Enter any email addresses who should be notified of new submissions; you can use multiple ones if you separate them by a comma.
 
-
-
-
 ## Author Account Setup
 ![](wp-content/themes/tru-collector/images/author-account-none.jpg)
 
@@ -127,16 +132,16 @@ When everything is set up correctly, the options will indicate that you have bee
 If the account is incorrectly set up, when trying the Collector on a site where you are *not* logged in as an Administrator or Editor, any attempts to upload an image will generate an error message in the Media Uploader.
 
 
-## JetPack Post by Email (optional option)
+## JetPack Post by Email (optional)
 ![](wp-content/themes/tru-collector/images/jetpack-not-installed.jpg)
 
-As an option you can enable a feature that allows people to add an image to your site simply by sending it via email. This uses the Post By Email module that is part of the [Wordpress Jetpack plugin](http://jetpack.me/). The options will check that the plugin is installed and that the module is enabled.
+You can enable a feature that allows people to add an image to your site simply by sending it via email. This uses the Post By Email module that is part of the [Wordpress Jetpack plugin](http://jetpack.me/). The options will check that the plugin is installed and that the module is enabled.
 
-The subject line of the email becomes the title, the body of the email the content, and the first image attached becomes the Collectable (we suggest using a plugin such as [Auto Thumbailer](https://wordpress.org/plugins/auto-thumbnailer/) that converts the first image to the theme's featured image.
+The subject line of the email becomes the title, the body of the email the content, and the first image attached becomes the Collectable -- that is why we suggest using a plugin such as [Auto Thumbailer](https://wordpress.org/plugins/auto-thumbnailer/) that converts the first image to the theme's featured image.
 
-To create an email address that can post via this plugin, any authenticated user can generate the `*********@post.wordpress.com` address via their profile; you cannot add it to the Collector user as you can only generate it for an account you are logged in to Wordpress with.
+To create an email address that can post via this plugin, any authenticated admin or editor user can generate the `*********@post.wordpress.com` address via their profile; you need not add it to the Collector user as you can only generate it for an account you are logged in to Wordpress with.
 
-The field here is just to keep the address as a reference; it is not used anywhere in the site-- you most likely do not want to have this email address in a public space as it allows direct posting to the site.
+The field here is just to keep the email address as a reference; it is not used anywhere in the site-- you most likely do not want to have this email address posted in a public space as it allows direct posting to the site.
 
 We (well I, the person writing this) recommend creating an email forwarding address to use as the one that you share; for example, if the email address I set up as a forwarder was `quickpost@splot.ca` and made to forward to `*********@post.wordpress.com` if I need to change the address, I can just do so at the Wordpress level, update my forwarder, and never have to tell people a new address to use.
 
@@ -145,11 +150,11 @@ Also, your site looks a tad more credible without use of a `wordpress.com` email
 
 ## Other Wordpressy Things to Do
 
-The theme creates three Pages woth custom templates. You can edit their content to provide additional information:
+The theme creates three Pages for you with custom templates. You can edit their content to provide additional information prompt:
 
 * **Desk** The screen where users must enter an access code
 * **Collect** The page that includes the form people use to upload content
-* **Random** No content needed, it just performs a redirect to a random collectable
+* **Random** No content needed, it just performs a redirect to a random collectable. Just leave it alone
 
 Set up your own menus as needed
 
@@ -159,4 +164,4 @@ Get rid of the default widgets on the site; make it your own
 
 ![Widgets](images/widgets.jpg "suggested widget set up") 
 
-
+Go collect stuf!
