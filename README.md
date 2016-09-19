@@ -7,11 +7,11 @@ by Alan Levine http://cogdog.info/ or http://cogdogblog.com/
 ## What is this?
 This Wordpress Theme powers [TRU Collector](http://splot.ca/collector/) a site to allow collections of images (termed "collectables") where contributions can be made without any silly logins. This is done by using a generic author account that is silently activated. The user never sees any sign of the innards of Wordpress but can create posts for each collectable. 
 
-The options can allow you to create a simple Upload and go mode, but you can also allow (and require or not), captions, a source description (where the person for the image from *hey, I found it on GOOGLE*), and a selection of a usage rights.
+The options can allow you to create a simple Upload and go mode, but you can also allow (and require or not), captions, a source description (maybe more than *hey, I found it on GOOGLE*), and a selection of a usage rights.
 
 And to be super slick, you can even enable an email address that allows people to publish directly to your collection by old fashioned email.
 
-*Why TRU?* I developed these initially [while on a fellowship](http://cogdog.trubox.ca) at [Thompson Rivers University](http://tru.ca/) as one of of a suite of [SPLOT tools](http://splot.ca/splots/).
+*Why TRU?* I developed these initially [while on a fellowship](http://cogdog.trubox.ca) at [Thompson Rivers University](http://tru.ca/) as one of a suite of [SPLOT tools](http://splot.ca/splots/).
 
 ### See It In Action
 
@@ -38,9 +38,6 @@ I will make the big leap in that you have a self hosted Wordpress site and can i
 
 **Very very crucial** Do not just use the zip of if you download this repo from GitHub. It will not work as a Wordpress theme. You might get mad at me. *What you should do* is upload [the enclosed zip of just the tru-collector theme](https://github.com/cogdog/tru-collector/blob/master/installable-tru-collector.zip).
 
-Also recommended is the [Remove Dashboard Access](https://wordpress.org/plugins/remove-dashboard-access-for-non-admins/) plugin which can be installed directly in your site. The tru-collector theme's options panel will nudge you to install it. It is used to keep the logged in user from seeing the admin side of Wordpress. Any attempt to reach the dashboard outside of Administrators or editors results in a redirect to the front of the site. The site will work without it, but it makes your collector site a tad more bullet proof.
-
-
 ## Setting Up a New Collector site
 
 ![](wp-content/themes/tru-collector/images/collectables-menu.jpg)
@@ -59,7 +56,9 @@ In this theme Wordpress `Posts` are renamed `Collectables` but have all the attr
 
 ![Renamed Posts Menu](images/collectables.jpg "collectables menu")
 
-(6) Install and activate the [Remove Dashboard Access plugin](https://wordpress.org/plugins/remove-dashboard-access-for-non-admins/).   In its settings, restrict access to **Editors and Administrators** or just **Administrators** depending if you will have a moderator user. The default redirect should be for the main URL of the site.
+(6) Install and activate the [Remove Dashboard Access plugin](https://wordpress.org/plugins/remove-dashboard-access-for-non-admins/).  The tru-collector theme's options panel will nudge you to install it. It is used to keep the logged in user from seeing the admin side of Wordpress. Any attempt to reach the dashboard outside of Administrators or editors results in a redirect to the front of the site. The site will work without it, but it makes your collector site a tad more bullet proof.
+
+ In its settings, restrict access to **Editors and Administrators** or just **Administrators** depending if you will have a moderator user. The default redirect should be for the main URL of the site. 
 
 ![Remove Dashboard Access settings](images/dashboard-access-settings.jpg "Remove Dashboard Access settings")
 
@@ -150,13 +149,17 @@ Also, your site looks a tad more credible without use of a `wordpress.com` email
 
 ## Other Wordpressy Things to Do
 
+I like short links, so I typically use a Custom Permalink setting (under `Settings -- Permalinks`) of `/%post_id%/'
+
+![Simplest Permalink](images/permalink.jpg "custom permalink") 
+
 The theme creates three Pages for you with custom templates. You can edit their content to provide additional information prompt:
 
 * **Desk** The screen where users must enter an access code
 * **Collect** The page that includes the form people use to upload content
 * **Random** No content needed, it just performs a redirect to a random collectable. Just leave it alone
 
-Set up your own menus as needed
+Set up your own menus as needed; make sure that you click the `Location` tab to tell Wordpress to use the menu you create.
 
 ![Menu Configuration](images/menu.jpg "menu options") 
 

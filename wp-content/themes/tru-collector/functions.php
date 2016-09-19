@@ -17,7 +17,7 @@ function trucollector_setup () {
   	// create the Collect form page if it does not exist
   	$page_data = array(
   		'post_title' 	=> 'Collect',
-  		'post_content'	=> 'Here is the place to add a new photo to thos collection. If you are building this site, maybe edit this page to make it special.',
+  		'post_content'	=> 'Here is the place to add a new photo to this collection. If you are building this site, maybe edit this page to make it special.',
   		'post_name'		=> 'collect',
   		'post_status'	=> 'publish',
   		'post_type'		=> 'page',
@@ -296,7 +296,13 @@ function trucollector_autologin() {
 
 // not sure if this works to shorten the logout time
 function trucollector_change_cookie_logout( $expiration, $user_id, $remember ) {
-    return $remember ? $expiration : 120;
+	if ( current_user_can( 'edit_pages' )  ) {
+		// bump up default 14 day logout function 
+    	return $remember ? $expiration : 1209600; 
+    } else {
+    	// shorter auto logout for guests (1 hour)
+      	return $remember ? $expiration : 3600; 
+    }
 }
 
 

@@ -350,7 +350,7 @@ class trucollector_Theme_Options {
 
 			case 'radio':
 			
-					if ( $desc != '' ) echo '<br /><span class="description">' . $desc . '</span>';
+					if ( $desc != '' ) echo '<span class="description">' . $desc . '</span><br />';
 
 				$i = 0;
 				foreach ( $choices as $value => $label ) {
