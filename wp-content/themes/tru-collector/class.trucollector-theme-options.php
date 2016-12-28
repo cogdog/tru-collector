@@ -392,8 +392,7 @@ class trucollector_Theme_Options {
 				break;
 
 			case 'password':
-				echo '<input class="password regular-text' . $field_class . '" type="password" id="' . $id . '" name="trucollector_options[' . $id . ']" value="' . esc_attr( $options[$id] ) . '" /> <input type="checkbox" id="showHide" />
-      <label for="showHide" id="showHideLabel">Show Password</label>';
+				echo '<input class="regular-text' . $field_class . '" type="text" id="' . $id . '" name="trucollector_options[' . $id . ']" value="' . esc_attr( $options[$id] ) . '" /><input type="button" id="showHide" value="Show" />';
 
 				if ( $desc != '' )
 					echo '<br /><span class="description">' . $desc . '</span>';

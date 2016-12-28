@@ -8,15 +8,21 @@
 
 jQuery(document).ready(function() { 
 
+	//hide the password field
+	jQuery("#pkey").hide();
+
 	//toggle password field to show/hide contents
 	 jQuery("#showHide").click(function() {
-		if (jQuery(".password").attr("type") == "password") {
-		  jQuery(".password").attr("type", "text");
+		if (jQuery("#showHide").val() == "Show") {
+		  jQuery("#pkey").show();
+		  jQuery("#showHide").attr('value', 'Hide');
 
 		} else {
-		  jQuery(".password").attr("type", "password");
+		  jQuery("#pkey").hide();
+		  jQuery("#showHide").attr('value', 'Show');
 		}
 	  });
+
 
 	// called for via click of upload button in theme options
 	jQuery(document).on('click', '.upload_image_button', function(e){
