@@ -7,9 +7,18 @@
 */
 
 jQuery(document).ready(function() { 
+
+	//toggle password field to show/hide contents
+	 jQuery("#showHide").click(function() {
+		if (jQuery(".password").attr("type") == "password") {
+		  jQuery(".password").attr("type", "text");
+
+		} else {
+		  jQuery(".password").attr("type", "password");
+		}
+	  });
+
 	// called for via click of upload button in theme options
-
-
 	jQuery(document).on('click', '.upload_image_button', function(e){
 
 		// disable defauklt behavior

@@ -350,7 +350,7 @@ class trucollector_Theme_Options {
 
 			case 'radio':
 			
-					if ( $desc != '' ) echo '<span class="description">' . $desc . '</span><br />';
+					if ( $desc != '' ) echo '<br /><span class="description">' . $desc . '</span>';
 
 				$i = 0;
 				foreach ( $choices as $value => $label ) {
@@ -392,7 +392,8 @@ class trucollector_Theme_Options {
 				break;
 
 			case 'password':
-				echo '<input class="regular-text' . $field_class . '" type="password" id="' . $id . '" name="trucollector_options[' . $id . ']" value="' . esc_attr( $options[$id] ) . '" />';
+				echo '<input class="password regular-text' . $field_class . '" type="password" id="' . $id . '" name="trucollector_options[' . $id . ']" value="' . esc_attr( $options[$id] ) . '" /> <input type="checkbox" id="showHide" />
+      <label for="showHide" id="showHideLabel">Show Password</label>';
 
 				if ( $desc != '' )
 					echo '<br /><span class="description">' . $desc . '</span>';
