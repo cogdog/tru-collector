@@ -38,7 +38,7 @@ Then install the tru-collector them to Wordpress directly by ftping or using the
 
 ## Setting Up a New Collector site
 
-![](wp-content/themes/tru-collector/images/collectables-menu.jpg)
+![](images/collectables-menu.jpg)
 
 In this theme Wordpress `Posts` are renamed `Collectables` but have all the attributes of garden variety blog posts.
 
@@ -70,7 +70,7 @@ These instructions are a reference for the settings within the TRU Collector; if
 
 
 ## Access Code and Hint
-![](wp-content/themes/tru-collector/images/access-code.jpg)
+![](images/access-code.jpg)
 
 Leave this field blank if you want any visitor to be able to access the submission form on your site (you can always make it less accessible by not having any links as menus for the form page. 
 
@@ -79,12 +79,12 @@ If you want to provide an access code (a very weak password), just enter it. Any
 Enter a decent **Access Hint** that will be displayed if someone does not enter the correct code.
 
 ## Caption Fields
-![](wp-content/themes/tru-collector/images/caption-field.jpg)
+![](images/caption-field.jpg)
 
 Set this option to provide a field for visitors to enter a caption for their shared image, and whether to require that something be entered. By setting to **No** this will not appear on the submission form.
 
 ## Source, License, and Attribution
-![](wp-content/themes/tru-collector/images/source-rights.jpg)
+![](images/source-rights.jpg)
 
 The first two settings operate similarly the Caption field options above. The **Source** field is a single line text entry where a visitor can type in the source of the image (if it includes a URL it will be automatically hyperlinked when the image page is displayed).
 
@@ -96,7 +96,7 @@ Enabling the **Cut and Paste Attribution** adds to the image display a field wit
 
 
 ## Publication Options
-![](wp-content/themes/tru-collector/images/source-rights.jpg)
+![](images/source-rights.jpg)
 
 The Status for New Collectable lets you set up moderation for new submissions (by choosing `Set to draft`) whereas `Publish immediately` provides instant gratification to your visitors though leaves open the problems of a site where anyone can publish (the latter option thus works for sites where you set up an **Access Code** as described above.
 
@@ -106,23 +106,23 @@ If you have not set up any categories, the **Default Category for New Collectabl
 
 
 ## Notification Emails
-![](wp-content/themes/tru-collector/images/notification.jpg)
+![](images/notification.jpg)
 Enter any email addresses who should be notified of new submissions; you can use multiple ones if you separate them by a comma.
 
 ## Author Account Setup
-![](wp-content/themes/tru-collector/images/author-account-none.jpg)
+![](images/author-account-none.jpg)
 
 To provide access to the media uploader, this site uses a Wordpress Authoring Role account that is logged into invisibly to your site visitors (for anyone logged in with an Editor or Administrator account, like you this account is not used).. So your site needs an active user with a name of **collector** and a role of **Author**.
 
-![](wp-content/themes/tru-collector/images/add-author.jpg)
+![](images/add-author.jpg)
 
 You can follow the link to create an account; for an email you can use a fictitious one on your domain. We suggest using the strong password that Wordpress  suggests. Copy that password, and perhaps save it in a safe place. On a stand-alone Wordpress install of the Collector, you can just paste it into the option for the password field.
 
-![](wp-content/themes/tru-collector/images/add-to-site.jpg)
+![](images/add-to-site.jpg)
 
 If this site is on a mulitsite Wordpress install, and the TRU Collector has been used on another site, the `collector` account already exists, so you need to add it to the site via the Author tools. However, you still have to enter the password, so make sure you know the passord that was used on another site. If you do not have access to it, you will have to reset the password at the Network Admin level, and then update the password on the options of all sites using the TRU Collector.
 
-![](wp-content/themes/tru-collector/images/authoring-account.jpg)
+![](images/authoring-account.jpg)
 
 When everything is set up correctly, the options will indicate that you have been a good options configurator! 
 
@@ -130,7 +130,7 @@ If the account is incorrectly set up, when trying the Collector on a site where 
 
 
 ## JetPack Post by Email (optional)
-![](wp-content/themes/tru-collector/images/jetpack-not-installed.jpg)
+![](images/jetpack-not-installed.jpg)
 
 You can enable a feature that allows people to add an image to your site simply by sending it via email. This uses the Post By Email module that is part of the [Wordpress Jetpack plugin](http://jetpack.me/). The options will check that the plugin is installed and that the module is enabled.
 
