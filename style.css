@@ -2,7 +2,7 @@
 Theme Name: 	TRU Collector
 Theme URI: 		http://splot.ca
 Description: 	Media Collector (Child of Fukaswaw)
-Version: 		0.15
+Version: 		0.20
 Template:       fukasawa
 Author: 		CogDog
 Author URI: 	http://cogdogblog.com/
@@ -22,6 +22,11 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html http://www.apache.org/lice
 /* no images content area of single posts (hides submissions by email) */
 .single-post .post-content img {
     display: none;
+}
+
+/* show featured image in forms */
+#featurethumb {
+    display: initial;
 }
 
 /* some pretty buttons all done in CSS

@@ -1,7 +1,6 @@
 # TRU Collector Wordpress Theme
 by Alan Levine http://cogdog.info/ or http://cogdogblog.com/
 
-
 ![Sample Collectables Site](images/collector-site.jpg "Sample Collectables Site")
 
 ## What is this?
@@ -29,14 +28,13 @@ If you have problems, feature suggestions, piles of unmarked bills to send my wa
 
 ## Relatively New Features
 
-**Options Refreshed** Recoded the theme options so documentation in its own tab.
-
-**Installable ZIP of TRU Collector Theme  only** added to repo to make it easier to add to sites. In fact, that is all you need from here.
+**Options Refreshed** Recoded the theme options so documentation is in its own tab.
 
 ## Requirements
 I will make the big leap in that you have a self hosted Wordpress site and can install themes. The TRU Collector is a child theme based on [the free and lovely Fukasawa theme by Anders Noren](https://wordpress.org/themes/fukasawa). Install that first from your Wordpress Dashboard.
 
-**Very very crucial** Do not just use the zip of if you download this repo from GitHub. It will not work as a Wordpress theme. You might get mad at me. *What you should do* is upload [the enclosed zip of just the tru-collector theme](https://github.com/cogdog/tru-collector/blob/master/installable-tru-collector.zip).
+Then install the tru-collector them to Wordpress directly by ftping or using the downloaded ZIP for this repo.
+
 
 ## Setting Up a New Collector site
 
