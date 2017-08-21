@@ -145,6 +145,13 @@ We (well I, the person writing this) recommend creating an email forwarding addr
 Also, your site looks a tad more credible without use of a `wordpress.com` email address (no offense, Wordpress, we love ya).
 
 
+## Updating the Theme
+
+If you have ftp/sftp access to your site (or this can be done in a cpanel file manager), simply upload the new theme files to the `wp-content/themes` directory that includes the older version theme. 
+
+For those that lack direct file upload access or maybe that idea sends shivers down the spine, upload and activate the [Easy Theme and Plugin Upgrades](https://wordpress.org/plugins/easy-theme-and-plugin-upgrades/) plugin -- this will allow you to upload a newer version of a theme as a ZIP archive, the same way you add a theme by uploading.
+
+
 ## Other Wordpressy Things to Do
 
 I like short links, so I typically use a Custom Permalink setting (under `Settings -- Permalinks`) of `/%post_id%/'
