@@ -48,7 +48,7 @@ In this theme Wordpress `Posts` are renamed `Collectables` but have all the attr
 
 (3) Install the [Fukasawa theme](https://wordpress.org/themes/fukasawa) from the Wordpress Dashboard (I'll gamble that you know how to install themes, search on `Fukasawa` from Appearance -- Themes. It does not need to be activated, it just needs to be present.
 
-(4) Install the [TRU Collector theme](https://github.com/cogdog/tru-collector/blob/master/installable-tru-collector.zip) downloaded as part of this repo.
+(4) Install the TRU Collector theme downloaded as part of this repo (use the green **clone or download** button above or [download directly](https://github.com/cogdog/tru-collector/archive/master.zip)).
 
 (5) Activate TRU Collector as the site's theme. In this theme, Posts are renamed **collectables** and thus on the dashboard:
 
