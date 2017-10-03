@@ -22,6 +22,7 @@ And to be super slick, you can even enable an email address that allows people t
 * [GEOG 2221 Photo Collector](http://geog2221.trubox.ca/)  collecting images from participants in TRU’s GEOG 2221 Course: Regional Geography of Canada
 * [UDG Agora Image Pool](http://udg.theagoraonline.net/imagepool) used by University of Guadalajara faculty and students sharing media in the UDG Agora Project
 * [Oh No Not the Followers of the Apocalypse](http://ohnonotthe.followersoftheapocalyp.se/) FOTA Images from David Kernohan
+* [When I Needed Help Gallery](http://gallery.whenineededhelp.com/) in anonymous sharing of domestic abuse survival site
 
 And if you make a TRU Collector site, please pleas pretty please fork this repo to edit this Readme with a link to your new site.
 
