@@ -285,7 +285,9 @@ function trucollector_autologin() {
 
 			
 		$creds['remember'] = true;
-		$autologin_user = wp_signon( $creds, false );
+		
+		
+		$autologin_user = wp_signon( $creds, is_ssl() );
 		
 		
 		
