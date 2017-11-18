@@ -286,11 +286,9 @@ function trucollector_autologin() {
 			
 		$creds['remember'] = true;
 		
-		
+		// login user, send secure cookie if this is on https
 		$autologin_user = wp_signon( $creds, is_ssl() );
-		
-		
-		
+			
 		if ( !is_wp_error($autologin_user) ) 
 			wp_redirect ( site_url() . '/collect' );
 	}
