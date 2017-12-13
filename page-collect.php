@@ -264,8 +264,8 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
   						
 					<fieldset>
 							<label for="wText"><?php _e('Image Caption', 'wpbootstrap') ?> <?php echo $required?> </label>
-							<p><?php echo  trucollector_option('caption_prompt')?></p>
-							<textarea name="wText" id="wText" rows="15"  tabindex="4"><?php echo stripslashes( $wText );?></textarea>
+							<p><?php echo  trucollector_option('caption_prompt')?> </p>
+							<textarea name="wText" id="wText" rows="15"  tabindex="4"><?php echo stripslashes( $wText );?></textarea><p style="font-size:0.8rem">To create hyperlinks use this shortcode<br /><code>[link url="http://www.themostamazingwebsiteontheinternet.com/" text="the coolest site on the internet"]</code><br />If you omit <code>text=</code> the URL will be the link text.</p>
 
 					</fieldset>	
 				

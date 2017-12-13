@@ -125,6 +125,16 @@ class trucollector_Theme_Options {
 		===========================================*/
 
 
+		// ------- access options
+		$this->settings['access_heading'] = array(
+			'section' => 'general',
+			'title'   => '', // Not used for headings.
+			'desc'	 => 'Access and Publishing Controls',
+			'std'    => '',
+			'type'    => 'heading'
+		);
+		
+
 		$this->settings['accesscode'] = array(
 			'title'   => __( 'Access Code' ),
 			'desc'    => __( 'Set necessary code to access the collector tool; leave blank to make wide open' ),
@@ -140,6 +150,64 @@ class trucollector_Theme_Options {
 			'type'    => 'text',
 			'section' => 'general'
 		);
+
+		$this->settings['new_item_status'] = array(
+			'section' => 'general',
+			'title'   => __( 'Status For New Items' ),
+			'desc'    => __( 'Set to draft to moderate submissions' ),
+			'type'    => 'radio',
+			'std'     => 'publish',
+			'choices' => array(
+				'publish' => 'Publish immediately',
+				'draft' => 'Set to draft',
+			)
+		);		
+
+		// ------- sort options
+		$this->settings['sort_heading'] = array(
+			'section' => 'general',
+			'title'   => '', // Not used for headings.
+			'desc'	 => 'Sorting Options',
+			'std'    => '',
+			'type'    => 'heading'
+		);
+
+
+		$this->settings['sort_by'] = array(
+			'section' => 'general',
+			'title'   => __( 'Sort Items by'),
+			'desc'    => '',
+			'type'    => 'radio',
+			'std'     => 'date',
+			'choices' => array (
+							'date' => 'Date Published',
+							'title' => 'Title',
+					)
+		);
+		
+		$this->settings['sort_direction'] = array(
+			'section' => 'general',
+			'title'   => __( 'Sort Order'),
+			'desc'    => '',
+			'type'    => 'radio',
+			'std'     => 'DESC',
+			'choices' => array (
+							'DESC' => 'Descending',
+							'ASC' => 'Ascending',
+					)
+		);
+		
+
+
+		// ------- single item display
+		$this->settings['single_heading'] = array(
+			'section' => 'general',
+			'title'   => '', // Not used for headings.
+			'desc'	 => 'Single Item Display',
+			'std'    => '',
+			'type'    => 'heading'
+		);
+
 
 		$this->settings['use_caption'] = array(
 			'section' => 'general',
@@ -191,7 +259,7 @@ class trucollector_Theme_Options {
 		$this->settings['show_attribution'] = array(
 			'section' => 'general',
 			'title'   => __( 'Cut and Paste Attribution' ),
-			'desc'    => __( 'If license options used, show cut and past attribution on single item displays?' ),
+			'desc'    => __( 'If license options used, show cut and paste attribution on single item displays?' ),
 			'type'    => 'radio',
 			'std'     => '0',
 			'choices' => array(
@@ -200,17 +268,6 @@ class trucollector_Theme_Options {
 			)
 		);		
 		
-		$this->settings['new_item_status'] = array(
-			'section' => 'general',
-			'title'   => __( 'Status For New Items' ),
-			'desc'    => __( 'Set to draft to moderate submissions via web form' ),
-			'type'    => 'radio',
-			'std'     => 'publish',
-			'choices' => array(
-				'publish' => 'Publish immediately',
-				'draft' => 'Set to draft',
-			)
-		);		
  
  		$this->settings['allow_comments'] = array(
 			'section' => 'general',
@@ -326,7 +383,8 @@ class trucollector_Theme_Options {
 		switch ( $type ) {
 		
 			case 'heading':
-				echo '</td></tr><tr valign="top"><td colspan="2"><h4 style="margin-bottom:0;">' . $desc . '</h4><p style="margin-top:0">' . $std . '</p>';
+				echo '<tr><td colspan="2" class="alternate"><h3>' . $desc . '</h3><p>' . $std . '</p></td></tr>';
+				
 				break;
 
 			case 'checkbox':
@@ -350,7 +408,7 @@ class trucollector_Theme_Options {
 
 			case 'radio':
 			
-					if ( $desc != '' ) echo '<br /><span class="description">' . $desc . '</span>';
+					if ( $desc != '' ) echo '<br /><span class="description">' . $desc . '</span><br />';
 
 				$i = 0;
 				foreach ( $choices as $value => $label ) {

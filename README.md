@@ -32,7 +32,9 @@ If you have problems, feature suggestions, piles of unmarked bills to send my wa
 
 ## Relatively New Features
 
-**Options Refreshed** Recoded the theme options so documentation is in its own tab.
+* **Shortcode for Hyperlinks in captions** This one is for you Daniel!
+* **Display Order Options** Theme options now allows front page, archive, search results can be sorted by date published (default) or by title, and also the order can be ascending or descending
+* **Options Refreshed** Recoded the theme options better organized and also so documentation now links to GitHub most recent documentation (what you are looking at!)
 
 ## Requirements
 I will make the big leap in that you have a self hosted Wordpress site and can install themes. The TRU Collector is a child theme based on [the free and lovely Fukasawa theme by Anders Noren](https://wordpress.org/themes/fukasawa). Install that first from your Wordpress Dashboard.
@@ -76,11 +78,27 @@ These instructions are a reference for the settings within the TRU Collector; if
 ## Access Code and Hint
 ![](images/access-code.jpg)
 
-Leave this field blank if you want any visitor to be able to access the submission form on your site (you can always make it less accessible by not having any links as menus for the form page. 
+Leave this field blank if you want any visitor to be able to access the submission form on your site (you can always make it less accessible by not having any links as menus for the form. 
 
 If you want to provide an access code (a very weak password), just enter it. Any requests to access to form will be sent to the **front desk** page where a visitor must enter in the code you have entered here to see the form.
 
 Enter a decent **Access Hint** that will be displayed if someone does not enter the correct code.
+
+## Publication Options
+![](images/status-new.jpg)
+
+The Status for New Collectable lets you set up moderation for new submissions (by choosing `Set to draft`) whereas `Publish immediately` provides instant gratification to your visitors though leaves open the problems of a site where anyone can publish (the latter option thus works for sites where you set up an **Access Code** as described above).
+
+## Sort Options
+
+The default settings are for typical blogs where newest content is displayed first. The sort options allow you to change that across the site- the home page, category/tag archives, and search results.
+
+![](images/sort-options.jpg)
+
+**Date Published** is the default option, the order is **Descending**, or newest first, change to **Ascending** to have oldest items appear first. 
+
+Change the sort otder to **Title** to... yes... sort items alphabetically by each item's title.  Use **Ascending** for alphabetical order (A-Z) or **Descending** to reverse (Z-A).
+
 
 ## Caption Fields
 ![](images/caption-field.jpg)
@@ -99,10 +117,6 @@ At this time, the only way to edit the licenses displayed (e.g. if you do not wa
 Enabling the **Cut and Paste Attribution** adds to the image display a field with an automatically formed attribution statement (based on the image's rights license choice) that can be copied after clicking on the text. Neat, eh?
 
 
-## Publication Options
-![](images/source-rights.jpg)
-
-The Status for New Collectable lets you set up moderation for new submissions (by choosing `Set to draft`) whereas `Publish immediately` provides instant gratification to your visitors though leaves open the problems of a site where anyone can publish (the latter option thus works for sites where you set up an **Access Code** as described above.
 
 Check **Enable Comments on Items**  to add a standard blog comment field at the bottom of all published photos.
 
@@ -134,6 +148,7 @@ If the account is incorrectly set up, when trying the Collector on a site where 
 
 
 ## JetPack Post by Email (optional)
+
 ![](images/jetpack-not-installed.jpg)
 
 You can enable a feature that allows people to add an image to your site simply by sending it via email. This uses the Post By Email module that is part of the [Wordpress Jetpack plugin](http://jetpack.me/). The options will check that the plugin is installed and that the module is enabled.
@@ -155,8 +170,27 @@ If you have ftp/sftp access to your site (or this can be done in a cpanel file m
 
 For those that lack direct file upload access or maybe that idea sends shivers down the spine, upload and activate the [Easy Theme and Plugin Upgrades](https://wordpress.org/plugins/easy-theme-and-plugin-upgrades/) plugin -- this will allow you to upload a newer version of a theme as a ZIP archive, the same way you add a theme by uploading.
 
+## Adding Hyperlinks to Captions
 
-## Other Wordpressy Things to Do
+Any HTML put into the editor for the caption is stripped out. But a new feature allows hyperlinks to be created using a "shortcode" format:
+
+![](images/shortcode-link.jpg)
+
+Links show be entered as a `[link]` shortcode where the link `url` is specified as well as the `text` to be used as hypertext:
+
+`[link url="http://www.themostamazingwebsiteontheinternet.com/" text="the coolest site on the internet"]`
+
+This will create a hyperlink like [the coolest site on the internet](http://www.themostamazingwebsiteontheinternet.com/)
+
+To present the link just as a URL, simply use
+
+`[link url="http://www.themostamazingwebsiteontheinternet.com/"]`
+
+which will produce the hyperlink like http://www.themostamazingwebsiteontheinternet.com/ -- all links will open in a new window.
+
+
+
+## Other Wordpressy Things You Might Want to Do
 
 I like short links, so I typically use a Custom Permalink setting (under `Settings -- Permalinks`) of `/%post_id%/'
 
@@ -176,4 +210,4 @@ Get rid of the default widgets on the site; make it your own
 
 ![Widgets](images/widgets.jpg "suggested widget set up") 
 
-Go collect stuf!
+Go collect stuff!

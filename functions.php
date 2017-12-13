@@ -130,6 +130,18 @@ function trucollector_comment_mod( $defaults ) {
 	return $defaults;
 }
 
+// options for post order on front page
+add_action( 'pre_get_posts', 'trucollector_order_items' );
+
+function trucollector_order_items( $query ) {
+
+	if ( ( $query->is_home() && $query->is_main_query()) OR $query->is_archive() OR $query->is_search() ) {
+	
+		$query->set( 'orderby', trucollector_option('sort_by')  );
+		$query->set( 'order', trucollector_option('sort_direction') );
+		
+	}
+}
 
 function trucollector_get_licences() {
 	// return as an array the types of licenses available
@@ -186,6 +198,29 @@ function trucollector_attributor( $license, $work_title, $work_creator='') {
 			$lstrx = strpos( $all_licenses[$license] , 'Creative Commons');
 			return ( $work_str . ' is licensed under a ' .  substr( $all_licenses[$license] , $lstrx)  . ' 4.0 International license.');
 	}
+}
+
+
+# -----------------------------------------------------------------
+# Options Panel for Admin
+# -----------------------------------------------------------------
+
+
+add_shortcode("link", "trucollector_hyperlink");
+
+function trucollector_hyperlink( $atts )  {
+  	extract(shortcode_atts( array( "url" => '', "text" => '' ), $atts ));
+  	
+  	// make sure we have a URL that starts with http
+	if ( strpos( $url, 'http') === 0) {
+		// if no label use URL
+		if ($text == '' ) $text = $url;
+  	
+ 		 return '<a href="'. $url .'" target="_blank">'. $text . '</a>';
+ 	}
+ 	
+ 	return  $url;
+ 	
 }
 
 
