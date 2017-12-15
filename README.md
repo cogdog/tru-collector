@@ -132,6 +132,8 @@ Enter any email addresses who should be notified of new submissions; you can use
 
 To provide access to the media uploader, this site uses a Wordpress Authoring Role account that is logged into invisibly to your site visitors (for anyone logged in with an Editor or Administrator account, like you this account is not used).. So your site needs an active user with a name of **collector** and a role of **Author**.
 
+If this account does not exist, create it now. If it does, use the instructions below to generate a new password and then add it to the TRU Collector Options.
+
 ![](images/add-author.jpg)
 
 You can follow the link to create an account; for an email you can use a fictitious one on your domain. We suggest using the strong password that Wordpress  suggests. Copy that password, and perhaps save it in a safe place. On a stand-alone Wordpress install of the Collector, you can just paste it into the option for the password field.
@@ -144,8 +146,7 @@ If this site is on a mulitsite Wordpress install, and the TRU Collector has been
 
 When everything is set up correctly, the options will indicate that you have been a good options configurator! 
 
-If the account is incorrectly set up, when trying the Collector on a site where you are *not* logged in as an Administrator or Editor, any attempts to upload an image will generate an error message in the Media Uploader.
-
+If the account is incorrectly set up, when trying the Collector on a site where you are *not* logged in as an Administrator or Editor, when you try to access the collect form, you will see a Wordpress login. This nearly always means the password for the `collector` user does not match the settings in the options.
 
 ## JetPack Post by Email (optional)
 
@@ -162,6 +163,8 @@ The field here is just to keep the email address as a reference; it is not used 
 We (well I, the person writing this) recommend creating an email forwarding address to use as the one that you share; for example, if the email address I set up as a forwarder was `quickpost@splot.ca` and made to forward to `*********@post.wordpress.com` if I need to change the address, I can just do so at the Wordpress level, update my forwarder, and never have to tell people a new address to use.
 
 Also, your site looks a tad more credible without use of a `wordpress.com` email address (no offense, Wordpress, we love ya).
+
+Also, if you are using Post By Email, you will need to add the [Auto Thumbnailer plugin](https://wordpress.org/plugins/auto-thumbnailer/) so it generates featured images from the ones sent by email.
 
 
 ## Updating the Theme

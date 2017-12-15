@@ -96,17 +96,34 @@ $wExtraNotes = get_post_meta( $post->ID, 'extra_notes', 1 );
 				</div> <!-- /post-header -->
 				    
 			    <div class="post-content">
-			    
-			    	<?php the_content(); ?>
-			    	
-			    	<hr />
 			    	
 			    	<?php if ( $wAuthor == '')  : // empty meta data means post by email?>
+			    	
+			    	
+			    	<?php
+			    	// strip the img tags out of content for stuff sent my email
+			    	
+						$content = get_the_content();
+						$content = preg_replace("/<img[^>]+\>/i", "", $content); 		  
+						$content = apply_filters('the_content', $content);
+						$content = str_replace(']]>', ']]>', $content);
+						echo $content;
+			    	
+			    	
+			    	?>
+			    	
+			    	<hr />
 			    	
 			    	<p><em>This item was posted by email.</em></p>
 			    	
 			    	
 			    	<?php else:?>
+			    	
+			    				    
+			    	<?php the_content(); ?>
+			    	
+			    	<hr />
+
 			    	
 			    	<p>
 			    	<?php 
