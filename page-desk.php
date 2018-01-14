@@ -17,27 +17,27 @@ if ( is_user_logged_in() ) {
 	if ( current_user_can( 'edit_others_posts' ) ) {
 
 		// If user has edit/admin role, send them to the tool
-		wp_redirect ( site_url() . '/collect' );
+		wp_redirect ( home_url('/') . 'collect' );
   		exit;
 
 	} else {
 	
 		// if the correct user found, go directly to the tool
 		if ( trucollector_check_user() ) {			
-	  		wp_redirect ( site_url() . '/collect' );
+	  		wp_redirect (home_url('/') . 'collect' );
   			exit;
   			
   		} else {
 			// we need to force a click through a logout
 			$log_out_warning = true;
-			$feedback_msg = 'First, please <a href="' . wp_logout_url( site_url() . '/collect' ) . '">activate lasers</a>';
+			$feedback_msg = 'First, please <a href="' . wp_logout_url( home_url('/') . 'collect'  ) . '">activate lasers</a>';
   		}
   	}
   	
 } elseif ( $wAccessCode == '')  {
 	
 	// no code required, log 'em in
-	wp_redirect ( site_url() . '/wp-login.php?autologin=collector' );
+	wp_redirect ( home_url() . '/wp-login.php?autologin=collector' );
 	exit;
 
 }

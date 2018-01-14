@@ -1,17 +1,14 @@
 /*
 Theme Name: 	TRU Collector
 Theme URI: 		https://github.com/cogdog/tru-collector
-Description: 	Media Collector (Child of Fukaswaw)
-Version: 		0.3
+Description: 	SPLOT Image Collector (Child of Fukaswaw)
+Version: 		0.5
 Template:       fukasawa
 Author: 		CogDog
-Author URI: 	http://cog.dog/
-License: GNU General Public License v2.0 & Apache License 2.0
-License URI: http://www.gnu.org/licenses/gpl-2.0.html http://www.apache.org/licenses/LICENSE-2.0
-
+Author URI: 	https://cog.dog/
+License:		GNU General Public License v2.0 & Apache License 2.0
 */
 
-@import url(../fukasawa/style.css);
 
 .siteblurb {
 	padding: 0 10px;
@@ -19,12 +16,14 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html http://www.apache.org/lice
 	text-align: center;
 }
 
+h1.blog-title {
+    text-align: center;
+}
+
 /* in case of URLs in the excerpt */
 .post-excerpt p {
     word-wrap: break-word;
 }
-
-style.css:99
 
 
 /* no images content area of single posts (hides submissions by email) */

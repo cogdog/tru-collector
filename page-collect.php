@@ -2,7 +2,7 @@
 
 if ( !is_user_logged_in() ) {
 	// already not logged in? go to desk.
-  	wp_redirect ( site_url() . '/desk' );
+  	wp_redirect ( site_url('/') . 'desk' );
   	exit;
   	
 } elseif ( !current_user_can( 'edit_others_posts' ) ) {
@@ -11,7 +11,7 @@ if ( !is_user_logged_in() ) {
 	// if the collector user not found, we send you to the desk
 	if ( !trucollector_check_user() ) {
 		// now go to the desk and check in properly
-	  	wp_redirect ( site_url() . '/desk' );
+	  	wp_redirect ( site_url('/') . 'desk' );
   		exit;
   	}
 }

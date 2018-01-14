@@ -200,9 +200,35 @@ function trucollector_attributor( $license, $work_title, $work_creator='') {
 	}
 }
 
+# -----------------------------------------------------------------
+# Menu Setup
+# -----------------------------------------------------------------
+
+// checks to see if a menu location is used.
+function splot_is_menu_location_used( $location = 'primary' ) {	
+
+	// get locations of all menus
+	$menulocations = get_nav_menu_locations();
+	
+	// if either is empty we have no menus to use
+	if ( empty( $menulocations ) OR empty( wp_get_nav_menus() ) ) return false;
+	
+	// othewise look for the menu location in the list
+	return in_array( $location , $menulocations);
+}
+
+// create a basic menu if one has not been define for primary
+function splot_default_menu() {
+
+	// site home with trailing slash
+	$splot_home = home_url('/');
+  
+ 	return ( '<li><a href="' . $splot_home . '">Home</a></li><li><a href="' . $splot_home . 'collect' . '">Collect</a></li><li><a href="' . $splot_home . 'random' . '">Random</a></li>' );
+  
+}
 
 # -----------------------------------------------------------------
-# Options Panel for Admin
+# Shortcodes are friends to humans
 # -----------------------------------------------------------------
 
 
@@ -361,6 +387,21 @@ add_action('wp_enqueue_scripts', 'add_trucollector_scripts');
 
 function add_trucollector_scripts() {	 
  
+ 
+ 	// do your parents have style?
+    $parent_style = 'fukasawa_style'; 
+    
+    // load 'em
+    wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.css' );
+    
+    // kids are next
+    wp_enqueue_style( 'child-style',
+        get_stylesheet_directory_uri() . '/style.css',
+        array( $parent_style ),
+        wp_get_theme()->get('Version')
+    );
+
+
  	if ( is_page('collect') ) { // use on just our form page
     
 		 // add media scripts if we are on our maker page and not an admin
@@ -428,8 +469,7 @@ function splot_jetpack_post_email_check ( ) {
 
 function trucollector_check_user( $allowed='collector' ) {
 	// checks if the current logged in user is who we expect
-	global $current_user;
-    get_currentuserinfo();
+   $current_user = wp_get_current_user();
 	
 	// return check of match
 	return ( $current_user->user_login == $allowed );

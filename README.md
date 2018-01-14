@@ -30,12 +30,6 @@ And if you make a TRU Collector site, please pleas pretty please fork this repo 
 
 If you have problems, feature suggestions, piles of unmarked bills to send my way, please [contact me via the issues area](https://github.com/cogdog/tru-collector/issues) on this repo.
 
-## Relatively New Features
-
-* **Shortcode for Hyperlinks in captions** This one is for you Daniel!
-* **Display Order Options** Theme options now allows front page, archive, search results can be sorted by date published (default) or by title, and also the order can be ascending or descending
-* **Options Refreshed** Recoded the theme options better organized and also so documentation now links to GitHub most recent documentation (what you are looking at!)
-
 ## Requirements
 I will make the big leap in that you have a self hosted Wordpress site and can install themes. The TRU Collector is a child theme based on [the free and lovely Fukasawa theme by Anders Noren](https://wordpress.org/themes/fukasawa). Install that first from your Wordpress Dashboard.
 
@@ -214,3 +208,10 @@ Get rid of the default widgets on the site; make it your own
 ![Widgets](images/widgets.jpg "suggested widget set up") 
 
 Go collect stuff!
+
+## Relatively New Features
+
+* **Shortcode for Hyperlinks in captions** This one is for you Daniel!
+* **Display Order Options** Theme options now allows front page, archive, search results can be sorted by date published (default) or by title, and also the order can be ascending or descending
+* **Options Refreshed** Recoded the theme options better organized and also so documentation now links to GitHub most recent documentation (what you are looking at!)
+

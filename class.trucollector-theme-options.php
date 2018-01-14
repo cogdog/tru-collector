@@ -437,7 +437,7 @@ class trucollector_Theme_Options {
 					$front_img = wp_get_attachment_image_src( $options[$id], 'radcliffe' );
 					echo '<img id="previewimage_' . $id . '" src="' . $front_img[0] . '" width="640" height="300" alt="default thumbnail" />';
 				} else {
-					echo '<img id="previewimage_' . $id . '" src="http://placehold.it/640x300" alt="default header image" />';
+					echo '<img id="previewimage_' . $id . '" src="https://placehold.it/640x300" alt="default header image" />';
 				}
 
 				echo '<input type="hidden" name="trucollector_options[' . $id . ']" id="' . $id . '" value="' . $options[$id]  . '" />
