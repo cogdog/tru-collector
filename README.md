@@ -99,6 +99,8 @@ Change the sort otder to **Title** to... yes... sort items alphabetically by eac
 
 Set this option to provide a field for visitors to enter a caption for their shared image, and whether to require that something be entered. By setting to **No** this will not appear on the submission form.
 
+There is also an option to enable a rich text editor in place of the default simple text area input. Use this if you want a site where people create formatted content for shared images.
+
 ## Source, License, and Attribution
 ![](images/source-rights.jpg)
 
@@ -211,6 +213,7 @@ Go collect stuff!
 
 ## Relatively New Features
 
+* **Rich Text Editor Option** allow for the full Wordpress editor for composing captions
 * **Shortcode for Hyperlinks in captions** This one is for you Daniel!
 * **Display Order Options** Theme options now allows front page, archive, search results can be sorted by date published (default) or by title, and also the order can be ascending or descending
 * **Options Refreshed** Recoded the theme options better organized and also so documentation now links to GitHub most recent documentation (what you are looking at!)

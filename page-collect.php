@@ -46,7 +46,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
  		$wTitle = 					sanitize_text_field( stripslashes( $_POST['wTitle'] ) );
  		$wAuthor = 					( isset ($_POST['wAuthor'] ) ) ? sanitize_text_field( stripslashes($_POST['wAuthor']) ) : 'Anonymous';		
  		$wTags = 					sanitize_text_field( $_POST['wTags'] );	
- 		$wText = 					sanitize_text_field( stripslashes( $_POST['wText'] ) );
+ 		$wText = 					wp_kses_post( $_POST['wText'] );
  		$wSource = 					sanitize_text_field( stripslashes( $_POST['wSource'] ) );
  		$wNotes = 					sanitize_text_field( stripslashes( $_POST['wNotes'] ) );
  		$wFeatureImageID = 			$_POST['wFeatureImage'];
@@ -216,7 +216,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 		
 
 				<fieldset>
-					<label for="headerImage"><?php _e('Upload an Image', 'wpbootstrap') ?> <strong>*</strong></label>
+					<label for="headerImage"><?php _e('Upload an Image', 'fukasawa') ?> <strong>*</strong></label>
 					
 					<div class="uploader">
 						<input id="wFeatureImage" name="wFeatureImage" type="hidden" value="<?php echo $wFeatureImageID?>" />
@@ -245,14 +245,14 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 
 				<fieldset>
-					<label for="wTitle"><?php _e('Title for the Image', 'wpbootstrap' ) ?> <strong>*</strong></label><br />
+					<label for="wTitle"><?php _e('Title for the Image', 'fukasawa' ) ?> <strong>*</strong></label><br />
 					<p>An interesting title goes a long way; it's the headline.</p>
 					<input type="text" name="wTitle" id="wTitle" class="required" value="<?php echo $wTitle; ?>" tabindex="2" />
 				</fieldset>	
 			
 
 				<fieldset>
-					<label for="wAuthor"><?php _e('Who is Uploading the Image?', 'wpbootstrap' ) ?></label><br />
+					<label for="wAuthor"><?php _e('Who is Uploading the Image?', 'fukasawa' ) ?></label><br />
 					<p>Take credit for sharing with your name, twitter handle, secret agent name, or remain "Anonymous".</p>
 					<input type="text" name="wAuthor" id="wAuthor" class="required" value="<?php echo $wAuthor; ?>" tabindex="3" />
 				</fieldset>	
@@ -263,9 +263,24 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
   				?>
   						
 					<fieldset>
-							<label for="wText"><?php _e('Image Caption', 'wpbootstrap') ?> <?php echo $required?> </label>
+							<label for="wText"><?php _e('Image Caption', 'fukasawa') ?> <?php echo $required?> </label>
 							<p><?php echo  trucollector_option('caption_prompt')?> </p>
+							
+							<?php if (  trucollector_option('caption_field') == 's'):?>	
 							<textarea name="wText" id="wText" rows="15"  tabindex="4"><?php echo stripslashes( $wText );?></textarea><p style="font-size:0.8rem">To create hyperlinks use this shortcode<br /><code>[link url="http://www.themostamazingwebsiteontheinternet.com/" text="the coolest site on the internet"]</code><br />If you omit <code>text=</code> the URL will be the link text.</p>
+							
+							<?php else:?>
+							
+							<?php
+							// set up for inserting the WP post editor
+							$settings = array( 'textarea_name' => 'wText', 'editor_height' => '300',  'tabindex'  => "4", 'media_buttons' => false);
+
+							wp_editor(  stripslashes( $wText ), 'wtext', $settings );
+							
+							?>
+							
+							
+							<?php endif?>
 
 					</fieldset>	
 				
@@ -277,7 +292,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
   				?>
 				
 					<fieldset>
-						<label for="wSource"><?php _e('Source of Image', 'wpbootstrap' ) ?> <?php echo $required?></label> 
+						<label for="wSource"><?php _e('Source of Image', 'fukasawa' ) ?> <?php echo $required?></label> 
 						<p>Enter name of a person, web site, etc to give credit for the image.</p>
 						<input type="text" name="wSource" id="wSource" class="required" value="<?php echo $wSource; ?>" tabindex="5" />
 				</fieldset>		
@@ -290,7 +305,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 							
 				
 					<fieldset>
-						<label for="wLicense"><?php _e('License for Reuse', 'wpbootstrap' ) ?> <?php echo $required?></label>
+						<label for="wLicense"><?php _e('License for Reuse', 'fukasawa' ) ?> <?php echo $required?></label>
 						<p>Indicate the license associated with the image. If this is an original image, then select a license to share it under.</p>
 						<select name="wLicense" id="wLicense" tabindex="7" />
 						<option value="--">Select a License</option>
@@ -309,7 +324,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 				
 				<fieldset>
-					<label for="wCats"><?php _e( 'Categories', 'wpbootstrap' ) ?></label>
+					<label for="wCats"><?php _e( 'Categories', 'fukasawa' ) ?></label>
 					<p>Check all categories that will help organize your image.</p>
 					<?php 
 					
@@ -332,7 +347,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 				</fieldset>
 
 				<fieldset>
-					<label for="wTags"><?php _e( 'Tags', 'wpbootstrap' ) ?></label>
+					<label for="wTags"><?php _e( 'Tags', 'fukasawa' ) ?></label>
 					<p>Add any descriptive tags for the image, separate multiple ones with commas</p>
 					
 					<input type="text" name="wTags" id="wTags" value="<?php echo $wTags; ?>" tabindex="9"  />
@@ -340,7 +355,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 
 				<fieldset>
-						<label for="wNotes"><?php _e('Notes to the Editor', 'wpbootstrap') ?></label>						
+						<label for="wNotes"><?php _e('Notes to the Editor', 'fukasawa') ?></label>						
 						<p>Add any notes or messages to the site manager; this will not be part of what is published. If you wish to be contacted, leave an email address or twitter handle. Otherwise you are completely anonymous.</p>
 						<textarea name="wNotes" id="wNotes" rows="10"  tabindex="9"><?php echo stripslashes( $wNotes );?></textarea>
 				</fieldset>

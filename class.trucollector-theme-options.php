@@ -222,6 +222,19 @@ class trucollector_Theme_Options {
 					)
 		);
 		
+		$this->settings['caption_field'] = array(
+			'section' => 'general',
+			'title'   => __( 'Caption Editing Field'),
+			'desc'    => __( 'Use a plain text entry field or rich text editor.'),
+			'type'    => 'radio',
+			'std'     => 's',
+			'choices' => array (
+							's' => 'Simple plain text input field (accepts hypertext link shortcode)',
+							'r' => 'Rich text editor'
+					)
+		);
+		
+		
 		$this->settings['caption_prompt'] = array(
 			'title'   => __( 'Caption Field Prompt' ),
 			'desc'    => __( 'If using captions, this is the prompt that will appear on the form, customize to fit your site.' ),
@@ -355,7 +368,7 @@ class trucollector_Theme_Options {
 	
 	public function display_general() {
 		// section heading for general setttings
-		echo '<p>These settings manaage the behavior and appearance of your TRU Writer site. There are quite a few of them!</p>';		
+		echo '<p>These settings manaage the behavior and appearance of your site. There are quite a few of them!</p>';		
 	}
 
 
@@ -437,7 +450,7 @@ class trucollector_Theme_Options {
 					$front_img = wp_get_attachment_image_src( $options[$id], 'radcliffe' );
 					echo '<img id="previewimage_' . $id . '" src="' . $front_img[0] . '" width="640" height="300" alt="default thumbnail" />';
 				} else {
-					echo '<img id="previewimage_' . $id . '" src="https://placehold.it/640x300" alt="default header image" />';
+					echo '<img id="previewimage_' . $id . '" src="http://placehold.it/640x300" alt="default header image" />';
 				}
 
 				echo '<input type="hidden" name="trucollector_options[' . $id . ']" id="' . $id . '" value="' . $options[$id]  . '" />
