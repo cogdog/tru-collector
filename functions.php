@@ -210,8 +210,12 @@ function splot_is_menu_location_used( $location = 'primary' ) {
 	// get locations of all menus
 	$menulocations = get_nav_menu_locations();
 	
+	// get all nav menus
+	$navmenus = wp_get_nav_menus();
+	
+	
 	// if either is empty we have no menus to use
-	if ( empty( $menulocations ) OR empty( wp_get_nav_menus() ) ) return false;
+	if ( empty( $menulocations ) OR empty( $navmenus ) ) return false;
 	
 	// othewise look for the menu location in the list
 	return in_array( $location , $menulocations);
