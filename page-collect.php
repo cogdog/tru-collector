@@ -21,7 +21,7 @@ if ( !is_user_logged_in() ) {
 // ------------------------ defaults ------------------------
 
 // default welcome message
-$feedback_msg = 'Add an image to this collection? Use the form below to share it. Items marked  <strong>*</strong> are required.';
+$feedback_msg = 'Add something to this collection? Yes! Use the form below to share it. Items marked  <strong>*</strong> are required.';
 
 $wTitle = '';
 $wAuthor = 'Anonymous';
@@ -64,7 +64,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
  		
  		if (  trucollector_option('use_caption') == '2' AND $wText == '' ) $errors[] = '<strong>Caption Missing</strong> - please enter a descriptive caption for this image.';
  
-  		if (  trucollector_option('use_source') == '2' AND $wSource == '' ) $errors[] = '<strong>Source Missing</strong> - please the name or description for the source of this image.';
+  		if (  trucollector_option('use_source') == '2' AND $wSource == '' ) $errors[] = '<strong>Source Missing</strong> - please the name or description of the source of this image.';
   		
   		if (  trucollector_option('use_license') == '2' AND $wLicense == '--' ) $errors[] = '<strong>License Not Selected</strong> - select an appropriate license for this image.'; 
 		
@@ -135,14 +135,14 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 				// who gets mail? They do.
 				$to_recipients = explode( "," ,  trucollector_option( 'notify' ) );
 		
-				$subject = 'New image submitted to ' . get_bloginfo();
+				$subject = 'New item submitted to ' . get_bloginfo();
 		
 				if ( trucollector_option('new_item_status') == 'publish' ) {
-					$message = 'An image <strong>"' . $wTitle . '"</strong> shared by <strong>' . $wAuthor . '</strong> has been published to ' . get_bloginfo() . '. You can <a href="'. site_url() . '/?p=' . $post_id  . '">see view it now</a>';
+					$message = 'An item <strong>"' . $wTitle . '"</strong> shared by <strong>' . $wAuthor . '</strong> has been published to ' . get_bloginfo() . '. You can <a href="'. site_url() . '/?p=' . $post_id  . '">see view it now</a>';
 				
 
 				} else {
-					$message = 'An image <strong>"' . $wTitle . '"</strong> shared by <strong>' . $wAuthor . '</strong> has been submitted to ' . get_bloginfo() . '. You can <a href="'. site_url() . '/?p=' . $post_id . 'preview=true' . '">preview it now</a>.<br /><br /> To  publish it, simply <a href="' . admin_url( 'edit.php?post_status=draft&post_type=post') . '">find it in the drafts</a> and change it\'s status from <strong>Draft</strong> to <strong>Publish</strong>';
+					$message = 'An item <strong>"' . $wTitle . '"</strong> shared by <strong>' . $wAuthor . '</strong> has been submitted to ' . get_bloginfo() . '. You can <a href="'. site_url() . '/?p=' . $post_id . 'preview=true' . '">preview it now</a>.<br /><br /> To  publish it, simply <a href="' . admin_url( 'edit.php?post_status=draft&post_type=post') . '">find it in the drafts</a> and change it\'s status from <strong>Draft</strong> to <strong>Publish</strong>';
 				}
 				
 				if ( $wNotes ) $message .= '<br /><br />There are some extra notes from the author:<blockquote>' . $wNotes . '</blockquote>';
@@ -213,7 +213,15 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 	<?php if ( is_user_logged_in() and !$is_published ) : // show form if logged in and it has not been published ?>
 			
 		<form  id="collectorform" class="collectorform" method="post" action="" enctype="multipart/form-data">
-		
+	
+	
+					<fieldset>
+					<label for="wTitle"><?php _e('Title for this Item', 'fukasawa' ) ?> <strong>*</strong></label><br />
+					<p>Create an interesting title for this item.</p>
+					<input type="text" name="wTitle" id="wTitle" class="required" value="<?php echo $wTitle; ?>" tabindex="1" />
+				</fieldset>	
+			
+				
 
 				<fieldset>
 					<label for="headerImage"><?php _e('Upload an Image', 'fukasawa') ?> <strong>*</strong></label>
@@ -235,25 +243,20 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 						
 						<br />
 					
-						<input type="button" id="wFeatureImage_button"  class="btn btn-success btn-medium  upload_image_button" name="_wImage_button"  data-uploader_title="Add a New Image" data-uploader_button_text="Select Image" value="Select Image" tabindex="1" />
+						<input type="button" id="wFeatureImage_button"  class="btn btn-success btn-medium  upload_image_button" name="_wImage_button"  data-uploader_title="Add a New Image" data-uploader_button_text="Select Image" value="Select Image" tabindex="2" />
 						
 						</div>
 						
-						<p>Upload your image by dragging it's icon to the window that opens when clicking  <strong>Select Image</strong> button. Larger JPG, PNG images are best, but to preserve animation, GIFs should be no larger than 500px wide.<br clear="left"></p>
+						<p>Upload an image by dragging its icon to the window that opens when clicking  <strong>Select Image</strong> button. Larger JPG, PNG images are best, but to preserve animation, GIFs should be no larger than 500px wide.<br clear="left"></p>
 					
 				</fieldset>						
 
 
-				<fieldset>
-					<label for="wTitle"><?php _e('Title for the Image', 'fukasawa' ) ?> <strong>*</strong></label><br />
-					<p>An interesting title goes a long way; it's the headline.</p>
-					<input type="text" name="wTitle" id="wTitle" class="required" value="<?php echo $wTitle; ?>" tabindex="2" />
-				</fieldset>	
-			
+
 
 				<fieldset>
 					<label for="wAuthor"><?php _e('Who is Uploading the Image?', 'fukasawa' ) ?></label><br />
-					<p>Take credit for sharing with your name, twitter handle, secret agent name, or remain "Anonymous".</p>
+					<p>Take credit for sharing this item by entering your name(s),  twitter handle(s), or remain "Anonymous".</p>
 					<input type="text" name="wAuthor" id="wAuthor" class="required" value="<?php echo $wAuthor; ?>" tabindex="3" />
 				</fieldset>	
   		
@@ -263,17 +266,17 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
   				?>
   						
 					<fieldset>
-							<label for="wText"><?php _e('Image Caption', 'fukasawa') ?> <?php echo $required?> </label>
+							<label for="wText"><?php _e('Item Description', 'fukasawa') ?> <?php echo $required?> </label>
 							<p><?php echo  trucollector_option('caption_prompt')?> </p>
 							
 							<?php if (  trucollector_option('caption_field') == 's'):?>	
-							<textarea name="wText" id="wText" rows="15"  tabindex="4"><?php echo stripslashes( $wText );?></textarea><p style="font-size:0.8rem">To create hyperlinks use this shortcode<br /><code>[link url="http://www.themostamazingwebsiteontheinternet.com/" text="the coolest site on the internet"]</code><br />If you omit <code>text=</code> the URL will be the link text.</p>
+							<textarea name="wText" id="wText" rows="4"  tabindex="4"><?php echo stripslashes( $wText );?></textarea><p style="font-size:0.8rem">To create hyperlinks use this shortcode<br /><code>[link url="http://www.themostamazingwebsiteontheinternet.com/" text="the coolest site on the internet"]</code><br />If you omit <code>text=</code> the URL will be the link text.</p>
 							
 							<?php else:?>
 							
 							<?php
 							// set up for inserting the WP post editor
-							$settings = array( 'textarea_name' => 'wText', 'editor_height' => '300',  'tabindex'  => "4", 'media_buttons' => false);
+							$settings = array( 'textarea_name' => 'wText', 'editor_height' => '300',  'tabindex'  => "5", 'media_buttons' => false);
 
 							wp_editor(  stripslashes( $wText ), 'wtext', $settings );
 							
@@ -293,8 +296,8 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 				
 					<fieldset>
 						<label for="wSource"><?php _e('Source of Image', 'fukasawa' ) ?> <?php echo $required?></label> 
-						<p>Enter name of a person, web site, etc to give credit for the image.</p>
-						<input type="text" name="wSource" id="wSource" class="required" value="<?php echo $wSource; ?>" tabindex="5" />
+						<p>Enter name of a person, web site, etc to give credit for the image submitted above.</p>
+						<input type="text" name="wSource" id="wSource" class="required" value="<?php echo $wSource; ?>" tabindex="6" />
 				</fieldset>		
 				
 				<?php endif?>	
@@ -306,7 +309,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 				
 					<fieldset>
 						<label for="wLicense"><?php _e('License for Reuse', 'fukasawa' ) ?> <?php echo $required?></label>
-						<p>Indicate the license associated with the image. If this is an original image, then select a license to share it under.</p>
+						<p>Indicate a reuse license associated with the image. If this is your own image,  select a license to share it under.</p>
 						<select name="wLicense" id="wLicense" tabindex="7" />
 						<option value="--">Select a License</option>
 					
@@ -325,7 +328,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 				
 				<fieldset>
 					<label for="wCats"><?php _e( 'Categories', 'fukasawa' ) ?></label>
-					<p>Check all categories that will help organize your image.</p>
+					<p>Check all categories that will help organize this item.</p>
 					<?php 
 					
 					// arguments for request of categories
@@ -348,7 +351,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 				<fieldset>
 					<label for="wTags"><?php _e( 'Tags', 'fukasawa' ) ?></label>
-					<p>Add any descriptive tags for the image, separate multiple ones with commas</p>
+					<p>Add any descriptive tags for this item. Separate multiple ones with commas.</p>
 					
 					<input type="text" name="wTags" id="wTags" value="<?php echo $wTags; ?>" tabindex="9"  />
 				</fieldset>
@@ -356,16 +359,17 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 				<fieldset>
 						<label for="wNotes"><?php _e('Notes to the Editor', 'fukasawa') ?></label>						
-						<p>Add any notes or messages to the site manager; this will not be part of what is published. If you wish to be contacted, leave an email address or twitter handle. Otherwise you are completely anonymous.</p>
+						<p>Add any notes or messages to send to the site manager; this will not be part of what is published. If you wish to be contacted, leave an email address or twitter handle.</p>
 						<textarea name="wNotes" id="wNotes" rows="10"  tabindex="9"><?php echo stripslashes( $wNotes );?></textarea>
 				</fieldset>
 
 			
 				<fieldset>
+								
 				
 				<?php  wp_nonce_field( 'trucollector_form_make', 'trucollector_form_make_submitted' ); ?>
-				
-				<input type="submit" class="pretty-button pretty-button-green" value="Share Image" id="makeit" name="makeit" tabindex="12">
+
+				<input type="submit" value="Share This Item" id="makeit" name="makeit" tabindex="12">
 				</fieldset>
 			
 						
