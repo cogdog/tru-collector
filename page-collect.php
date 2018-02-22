@@ -21,7 +21,7 @@ if ( !is_user_logged_in() ) {
 // ------------------------ defaults ------------------------
 
 // default welcome message
-$feedback_msg = 'Add something to this collection? Yes! Use the form below to share it. Items marked  <strong>*</strong> are required.';
+$feedback_msg = 'Add something to this collection? Yes! Use the form below to share it. Fields marked  <strong>*</strong> are required.';
 
 $wTitle = '';
 $wAuthor = 'Anonymous';
@@ -59,19 +59,19 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
  		$errors = array();
  		
  		
- 		if ( $wFeatureImageID == 0) $errors[] = '<strong>Image File Missing</strong> - upload the image you wish to add.';
- 		if ( $wTitle == '' ) $errors[] = '<strong>Title Missing</strong> - enter an interesting title.'; 
+ 		if ( $wFeatureImageID == 0) $errors[] = '<strong>Image File Missing</strong> - upload the image you wish to add to represent this item.';
+ 		if ( $wTitle == '' ) $errors[] = '<strong>Title Missing</strong> - enter a descriptive title for this item.'; 
  		
- 		if (  trucollector_option('use_caption') == '2' AND $wText == '' ) $errors[] = '<strong>Caption Missing</strong> - please enter a descriptive caption for this image.';
+ 		if (  trucollector_option('use_caption') == '2' AND $wText == '' ) $errors[] = '<strong>Description Missing</strong> - please enter a detailed description for this utem.';
  
-  		if (  trucollector_option('use_source') == '2' AND $wSource == '' ) $errors[] = '<strong>Source Missing</strong> - please the name or description of the source of this image.';
+  		if (  trucollector_option('use_source') == '2' AND $wSource == '' ) $errors[] = '<strong>Source Missing</strong> - please the name or organization to credit as the source of this image.';
   		
-  		if (  trucollector_option('use_license') == '2' AND $wLicense == '--' ) $errors[] = '<strong>License Not Selected</strong> - select an appropriate license for this image.'; 
+  		if (  trucollector_option('use_license') == '2' AND $wLicense == '--' ) $errors[] = '<strong>License Not Selected</strong> - select an appropriate license for this item.'; 
 		
  		 		
  		if ( count($errors) > 0 ) {
  			// form errors, build feedback string to display the errors
- 			$feedback_msg = 'Sorry, but there are a few errors in your information. Please correct and try again. We really want to add your entry.<ul>';
+ 			$feedback_msg = 'Sorry, but there are a few errors in your submission. Please correct and try again. We really want to add your item. <ul>';
  			
  			// Hah, each one is an oops, get it? 
  			foreach ($errors as $oops) {
@@ -217,14 +217,14 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 	
 					<fieldset>
 					<label for="wTitle"><?php _e('Title for this Item', 'fukasawa' ) ?> <strong>*</strong></label><br />
-					<p>Create an interesting title for this item.</p>
+					<p>Enter a descriptive title that works well as a headline when listed in this site.</p>
 					<input type="text" name="wTitle" id="wTitle" class="required" value="<?php echo $wTitle; ?>" tabindex="1" />
 				</fieldset>	
 			
 				
 
 				<fieldset>
-					<label for="headerImage"><?php _e('Upload an Image', 'fukasawa') ?> <strong>*</strong></label>
+					<label for="headerImage"><?php _e('Upload an Image for this Item', 'fukasawa') ?> <strong>*</strong></label>
 					
 					<div class="uploader">
 						<input id="wFeatureImage" name="wFeatureImage" type="hidden" value="<?php echo $wFeatureImageID?>" />
@@ -235,7 +235,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 						
 						<?php else:?>
 						
-						<img src="http://placehold.it/150x150" alt="uploaded image" id="featurethumb" />
+						<img src="https://placehold.it/150x150" alt="uploaded image" id="featurethumb" />
 						
 						<?php endif?>
 						
@@ -247,7 +247,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 						
 						</div>
 						
-						<p>Upload an image by dragging its icon to the window that opens when clicking  <strong>Select Image</strong> button. Larger JPG, PNG images are best, but to preserve animation, GIFs should be no larger than 500px wide.<br clear="left"></p>
+						<p>Upload an image by dragging its icon to the window that opens when clicking  <strong>Select Image</strong> button. Larger JPG, PNG images are best; to preserve animation, GIFs should be no larger than 500px wide.<br clear="left"></p>
 					
 				</fieldset>						
 
