@@ -210,7 +210,7 @@ $wExtraNotes = get_post_meta( $post->ID, 'extra_notes', 1 );
 				<?php
 				if (!empty( $prev_post )): ?>
 				
-					<a class="post-nav-prev" title="<?php _e('Previous image', 'fukasawa'); echo ': ' . esc_attr( get_the_title($prev_post) ); ?>" href="<?php echo get_permalink( $prev_post->ID ); ?>">
+					<a class="post-nav-prev" title="<?php _e('Previous item', 'fukasawa'); echo ': ' . esc_attr( get_the_title($prev_post) ); ?>" href="<?php echo get_permalink( $prev_post->ID ); ?>">
 						<p>&larr; <?php _e('Previous image', 'fukasawa'); ?></p>
 					</a>
 				<?php endif; ?>
@@ -218,7 +218,7 @@ $wExtraNotes = get_post_meta( $post->ID, 'extra_notes', 1 );
 				<?php
 				if (!empty( $next_post )): ?>
 					
-					<a class="post-nav-next" title="<?php _e('Next image', 'fukasawa'); echo ': ' . esc_attr( get_the_title($next_post) ); ?>" href="<?php echo get_permalink( $next_post->ID ); ?>">					
+					<a class="post-nav-next" title="<?php _e('Next item', 'fukasawa'); echo ': ' . esc_attr( get_the_title($next_post) ); ?>" href="<?php echo get_permalink( $next_post->ID ); ?>">					
 						<p><?php _e('Next image', 'fukasawa'); ?> &rarr;</p>
 					</a>
 			

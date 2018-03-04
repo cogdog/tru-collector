@@ -58,9 +58,9 @@
 			
 				<div class="section-inner">
 			
-					<?php echo get_next_posts_link( '&laquo; ' . __('Older collectables', 'fukasawa')); ?>
+					<?php echo get_next_posts_link( '&laquo; ' . __('Older items', 'fukasawa')); ?>
 							
-					<?php echo get_previous_posts_link( __('Newer posts', 'collectables') . ' &raquo;'); ?>
+					<?php echo get_previous_posts_link( __('Newer items', 'collectables') . ' &raquo;'); ?>
 					
 					<div class="clear"></div>
 				

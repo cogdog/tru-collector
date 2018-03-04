@@ -38,9 +38,9 @@
 		
 		<div class="archive-nav">
 				
-			<?php echo get_next_posts_link( __('Older collectables', 'fukasawa') . ' &rarr;'); ?>
+			<?php echo get_next_posts_link( __('Older items', 'fukasawa') . ' &rarr;'); ?>
 				
-			<?php echo get_previous_posts_link( '&larr; ' . __('Newer collectables', 'fukasawa')); ?>
+			<?php echo get_previous_posts_link( '&larr; ' . __('Newer items', 'fukasawa')); ?>
 			
 			<div class="clear"></div>
 						
