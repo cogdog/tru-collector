@@ -1,6 +1,14 @@
 # TRU Collector Wordpress Theme
 by Alan Levine http://cogdog.info/ or http://cogdogblog.com/
 
+-----
+*If this kind of stuff has any value to you, please consider supporting me so I can do more!*
+
+[![Support me on Patreon](http://cogdog.github.io/images/badge-patreon.png)](https://patreon.com/cogdog) [![Support me on via PayPal](http://cogdog.github.io/images/badge-paypal.png)](https://paypal.me/cogdog)
+
+----- 
+
+
 ![Sample Collectables Site](images/collector-site.jpg "Sample Collectables Site")
 
 ## What is this?
