@@ -1,5 +1,4 @@
 <?php
-
 //  get post meta
 
 $wSource = get_post_meta( $post->ID, 'source', 1 );
@@ -92,6 +91,8 @@ $wExtraNotes = get_post_meta( $post->ID, 'extra_notes', 1 );
 				<div class="post-header">
 													
 					<h2 class="post-title"><?php the_title(); ?></h2>
+					
+					 <?php if(function_exists('the_ratings')) { the_ratings(); } ?>
 															
 				</div> <!-- /post-header -->
 				    

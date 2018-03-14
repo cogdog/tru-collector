@@ -16,12 +16,10 @@ if ( !is_user_logged_in() ) {
   	}
 }
 
-		
-
 // ------------------------ defaults ------------------------
 
 // default welcome message
-$feedback_msg = 'Add something to this collection? Yes! Use the form below to share it. Fields marked  <strong>*</strong> are required.';
+$feedback_msg = trucollector_form_default_prompt() . ' Fields marked  <strong>*</strong> are required.';
 
 $wTitle = '';
 $wAuthor = 'Anonymous';
@@ -216,15 +214,15 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 	
 	
 					<fieldset>
-					<label for="wTitle"><?php _e('Title for this Item', 'fukasawa' ) ?> <strong>*</strong></label><br />
-					<p>Enter a descriptive title that works well as a headline when listed in this site.</p>
+					<label for="wTitle"><?php trucollector_form_item_title() ?> <strong>*</strong></label><br />
+					<p><?php trucollector_form_item_title_prompt() ?> </p>
 					<input type="text" name="wTitle" id="wTitle" class="required" value="<?php echo $wTitle; ?>" tabindex="1" />
 				</fieldset>	
 			
 				
 
 				<fieldset>
-					<label for="headerImage"><?php _e('Upload an Image for this Item', 'fukasawa') ?> <strong>*</strong></label>
+					<label for="headerImage"><?php trucollector_form_item_upload() ?> <strong>*</strong></label>
 					
 					<div class="uploader">
 						<input id="wFeatureImage" name="wFeatureImage" type="hidden" value="<?php echo $wFeatureImageID?>" />
@@ -247,7 +245,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 						
 						</div>
 						
-						<p>Upload an image by dragging its icon to the window that opens when clicking  <strong>Select Image</strong> button. Larger JPG, PNG images are best; to preserve animation, GIFs should be no larger than 500px wide.<br clear="left"></p>
+						<p><?php trucollector_form_item_upload_prompt() ?><br clear="left"></p>
 					
 				</fieldset>						
 
@@ -255,8 +253,8 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 
 				<fieldset>
-					<label for="wAuthor"><?php _e('Who is Uploading the Image?', 'fukasawa' ) ?></label><br />
-					<p>Take credit for sharing this item by entering your name(s),  twitter handle(s), or remain "Anonymous".</p>
+					<label for="wAuthor"><?php trucollector_form_item_author()?></label><br />
+					<p><?php trucollector_form_item_author_prompt()?></p>
 					<input type="text" name="wAuthor" id="wAuthor" class="required" value="<?php echo $wAuthor; ?>" tabindex="3" />
 				</fieldset>	
   		
@@ -266,8 +264,8 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
   				?>
   						
 					<fieldset>
-							<label for="wText"><?php _e('Item Description', 'fukasawa') ?> <?php echo $required?> </label>
-							<p><?php echo  trucollector_option('caption_prompt')?> </p>
+							<label for="wText"><?php trucollector_form_item_description() ?> <?php echo $required?> </label>
+							<p><?php trucollector_form_item_description_prompt()?> </p>
 							
 							<?php if (  trucollector_option('caption_field') == 's'):?>	
 							<textarea name="wText" id="wText" rows="4"  tabindex="4"><?php echo stripslashes( $wText );?></textarea><p style="font-size:0.8rem">To create hyperlinks use this shortcode<br /><code>[link url="http://www.themostamazingwebsiteontheinternet.com/" text="the coolest site on the internet"]</code><br />If you omit <code>text=</code> the URL will be the link text.</p>
@@ -295,8 +293,8 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
   				?>
 				
 					<fieldset>
-						<label for="wSource"><?php _e('Source of Image', 'fukasawa' ) ?> <?php echo $required?></label> 
-						<p>Enter name of a person, web site, etc to give credit for the image submitted above.</p>
+						<label for="wSource"><?php trucollector_form_item_image_source() ?> <?php echo $required?></label> 
+						<p><?php trucollector_form_item_image_source_prompt() ?></p>
 						<input type="text" name="wSource" id="wSource" class="required" value="<?php echo $wSource; ?>" tabindex="6" />
 				</fieldset>		
 				
@@ -308,8 +306,9 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 							
 				
 					<fieldset>
-						<label for="wLicense"><?php _e('License for Reuse', 'fukasawa' ) ?> <?php echo $required?></label>
-						<p>Indicate a reuse license associated with the image. If this is your own image,  select a license to share it under.</p>
+						<label for="wLicense"><?php trucollector_form_item_license() ?> <?php echo $required?></label>
+						<p><?php trucollector_form_item_license_prompt() ?></p>
+						
 						<select name="wLicense" id="wLicense" tabindex="7" />
 						<option value="--">Select a License</option>
 					
@@ -327,8 +326,8 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 				
 				<fieldset>
-					<label for="wCats"><?php _e( 'Categories', 'fukasawa' ) ?></label>
-					<p>Check all categories that will help organize this item.</p>
+					<label for="wCats"><?php trucollector_form_item_categories() ?></label>
+					<p><?php trucollector_form_item_categories_prompt() ?></p>
 					<?php 
 					
 					// arguments for request of categories
@@ -350,16 +349,17 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 				</fieldset>
 
 				<fieldset>
-					<label for="wTags"><?php _e( 'Tags', 'fukasawa' ) ?></label>
-					<p>Add any descriptive tags for this item. Separate multiple ones with commas.</p>
+					<label for="wTags"><?php  trucollector_form_item_tags() ?></label>
+					<p><?php  trucollector_form_item_tags_prompt() ?></p>
 					
 					<input type="text" name="wTags" id="wTags" value="<?php echo $wTags; ?>" tabindex="9"  />
 				</fieldset>
 
 
 				<fieldset>
-						<label for="wNotes"><?php _e('Notes to the Editor', 'fukasawa') ?></label>						
-						<p>Add any notes or messages to send to the site manager; this will not be part of what is published. If you wish to be contacted, leave an email address or twitter handle.</p>
+						<label for="wNotes"><?php trucollector_form_item_editor_notes() ?></label>						
+						<p><?php trucollector_form_item_editor_notes_prompt() ?></p>
+						
 						<textarea name="wNotes" id="wNotes" rows="10"  tabindex="9"><?php echo stripslashes( $wNotes );?></textarea>
 				</fieldset>
 

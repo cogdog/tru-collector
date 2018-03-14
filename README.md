@@ -12,11 +12,12 @@ by Alan Levine http://cogdog.info/ or http://cogdogblog.com/
 ![Sample Collectables Site](images/collector-site.jpg "Sample Collectables Site")
 
 ## What is this?
-This Wordpress Theme powers [TRU Collector](http://splot.ca/collector/) a site to allow collections of images (termed "collectables") where contributions can be made without any silly logins. This is done by using a generic author account that is silently activated. The user never sees any sign of the innards of Wordpress but can create posts for each collectable. 
 
-The options can allow you to create a simple Upload and go mode, but you can also allow (and require or not), captions, a source description (maybe more than *hey, I found it on GOOGLE*), and a selection of a usage rights.
+This Wordpress Theme powers [TRU Collector](http://splot.ca/collector/) a site to allow collections of items (termed "collectables") where contributions can be made without any  logins. This is done by using a generic author account that is silently activated. The user never sees any sign of the innards of Wordpress but can create posts for each collectable. 
 
-And to be super slick, you can even enable an email address that allows people to publish directly to your collection by old fashioned email.
+The options  allow you to create a simple Upload and go mode, but you can also allow (and require or not), captions, a source description (maybe more than *hey, I found it on GOOGLE*) or a complete rich text editor, and choose a selection of licenses to apply.
+
+You can even enable an address that allows people to publish directly to your collection by old fashioned email.
 
 *Why TRU?* I developed these initially [while on a fellowship](http://cogdog.trubox.ca) at [Thompson Rivers University](http://tru.ca/) as one of a suite of [SPLOT tools](http://splot.ca/splots/).
 
@@ -35,27 +36,26 @@ And to be super slick, you can even enable an email address that allows people t
 * [UDG Agora Image Pool](http://udg.theagoraonline.net/imagepool) used by University of Guadalajara faculty and students sharing media in the UDG Agora Project
 * [When I Needed Help Gallery](http://gallery.whenineededhelp.com/) an anonymous sharing of domestic abuse survival site
 
-And if you make a TRU Collector site, please pleas pretty please fork this repo to edit this Readme with a link to your new site.
+If you make a TRU Collector site, please please pretty please, fork this repo to edit this Readme with a link to your new site.
 
 If you have problems, feature suggestions, piles of unmarked bills to send my way, please [contact me via the issues area](https://github.com/cogdog/tru-collector/issues) on this repo.
 
 ## Requirements
-I will make the big leap in that you have a self hosted Wordpress site and can install themes. The TRU Collector is a child theme based on [the free and lovely Fukasawa theme by Anders Noren](https://wordpress.org/themes/fukasawa). Install that first from your Wordpress Dashboard.
 
-Then install the tru-collector them to Wordpress directly by ftping or using the downloaded ZIP for this repo.
+I will make the big leap of assumption that you have a self hosted Wordpress site and can install themes. The TRU Collector is a child theme based on [the free and lovely Fukasawa theme by Anders Noren](https://wordpress.org/themes/fukasawa). Install Fukasawa first from your Wordpress Dashboard.
+
+Then, install the tru-collector them to Wordpress directly by ftping it to `wp-content/themes` or using the downloaded ZIP for this repo as an uploaded theme.
 
 
 ## Setting Up a New Collector site
 
-![](images/collectables-menu.jpg)
-
-In this theme Wordpress `Posts` are renamed `Collectables` but have all the attributes of garden variety blog posts.
+*In this theme Wordpress `Posts` are renamed `Collectables` but have all the attributes of garden variety blog posts.*
 
 (1) Create a fresh new Wordpress site. 
 
-(2) Create a user with login name of "collector" with Author role. No one actually uses the account, the site invisible logs in guests as this user. Make note of the password that Wordpress generated. Make it cryptic.
+(2) Create a user with login name of "collector" with Author role. No one actually uses the account, the site invisible logs in guests as this user. Make note of and save somewhere the password that Wordpress generates. Leaving it cryptic is fine, no one needs to use it.
 
-(3) Install the [Fukasawa theme](https://wordpress.org/themes/fukasawa) from the Wordpress Dashboard (I'll gamble that you know how to install themes, search on `Fukasawa` from Appearance -- Themes. It does not need to be activated, it just needs to be present.
+(3) Install the [Fukasawa theme](https://wordpress.org/themes/fukasawa) from the Wordpress Dashboard (I'll gamble that you know how to install themes, search on `Fukasawa` from Appearances -- Themes. It does not need to be activated, it just needs to be present.
 
 (4) Install the TRU Collector theme downloaded as part of this repo (use the green **clone or download** button above or [download directly](https://github.com/cogdog/tru-collector/archive/master.zip)).
 
@@ -63,22 +63,22 @@ In this theme Wordpress `Posts` are renamed `Collectables` but have all the attr
 
 ![Renamed Posts Menu](images/collectables.jpg "collectables menu")
 
-(6) Install and activate the [Remove Dashboard Access plugin](https://wordpress.org/plugins/remove-dashboard-access-for-non-admins/).  The tru-collector theme's options panel will nudge you to install it. It is used to keep the logged in user from seeing the admin side of Wordpress. Any attempt to reach the dashboard outside of Administrators or editors results in a redirect to the front of the site. The site will work without it, but it makes your collector site a tad more bullet proof.
+(6) Install and activate the [Remove Dashboard Access plugin](https://wordpress.org/plugins/remove-dashboard-access-for-non-admins/).  The tru-collector theme's options panel will nudge you to install it. This plugin is used to keep the logged in `collector` user from seeing the Wordpress dashboard. Any attempt to reach the dashboard outside of Administrators or editors results in a redirect to the front of the site. The site will work without it, but it makes your  site a tad more bullet proof.
 
- In its settings, restrict access to **Editors and Administrators** or just **Administrators** depending if you will have a moderator user. The default redirect should be for the main URL of the site. 
+In this plugins settings, restrict access to **Editors and Administrators** or just **Administrators** depending if you will have a moderator user. The default redirect should be for the main URL of the site. 
 
 ![Remove Dashboard Access settings](images/dashboard-access-settings.jpg "Remove Dashboard Access settings")
 
 (7) If you wish to set up a feature to let visitors send photos to your collector via email, install the [Wordpress Jetpack plugin](http://jetpack.me/). You will also need a plugin the converts the first image of a post to a Featured Image;  I like [Auto Thumbailer](https://wordpress.org/plugins/auto-thumbnailer/). See below for setup instructions.
 
-(8) You might want to set up in advance some Wordpress Categories for your Collectables; in the options you will choose one as default (and for all that is holy, *change the name of the Uncategorized category*!
+(8) You might want to set up in advance some Wordpress Categories for your Collectables; in the options you will choose one as default (and for the love of all that is holy, *change the name of the Uncategorized category*!
 
 ## Setting Up The Site Via TRU Collector options
 
 These instructions are a reference for the settings within the TRU Collector; if you are reading this, you got as far as installing and activating the theme. Below are basic instructions for all of the theme options, which, if this were designed well, you likely do not need me to explain, but #BecauseDocumentation here we go.
 
 
-## Access Code and Hint
+### Access Code and Hint
 ![](images/access-code.jpg)
 
 Leave this field blank if you want any visitor to be able to access the submission form on your site (you can always make it less accessible by not having any links as menus for the form. 
@@ -87,12 +87,12 @@ If you want to provide an access code (a very weak password), just enter it. Any
 
 Enter a decent **Access Hint** that will be displayed if someone does not enter the correct code.
 
-## Publication Options
+### Publication Options
 ![](images/status-new.jpg)
 
 The Status for New Collectable lets you set up moderation for new submissions (by choosing `Set to draft`) whereas `Publish immediately` provides instant gratification to your visitors though leaves open the problems of a site where anyone can publish (the latter option thus works for sites where you set up an **Access Code** as described above).
 
-## Sort Options
+### Sort Options
 
 The default settings are for typical blogs where newest content is displayed first. The sort options allow you to change that across the site- the home page, category/tag archives, and search results.
 
@@ -103,14 +103,14 @@ The default settings are for typical blogs where newest content is displayed fir
 Change the sort otder to **Title** to... yes... sort items alphabetically by each item's title.  Use **Ascending** for alphabetical order (A-Z) or **Descending** to reverse (Z-A).
 
 
-## Caption Fields
+### Caption Fields
 ![](images/caption-field.jpg)
 
 Set this option to provide a field for visitors to enter a caption for their shared image, and whether to require that something be entered. By setting to **No** this will not appear on the submission form.
 
 There is also an option to enable a rich text editor in place of the default simple text area input. Use this if you want a site where people create formatted content for shared images.
 
-## Source, License, and Attribution
+### Source, License, and Attribution
 ![](images/source-rights.jpg)
 
 The first two settings operate similarly the Caption field options above. The **Source** field is a single line text entry where a visitor can type in the source of the image (if it includes a URL it will be automatically hyperlinked when the image page is displayed).
@@ -128,11 +128,11 @@ Check **Enable Comments on Items**  to add a standard blog comment field at the 
 If you have not set up any categories, the **Default Category for New Collectables** menu will not do much. You might want to save your options, and edit your Collectable Categories (Standard Wordpress Categories). Hierarchal ones are not supported (e.g. don't waste your time, use a flat Category structure)
 
 
-## Notification Emails
+### Notification Emails
 ![](images/notification.jpg)
 Enter any email addresses who should be notified of new submissions; you can use multiple ones if you separate them by a comma.
 
-## Author Account Setup
+### Author Account Setup
 ![](images/author-account-none.jpg)
 
 To provide access to the media uploader, this site uses a Wordpress Authoring Role account that is logged into invisibly to your site visitors (for anyone logged in with an Editor or Administrator account, like you this account is not used).. So your site needs an active user with a name of **collector** and a role of **Author**.
@@ -153,7 +153,7 @@ When everything is set up correctly, the options will indicate that you have bee
 
 If the account is incorrectly set up, when trying the Collector on a site where you are *not* logged in as an Administrator or Editor, when you try to access the collect form, you will see a Wordpress login. This nearly always means the password for the `collector` user does not match the settings in the options.
 
-## JetPack Post by Email (optional)
+### JetPack Post by Email (optional)
 
 ![](images/jetpack-not-installed.jpg)
 
@@ -171,6 +171,21 @@ Also, your site looks a tad more credible without use of a `wordpress.com` email
 
 Also, if you are using Post By Email, you will need to add the [Auto Thumbnailer plugin](https://wordpress.org/plugins/auto-thumbnailer/) so it generates featured images from the ones sent by email.
 
+## Customize the Add / Collect form
+
+You can now customize the field labels and the descriptions of the form where people submit new items to a TRU Collector site. On your site navigate to the collect form, and  activate the Wordpress Customizer from the admin bar. 
+
+There is a special section at the bottom to open:
+
+![](images/customizer-tab.jpg)
+
+Then from this pane, open "Collect Form" (eventually the theme options will live here too)
+
+![](images/customizer-collect-tab.jpg)
+
+And then you will see a series of fields to edit for all form field elements. For each, you can edit the title/label of the field and the prompt that appears below. As you type in the customizer fields on the left, you will see a live preview on the right (ignore the silly pizza references in the screenshot, the author was just hungry):
+
+![](images/customizer-edit-form.jpg)
 
 ## Updating the Theme
 
@@ -196,7 +211,9 @@ To present the link just as a URL, simply use
 
 which will produce the hyperlink like http://www.themostamazingwebsiteontheinternet.com/ -- all links will open in a new window.
 
+## Add Public Ratings
 
+Installing the [WP-Ratings Plugin](https://wordpress.org/plugins/wp-postratings/) enables public star (or other scale) ratings on items from the front page, archives, and single items. 
 
 ## Other Wordpressy Things You Might Want to Do
 
@@ -222,6 +239,8 @@ Go collect stuff!
 
 ## Relatively New Features
 
+* **Enabled for WP-Ratings** With the Wp-Ratings Plugin installed, you can have front page and single item ratings for items
+* **Customizer Editor for Upload Form** All field labels and instructions can now be modified via the customizer
 * **Rich Text Editor Option** allow for the full Wordpress editor for composing captions
 * **Shortcode for Hyperlinks in captions** This one is for you Daniel!
 * **Display Order Options** Theme options now allows front page, archive, search results can be sorted by date published (default) or by title, and also the order can be ascending or descending
