@@ -218,7 +218,7 @@ class trucollector_Theme_Options {
 
 		$this->settings['use_caption'] = array(
 			'section' => 'general',
-			'title'   => __( 'Use caption field on submission form and item display?'),
+			'title'   => __( 'Use description field on submission form and item display?'),
 			'desc'    => '',
 			'type'    => 'radio',
 			'std'     => '1',
@@ -231,7 +231,7 @@ class trucollector_Theme_Options {
 		
 		$this->settings['caption_field'] = array(
 			'section' => 'general',
-			'title'   => __( 'Caption Editing Field'),
+			'title'   => __( 'Description Editing Field'),
 			'desc'    => __( 'Use a plain text entry field or rich text editor.'),
 			'type'    => 'radio',
 			'std'     => 's',

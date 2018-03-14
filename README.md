@@ -78,8 +78,8 @@ In this plugins settings, restrict access to **Editors and Administrators** or j
 These instructions are a reference for the settings within the TRU Collector; if you are reading this, you got as far as installing and activating the theme. Below are basic instructions for all of the theme options, which, if this were designed well, you likely do not need me to explain, but #BecauseDocumentation here we go.
 
 
-### Access Code and Hint
-![](images/access-code.jpg)
+### Access and Publishing Controls
+![](images/access-publishing.jpg)
 
 Leave this field blank if you want any visitor to be able to access the submission form on your site (you can always make it less accessible by not having any links as menus for the form. 
 
@@ -87,10 +87,9 @@ If you want to provide an access code (a very weak password), just enter it. Any
 
 Enter a decent **Access Hint** that will be displayed if someone does not enter the correct code.
 
-### Publication Options
-![](images/status-new.jpg)
-
 The Status for New Collectable lets you set up moderation for new submissions (by choosing `Set to draft`) whereas `Publish immediately` provides instant gratification to your visitors though leaves open the problems of a site where anyone can publish (the latter option thus works for sites where you set up an **Access Code** as described above).
+
+Enter any email addresses who should be notified of new submissions; you can use multiple ones if you separate them by a comma.
 
 ### Sort Options
 
@@ -103,45 +102,38 @@ The default settings are for typical blogs where newest content is displayed fir
 Change the sort otder to **Title** to... yes... sort items alphabetically by each item's title.  Use **Ascending** for alphabetical order (A-Z) or **Descending** to reverse (Z-A).
 
 
-### Caption Fields
-![](images/caption-field.jpg)
+### Fields and Options for Items
 
-Set this option to provide a field for visitors to enter a caption for their shared image, and whether to require that something be entered. By setting to **No** this will not appear on the submission form.
+![](images/item-options.jpg)
 
-There is also an option to enable a rich text editor in place of the default simple text area input. Use this if you want a site where people create formatted content for shared images.
+Set the description options to choose whether provide a field for visitors to enter a caption/description for their shared item, and whether to require that something be entered. By setting to **No** this will not appear on the submission form or on a single item display.
 
-### Source, License, and Attribution
-![](images/source-rights.jpg)
+Next is the option to enable a rich text editor in place of the default simple text area input. Use this if you want a site where people create formatted blog=post like content or plain text captions.
 
-The first two settings operate similarly the Caption field options above. The **Source** field is a single line text entry where a visitor can type in the source of the image (if it includes a URL it will be automatically hyperlinked when the image page is displayed).
+The Source Field and rights license settings operate similarly the description fields options above as to how they are used. 
 
-The **Rights License** is a drop down menu offering a variety of Creative Commons licenses as well as `All Rights Reserved` (boo!) as well as `Usage Rights Unknown`.
+The **Source** field is a single line text entry where a visitor can type in the source of the image (if it includes a URL it will be automatically hyperlinked when the image page is displayed).
+
+The **Rights License** is a drop down menu offering a variety of Creative Commons licenses as well as `All Rights Reserved` (boo!), and a `Usage Rights Unknown` choice.
 
 At this time, the only way to edit the licenses displayed (e.g. if you do not want certain ones) is (pathetically on the part of the programmer) to edit `functions.php` in the template directory. Look for the function `trucollector_get_licences` and comment out the lines containing license options to hide.
 
-Enabling the **Cut and Paste Attribution** adds to the image display a field with an automatically formed attribution statement (based on the image's rights license choice) that can be copied after clicking on the text. Neat, eh?
+Enabling the **Cut and Paste Attribution** adds to the image display a field with an automatically formed attribution statement (based on the image's rights license choice) that can be copied after clicking on the text.
 
+Check **Enable Comments on Items**  to add a standard blog comment field at the bottom of all published items.
 
-
-Check **Enable Comments on Items**  to add a standard blog comment field at the bottom of all published photos.
-
-If you have not set up any categories, the **Default Category for New Collectables** menu will not do much. You might want to save your options, and edit your Collectable Categories (Standard Wordpress Categories). Hierarchal ones are not supported (e.g. don't waste your time, use a flat Category structure)
-
-
-### Notification Emails
-![](images/notification.jpg)
-Enter any email addresses who should be notified of new submissions; you can use multiple ones if you separate them by a comma.
+If you have not set up any categories, the **Default Category for New Collectables** menu just give you a choice of `Uncategorized`. If you want to modify this setting, first save your options,  edit your **Collectable Categories** (standard Wordpress Categories accessed under Collectables in the Dashboard), and return here to set up the desired default category. Please, don't leave `Uncategorized` on your site!
 
 ### Author Account Setup
 ![](images/author-account-none.jpg)
 
-To provide access to the media uploader, this site uses a Wordpress Authoring Role account that is logged into invisibly to your site visitors (for anyone logged in with an Editor or Administrator account, like you this account is not used).. So your site needs an active user with a name of **collector** and a role of **Author**.
+To provide access to the media uploader, this site uses a Wordpress Authoring Role account that is logged into invisibly to your site. So your site needs a user account with a name of **collector** and a role of **Author**.
 
 If this account does not exist, create it now. If it does, use the instructions below to generate a new password and then add it to the TRU Collector Options.
 
 ![](images/add-author.jpg)
 
-You can follow the link to create an account; for an email you can use a fictitious one on your domain. We suggest using the strong password that Wordpress  suggests. Copy that password, and perhaps save it in a safe place. On a stand-alone Wordpress install of the Collector, you can just paste it into the option for the password field.
+You can follow the link to create an account; for an email you can use a fictitious one on your domain. We suggest using the strong password that Wordpress suggests. Copy that password, and perhaps save it in a safe place. On a stand-alone Wordpress install of the Collector, you can just paste it into the option for the password field.
 
 ![](images/add-to-site.jpg)
 
