@@ -26,11 +26,13 @@ You can even enable an address that allows people to publish directly to your co
 * [Animal Body Plans](http://bio2290.trubox.ca/) (for Biology 2290 at TRU)
 * [Brand Storytelling](https://jmc3353.adamcroom.com/brandstorytelling/) Ad Copy Layout, University of Oklahoma
 * [CogDogRoo Image Collector](https://cog.dog/roo/collector/) for Alan Levine's Nov 2017 Workshops in Victoria, Australia
+* [Fanny Central](https://fannycentral.com/) for collecting inappropriately captioned old images. 
 * [GEOG 2221 Photo Collector](http://geog2221.trubox.ca/)  collecting images from participants in TRU’s GEOG 2221 Course: Regional Geography of Canada
 * [Image Pool](http://imagepool.trubox.ca/) - used for TRU workshops on finding images on the web 
 * [Imagery VISA 1101_01](http://imagery.trubox.ca/) collecting images from participants in TRU’s VISA 1110 Course: History of Art
 * [OER18 Photos](https://oer18.oerconf.org/media/) photos for April 2018 conference in Bristol, UK.
 * [Oh No Not the Followers of the Apocalypse](http://ohnonotthe.followersoftheapocalyp.se/) FOTA Images from David Kernohan
+* [OpemMed Album](http://oercollector.openmedproject.eu/) Open Images from OpenMed meetings
 * [Online Ecosystem Maps](http://a202dmll.coventry.domains/maps/) a gallery of maps created by students enrolled in the A202DMLL Module (Develop your Online Presence & Own your Web Domain) at Coventry University. 
 * [SPLOT Collector](http://splot.ca/collector/) - the development and very first site, stuff can and will break
 * [UDG Agora Image Pool](http://udg.theagoraonline.net/imagepool) used by University of Guadalajara faculty and students sharing media in the UDG Agora Project
