@@ -211,7 +211,7 @@ $wExtraNotes = get_post_meta( $post->ID, 'extra_notes', 1 );
 				<?php
 				if (!empty( $prev_post )): ?>
 				
-					<a class="post-nav-prev" title="<?php _e('Previous item', 'fukasawa'); echo ': ' . esc_attr( get_the_title($prev_post) ); ?>" href="<?php echo get_permalink( $prev_post->ID ); ?>">
+					<a class="post-nav-prev" title="<?php _e('Previous item', 'fukasawa'); echo ': ' . esc_attr( get_the_title($prev_post) ); ?>" href="<?php echo getw_permalink( $prev_post->ID ); ?>">
 						<p>&larr; <?php _e('Previous item', 'fukasawa'); ?></p>
 					</a>
 				<?php endif; ?>

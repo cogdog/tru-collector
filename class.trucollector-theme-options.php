@@ -434,7 +434,7 @@ class trucollector_Theme_Options {
 				break;
 
 			case 'textarea':
-				echo '<textarea class="' . $field_class . '" id="' . $id . '" name="trucollector_options[' . $id . ']" placeholder="' . $std . '" rows="5" cols="30">' . wp_htmledit_pre( $options[$id] ) . '</textarea>';
+				echo '<textarea class="' . $field_class . '" id="' . $id . '" name="trucollector_options[' . $id . ']" placeholder="' . $std . '" rows="5" cols="30">' . format_for_editor( $options[$id] ) . '</textarea>';
 
 				if ( $desc != '' )
 					echo '<br /><span class="description">' . $desc . '</span>';

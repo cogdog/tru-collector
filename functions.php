@@ -682,7 +682,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 	    $wp_customize,
 		'item_license_prompt',
 		    array(
-		        'label'    => __( 'Image Source Prompt', 'fukasawa'),
+		        'label'    => __( 'Image License Prompt', 'fukasawa'),
 		        'priority' => 28,
 		        'description' => __( 'Directions for the license selection' ),
 		        'section'  => 'collect_form',

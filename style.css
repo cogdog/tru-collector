@@ -1,8 +1,8 @@
 /*
 Theme Name: 	TRU Collector
 Theme URI: 		https://github.com/cogdog/tru-collector
-Description: 	SPLOT Image Collector (Child of Fukaswaw)
-Version: 		0.5.1
+Description: 	SPLOT Image Collector (Child of Fukasawa)
+Version: 		0.5.2
 Template:       fukasawa
 Author: 		CogDog
 Author URI: 	https://cog.dog/
@@ -33,11 +33,6 @@ h1.blog-title {
     word-wrap: break-word;
 }
 
-
-/* no images content area of single posts (hides submissions by email) */
-.single-post .post-content img {
-    display: none;
-}
 
 /* show featured image in forms */
 #featurethumb {
