@@ -336,6 +336,9 @@ add_action( 'after_setup_theme', 'trucollector_autologin');
 
 function trucollector_autologin() {
 	
+	
+	if (! isset ( $_GET['autologin'] ) ) return;
+	
 	// URL Paramter to check for to trigger login
 	if ($_GET['autologin'] == 'collector') {
 	
