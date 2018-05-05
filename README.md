@@ -181,6 +181,16 @@ And then you will see a series of fields to edit for all form field elements. Fo
 
 ![](images/customizer-edit-form.jpg)
 
+## Browse by Licenses
+
+As of version 0.5.5 The TRU Collector provides links that display archives of content that have the same reuse license (if the feature is activated via the TRU Collector options). Just make sure there is a Wordpress Page with the url / slug `/licensed` This page is created automatically on new sites, or simply by activating the theme again (activate the parent Fukasawa, then activate TRU Collector again).
+
+![](images/browse-licenses.jpg)
+
+This page (see [example](http://splot.ca/collector/licensed/)) provides links to view all content with the licenses available on the collect form. The url including `licensed/cc-by` yields all items with a Creative Commons CC By Attribution license [example](http://splot.ca/box/licensed/cc-by).
+
+Use the page to find links to the ones you wish to use and add to your site's menus or widgets. If the links do not work, you may have to go to **Settings** -- **Permalinks** and just click save to regenerate the settings.
+
 ## Updating the Theme
 
 If you have ftp/sftp access to your site (or this can be done in a cpanel file manager), simply upload the new theme files to the `wp-content/themes` directory that includes the older version theme. 
