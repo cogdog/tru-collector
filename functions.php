@@ -65,6 +65,26 @@ function trucollector_setup () {
   	wp_insert_post( $page_data );
   
   }
+
+
+  if (! get_page_by_path( 'licensed' ) ) {
+  
+  	// create index page and archive for licenses.
+  	
+  	$page_data = array(
+  		'post_title' 	=> 'Items by License',
+  		'post_content'	=> 'Browse the items in this collection by license for reuse',
+  		'post_name'		=> 'licensed',
+  		'post_status'	=> 'publish',
+  		'post_type'		=> 'page',
+  		'post_author' 	=> 1,
+  		'post_date' 	=> date('Y-m-d H:i:s', time() - 172800),
+  		'page_template'	=> 'page-licensed.php',
+  	);
+  	
+  	wp_insert_post( $page_data );
+  
+  }
    
 }
 
@@ -130,6 +150,28 @@ function trucollector_comment_mod( $defaults ) {
 	return $defaults;
 }
 
+// -----  add allowable url parameters
+add_filter('query_vars', 'trucollector_queryvars' );
+
+function trucollector_queryvars( $qvars ) {
+	$qvars[] = 'flavor'; // flag for type of license
+	
+	return $qvars;
+}   
+
+// -----  rewrite rules for licensed pretty urls
+add_action('init', 'trucollector_rewrite_rules', 10, 0); 
+      
+function trucollector_rewrite_rules() {
+	$license_page = get_page_by_path('licensed');
+	
+	if ( $license_page ) {
+		add_rewrite_rule( '^licensed/([^/]*)/?',  'index.php?page_id=' . $license_page->ID . '&flavor=$matches[1]','top');	
+	}	
+}
+
+
+
 // options for post order on front page
 add_action( 'pre_get_posts', 'trucollector_order_items' );
 
@@ -147,7 +189,7 @@ function trucollector_get_licences() {
 	// return as an array the types of licenses available
 	
 	return ( array (
-				'?' => 'Rights Status Unknown',
+				'u' => 'Rights Status Unknown',
 				'c' => 'All Rights Reserved (copyrighted)',
 				'pd'	=> 'Public Domain',
 				'cc0'	=> 'CC0 No Rights Reserved',
@@ -180,7 +222,11 @@ function trucollector_attributor( $license, $work_title, $work_creator='') {
 		case '?': 	
 			return ( $work_str .  '" license status: unknown.' );
 			break;
-
+			
+		case 'u': 	
+			return ( $work_str .  '" license status: unknown.' );
+			break;
+			
 		case 'c': 	
 			return ( $work_str .  '" is &copy; All Rights Reserved.' );
 			break;
