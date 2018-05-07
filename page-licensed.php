@@ -1,6 +1,9 @@
 <?php
 // ------------------------ check vars ------------------------
 
+
+$page_id = $post->ID;
+
 // all allowable licenses for this theme
 $all_licenses = trucollector_get_licences();
 
@@ -21,53 +24,69 @@ if ( isset( $wp_query->query_vars['flavor'] ) ) {
 <div class="content thin">
 
 	<?php if ($license_flavor == 'none') :?>
-		<div <?php post_class('post single'); ?>>
-		
-			<?php if ( has_post_thumbnail() ) : ?>
-			
-				<?php $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail_size' ); $thumb_url = $thumb['0']; ?>
-		
-				<div class="featured-media">
-		
-					<?php the_post_thumbnail('post-image'); ?>
-					
-				</div> <!-- /featured-media -->
-					
-			<?php endif; ?>
-			
-			<div class="post-inner">
-												
-				<div class="post-header">
-																										
-					<h2 class="post-title"><?php the_title(); ?></h2>
-															
-				</div> <!-- /post-header section -->
-				    
-			    <div class="post-content">	
-			    	<?php the_content(); ?>
-			    	
-			    	
-			    	<?php if ( trucollector_option('use_license') > 0 ):?>
-						<ul>
-						<?php
-					
-							foreach ( $all_licenses as $abbrev => $title) {
-								echo '<li><a href="' . site_url() . '/licensed/' . $abbrev . '">' . $title . "</a></li>\n";
-							}
-					
-						?>
-						</ul>
-					<?php else:?>
-					
-						<p>The current settings for this site are to not use licenses; the site administration can enable this feature from the <code>TRU Collector Options.</code> </p>
-					
-					
-					<?php endif?>
+	
+	
+	
+		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>				
 
-			    </div>
-			</div>	
-		</div>
+			<div <?php post_class('post single'); ?>>
+		
+		
+		
+		
+				<?php if ( has_post_thumbnail() ) : ?>
 			
+					<?php $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail_size' ); $thumb_url = $thumb['0']; ?>
+		
+					<div class="featured-media">
+		
+						<?php the_post_thumbnail('post-image'); ?>
+					
+					</div> <!-- /featured-media -->
+					
+				<?php endif; ?>
+			
+				<div class="post-inner">
+												
+					<div class="post-header">
+																										
+						<h2 class="post-title"><?php the_title(); ?></h2>
+															
+					</div> <!-- /post-header section -->
+					
+					<div class="post-content">	
+						<?php the_content(); ?>
+					
+					
+						<?php if ( trucollector_option('use_license') > 0 ):?>
+							<ul>
+							<?php
+					
+								foreach ( $all_licenses as $abbrev => $title) {
+									echo '<li><a href="' . site_url() . '/licensed/' . $abbrev . '">' . $title . "</a></li>\n";
+								}
+					
+							?>
+							</ul>
+						<?php else:?>
+					
+							<p>The current settings for this site are to not use licenses; the site administration can enable this feature from the <code>TRU Collector Options.</code> </p>
+					
+					
+						<?php endif?>
+
+					</div>
+				</div>	
+			</div>
+	
+	
+		<?php endwhile; else: ?>
+	
+			<p><?php _e("We couldn't find any posts that matched your query. Please try again.", "fukasawa"); ?></p>
+
+		<?php endif; ?>
+
+	<div class="clear"></div>		
 	<?php else:?>
 	
 		<?php
