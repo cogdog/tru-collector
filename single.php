@@ -163,7 +163,6 @@ $wExtraNotes = get_post_meta( $post->ID, 'extra_notes', 1 );
 						<?php if (has_tag()) : ?>
 							<li class="post-tags"><?php the_tags('', ' '); ?></li>
 						<?php endif; ?>
-						<?php edit_post_link('Edit post', '<li>', '</li>'); ?>
 					</ul>
 					
 					<div class="clear"></div>
