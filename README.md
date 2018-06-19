@@ -220,6 +220,10 @@ which will produce the hyperlink like http://www.themostamazingwebsiteontheinter
 
 Installing the [WP-Ratings Plugin](https://wordpress.org/plugins/wp-postratings/) enables public star (or other scale) ratings on items from the front page, archives, and single items. 
 
+## Fix Rotated Mobile Phone Photos
+
+If contributors to your collection will be uploading photos directly from a smart phone, install the [iOS Image Fixer plugin](https://wordpress.org/plugins/ios-images-fixer/) to fix [problems associated with portrait mode photos that end up uploaded as sideways images](https://wordpress.org/plugins/ios-images-fixer/).
+
 ## Other Wordpressy Things You Might Want to Do
 
 I like short links, so I typically use a Custom Permalink setting (under `Settings -- Permalinks`) of `/%post_id%/'
