@@ -116,6 +116,9 @@ function trucollector_change_post_label() {
     $submenu['edit.php'][15][0] = $thing_name .' Categories';
     $submenu['edit.php'][16][0] = $thing_name .' Tags';
     echo '';
+    
+    
+    add_submenu_page('edit.php', 'Collectable for Review', 'Collectable for Review', 'edit_pages', 'edit.php?post_status=draft&post_type=post' ); 
 }
 
 // change the prompts and stuff for posts to be relevant to collectables
