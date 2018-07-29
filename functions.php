@@ -972,7 +972,7 @@ function trucollector_form_item_license() {
 	 if ( get_theme_mod( 'item_license') != "" ) {
 	 	echo get_theme_mod( 'item_license');
 	 }	else {
-	 	echo 'Source of Image';
+	 	echo 'Item License';
 	 }
 }
 
@@ -980,7 +980,7 @@ function trucollector_form_item_license_prompt() {
 	 if ( get_theme_mod( 'item_license_prompt') != "" ) {
 	 	echo get_theme_mod( 'item_license_prompt');
 	 }	else {
-	 	echo 'Enter name of a person, web site, etc to give credit for the image submitted above.';
+	 	echo 'Select the appropriate reuse license for this item.';
 	 }
 }
 
@@ -1128,7 +1128,7 @@ function trucollector_check_user( $allowed='collector' ) {
    $current_user = wp_get_current_user();
 	
 	// return check of match
-	return ( $current_user->user_login == $allowed );
+	return ( strtolower( $current_user->user_login ) == $allowed );
 }
 
 function splot_the_author() {
@@ -1160,5 +1160,51 @@ function make_links_clickable( $text ) {
 //----	h/t http://stackoverflow.com/a/5341330/2418186
     return preg_replace('!(((f|ht)tp(s)?://)[-a-zA-Zа-яА-Я()0-9@:%_+.~#?&;//=]+)!i', '<a href="$1">$1</a>', $text);
 }
+
+
+# -----------------------------------------------------------------
+# API stuff
+# -----------------------------------------------------------------
+
+add_action( 'rest_api_init', function () {
+	// redister the route, accept a paraemeter for the number of images to fetch
+  register_rest_route( 'splotcollector/v1', '/randy/(?P<n>\d+)', array(
+    'methods' => 'GET',
+    'callback' => 'trucollector_randy',
+	 'args' => array(
+		  'n' => array(
+			'validate_callback' => function($param, $request, $key) {
+			  return is_numeric( $param );
+			}
+		  ), 
+	 )  
+	
+    
+  ) );
+} );
+
+function trucollector_randy( $data ) {
+  
+  // get specified random number of posts
+ $posts = get_posts( array( 'orderby' => 'rand', 'posts_per_page' => $data['n']) );
+  
+  // bad news here
+  if ( empty( $posts ) ) {
+    return null;
+  }
+ 
+ // walk the results, add to array
+  foreach ($posts as $item) {
+  	$found[] = array(
+  		'title' => $item->post_title,
+  		'link' => get_permalink( $item->ID ),
+  		'featuredimg' => wp_get_attachment_url( get_post_thumbnail_id( $item->ID ), 'thumbnail' )
+  	);
+  }
+ // server up some API goodness
+ return new WP_REST_Response( $found, 200 );
+}
+
+
 
 ?>

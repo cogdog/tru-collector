@@ -21,7 +21,9 @@ if ( !is_user_logged_in() ) {
 // default welcome message
 $feedback_msg = trucollector_form_default_prompt() . ' Fields marked  <strong>*</strong> are required.';
 
-$wTitle = '';
+// blank defaults
+
+$wTitle = $wText = $wSource = $wTags = $wNotes = '';
 $wAuthor = 'Anonymous';
 				
 $wFeatureImageID = 0;
@@ -118,11 +120,11 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 							
 			if ( trucollector_option('new_item_status') == 'publish' ) {
 				// feed back for published item
-				$feedback_msg = 'Your entry for <strong>' . $wTitle . '</strong> has been published!  You can <a href="'. wp_logout_url( site_url() . '/?p=' . $post_id  )  . '">view it now</a>. Or you can <a href="' . site_url() . '/collect">add another</a>.';
+				$feedback_msg = 'Your entry for <strong>' . $wTitle . '</strong> has been published!  You can <a href="'. wp_logout_url( site_url() . '/?p=' . $post_id  )  . '">view it now</a>.';
 			
 			} else {
 				// feed back for item left in draft
-				$feedback_msg = 'Your entry for <strong>' . $wTitle . '</strong> has been submitted as a draft. You can <a href="'. wp_logout_url( site_url() . '/?p=' . $post_id  )  . '">preview it now</a>. Once it has been approved by a moderator, everyone can see it.';	
+				$feedback_msg = 'Your entry for <strong>' . $wTitle . '</strong> has been submitted as a draft. You can <a href="'. site_url() . '/?p=' . $post_id  . '">preview it now</a>. Once it has been approved by a moderator, everyone can see it.';	
 			
 			}		
 			
