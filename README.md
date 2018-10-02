@@ -45,6 +45,12 @@ If you make a TRU Collector site, please please pretty please, fork this repo to
 
 If you have problems, feature suggestions, piles of unmarked bills to send my way, please [contact me via the issues area](https://github.com/cogdog/tru-collector/issues) on this repo.
 
+
+### TRU Collector Sightings
+
+* Samantha Clarke presenting the way TRU Collector was used to build the [The Compendium of Bothersome Beasties](http://creditcontinue.coventry.domains/beasties/) at the ALTC 2018 Conference https://www.youtube.com/watch?v=e1f5PY-uREE
+
+
 ## Requirements
 
 I will make the big leap of assumption that you have a self hosted Wordpress site and can install themes. The TRU Collector is a child theme based on [the free and lovely Fukasawa theme by Anders Noren](https://wordpress.org/themes/fukasawa). Install Fukasawa first from your Wordpress Dashboard.
