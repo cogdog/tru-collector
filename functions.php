@@ -143,6 +143,30 @@ function trucollector_change_post_object() {
     $labels->name_admin_bar =  $thing_name;
 }
 
+// edit the post editing admin messages to reflect use of Collectables
+// h/t http://www.joanmiquelviade.com/how-to-change-the-wordpress-post-updated-messages-of-the-edit-screen/
+
+function trucollector_post_updated_messages ( $msg ) {
+    $msg[ 'post' ] = array (
+         0 => '', // Unused. Messages start at index 1.
+	 1 => "Collectable updated.",
+	 2 => 'Custom field updated.',  // Probably better do not touch
+	 3 => 'Custom field deleted.',  // Probably better do not touch
+
+	 4 => "Collectable updated.",
+	 5 => "Collectable restored to revision",
+	 6 => "Collectable published.",
+
+	 7 => "Collectable saved.",
+	 8 => "Collectable submitted.",
+	 9 => "Collectable scheduled.",
+	10 => "Collectable draft updated.",
+    );
+    return $msg;
+}
+
+add_filter( 'post_updated_messages', 'trucollector_post_updated_messages', 10, 1 );
+
 // modify the comment form
 add_filter('comment_form_defaults', 'trucollector_comment_mod');
 
@@ -274,7 +298,7 @@ function splot_is_menu_location_used( $location = 'primary' ) {
 function splot_default_menu() {
 
 	// site home with trailing slash
-	$splot_home = home_url('/');
+	$splot_home = site_url('/');
   
  	return ( '<li><a href="' . $splot_home . '">Home</a></li><li><a href="' . $splot_home . 'collect' . '">Collect</a></li><li><a href="' . $splot_home . 'random' . '">Random</a></li>' );
   
@@ -378,50 +402,45 @@ function login_link( $url ) {
  
  
 // Auto Login
-// create a link that can automatically log in as a specific user, bypass login screen
-// -- h/t  http://www.wpexplorer.com/automatic-wordpress-login-php/
 
-add_action( 'after_setup_theme', 'trucollector_autologin');
+function splot_redirect_url() {
+	// where to send them after login ok
+	return ( site_url('/') . 'collect' );
+}
 
-function trucollector_autologin() {
+function splot_user_login( $user_login = 'collector' ) {
+	// login the special user account to allow authoring
 	
+	// check for the correct user
+	$autologin_user = get_user_by( 'login', $user_login ); 
 	
-	if (! isset ( $_GET['autologin'] ) ) return;
+	if ( $autologin_user ) {
 	
-	// URL Paramter to check for to trigger login
-	if ($_GET['autologin'] == 'collector') {
-	
-		// change to short auto logout time
-		add_filter( 'auth_cookie_expiration', 'trucollector_change_cookie_logout', 99, 3 );
-
-		// ACCOUNT USERNAME TO LOGIN TO
-		$creds['user_login'] = 'collector';
+		// just in case we have old cookies
+		wp_clear_auth_cookie(); 
 		
-		// ACCOUNT PASSWORD TO USE- stored as option
-		$creds['user_password'] = trucollector_option('pkey');
-
-			
-		$creds['remember'] = true;
+		// set the user directly
+		wp_set_current_user( $autologin_user->id, $autologin_user->user_login );
 		
-		// login user, send secure cookie if this is on https
-		$autologin_user = wp_signon( $creds, is_ssl() );
-			
-		if ( !is_wp_error($autologin_user) ) 
-			wp_redirect ( site_url() . '/collect' );
+		// new cookie
+		wp_set_auth_cookie( $autologin_user->id);
+		
+		// do the login
+		do_action( 'wp_login', $autologin_user->user_login );
+		
+		// send 'em on their way
+		wp_redirect( splot_redirect_url() );
+		
+		
+	} else {
+		// uh on, problem
+		die ('Bad news. Looks like there is a missing account for "' . $user_login . '".');
+	
 	}
-}
+	
 
-// not sure if this works to shorten the logout time
-function trucollector_change_cookie_logout( $expiration, $user_id, $remember ) {
-	if ( current_user_can( 'edit_pages' )  ) {
-		// bump up default 14 day logout function 
-    	return $remember ? $expiration : 1209600; 
-    } else {
-    	// shorter auto logout for guests (1 hour)
-      	return $remember ? $expiration : 3600; 
-    }
-}
 
+}
 
 // remove admin tool bar for non-admins, remove access to dashboard
 // -- h/t http://www.wpbeginner.com/wp-tutorials/how-to-disable-wordpress-admin-bar-for-all-users-except-administrators/
@@ -1208,6 +1227,8 @@ function trucollector_randy( $data ) {
  return new WP_REST_Response( $found, 200 );
 }
 
+// Load plugin requirements file to display admin notices.
+require get_stylesheet_directory() . '/inc/splot-plugins.php';
 
 
 ?>

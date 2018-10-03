@@ -315,16 +315,6 @@ class trucollector_Theme_Options {
 		'type'    => 'heading'
 		);					
 
-
-		$this->settings['pkey'] = array(
-			'title'   => __( 'Author Account Password' ),
-			'desc'    => __( 'The password for the collector user account. When you create the account, we suggest using the generated strong password, make sure you copy it to  safe place so you can paste it here.' ),
-			'std'     => 'xxxxxxxxxxxx',
-			'type'    => 'password',
-			'section' => 'general'
-		);
-
-
 		$this->settings['jetpackcheck'] = array(
 		'section' => 'general',
 		'title' 	=> '' ,// Not used for headings.

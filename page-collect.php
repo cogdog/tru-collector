@@ -1,5 +1,9 @@
 <?php
 
+/*
+Template Name: Add to Collection
+*/
+
 if ( !is_user_logged_in() ) {
 	// already not logged in? go to desk.
   	wp_redirect ( site_url('/') . 'desk' );
@@ -50,7 +54,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
  		$wSource = 					sanitize_text_field( stripslashes( $_POST['wSource'] ) );
  		$wNotes = 					sanitize_text_field( stripslashes( $_POST['wNotes'] ) );
  		$wFeatureImageID = 			$_POST['wFeatureImage'];
- 		$post_id = 					$_POST['post_id'];
+ 		if ( isset ($_POST['wAuthor'] ) ) $post_id = $_POST['post_id'];
  		$wCats = 					( isset ($_POST['wCats'] ) ) ? $_POST['wCats'] : array();
  		$wLicense = 				$_POST['wLicense'];
  		
@@ -120,14 +124,17 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 							
 			if ( trucollector_option('new_item_status') == 'publish' ) {
 				// feed back for published item
-				$feedback_msg = 'Your entry for <strong>' . $wTitle . '</strong> has been published!  You can <a href="'. wp_logout_url( site_url() . '/?p=' . $post_id  )  . '">view it now</a>.';
+				$feedback_msg = 'Your entry for <strong>' . $wTitle . '</strong> has been published!  You can <a href="'. get_permalink( $post_id ) . '">view it now</a>  or <a href="' . site_url()  . '">return to ' . get_bloginfo() . '</a>.';
 			
 			} else {
 				// feed back for item left in draft
-				$feedback_msg = 'Your entry for <strong>' . $wTitle . '</strong> has been submitted as a draft. You can <a href="'. site_url() . '/?p=' . $post_id  . '">preview it now</a>. Once it has been approved by a moderator, everyone can see it.';	
+				$feedback_msg = 'Your entry for <strong>' . $wTitle . '</strong> has been submitted as a draft. Once it has been approved by a moderator, everyone can see it at <a href="' . site_url()  . '">return to ' . get_bloginfo() . '</a>.';	
 			
 			}		
+
+			// logout the special user
 			
+			if ( trucollector_check_user()=== true ) wp_logout();			
 			
 			if ( trucollector_option( 'notify' ) != '') {
 			// Let's do some EMAIL!

@@ -2,8 +2,11 @@
 
 // ------------------------ defaults ------------------------
 
-// default welcome message
-$feedback_msg = '';
+
+// defaultz
+$feedback_msg = $log_out_warning = $wAccess = '';
+
+$errors = array();
 
 // the passcode to enter
 $wAccessCode = trucollector_option('accesscode');
@@ -17,27 +20,27 @@ if ( is_user_logged_in() ) {
 	if ( current_user_can( 'edit_others_posts' ) ) {
 
 		// If user has edit/admin role, send them to the tool
-		wp_redirect ( home_url('/') . 'collect' );
+		wp_redirect( splot_redirect_url() );
   		exit;
 
 	} else {
 	
 		// if the correct user found, go directly to the tool
 		if ( trucollector_check_user() ) {			
-	  		wp_redirect (home_url('/') . 'collect' );
+	  		wp_redirect( splot_redirect_url() );
   			exit;
   			
   		} else {
 			// we need to force a click through a logout
 			$log_out_warning = true;
-			$feedback_msg = 'First, please <a href="' . wp_logout_url( home_url('/') . 'collect'  ) . '">activate lasers</a>';
+			$feedback_msg = 'First, please <a href="' . wp_logout_url( site_url('/') . 'collect'  ) . '">activate lasers</a>';
   		}
   	}
   	
 } elseif ( $wAccessCode == '')  {
 	
 	// no code required, log 'em in
-	wp_redirect ( home_url() . '/wp-login.php?autologin=collector' );
+	splot_user_login();
 	exit;
 
 }
@@ -71,7 +74,7 @@ if ( 	isset( $_POST['trucollector_form_access_submitted'] )
 		
 	} else {
 
-		wp_redirect ( site_url() . '/wp-login.php?autologin=collector' );
+		splot_user_login();
 		exit;
 	}
 

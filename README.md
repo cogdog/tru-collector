@@ -138,23 +138,13 @@ If you have not set up any categories, the **Default Category for New Collectabl
 ### Author Account Setup
 ![](images/author-account-none.jpg)
 
-To provide access to the media uploader, this site uses a Wordpress Authoring Role account that is logged into invisibly to your site. So your site needs a user account with a name of **collector** and a role of **Author**.
-
-If this account does not exist, create it now. If it does, use the instructions below to generate a new password and then add it to the TRU Collector Options.
+To provide access to the media uploader, this site uses a Wordpress Authoring Role account that is logged into invisibly to your site. So your site needs a user account with a name of **collector** and a role of **Author**. If this site is on a mulitsite Wordpress install, and the TRU Collector has been used on another site, the `collector` account already exists, so you need to add it to the site via the Author tools. 
 
 ![](images/add-author.jpg)
 
-You can follow the link to create an account; for an email you can use a fictitious one on your domain. We suggest using the strong password that Wordpress suggests. Copy that password, and perhaps save it in a safe place. On a stand-alone Wordpress install of the Collector, you can just paste it into the option for the password field.
+You can follow the link to create an account; for an email you can use a fictitious one on your domain. We suggest using the strong password that Wordpress suggests.
 
-![](images/add-to-site.jpg)
-
-If this site is on a mulitsite Wordpress install, and the TRU Collector has been used on another site, the `collector` account already exists, so you need to add it to the site via the Author tools. However, you still have to enter the password, so make sure you know the passord that was used on another site. If you do not have access to it, you will have to reset the password at the Network Admin level, and then update the password on the options of all sites using the TRU Collector.
-
-![](images/authoring-account.jpg)
-
-When everything is set up correctly, the options will indicate that you have been a good options configurator! 
-
-If the account is incorrectly set up, when trying the Collector on a site where you are *not* logged in as an Administrator or Editor, when you try to access the collect form, you will see a Wordpress login. This nearly always means the password for the `collector` user does not match the settings in the options.
+** Note: As of version 1.1 of TRU Collector you no longer need to copy the password into the options page. ** If you are using a version of the theme that has a password field in the options, maybe it's a good time to update? Otherwise, [see an older version of this ReadMe](https://github.com/cogdog/tru-collector/blob/a8637ef4739a6aa64210fee5ddffe8426cfa62b3/README.md#author-account-setup) for instructions.
 
 ### JetPack Post by Email (optional)
 
@@ -256,6 +246,8 @@ Go collect stuff!
 
 ## Relatively New Features
 
+
+* **New Login Code** removes the need to copy the collector user's password to the theme options. The special user account is closed after their item is uploaded. Also, there are new admin notices to activate or install the two recommended plugins
 * **Enabled for WP-Ratings** With the Wp-Ratings Plugin installed, you can have front page and single item ratings for items
 * **Customizer Editor for Upload Form** All field labels and instructions can now be modified via the customizer
 * **Rich Text Editor Option** allow for the full Wordpress editor for composing captions
