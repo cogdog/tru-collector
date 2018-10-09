@@ -54,7 +54,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
  		$wSource = 					sanitize_text_field( stripslashes( $_POST['wSource'] ) );
  		$wNotes = 					sanitize_text_field( stripslashes( $_POST['wNotes'] ) );
  		$wFeatureImageID = 			$_POST['wFeatureImage'];
- 		if ( isset ($_POST['wAuthor'] ) ) $post_id = $_POST['post_id'];
+ 		if ( isset ($_POST['post_id'] ) ) $post_id = $_POST['post_id'];
  		$wCats = 					( isset ($_POST['wCats'] ) ) ? $_POST['wCats'] : array();
  		$wLicense = 				$_POST['wLicense'];
  		
