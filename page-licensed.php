@@ -58,19 +58,28 @@ if ( isset( $wp_query->query_vars['flavor'] ) ) {
 						<?php the_content(); ?>
 					
 					
-						<?php if ( trucollector_option('use_license') > 0 ):?>
-							<ul>
-							<?php
+							<?php if ( trucollector_option('use_license') > 0 ):?>
+								<ul>
+								<?php
+				
+									foreach ( $all_licenses as $abbrev => $title) {
+									
+										// get number of items with this license
+										$lcount = trucollector_get_license_count( $abbrev ); 
+										
+										// show if we have some
+										if ( $lcount > 0 ) {
+											echo '<li><a href="' . site_url() . '/licensed/' . $abbrev . '">' . $title . '</a> (' . $lcount . ")</li>\n";
+										}
+									}
+				
+								?>
+								</ul>
+							<?php else:?>
+	
+
 					
-								foreach ( $all_licenses as $abbrev => $title) {
-									echo '<li><a href="' . site_url() . '/licensed/' . $abbrev . '">' . $title . "</a></li>\n";
-								}
-					
-							?>
-							</ul>
-						<?php else:?>
-					
-							<p>The current settings for this site are to not use licenses; the site administration can enable this feature from the <code>TRU Collector Options.</code> </p>
+							<p>The current settings for this site are to not use licenses; the site administrator can enable this feature from the <code>TRU Collector Options.</code> </p>
 					
 					
 						<?php endif?>

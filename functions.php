@@ -237,6 +237,18 @@ function trucollector_the_license( $lcode ) {
 	echo $all_licenses[$lcode];
 }
 
+
+function trucollector_get_license_count( $the_license ) {
+	// get the number of items with a given license code
+
+	// run a query based on post meta key/values
+	$lic_query = new WP_Query( array( 'post_status' => 'publish', 'meta_key' => 'license', 'meta_value' =>  $the_license ) );
+
+	// how many?
+	return $lic_query->found_posts;
+
+}
+
 function trucollector_attributor( $license, $work_title, $work_creator='') {
 	// create an attribution string for the license
 
