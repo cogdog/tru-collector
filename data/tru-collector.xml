@@ -16,7 +16,7 @@
 <!-- 7. WordPress will then import each of the posts, pages, comments, categories, etc. -->
 <!--    contained in this file into your site. -->
 
-<!-- generator="WordPress/4.9.8" created="2018-10-09 21:41" -->
+<!-- generator="WordPress/4.9.8" created="2018-10-12 19:49" -->
 <rss version="2.0"
 	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 	xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -29,7 +29,7 @@
 	<title>SPLOT Collector</title>
 	<link>https://lab.cogdogblog.com/collector</link>
 	<description>If it splots like a duck...</description>
-	<pubDate>Tue, 09 Oct 2018 21:41:33 +0000</pubDate>
+	<pubDate>Fri, 12 Oct 2018 19:49:57 +0000</pubDate>
 	<language>en-US</language>
 	<wp:wxr_version>1.2</wp:wxr_version>
 	<wp:base_site_url>https://lab.cogdogblog.com/collector</wp:base_site_url>
@@ -592,7 +592,7 @@ Learn <a href="https://github.com/cogdog/tru-collector">more about TRU Collector
 	</item>
 	<item>
 		<title>add-author</title>
-		<link>https://lab.cogdogblog.com/collector/cool/setting-up-your-image-pool/attachment/add-author/</link>
+		<link>https://lab.cogdogblog.com/collector/cool/setting-up/attachment/add-author/</link>
 		<pubDate>Mon, 19 Sep 2016 07:15:20 +0000</pubDate>
 		<dc:creator><![CDATA[ofjef3]]></dc:creator>
 		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/wp-content/uploads/2016/09/add-author.jpg</guid>
@@ -997,23 +997,25 @@ Learn <a href="https://github.com/cogdog/tru-collector">more about TRU Collector
 		</wp:postmeta>
 	</item>
 	<item>
-		<title>Setting Up Your Image Pool</title>
-		<link>https://lab.cogdogblog.com/collector/cool/setting-up-your-image-pool/</link>
-		<pubDate>Mon, 19 Sep 2016 06:51:43 +0000</pubDate>
+		<title>Setting Up Your Image Collector SPLOT</title>
+		<link>https://lab.cogdogblog.com/collector/cool/setting-up/</link>
+		<pubDate>Wed, 10 Oct 2018 23:51:43 +0000</pubDate>
 		<dc:creator><![CDATA[ofjef3]]></dc:creator>
 		<guid isPermaLink="false">http://connectedcourses.stateu.org/seeds/collector/28/</guid>
 		<description></description>
-		<content:encoded><![CDATA[Installed via Reclaim Hosting''s cpanel installer, this is a version of the <a href="https://github.com/cogdog/tru-collector">TRU Collector</a> fully built out with many yhings that you would have to do to create a site like this from scratch.
+		<content:encoded><![CDATA[Installed via Reclaim Hosting''s cpanel installer, this is a version of the <a href="https://github.com/cogdog/tru-collector">TRU Collector</a> fully built out with many things that you would have to do to create a site like this from scratch.
 
-It helps you dive into the pool.
+It helps you dive right into creating a pool of images or other things you might build a collection around.
 
 Once you have installed a copy of this into your own site, you have a few more things to do to get the pool going.
 
 Once you have done these, you can delete the earlier "Collectables" in the pool (the dog and the animated hamster), although you are welcome to keep them. You might want to edit this post, and under the Publish settings in the top right, change the status to <code>Draft</code>. That way, it will not appear on the site, but you can preview it from the Dashboard if you need to check these instructions.
+
+Also be sure to refer to the <a href="https://github.com/cogdog/tru-collector#setting-up-the-site-via-tru-collector-options">theme's set-up instructions</a> for help understanding the Theme Options.
 <h2>Wordpress Settings</h2>
-Make sure you are logged into your site (add <code>/admin</code>) to your URL. You can tell you are logged in if you see the black admins menu bar on your site. The following are some things you should do first to customize the site.
+Make sure you are logged into your site (add <code>/admin</code>) to your URL. You can tell you are logged in if you see the black admin menu bar on top of every page your site. The following are some things you should do first to customize the site.
 <ol>
- 	<li><strong>Make sure an Author Account is set up</strong> This is critical! Go to Users in the Wordpress Dashboard, and if there is not an account named <strong>collector</strong> set one up (you can enter an email like <code>collector@yourdomain.com</code> it is never used). Set the account's role to <code>author</code> (<a href="https://github.com/cogdog/tru-collector/raw/master/wp-content/themes/tru-collector/images/add-author.jpg" target="_blank" rel="noopener">see example settings</a>).Then go to a browser where you are not logged into this site, and try the link to Add a photo. If you get to the upload form, you are golden. If you ever see the Wordpress login, then it means the <code>collector</code> account's password is not entered into the Options panel correctly.</li>
+ 	<li><strong>Make sure an Author Account is set up.</strong> This is critical! Go to Users in the Wordpress Dashboard, and if there is not an account named <strong>collector</strong> set one up (you can enter an email like <code>collector@yourdomain.com</code> it is never used). Set the account's role to <code>author</code> (<a href="https://github.com/cogdog/tru-collector/raw/master/wp-content/themes/tru-collector/images/add-author.jpg" target="_blank" rel="noopener">see example settings</a>).Then go to a browser where you are not logged into this site, and try the link to Add a photo. If you get to the upload form, you are golden.</li>
  	<li><strong>Customize the site and tagline</strong> Go to <code>Settings -&gt; General</code></li>
  	<li><strong>Make Your Own Categories</strong> Go to <code>Collectables -&gt; Collectable Categories</code>. Delete the silly ones that come with this, and create your own meaningful categories.</li>
  	<li><strong>Update the About Page</strong> Go to <code>Pages</code> and look for the About page. Make it describe your own site, not this one.</li>
@@ -1031,6 +1033,68 @@ Look for the link in the top admin bar to the options that further control how t
 The rest of the options should be easy to see how they work. You can disable them from the Collection Add form, make them optional, or make them required depending on how much information you want to have people add to your site.
 
 Now try <a href="collect" target="_blank" rel="noopener">adding an image to your pool</a>. Is that cool or what?
+<h2>Customizing the Add to Collection Form</h2>
+You can now customize the field labels and the descriptions of the form where people submit new items to a TRU Collector site. On your site navigate to the collect form, and activate the Wordpress Customizer from the admin bar.
+
+There is a special section at the bottom to open:
+
+<a href="https://github.com/cogdog/tru-collector/blob/master/images/customizer-tab.jpg" target="_blank" rel="noopener noreferrer"><img class="aligncenter" src="https://github.com/cogdog/tru-collector/raw/master/images/customizer-tab.jpg" alt="" /></a>
+
+Then from this pane, open "Collect Form" (eventually the theme options will live here too)
+
+<a href="https://github.com/cogdog/tru-collector/blob/master/images/customizer-collect-tab.jpg" target="_blank" rel="noopener noreferrer"><img class="aligncenter" src="https://github.com/cogdog/tru-collector/raw/master/images/customizer-collect-tab.jpg" alt="" /></a>
+
+And then you will see a series of fields to edit for all form field elements. For each, you can edit the title/label of the field and the prompt that appears below. As you type in the customizer fields on the left, you will see a live preview on the right (ignore the silly pizza references in the screenshot, the author was just hungry):
+
+<a href="https://github.com/cogdog/tru-collector/blob/master/images/customizer-edit-form.jpg" target="_blank" rel="noopener noreferrer"><img class="aligncenter" src="https://github.com/cogdog/tru-collector/raw/master/images/customizer-edit-form.jpg" alt="" /></a>
+
+&nbsp;
+
+Browse/View By Reuse License
+
+The TRU Collector provides links that display archives of content that have the same reuse license (if the feature is activated via the TRU Collector options). Just make sure there is a Wordpress Page with the url / slug <code>/licensed</code>
+
+<code></code>This page is created automatically on new sites, or simply by activating the theme again (activate the parent Fukasawa, then activate TRU Collector again). It only displays ones that have been used, and includes a count of the number of items in the collection using that license.
+
+<a href="https://github.com/cogdog/tru-collector/blob/master/images/browse-licenses.jpg" target="_blank" rel="noopener noreferrer"><img src="https://github.com/cogdog/tru-collector/raw/master/images/browse-licenses.jpg" alt="" /></a>
+
+This page (see <a href="https://lab.cogdogblog.com/collector/licensed" rel="nofollow">example</a>) provides links to view all content with the licenses available on the collect form. The url including <code>licensed/cc-by</code> yields all items with a Creative Commons CC By Attribution license <a href="https://lab.cogdogblog.com/collector/licensed/cc-by" rel="nofollow">example</a>.
+
+Use the page to find links to the ones you wish to use and add to your site's menus or widgets. If the links do not work, you may have to go to <strong>Settings</strong> -- <strong>Permalinks</strong> and just click save to regenerate the settings.
+<h2>Adding Hyperlinks to Captions</h2>
+Any HTML put into the editor for the caption is stripped out. But a new feature allows hyperlinks to be created using a "shortcode" format:
+
+<a href="https://github.com/cogdog/tru-collector/blob/master/images/shortcode-link.jpg" target="_blank" rel="noopener noreferrer"><img src="https://github.com/cogdog/tru-collector/raw/master/images/shortcode-link.jpg" alt="" /></a>
+
+Links show be entered as a <code>[link]</code> shortcode where the link <code>url</code> is specified as well as the <code>text</code> to be used as hypertext:
+
+<code>[link url="http://www.themostamazingwebsiteontheinternet.com/" text="the coolest site on the internet"]</code>
+
+This will create a hyperlink like <a href="http://www.themostamazingwebsiteontheinternet.com/" rel="nofollow">the coolest site on the internet</a>
+
+To present the link just as a URL, simply use
+
+<code>[link url="http://www.themostamazingwebsiteontheinternet.com/"]</code>
+
+which will produce the hyperlink like <a href="http://www.themostamazingwebsiteontheinternet.com/" rel="nofollow">http://www.themostamazingwebsiteontheinternet.com/</a> -- all links will open in a new window.
+
+If you want to give your site users more editing tools, enable the Rich Text Editor option in the TRU Collector Options.
+
+&nbsp;
+<h2>Enable Public Ratings</h2>
+Activating the <a href="https://wordpress.org/plugins/wp-postratings/" rel="nofollow">WP-Ratings Plugin</a> that comes with this theme installed enables public star (or other scale) ratings on items from the front page, archives, and single items.
+<h2>Fix Rotated Mobile Phone Photos</h2>
+If contributors to your collection will be uploading photos directly from a smart phone, the <a href="https://wordpress.org/plugins/ios-images-fixer/" rel="nofollow">iOS Image Fixer plugin</a> comes with this install enabled, so it can fix <a href="https://wordpress.org/plugins/ios-images-fixer/" rel="nofollow">problems associated with portrait mode photos that end up uploaded as sideways images</a>.
+
+Set up your own menus as needed; make sure that you click the <code>Location</code> tab to tell Wordpress to use the menu you create.
+
+<a href="https://github.com/cogdog/tru-collector/blob/master/images/menu.jpg" target="_blank" rel="noopener noreferrer"><img title="menu options" src="https://github.com/cogdog/tru-collector/raw/master/images/menu.jpg" alt="Menu Configuration" /></a>
+
+&nbsp;
+
+Get rid of the default widgets on the site; make it your own
+
+<a href="https://github.com/cogdog/tru-collector/blob/master/images/widgets.jpg" target="_blank" rel="noopener noreferrer"><img title="suggested widget set up" src="https://github.com/cogdog/tru-collector/raw/master/images/widgets.jpg" alt="Widgets" /></a>
 <h2>Bonus Settings: Post By Email</h2>
 If you want to add a feature to allow submissions to your site via email:
 <ol>
@@ -1040,11 +1104,11 @@ If you want to add a feature to allow submissions to your site via email:
 </ol>]]></content:encoded>
 		<excerpt:encoded><![CDATA[Read on to learn how to customize this site.]]></excerpt:encoded>
 		<wp:post_id>28</wp:post_id>
-		<wp:post_date><![CDATA[2016-09-18 23:51:43]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2016-09-19 06:51:43]]></wp:post_date_gmt>
+		<wp:post_date><![CDATA[2018-10-10 23:51:43]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-10-10 23:51:43]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[open]]></wp:comment_status>
 		<wp:ping_status><![CDATA[open]]></wp:ping_status>
-		<wp:post_name><![CDATA[setting-up-your-image-pool]]></wp:post_name>
+		<wp:post_name><![CDATA[setting-up]]></wp:post_name>
 		<wp:status><![CDATA[publish]]></wp:status>
 		<wp:post_parent>0</wp:post_parent>
 		<wp:menu_order>0</wp:menu_order>
@@ -1084,6 +1148,22 @@ If you want to add a feature to allow submissions to your site via email:
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[ratings_average]]></wp:meta_key>
 			<wp:meta_value><![CDATA[4]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_oembed_2a9ecfc79ecc1fa2c307d684a8e96531]]></wp:meta_key>
+			<wp:meta_value><![CDATA[<blockquote class="wp-embedded-content" data-secret="4L7weru5OF"><a href="https://lab.cogdogblog.com/collector/licensed/">Items by License</a></blockquote><iframe class="wp-embedded-content" sandbox="allow-scripts" security="restricted" style="position: absolute; clip: rect(1px, 1px, 1px, 1px);" src="https://lab.cogdogblog.com/collector/licensed/embed/#?secret=4L7weru5OF" data-secret="4L7weru5OF" width="600" height="338" title="&#8220;Items by License&#8221; &#8212; SPLOT Collector" frameborder="0" marginwidth="0" marginheight="0" scrolling="no"></iframe>]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_oembed_time_2a9ecfc79ecc1fa2c307d684a8e96531]]></wp:meta_key>
+			<wp:meta_value><![CDATA[1539371709]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_wp_old_slug]]></wp:meta_key>
+			<wp:meta_value><![CDATA[setting-up-your-image-pool]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_wp_old_date]]></wp:meta_key>
+			<wp:meta_value><![CDATA[2016-09-18]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
@@ -1142,7 +1222,7 @@ If you want to add a feature to allow submissions to your site via email:
 	<item>
 		<title>Year of the SPLOT</title>
 		<link>https://lab.cogdogblog.com/collector/cool/year-of-the-splot/</link>
-		<pubDate>Wed, 14 Mar 2018 20:01:19 +0000</pubDate>
+		<pubDate>Wed, 14 Mar 2018 13:01:19 +0000</pubDate>
 		<dc:creator><![CDATA[ofjef3]]></dc:creator>
 		<guid isPermaLink="false">http://connectedcourses.stateu.org/seeds/collector/37/</guid>
 		<description></description>
@@ -1150,7 +1230,7 @@ If you want to add a feature to allow submissions to your site via email:
 		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
 		<wp:post_id>37</wp:post_id>
 		<wp:post_date><![CDATA[2018-03-14 13:01:19]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2018-03-14 20:01:19]]></wp:post_date_gmt>
+		<wp:post_date_gmt><![CDATA[2018-03-14 13:01:19]]></wp:post_date_gmt>
 		<wp:comment_status><![CDATA[open]]></wp:comment_status>
 		<wp:ping_status><![CDATA[open]]></wp:ping_status>
 		<wp:post_name><![CDATA[year-of-the-splot]]></wp:post_name>
@@ -1161,6 +1241,7 @@ If you want to add a feature to allow submissions to your site via email:
 		<wp:post_password><![CDATA[]]></wp:post_password>
 		<wp:is_sticky>0</wp:is_sticky>
 		<category domain="category" nicename="cool"><![CDATA[Cool Stuff]]></category>
+		<category domain="post_tag" nicename="splot"><![CDATA[splot]]></category>
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[ratings_users]]></wp:meta_key>
 			<wp:meta_value><![CDATA[1]]></wp:meta_value>
@@ -1188,6 +1269,10 @@ If you want to add a feature to allow submissions to your site via email:
 		<wp:postmeta>
 			<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
 			<wp:meta_value><![CDATA[36]]></wp:meta_value>
+		</wp:postmeta>
+		<wp:postmeta>
+			<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
+			<wp:meta_value><![CDATA[1]]></wp:meta_value>
 		</wp:postmeta>
 	</item>
 	<item>
