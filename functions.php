@@ -96,32 +96,20 @@ function trucollector_setup () {
 // we need to load the options this before the auto login so we can use the pass
 add_action( 'after_setup_theme', 'trucollector_load_theme_options', 9 );
 
-// change the name of admin menu items from "New Posts"
-// -- h/t http://wordpress.stackexchange.com/questions/8427/change-order-of-custom-columns-for-edit-panels
-// and of course the Codex http://codex.wordpress.org/Function_Reference/add_submenu_page
+
+// make a menu like to see submitted items, they are drafts
+// -- h/t the Codex http://codex.wordpress.org/Function_Reference/add_submenu_page
 
 add_action( 'admin_menu', 'trucollector_change_post_label' );
-add_action( 'init', 'trucollector_change_post_object' );
 
-// turn 'em from Posts to Collectables
-function trucollector_change_post_label() {
-    global $menu;
-    global $submenu;
-    
-    $thing_name = 'Collectable';
-    
-    $menu[5][0] = $thing_name . 's';
-    $submenu['edit.php'][5][0] = 'All ' . $thing_name . 's';
-    $submenu['edit.php'][10][0] = 'Add ' . $thing_name;
-    $submenu['edit.php'][15][0] = $thing_name .' Categories';
-    $submenu['edit.php'][16][0] = $thing_name .' Tags';
-    echo '';
-    
-    
-    add_submenu_page('edit.php', 'Collectable for Review', 'Collectable for Review', 'edit_pages', 'edit.php?post_status=draft&post_type=post' ); 
+function trucollector_change_post_label() { 
+    add_submenu_page('edit.php', 'Collectables for Review', 'Collectables for Review', 'edit_pages', 'edit.php?post_status=draft&post_type=post' ); 
 }
 
 // change the prompts and stuff for posts to be relevant to collectables
+
+add_action( 'init', 'trucollector_change_post_object' );
+
 function trucollector_change_post_object() {
 
     $thing_name = 'Collectable';
@@ -139,12 +127,14 @@ function trucollector_change_post_object() {
     $labels->not_found = 'No ' . $thing_name . ' found';
     $labels->not_found_in_trash = 'No ' .  $thing_name . ' found in Trash';
     $labels->all_items = 'All ' . $thing_name;
-    $labels->menu_name =  $thing_name;
+    $labels->menu_name = $thing_name . 's';
     $labels->name_admin_bar =  $thing_name;
 }
 
 // edit the post editing admin messages to reflect use of Collectables
 // h/t http://www.joanmiquelviade.com/how-to-change-the-wordpress-post-updated-messages-of-the-edit-screen/
+
+add_filter( 'post_updated_messages', 'trucollector_post_updated_messages', 10, 1 );
 
 function trucollector_post_updated_messages ( $msg ) {
     $msg[ 'post' ] = array (
@@ -165,9 +155,21 @@ function trucollector_post_updated_messages ( $msg ) {
     return $msg;
 }
 
-add_filter( 'post_updated_messages', 'trucollector_post_updated_messages', 10, 1 );
+// options for post order on front page
+add_action( 'pre_get_posts', 'trucollector_order_items' );
 
-// modify the comment form
+function trucollector_order_items( $query ) {
+
+	if ( ( $query->is_home() && $query->is_main_query()) OR $query->is_archive() OR $query->is_search() ) {
+	
+		$query->set( 'orderby', trucollector_option('sort_by')  );
+		$query->set( 'order', trucollector_option('sort_direction') );
+		
+	}
+}
+
+
+// ----- modify the comment form
 add_filter('comment_form_defaults', 'trucollector_comment_mod');
 
 function trucollector_comment_mod( $defaults ) {
@@ -195,21 +197,6 @@ function trucollector_rewrite_rules() {
 	if ( $license_page ) {
 		add_rewrite_rule( '^licensed/([^/]*)/?',  'index.php?page_id=' . $license_page->ID . '&flavor=$matches[1]','top');	
 	}	
-}
-
-
-
-// options for post order on front page
-add_action( 'pre_get_posts', 'trucollector_order_items' );
-
-function trucollector_order_items( $query ) {
-
-	if ( ( $query->is_home() && $query->is_main_query()) OR $query->is_archive() OR $query->is_search() ) {
-	
-		$query->set( 'orderby', trucollector_option('sort_by')  );
-		$query->set( 'order', trucollector_option('sort_direction') );
-		
-	}
 }
 
 function trucollector_get_licences() {

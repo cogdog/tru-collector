@@ -36,7 +36,9 @@ You can even enable an address that allows people to publish directly to your co
 * [Oh No Not the Followers of the Apocalypse](http://ohnonotthe.followersoftheapocalyp.se/) FOTA Images from David Kernohan
 * [OpemMed Album](http://oercollector.openmedproject.eu/) Open Images from OpenMed meetings
 * [Online Ecosystem Maps](http://a202dmll.coventry.domains/maps/) a gallery of maps created by students enrolled in the A202DMLL Module (Develop your Online Presence & Own your Web Domain) at Coventry University. 
-* [OWLTECH Catalogue](http://catalogue.owlteh.org/) Open Web For Learning & Teaching Expertise Hub -- a Catalogue of the Open Web: applications, platforms, techologies, or concepts
+* [OWLTEH Catalogue](http://catalogue.owlteh.org/) Open Web For Learning & Teaching Expertise Hub -- a Catalogue of the Open Web: applications, platforms, techologies, or concepts
+* [Learning on/with the Open Web Participants](https://conf.owlteh.org/participants/) 
+* [Learning on/with the Open Web Conference Photos](https://www.conf.owlteh.org/photos/)
 * [SPLOT Collector](http://splot.ca/collector/) - the development and very first site, stuff can and will break
 * [UDG Agora Image Pool](http://udg.theagoraonline.net/imagepool) used by University of Guadalajara faculty and students sharing media in the UDG Agora Project
 * [When I Needed Help Gallery](http://gallery.whenineededhelp.com/) an anonymous sharing of domestic abuse survival site
