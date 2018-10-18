@@ -121,8 +121,7 @@
 			 <div class="credits">
 			 
 			 	<p>A <a href="http://splot.ca/">SPLOT</a> on the Web: <a href="<?php echo esc_url( site_url( '/' ) ); ?>"><?php bloginfo('name'); ?></a>.</p>
-			 	<p><?php _e('Blame','fukasawa'); ?> <a href="http://cogdog.info">cogdog</a>.</p>
-			 	<p><?php _e('Based on Fukasawa theme by ','fukasawa'); ?> <a href="http://www.andersnoren.se">Anders Nor&eacute;n</a>.</p>
+			 	<p><?php _e('Blame','fukasawa'); ?> <a href="http://cogdog.info">cogdog</a> for the <a href="https://github.com/cogdog/tru-collector">TRU Collector Theme</a>, <?php _e('based on Fukasawa  by ','fukasawa'); ?> <a href="http://www.andersnoren.se">Anders Nor&eacute;n</a>.</p>
 			 	<p>
 			 	<?php splot_the_author();?>
 				</p>
