@@ -35,7 +35,7 @@ class trucollector_Theme_Options {
 		if ( ! get_option( 'trucollector_options' ) )
 			$this->initialize_settings();
 	}
-
+	
 	/* Add page(s) to the admin menu */
 	public function add_pages() {
 		$admin_page = add_theme_page( 'TRU Collector Options', 'TRU Collector Options', 'manage_options', 'trucollector-options', array( &$this, 'display_page' ) );
@@ -291,6 +291,20 @@ class trucollector_Theme_Options {
 		
 
   		// Build array to hold options for select, an array of post categories
+  		
+  		
+		$this->settings['show_cats'] = array(
+			'section' => 'general',
+			'title'   => __( 'Show the categories menu on collection form and item displays?'),
+			'desc'    => '',
+			'type'    => 'radio',
+			'std'     => '1',
+			'choices' => array (
+							'0' => 'No',
+							'1' => 'Yes'
+					)
+		);
+
 
 		// Walk those cats, store as array index=ID 
 	  	$all_cats = get_categories('hide_empty=0'); 
@@ -306,6 +320,32 @@ class trucollector_Theme_Options {
 			'std'     => get_option('default_category'),
 			'choices' => $cat_options
 		);	
+
+
+		$this->settings['show_tags'] = array(
+			'section' => 'general',
+			'title'   => __( 'Show the tags entry on collection form and item displays?'),
+			'desc'    => '',
+			'type'    => 'radio',
+			'std'     => '1',
+			'choices' => array (
+							'0' => 'No',
+							'1' => 'Yes'
+					)
+		);
+
+		$this->settings['show_notes'] = array(
+			'section' => 'general',
+			'title'   => __( 'Show the input field for notes to the editor on the collection form?'),
+			'desc'    => '',
+			'type'    => 'radio',
+			'std'     => '1',
+			'choices' => array (
+							'0' => 'No',
+							'1' => 'Yes'
+					)
+		);
+
 
 		$this->settings['authorcheck'] = array(
 		'section' => 'general',
@@ -330,7 +370,7 @@ class trucollector_Theme_Options {
 			'type'    => 'text',
 			'section' => 'general'
 		);
-
+		
 
 		/* Reset
 		===========================================*/
@@ -445,12 +485,13 @@ class trucollector_Theme_Options {
 				echo '<input type="hidden" name="trucollector_options[' . $id . ']" id="' . $id . '" value="' . $options[$id]  . '" />
   <br /><input type="button" class="upload_image_button button-primary" name="_trucollector_button' . $id .'" id="_trucollector_button' . $id .'" data-options_id="' . $id  . '" data-uploader_title="Set Default Header Image" data-uploader_button_text="Select Image" value="Set/Change Image" />
 </div><!-- uploader -->';
+
+
 				
-				if ( $desc != '' )
-					echo '<br /><span class="description">' . $desc . '</span>';
+				if ( $desc != '' ) echo '<br /><span class="description">' . $desc . '</span>';	
 
-				break;
-
+				break;				
+				
 			case 'password':
 				echo '<input class="regular-text' . $field_class . '" type="text" id="' . $id . '" name="trucollector_options[' . $id . ']" value="' . esc_attr( $options[$id] ) . '" /><input type="button" id="showHide" value="Show" />';
 
@@ -505,7 +546,7 @@ class trucollector_Theme_Options {
 
 	}
 	
-	
+		
 	/* tool to create settings fields */
 	public function create_setting( $args = array() ) {
 
@@ -541,11 +582,6 @@ class trucollector_Theme_Options {
 	}
 	
 	
-	/* jQuery Tabs */
-	public function scripts() {
-		wp_print_scripts( 'jquery-ui-tabs' );
-	}
-	
 	public function validate_settings( $input ) {
 		
 		if ( ! isset( $input['reset_theme'] ) ) {
@@ -566,8 +602,7 @@ class trucollector_Theme_Options {
 				if ( isset( $options[$id] ) && ! isset( $input[$id] ) )
 					unset( $options[$id] );
 			}
-			
-			
+						
 			return $input;
 		}
 		

@@ -157,10 +157,10 @@ $wExtraNotes = get_post_meta( $post->ID, 'extra_notes', 1 );
 				
 					<ul>
 						<li class="post-date"><a href="<?php the_permalink(); ?>"><?php the_date(get_option('date_format')); ?></a></li>
-						<?php if (has_category()) : ?>
+						<?php if (  trucollector_option('show_cats') AND has_category()) : ?>
 							<li class="post-categories"><?php _e('In','fukasawa'); ?> <?php the_category(', '); ?></li>
 						<?php endif; ?>
-						<?php if (has_tag()) : ?>
+						<?php if ( trucollector_option('show_tags') AND  has_tag() ) : ?>
 							<li class="post-tags"><?php the_tags('', ' '); ?></li>
 						<?php endif; ?>
 					</ul>

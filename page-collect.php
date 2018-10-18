@@ -54,7 +54,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
  		$wSource = 					sanitize_text_field( stripslashes( $_POST['wSource'] ) );
  		$wNotes = 					sanitize_text_field( stripslashes( $_POST['wNotes'] ) );
  		$wFeatureImageID = 			$_POST['wFeatureImage'];
- 		if ( isset ($_POST['post_id'] ) ) $post_id = $_POST['post_id'];
+ 		if ( isset ($_POST['wAuthor'] ) ) $post_id = $_POST['post_id'];
  		$wCats = 					( isset ($_POST['wCats'] ) ) ? $_POST['wCats'] : array();
  		$wLicense = 				$_POST['wLicense'];
  		
@@ -222,7 +222,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 		<form  id="collectorform" class="collectorform" method="post" action="" enctype="multipart/form-data">
 	
 	
-					<fieldset>
+					<fieldset id="theTitle">
 					<label for="wTitle"><?php trucollector_form_item_title() ?> <strong>*</strong></label><br />
 					<p><?php trucollector_form_item_title_prompt() ?> </p>
 					<input type="text" name="wTitle" id="wTitle" class="required" value="<?php echo $wTitle; ?>" tabindex="1" />
@@ -230,7 +230,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 			
 				
 
-				<fieldset>
+				<fieldset id="theHeaderImage">
 					<label for="headerImage"><?php trucollector_form_item_upload() ?> <strong>*</strong></label>
 					
 					<div class="uploader">
@@ -261,7 +261,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 
 
-				<fieldset>
+				<fieldset id="theAuthor">
 					<label for="wAuthor"><?php trucollector_form_item_author()?></label><br />
 					<p><?php trucollector_form_item_author_prompt()?></p>
 					<input type="text" name="wAuthor" id="wAuthor" class="required" value="<?php echo $wAuthor; ?>" tabindex="3" />
@@ -272,7 +272,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
   					$required = (trucollector_option('use_caption') == 2) ? '<strong>*</strong>' : '';
   				?>
   						
-					<fieldset>
+					<fieldset id="theText">
 							<label for="wText"><?php trucollector_form_item_description() ?> <?php echo $required?> </label>
 							<p><?php trucollector_form_item_description_prompt()?> </p>
 							
@@ -301,11 +301,11 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
   					$required = (trucollector_option('use_source') == 2) ? '<strong>*</strong>' : '';
   				?>
 				
-					<fieldset>
+					<fieldset id="theSource">
 						<label for="wSource"><?php trucollector_form_item_image_source() ?> <?php echo $required?></label> 
 						<p><?php trucollector_form_item_image_source_prompt() ?></p>
 						<input type="text" name="wSource" id="wSource" class="required" value="<?php echo $wSource; ?>" tabindex="6" />
-				</fieldset>		
+					</fieldset>		
 				
 				<?php endif?>	
 				
@@ -314,7 +314,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
   				?>
 							
 				
-					<fieldset>
+					<fieldset  id="theLicense">
 						<label for="wLicense"><?php trucollector_form_item_license() ?> <?php echo $required?></label>
 						<p><?php trucollector_form_item_license_prompt() ?></p>
 						
@@ -334,51 +334,59 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 				<?php endif?>	
 
 				
-				<fieldset>
-					<label for="wCats"><?php trucollector_form_item_categories() ?></label>
-					<p><?php trucollector_form_item_categories_prompt() ?></p>
-					<?php 
-					
-					// arguments for request of categories
-					$args = array(
-						'hide_empty' => 0,
-					); 
-					
-					$article_cats = get_categories( $args );
-
-					foreach ( $article_cats as $acat ) {
-					
-						$checked = ( in_array( $acat->term_id, $wCats) ) ? ' checked="checked"' : '';
-						
-						echo '<br /><input type="checkbox" name="wCats[]" tabindex="8" value="' . $acat->term_id . '"' . $checked . '> ' . $acat->name;
-					}
-					
-					?>
-					
-				</fieldset>
-
-				<fieldset>
-					<label for="wTags"><?php  trucollector_form_item_tags() ?></label>
-					<p><?php  trucollector_form_item_tags_prompt() ?></p>
-					
-					<input type="text" name="wTags" id="wTags" value="<?php echo $wTags; ?>" tabindex="9"  />
-				</fieldset>
-
-
-				<fieldset>
-						<label for="wNotes"><?php trucollector_form_item_editor_notes() ?></label>						
-						<p><?php trucollector_form_item_editor_notes_prompt() ?></p>
-						
-						<textarea name="wNotes" id="wNotes" rows="10"  tabindex="9"><?php echo stripslashes( $wNotes );?></textarea>
-				</fieldset>
-
-			
-				<fieldset>
-								
+				<?php if (trucollector_option('show_cats') ):?>
 				
-				<?php  wp_nonce_field( 'trucollector_form_make', 'trucollector_form_make_submitted' ); ?>
+					<fieldset  id="theCats">
+						<label for="wCats"><?php trucollector_form_item_categories() ?></label>
+						<p><?php trucollector_form_item_categories_prompt() ?></p>
+						<?php 
+					
+						// arguments for request of categories
+						$args = array(
+							'hide_empty' => 0,
+						); 
+					
+						$article_cats = get_categories( $args );
 
-				<input type="submit" value="Share This Item" id="makeit" name="makeit" tabindex="12">
+						foreach ( $article_cats as $acat ) {
+					
+							$checked = ( in_array( $acat->term_id, $wCats) ) ? ' checked="checked"' : '';
+						
+							echo '<br /><input type="checkbox" name="wCats[]" tabindex="8" value="' . $acat->term_id . '"' . $checked . '> ' . $acat->name;
+						}
+					
+						?>
+					
+					</fieldset>
+				
+				<?php endif?>
+				
+				
+				<?php if (trucollector_option('show_cats') ):?>
+					<fieldset  id="theTags">
+						<label for="wTags"><?php  trucollector_form_item_tags() ?></label>
+						<p><?php  trucollector_form_item_tags_prompt() ?></p>
+					
+						<input type="text" name="wTags" id="wTags" value="<?php echo $wTags; ?>" tabindex="9"  />
+					</fieldset>
+				<?php endif?>
+				
+				
+				
+				<?php if (trucollector_option('show_notes') ):?>
+					<fieldset  id="theNotes">
+							<label for="wNotes"><?php trucollector_form_item_editor_notes() ?></label>						
+							<p><?php trucollector_form_item_editor_notes_prompt() ?></p>
+						
+							<textarea name="wNotes" id="wNotes" rows="10"  tabindex="9"><?php echo stripslashes( $wNotes );?></textarea>
+					</fieldset>
+				<?php endif?>
+			
+				<fieldset>			
+				
+					<?php  wp_nonce_field( 'trucollector_form_make', 'trucollector_form_make_submitted' ); ?>
+
+					<input type="submit" value="Share This Item" id="makeit" name="makeit" tabindex="12">
 				</fieldset>
 			
 						
@@ -394,7 +402,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 		
 	<?php endwhile; else: ?>
 	
-		<p><?php _e("We couldn't find any posts that matched your query. Please try again.", "fukasawa"); ?></p>
+		<p><?php _e("We couldn't find the content. Please try again.", "fukasawa"); ?></p>
 
 	<?php endif; ?>
 
