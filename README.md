@@ -24,6 +24,7 @@ You can even enable an address that allows people to publish directly to your co
 ### See It In Action
 
 * [Animal Body Plans](http://bio2290.trubox.ca/) (for Biology 2290 at TRU)
+* [Bingobones](http://bingobones.com/) Skulls and their Stories from some fun at the Open Education 2018 projecr
 * [Brand Storytelling](https://jmc3353.adamcroom.com/brandstorytelling/) Ad Copy Layout, University of Oklahoma
 * [The Compendium of Bothersome Beasties](http://creditcontinue.coventry.domains/beasties/) from Coventry University is a tool for self-reflection and formative assessment.
 * [CogDogRoo Image Collector](https://cog.dog/roo/collector/) for Alan Levine's Nov 2017 Workshops in Victoria, Australia
