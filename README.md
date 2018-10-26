@@ -219,7 +219,25 @@ which will produce the hyperlink like http://www.themostamazingwebsiteontheinter
 
 ## Add Public Ratings
 
-Installing the [WP-Ratings Plugin](https://wordpress.org/plugins/wp-postratings/) enables public star (or other scale) ratings on items from the front page, archives, and single items. 
+Installing the [WP-Ratings Plugin](https://wordpress.org/plugins/wp-postratings/) enables public star (or other scale) ratings on items from the front page, archives, and single items. Visitors can rate content using a variety of ratings (1-5 stars, thumbs up/down, etc).
+
+![](images/with-ratings.jpg)
+
+See it in action on the SPLOT demo site [front page](http://splot.ca/collector/) or [single item](http://splot.ca/collector/393/).
+
+## Tiled Displays 
+
+Install the [WP-Tiles plugin](https://wordpress.org/plugins/wp-tiles/) to create alternative views of your collections as a tiled gallery. The plugin provides  way to create a variety of grid styles, and can be added to a Page in your site using a shortcode. This can even be set to be the FRONT page of your site using **Settings** -> **Reading** in your WordPress dashboard as was down for the [#OWLTEH18 Conference Photos site](https://www.conf.owlteh.org/photos/):
+
+
+![](images/mural-owlteh18.jpg)
+
+Or see examples as internal pages from the [SPLOT demo site](http://splot.ca/collector/mural/) or the [Mural UDG project Accumulador site](https://muraludg.org/acumulador/mural/).
+
+Learn more about using this plugin https://cogdogblog.com/2018/01/tiling-splots/
+
+
+
 
 ## Fix Rotated Mobile Phone Photos
 
