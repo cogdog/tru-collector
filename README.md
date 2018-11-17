@@ -193,6 +193,8 @@ This page (see [example](http://splot.ca/collector/licensed/)) provides links to
 
 Use the page to find links to the ones you wish to use and add to your site's menus or widgets. If the links do not work, you may have to go to **Settings** -- **Permalinks** and just click save to regenerate the settings.
 
+For extra flexibility there is a `[licenses]` shortcode that can be used in a widget or any page to display the same index list in a sidebar. By default, it lists only licenses used (e.g. it skips licenses with zero uses); to show all licenses, use the code `[licenses show="all"]`.
+
 ## Updating the Theme
 
 If you have ftp/sftp access to your site (or this can be done in a cpanel file manager), simply upload the new theme files to the `wp-content/themes` directory that includes the older version theme. 
@@ -268,6 +270,8 @@ Go collect stuff!
 ## Relatively New Features
 
 
+* **Preview Option** on collect form allows reviewing content in overlay preview before submitting.
+* **By Licenses Shortcode** useful for putting an indexed list of items by licenses into widget or any page.
 * **New Login Code** removes the need to copy the collector user's password to the theme options. The special user account is closed after their item is uploaded. Also, there are new admin notices to activate or install the two recommended plugins
 * **Enabled for WP-Ratings** With the Wp-Ratings Plugin installed, you can have front page and single item ratings for items
 * **Customizer Editor for Upload Form** All field labels and instructions can now be modified via the customizer
