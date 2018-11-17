@@ -270,6 +270,9 @@ Go collect stuff!
 ## Relatively New Features
 
 
+[![SPLOT Previews](http://img.youtube.com/vi/6trhgkbt7hA/0.jpg)](https://www.youtube.com/watch?v=6trhgkbt7hA "SPLOT Previews")
+
+
 * **Preview Option** on collect form allows reviewing content in overlay preview before submitting.
 * **By Licenses Shortcode** useful for putting an indexed list of items by licenses into widget or any page.
 * **New Login Code** removes the need to copy the collector user's password to the theme options. The special user account is closed after their item is uploaded. Also, there are new admin notices to activate or install the two recommended plugins
