@@ -25,8 +25,6 @@ if ( isset( $wp_query->query_vars['flavor'] ) ) {
 
 	<?php if ($license_flavor == 'none') :?>
 	
-	
-	
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>				
 
 			<div <?php post_class('post single'); ?>>
@@ -95,35 +93,35 @@ if ( isset( $wp_query->query_vars['flavor'] ) ) {
 
 		<?php endif; ?>
 
-	<div class="clear"></div>		
+	<div class="clear"></div>	
+		
 	<?php else:?>
 	
 		<?php
-$args = array(
-	'post_type'  => 'product',
-	'meta_query' => array(
-		'relation' => 'OR',
-		array(
-			'key'     => 'color',
-			'value'   => 'orange',
-			'compare' => '=',
-		),
-                array(
-                        'relation' => 'AND',
-                        array(
-                                'key' => 'color',
-                                'value' => 'red',
-                                'compare' => '=',
-                        ),
-                        array(
-                                'key' => 'size',
-                                'value' => 'small',
-                                'compare' => '=',
-                        ),
-		),
-	),
-);		
-		
+			$args = array(
+				'post_type'  => 'product',
+				'meta_query' => array(
+					'relation' => 'OR',
+					array(
+						'key'     => 'color',
+						'value'   => 'orange',
+						'compare' => '=',
+					),
+							array(
+									'relation' => 'AND',
+									array(
+											'key' => 'color',
+											'value' => 'red',
+											'compare' => '=',
+									),
+									array(
+											'key' => 'size',
+											'value' => 'small',
+											'compare' => '=',
+									),
+					),
+				),
+			);		
 		
 			if ( $license_flavor == 'u' ) {
 				// cover case where older sites used '?' for unknown
@@ -161,7 +159,7 @@ $args = array(
 			
 		<div class="section-inner">
 
-			<h4><?php echo $my_query->found_posts?> Items Licensed <?php echo $all_licenses[$license_flavor]; ?> 
+			<h4><?php echo $my_query->found_posts?> Items Licensed <?php echo $all_licenses[$license_flavor]; ?> &bull;  <a href="<?php echo get_permalink($page_id);?>">All By Licenses</a>
 			
 			<?php
 			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;

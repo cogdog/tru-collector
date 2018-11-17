@@ -75,7 +75,7 @@ $wExtraNotes = get_post_meta( $post->ID, 'extra_notes', 1 );
 			    	<?php if ( $wAuthor == '')  : // empty meta data for auhor means post by email ?>
 			    	
 			    	<?php
-			    	// strip the img tags out of content for stuff sent my email
+			    	// strip the img tags out of content for stuff sent by email
 						$content = get_the_content();
 						$content = preg_replace("/<img[^>]+\>/i", "", $content); 		  
 						$content = apply_filters('the_content', $content);
@@ -158,10 +158,10 @@ $wExtraNotes = get_post_meta( $post->ID, 'extra_notes', 1 );
 					<ul>
 						<li class="post-date"><a href="<?php the_permalink(); ?>"><?php the_date(get_option('date_format')); ?></a></li>
 						<?php if (  trucollector_option('show_cats') AND has_category()) : ?>
-							<li class="post-categories"><?php _e('In','fukasawa'); ?> <?php the_category(', '); ?></li>
+							<li class="post-categories"><?php _e('In:','fukasawa'); ?> <?php the_category(', '); ?></li>
 						<?php endif; ?>
 						<?php if ( trucollector_option('show_tags') AND  has_tag() ) : ?>
-							<li class="post-tags"><?php the_tags('', ' '); ?></li>
+							<li class="post-tags"> <?php the_tags('Tagged: ', ', '); ?></li>
 						<?php endif; ?>
 					</ul>
 					

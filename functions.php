@@ -96,20 +96,32 @@ function trucollector_setup () {
 // we need to load the options this before the auto login so we can use the pass
 add_action( 'after_setup_theme', 'trucollector_load_theme_options', 9 );
 
-
-// make a menu like to see submitted items, they are drafts
-// -- h/t the Codex http://codex.wordpress.org/Function_Reference/add_submenu_page
+// change the name of admin menu items from "New Posts"
+// -- h/t https://wordpress.stackexchange.com/a/9224/14945
+// and of course the Codex http://codex.wordpress.org/Function_Reference/add_submenu_page
 
 add_action( 'admin_menu', 'trucollector_change_post_label' );
+add_action( 'init', 'trucollector_change_post_object' );
 
-function trucollector_change_post_label() { 
-    add_submenu_page('edit.php', 'Collectables for Review', 'Collectables for Review', 'edit_pages', 'edit.php?post_status=draft&post_type=post' ); 
+// turn 'em from Posts to Collectables
+function trucollector_change_post_label() {
+    global $menu;
+    global $submenu;
+    
+    $thing_name = 'Collectable';
+    
+    $menu[5][0] = $thing_name . 's';
+    $submenu['edit.php'][5][0] = 'All ' . $thing_name . 's';
+    $submenu['edit.php'][10][0] = 'Add ' . $thing_name;
+    $submenu['edit.php'][15][0] = $thing_name .' Categories';
+    $submenu['edit.php'][16][0] = $thing_name .' Tags';
+    echo '';
+    
+    
+    add_submenu_page('edit.php', 'Collectable for Review', 'Collectable for Review', 'edit_pages', 'edit.php?post_status=draft&post_type=post' ); 
 }
 
 // change the prompts and stuff for posts to be relevant to collectables
-
-add_action( 'init', 'trucollector_change_post_object' );
-
 function trucollector_change_post_object() {
 
     $thing_name = 'Collectable';
@@ -127,14 +139,12 @@ function trucollector_change_post_object() {
     $labels->not_found = 'No ' . $thing_name . ' found';
     $labels->not_found_in_trash = 'No ' .  $thing_name . ' found in Trash';
     $labels->all_items = 'All ' . $thing_name;
-    $labels->menu_name = $thing_name . 's';
+    $labels->menu_name =  $thing_name;
     $labels->name_admin_bar =  $thing_name;
 }
 
 // edit the post editing admin messages to reflect use of Collectables
 // h/t http://www.joanmiquelviade.com/how-to-change-the-wordpress-post-updated-messages-of-the-edit-screen/
-
-add_filter( 'post_updated_messages', 'trucollector_post_updated_messages', 10, 1 );
 
 function trucollector_post_updated_messages ( $msg ) {
     $msg[ 'post' ] = array (
@@ -155,21 +165,9 @@ function trucollector_post_updated_messages ( $msg ) {
     return $msg;
 }
 
-// options for post order on front page
-add_action( 'pre_get_posts', 'trucollector_order_items' );
+add_filter( 'post_updated_messages', 'trucollector_post_updated_messages', 10, 1 );
 
-function trucollector_order_items( $query ) {
-
-	if ( ( $query->is_home() && $query->is_main_query()) OR $query->is_archive() OR $query->is_search() ) {
-	
-		$query->set( 'orderby', trucollector_option('sort_by')  );
-		$query->set( 'order', trucollector_option('sort_direction') );
-		
-	}
-}
-
-
-// ----- modify the comment form
+// modify the comment form
 add_filter('comment_form_defaults', 'trucollector_comment_mod');
 
 function trucollector_comment_mod( $defaults ) {
@@ -197,6 +195,21 @@ function trucollector_rewrite_rules() {
 	if ( $license_page ) {
 		add_rewrite_rule( '^licensed/([^/]*)/?',  'index.php?page_id=' . $license_page->ID . '&flavor=$matches[1]','top');	
 	}	
+}
+
+
+
+// options for post order on front page
+add_action( 'pre_get_posts', 'trucollector_order_items' );
+
+function trucollector_order_items( $query ) {
+
+	if ( ( $query->is_home() && $query->is_main_query()) OR $query->is_archive() OR $query->is_search() ) {
+	
+		$query->set( 'orderby', trucollector_option('sort_by')  );
+		$query->set( 'order', trucollector_option('sort_direction') );
+		
+	}
 }
 
 function trucollector_get_licences() {
@@ -326,6 +339,44 @@ function trucollector_hyperlink( $atts )  {
 }
 
 
+// shortcode for generating a list of content by license, useful for widgets
+
+add_shortcode("licensed", "trucollector_license_list");
+
+function trucollector_license_list( $atts )  {
+
+	if ( trucollector_option('use_license') > 0 ) {
+	
+		extract(shortcode_atts( array( "show" => 'used' ), $atts ));
+
+		// all allowable licenses for this theme
+		$all_licenses = trucollector_get_licences();
+		
+		$output = '<ul>';
+	
+		foreach ( $all_licenses as $abbrev => $title) {
+		
+			// get number of items with this license
+			$lcount = trucollector_get_license_count( $abbrev ); 
+			
+			// show if we have some
+			if ( $lcount > 0 or $show == 'all'  ) {
+				$output .=  '<li><a href="' . site_url() . '/licensed/' . $abbrev . '">' . $title . '</a> (' . $lcount . ")</li>\n";
+			}
+		}
+
+		$output .=  '</ul>';
+		
+	} else {
+	
+		$output = 'The current settings for this site are to not use licenses; the site administrator can enable this feature from the <code>TRU Collector Options.</code>';
+	}
+
+	return $output;
+}
+
+
+
 # -----------------------------------------------------------------
 # Options Panel for Admin
 # -----------------------------------------------------------------
@@ -363,7 +414,6 @@ function trucollector_load_theme_options() {
 	if ( file_exists( get_stylesheet_directory()  . '/class.trucollector-theme-options.php' ) ) {
 		include_once( get_stylesheet_directory()  . '/class.trucollector-theme-options.php' );		
 	}
-	
 	
 }
 
@@ -893,6 +943,54 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		    )
 	    )
 	);
+
+
+	// setting for submit buttons label
+	$wp_customize->add_setting( 'item_submit_buttons', array(
+		 'default'           => __( 'Share It', 'fukasawa'),
+		 'type' => 'theme_mod',
+		 'sanitize_callback' => 'sanitize_text'
+	) );
+	
+	// Control for editor notes  label
+	$wp_customize->add_control( new WP_Customize_Control(
+	    $wp_customize,
+		'item_submit_buttons',
+		    array(
+		        'label'    => __( 'Preview and Share Buttons', 'fukasawa'),
+		        'priority' => 38,
+		        'description' => __( '' ),
+		        'section'  => 'collect_form',
+		        'settings' => 'item_submit_buttons',
+		        'type'     => 'text'
+		    )
+	    )
+	);
+
+	// setting for submit buttons prompt
+	$wp_customize->add_setting( 'item_submit_buttons_prompt', array(
+		 'default'           => __( 'You can preview how your item will look when published; when ready, share it to this collection.', 'fukasawa'),
+		 'type' => 'theme_mod',
+		 'sanitize_callback' => 'sanitize_text'
+	) );
+	
+	// Control for editor notes prompt
+	$wp_customize->add_control( new WP_Customize_Control(
+	    $wp_customize,
+		'item_submit_buttons_prompt',
+		    array(
+		        'label'    => __( 'Preview and Share Buttons Prompt', 'fukasawa'),
+		        'priority' => 39,
+		        'description' => __( '' ),
+		        'section'  => 'collect_form',
+		        'settings' => 'item_submit_buttons_prompt',
+		        'type'     => 'textarea'
+		    )
+	    )
+	);
+
+
+
 			
  	// Sanitize text
 	function sanitize_text( $text ) {
@@ -1037,7 +1135,6 @@ function trucollector_form_item_tags_prompt() {
 	 }
 }
 
-
 function trucollector_form_item_editor_notes() {
 	 if ( get_theme_mod( 'item_editor_notes') != "" ) {
 	 	echo get_theme_mod( 'item_editor_notes');
@@ -1053,6 +1150,24 @@ function trucollector_form_item_editor_notes_prompt() {
 	 	echo 'Add any notes or messages to send to the site manager; this will not be part of what is published. If you wish to be contacted, leave an email address or twitter handle.';
 	 }
 }
+
+
+function trucollector_form_item_submit_buttons() {
+	 if ( get_theme_mod( 'item_submit_buttons') != "" ) {
+	 	echo get_theme_mod( 'item_submit_buttons');
+	 }	else {
+	 	echo 'Share It';
+	 }
+}
+
+function trucollector_form_item_submit_buttons_prompt() {
+	 if ( get_theme_mod( 'item_submit_buttons_prompt') != "" ) {
+	 	echo get_theme_mod( 'item_submit_buttons_prompt');
+	 }	else {
+	 	echo 'You can preview how your item will look when published; when ready, share it to this collection.';
+	 }
+}
+
 
 
 
@@ -1093,9 +1208,34 @@ function add_trucollector_scripts() {
 		wp_register_script( 'jquery.collector' , get_stylesheet_directory_uri() . '/js/jquery.collector.js', null , '1.0', TRUE );
 		wp_enqueue_script( 'jquery.collector' );
 		
+		
+		
+		// add scripts for fancybox (used for previews of collected items) 
+		//-- h/t http://code.tutsplus.com/tutorials/add-a-responsive-lightbox-to-your-wordpress-theme--wp-28100
+		wp_register_script( 'fancybox', get_stylesheet_directory_uri() . '/includes/lightbox/js/jquery.fancybox.pack.js', array( 'jquery' ), false, true );
+		wp_enqueue_script( 'fancybox' );
+
+		// Lightbox formatting for preview screated with rich text editor
+		wp_register_script( 'lightbox_preview', get_stylesheet_directory_uri() . '/includes/lightbox/js/lightbox_preview.js', array( 'fancybox' ), '1.1', null , '1.0', TRUE );
+		wp_enqueue_script( 'lightbox_preview' );
+	
+		// fancybox styles
+		wp_register_style( 'lightbox-style', get_stylesheet_directory_uri() . '/includes/lightbox/css/jquery.fancybox.css' );
+		wp_enqueue_style( 'lightbox-style' );	
+		
+		// used to display formatted dates
+		wp_register_script( 'moment' , get_stylesheet_directory_uri() . '/js/moment.js', null, '1.0', TRUE );
+		wp_enqueue_script( 'moment' );
+	
 	}
 
 }
+
+
+
+
+
+
 
 # -----------------------------------------------------------------
 # Useful spanners and wrenches
@@ -1227,7 +1367,7 @@ function trucollector_randy( $data ) {
 }
 
 // Load plugin requirements file to display admin notices.
-require get_stylesheet_directory() . '/inc/splot-plugins.php';
+require get_stylesheet_directory() . '/includes/splot-plugins.php';
 
 
 ?>

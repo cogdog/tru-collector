@@ -42,7 +42,10 @@ jQuery(document).ready(function() {
     		  
 		  // insert the base url into the hidden field for the option value
 		  jQuery("#wFeatureImage").val(attachment.id);  
-		  		  
+		  
+		  // insert the post image URL in hidden element to be used for previews, strip thumbnail from url (lazy)
+		  jQuery("#wFeatureImageUrl").val(attachment.sizes.thumbnail.url.replace("-150x150", "") );  
+		    		  
 		  // update the thumbnail preview
 		  jQuery("#featurethumb").attr("src", attachment.sizes.thumbnail.url);  
 		  

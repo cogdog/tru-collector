@@ -145,7 +145,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 				$subject = 'New item submitted to ' . get_bloginfo();
 		
 				if ( trucollector_option('new_item_status') == 'publish' ) {
-					$message = 'An item <strong>"' . $wTitle . '"</strong> shared by <strong>' . $wAuthor . '</strong> has been published to ' . get_bloginfo() . '. You can <a href="'. site_url() . '/?p=' . $post_id  . '">see view it now</a>';
+					$message = 'An item <strong>"' . $wTitle . '"</strong> shared by <strong>' . $wAuthor . '</strong> has been published to ' . get_bloginfo() . '. You can <a href="'. site_url() . '/?p=' . $post_id  . '">view it now</a>';
 				
 
 				} else {
@@ -235,6 +235,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 					
 					<div class="uploader">
 						<input id="wFeatureImage" name="wFeatureImage" type="hidden" value="<?php echo $wFeatureImageID?>" />
+						<input id="wFeatureImageUrl" type="hidden" value="<?php echo get_stylesheet_directory_uri()?>/images/splot-test-drive.jpg">
 
 						<?php if ( $wFeatureImageID ):
 							 echo wp_get_attachment_image( $wFeatureImageID, 'thumbnail' );
@@ -242,7 +243,8 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 						
 						<?php else:?>
 						
-						<img src="https://placehold.it/150x150" alt="uploaded image" id="featurethumb" />
+							<img src="https://placehold.it/150x150" alt="uploaded image" id="featurethumb" />
+						
 						
 						<?php endif?>
 						
@@ -277,15 +279,21 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 							<p><?php trucollector_form_item_description_prompt()?> </p>
 							
 							<?php if (  trucollector_option('caption_field') == 's'):?>	
+							
+							<input id="wRichText" type="hidden" value="0">
+							
 							<textarea name="wText" id="wText" rows="4"  tabindex="4"><?php echo stripslashes( $wText );?></textarea><p style="font-size:0.8rem">To create hyperlinks use this shortcode<br /><code>[link url="http://www.themostamazingwebsiteontheinternet.com/" text="the coolest site on the internet"]</code><br />If you omit <code>text=</code> the URL will be the link text.</p>
 							
 							<?php else:?>
+							
+							
+							<input id="wRichText" type="hidden" value="1">
 							
 							<?php
 							// set up for inserting the WP post editor
 							$settings = array( 'textarea_name' => 'wText', 'editor_height' => '300',  'tabindex'  => "5", 'media_buttons' => false);
 
-							wp_editor(  stripslashes( $wText ), 'wtext', $settings );
+							wp_editor(  stripslashes( $wText ), 'wTextHTML', $settings );
 							
 							?>
 							
@@ -332,7 +340,12 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 					</fieldset>					
 
 				<?php endif?>	
-
+				
+				
+				<?php if ( trucollector_option( 'show_attribution' ) == 1 ): ?>
+					<input id="wAttributionPreview" type="hidden" value="1">
+				<?php endif?>
+				
 				
 				<?php if (trucollector_option('show_cats') ):?>
 				
@@ -352,7 +365,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 					
 							$checked = ( in_array( $acat->term_id, $wCats) ) ? ' checked="checked"' : '';
 						
-							echo '<br /><input type="checkbox" name="wCats[]" tabindex="8" value="' . $acat->term_id . '"' . $checked . '> ' . $acat->name;
+							echo '<label><input type="checkbox" name="wCats[]" tabindex="8" value="' . $acat->term_id . '"' . $checked . '> ' . $acat->name . '</label><br />';
 						}
 					
 						?>
@@ -382,11 +395,18 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 					</fieldset>
 				<?php endif?>
 			
-				<fieldset>			
-				
+				<fieldset id="theButtons">			
+					<label for="theButtons"><?php trucollector_form_item_submit_buttons() ?></label>	
 					<?php  wp_nonce_field( 'trucollector_form_make', 'trucollector_form_make_submitted' ); ?>
-
-					<input type="submit" value="Share This Item" id="makeit" name="makeit" tabindex="12">
+					
+					<p><?php trucollector_form_item_submit_buttons_prompt() ?></p>
+					
+					
+					
+					<a href="#preview" class="fancybox" title="Preview of your item. Close this overlay, make any changes, than click 'Share It'">Preview First</a>
+					
+					<input type="submit" value="Share Now" id="makeit" name="makeit" tabindex="12">
+					
 				</fieldset>
 			
 						
