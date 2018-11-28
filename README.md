@@ -183,6 +183,12 @@ And then you will see a series of fields to edit for all form field elements. Fo
 
 ![](images/customizer-edit-form.jpg)
 
+## Customize the collection
+
+A new section for the TRU Collector Customizer **Collection Info** allows you to specify the name for the kinds of things in your collection as it is displayed on the sidebar below the site name.
+
+![](images/customize-collection-info.jpg)
+
 ## Browse by Licenses
 
 As of version 0.5.5 The TRU Collector provides links that display archives of content that have the same reuse license (if the feature is activated via the TRU Collector options). Just make sure there is a Wordpress Page with the url / slug `/licensed` This page is created automatically on new sites, or simply by activating the theme again (activate the parent Fukasawa, then activate TRU Collector again).
@@ -273,6 +279,7 @@ Go collect stuff!
 [![SPLOT Previews](http://img.youtube.com/vi/6trhgkbt7hA/0.jpg)](https://www.youtube.com/watch?v=6trhgkbt7hA "SPLOT Previews")
 
 
+* **Name the items** New customizer panel to create the name of the item/items in the collection displayed below the site name (replacing generic "item/items")
 * **Preview Option** on collect form allows reviewing content in overlay preview before submitting.
 * **By Licenses Shortcode** useful for putting an indexed list of items by licenses into widget or any page.
 * **New Login Code** removes the need to copy the collector user's password to the theme options. The special user account is closed after their item is uploaded. Also, there are new admin notices to activate or install the two recommended plugins

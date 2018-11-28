@@ -129,10 +129,16 @@ $wExtraNotes = get_post_meta( $post->ID, 'extra_notes', 1 );
 			    	</p>
 			    	<?php endif;?>
 			    	
+			    	
+			    	<?php if  ( trucollector_option( 'show_link' ) != 0 ) :?>
+			    	
+			    	
 			    	<form>
 			    	<label for="link">Link to image:</label>
 						<input type="text" class="form-control" id="link" value="<?php $iurl = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' ); echo $iurl[0];  ?>" onClick="this.select();" />
-			    	</form>					
+			    	</form>		
+			    	
+			    	<?php endif;?>			
 					
 			    
 			    </div> <!-- /post-content -->
@@ -157,10 +163,10 @@ $wExtraNotes = get_post_meta( $post->ID, 'extra_notes', 1 );
 				
 					<ul>
 						<li class="post-date"><a href="<?php the_permalink(); ?>"><?php the_date(get_option('date_format')); ?></a></li>
-						<?php if (  trucollector_option('show_cats') AND has_category()) : ?>
+						<?php if (  trucollector_option('show_cats') != 0 AND has_category()) : ?>
 							<li class="post-categories"><?php _e('In:','fukasawa'); ?> <?php the_category(', '); ?></li>
 						<?php endif; ?>
-						<?php if ( trucollector_option('show_tags') AND  has_tag() ) : ?>
+						<?php if ( trucollector_option('show_tags') != 0 AND  has_tag() ) : ?>
 							<li class="post-tags"> <?php the_tags('Tagged: ', ', '); ?></li>
 						<?php endif; ?>
 					</ul>

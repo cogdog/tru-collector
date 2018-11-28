@@ -58,7 +58,12 @@
 				 
 			<?php endif; ?>
 			
-			<div class="siteblurb"><strong><?php echo wp_count_posts()->publish; ?></strong> total items collected</div>
+			<div class="siteblurb"><strong><?php $item_count = wp_count_posts()->publish; echo $item_count ?></strong> total <?php 
+			if ( $item_count === 1 ) {  
+				trucollector_collection_single_item();
+			} else {
+				trucollector_collection_plural_item();
+			}?>  collected</div>
 			
 			<a class="nav-toggle hidden" title="<?php _e('Click to view the navigation','fukasawa') ?>" href="#">
 			

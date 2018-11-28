@@ -255,6 +255,18 @@ class trucollector_Theme_Options {
 					)
 		);
 
+		$this->settings['show_link'] = array(
+			'section' => 'general',
+			'title'   => __( 'Show URL for media item?'),
+			'desc'    => '',
+			'type'    => 'radio',
+			'std'     => '1',
+			'choices' => array (
+							'0' => 'No',
+							'1' => 'Yes'
+					)
+		);
+		
 		$this->settings['use_license'] = array(
 			'section' => 'general',
 			'title'   => __( 'Use rights license on submission form and item display?'),

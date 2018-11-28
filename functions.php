@@ -519,12 +519,65 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		'description'    => __( 'Customizer Stuff', 'fukasawa'),
 	) );
 
+	// Add section for the general stuff
+	$wp_customize->add_section( 'collections' , array(
+		'title'    => __('Collection Info','fukasawa'),
+		'panel'    => 'customize_collector',
+		'priority' => 10
+	) );
+	
 	// Add section for the collect form
 	$wp_customize->add_section( 'collect_form' , array(
 		'title'    => __('Collect Form','fukasawa'),
 		'panel'    => 'customize_collector',
-		'priority' => 10
+		'priority' => 12
 	) );
+	
+	// Add setting for singular item
+	$wp_customize->add_setting( 'singular_item', array(
+		 'default'  => __( 'item', 'fukasawa'),
+		 'type' => 'theme_mod',
+		 'sanitize_callback' => 'sanitize_text'
+	) );
+
+	// Control fortitle label
+	$wp_customize->add_control( new WP_Customize_Control(
+	    $wp_customize,
+		'item_singular',
+		    array(
+		        'label'    => __( 'Singular Item', 'fukasawa'),
+		        'priority' => 11,
+		        'description' => __( 'The name for one thing in this collection' ),
+		        'section'  => 'collections',
+		        'settings' => 'singular_item',
+		        'type'     => 'text'
+		    )
+	    )
+	);
+
+	// Add setting for singular item
+	$wp_customize->add_setting( 'plural_item', array(
+		 'default'  => __( 'items', 'fukasawa'),
+		 'type' => 'theme_mod',
+		 'sanitize_callback' => 'sanitize_text'
+	) );
+
+	// Control fortitle label
+	$wp_customize->add_control( new WP_Customize_Control(
+	    $wp_customize,
+		'plural_item',
+		    array(
+		        'label'    => __( 'Plural Items', 'fukasawa'),
+		        'priority' => 11,
+		        'description' => __( 'The name for more than one thing in this collection' ),
+		        'section'  => 'collections',
+		        'settings' => 'plural_item',
+		        'type'     => 'text'
+		    )
+	    )
+	);
+	
+	
 	
 	// Add setting for default prompt
 	$wp_customize->add_setting( 'default_prompt', array(
@@ -532,6 +585,15 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
+
+
+	// Add setting for singular item
+	$wp_customize->add_setting( 'default_prompt', array(
+		 'default'           => __( '', 'fukasawa'),
+		 'type' => 'theme_mod',
+		 'sanitize_callback' => 'sanitize_text'
+	) );
+
 	
 	// Add control for default prompt
 	$wp_customize->add_control( new WP_Customize_Control(
@@ -555,7 +617,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		 'sanitize_callback' => 'sanitize_text'
 	) );
 	
-	// Control fortitle label
+	// Control for title label
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
 		'item_title',
@@ -996,6 +1058,22 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 	function sanitize_text( $text ) {
 	    return sanitize_text_field( $text );
 	}
+}
+
+function trucollector_collection_single_item() {
+	 if ( get_theme_mod( 'singular_item') != "" ) {
+	 	echo get_theme_mod( 'singular_item');
+	 }	else {
+	 	echo 'item';
+	 }
+}
+
+function trucollector_collection_plural_item() {
+	 if ( get_theme_mod( 'plural_item') != "" ) {
+	 	echo get_theme_mod( 'plural_item');
+	 }	else {
+	 	echo 'items';
+	 }
 }
 
 
