@@ -6,8 +6,6 @@
 		
 		<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
-				
-		<?php if ( is_singular() ) wp_enqueue_script( "comment-reply" ); ?>
 		 
 		<?php wp_head(); ?>
 	
@@ -19,43 +17,48 @@
 	
 			<ul class="mobile-menu">
 						
-				<?php if ( has_nav_menu( 'primary' ) ) {
+				<?php 
+				if ( has_nav_menu( 'primary' ) ) {
+
+					$nav_args = array( 
+						'container' 		=> '', 
+						'items_wrap' 		=> '%3$s',
+						'theme_location' 	=> 'primary'
+					);
 																	
-					wp_nav_menu( array( 
-					
-						'container' => '', 
-						'items_wrap' => '%3$s',
-						'theme_location' => 'primary'
-													
-					) ); } else {
-				
+					wp_nav_menu( $nav_args );
+
+				} else {
+
 					echo splot_default_menu();
 					
-					
-				} ?>
+				} 
+				?>
 				
 			 </ul>
 		 
-		</div> <!-- /mobile-navigation -->
+		</div><!-- .mobile-navigation -->
 	
 		<div class="sidebar">
 		
 			<?php if ( get_theme_mod( 'fukasawa_logo' ) ) : ?>
 			
-		        <a class="blog-logo" href='<?php echo esc_url( site_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'title' ) ); ?> &mdash; <?php echo esc_attr( get_bloginfo( 'description' ) ); ?>' rel='home'>
+		        <a class="blog-logo" href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'title' ) ); ?> &mdash; <?php echo esc_attr( get_bloginfo( 'description' ) ); ?>' rel='home'>
 		        	<img src='<?php echo esc_url( get_theme_mod( 'fukasawa_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'title' ) ); ?>'>
 		        </a>
-		        
-		       
 		
-			<?php elseif ( get_bloginfo( 'description' ) || get_bloginfo( 'title' ) ) : ?>
-		
-				<h1 class="blog-title">
-					<a href="<?php echo esc_url( site_url() ); ?>" title="<?php echo esc_attr( get_bloginfo( 'title' ) ); ?> &mdash; <?php echo esc_attr( get_bloginfo( 'description' ) ); ?>" rel="home"><?php echo esc_attr( get_bloginfo( 'title' ) ); ?></a>
-				</h1>
+			<?php elseif ( get_bloginfo( 'description' ) || get_bloginfo( 'title' ) ) : 
 				
-				 <div class="siteblurb"><?php echo esc_attr( get_bloginfo( 'description' ) ); ?></div>
-				 
+				// h1 on singular, h2 elsewhere
+				$title_type = is_singular() ? 'h2' : 'h1'; ?>
+		
+				<<?php echo $title_type; ?> class="blog-title">
+					<a href="<?php echo esc_url( home_url() ); ?>" title="<?php echo esc_attr( get_bloginfo( 'title' ) ); ?> &mdash; <?php echo esc_attr( get_bloginfo( 'description' ) ); ?>" rel="home"><?php echo esc_attr( get_bloginfo( 'title' ) ); ?></a>
+				</<?php echo $title_type; ?>>
+				
+				
+				<div class="siteblurb"><?php echo esc_attr( get_bloginfo( 'description' ) ); ?></div>
+				
 			<?php endif; ?>
 			
 			<div class="siteblurb"><strong><?php $item_count = wp_count_posts()->publish; echo $item_count ?></strong> total <?php 
@@ -65,37 +68,26 @@
 				trucollector_collection_plural_item();
 			}?>  collected</div>
 			
-			<a class="nav-toggle hidden" title="<?php _e('Click to view the navigation','fukasawa') ?>" href="#">
+			<button type="button" class="nav-toggle hidden" title="<?php _e( 'Click to view the navigation', 'fukasawa' ); ?>">
 			
 				<div class="bars">
-				
 					<div class="bar"></div>
 					<div class="bar"></div>
 					<div class="bar"></div>
-					
-					<div class="clear"></div>
-				
 				</div>
 				
 				<p>
-					<span class="menu"><?php _e('Menu','fukasawa') ?></span>
-					<span class="close"><?php _e('Close','fukasawa') ?></span>
+					<span class="menu"><?php _e( 'Menu', 'fukasawa' ); ?></span>
+					<span class="close"><?php _e( 'Close', 'fukasawa' ); ?></span>
 				</p>
 			
-			</a>
+			</button>
 			
-			<ul class="main-menu">
-				
-				<?php if ( has_nav_menu( 'primary' ) ) {
-																	
-					wp_nav_menu( array( 
-					
-						'container' => '', 
-						'items_wrap' => '%3$s',
-						'theme_location' => 'primary'
-													
-					) ); 
-					
+				<ul class="main-menu">
+
+					<?php 
+					if ( has_nav_menu( 'primary' ) ) {						
+						wp_nav_menu( $nav_args ); 
 					
 					// test uf primary menu location is not set	
 					} elseif ( !splot_is_menu_location_used() ) {
@@ -103,38 +95,35 @@
 					
 					// normal make menus from pages	
 					
-					
 					} else {
-				
-					wp_list_pages( array(
-					
-						'container' => '',
-						'title_li' => ''
-					
-					));
-					
-				} ?>
-				
-			 </ul>
-			 
-			 <div class="widgets">
-			 
-			 	<?php dynamic_sidebar('sidebar'); ?>
-			 
-			 </div>
-			 
-			 <div class="credits">
-			 
-			 	<p>A <a href="http://splot.ca/">SPLOT</a> on the Web: <a href="<?php echo esc_url( site_url( '/' ) ); ?>"><?php bloginfo('name'); ?></a>.</p>
-			 	<p><?php _e('Blame','fukasawa'); ?> <a href="http://cogdog.info">cogdog</a> for the <a href="https://github.com/cogdog/tru-collector">TRU Collector Theme</a>, <?php _e('based on Fukasawa  by ','fukasawa'); ?> <a href="http://www.andersnoren.se">Anders Nor&eacute;n</a>.</p>
-			 	<p>
-			 	<?php splot_the_author();?>
-				</p>
-			 				 	
-			 </div>
-			
-			 <div class="clear"></div>
+	
+						wp_list_pages( $list_pages_args );	
+					} 
+					?>
+
+				</ul>
+
+				<?php if ( is_active_sidebar( 'sidebar' ) ) : ?>
+
+					<div class="widgets">
+
+						<?php dynamic_sidebar( 'sidebar' ); ?>
+
+					</div>
+
+				<?php endif; ?>
+
+				<div class="credits">
+
+					<p>A <a href="http://splot.ca/">SPLOT</a> on the Web: <a href="<?php echo esc_url( site_url( '/' ) ); ?>"><?php bloginfo('name'); ?></a>.</p>
+					<p><?php _e('Blame','fukasawa'); ?> <a href="http://cogdog.info">cogdog</a> for the <a href="https://github.com/cogdog/tru-collector">TRU Collector Theme</a>, <?php _e('based on Fukasawa  by ','fukasawa'); ?> <a href="http://www.andersnoren.se">Anders Nor&eacute;n</a>.</p>
+					<p>
+					<?php splot_the_author();?>
+					</p>
+				</div>
+
+				<div class="clear"></div>
 							
-		</div> <!-- /sidebar -->
+		</div><!-- .sidebar -->
 	
 		<div class="wrapper" id="wrapper">

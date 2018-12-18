@@ -87,6 +87,15 @@ In this plugins settings, restrict access to **Editors and Administrators** or j
 
 (8) You might want to set up in advance some Wordpress Categories for your Collectables; in the options you will choose one as default (and for the love of all that is holy, *change the name of the Uncategorized category*!
 
+### Updating the TRU Collector Theme
+
+*Note (Dec 18, 2018) If your site's images are stacked, or it looks like there are only 1 or 2 in a collection, it's likely because of a change to the parent Fukasawa theme and or the WordPress 5.0 update that was automatically updated on your site. An update to TRU Collector version 1.5 or later will fix this issue.*
+
+If you have ftp/sftp access to your site (or this can be done in a cpanel file manager), simply upload the new theme files to the `wp-content/themes` directory that includes the older version theme. Be sure to deleter/remove file old files `archive.php` and `single.php`.
+
+For those that lack direct file upload access or maybe that idea sends shivers down the spine, upload and activate the [Easy Theme and Plugin Upgrades](https://wordpress.org/plugins/easy-theme-and-plugin-upgrades/) plugin -- this will allow you to upload a newer version of a theme as a ZIP archive, the same way you add a theme by uploading.
+
+
 ## Setting Up The Site Via TRU Collector options
 
 These instructions are a reference for the settings within the TRU Collector; if you are reading this, you got as far as installing and activating the theme. Below are basic instructions for all of the theme options, which, if this were designed well, you likely do not need me to explain, but #BecauseDocumentation here we go.

@@ -84,31 +84,41 @@ if ( 	isset( $_POST['trucollector_form_access_submitted'] )
 
 <?php get_header(); ?>
 
-<div class="content thin">		
-
-	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>				
+<div class="content thin">
+											        
+	<?php 
 	
-		<div <?php post_class('post single'); ?>>
+	if ( have_posts() ) : 
 		
+		while ( have_posts() ) : the_post(); 
+		
+			?>
+			
+			<div id="post-<?php the_ID(); ?>" <?php post_class( 'post single' ); ?>>		
+			
 			<?php if ( has_post_thumbnail() ) : ?>
 			
 				<?php $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail_size' ); $thumb_url = $thumb['0']; ?>
 		
-				<div class="featured-media">
-		
-					<?php the_post_thumbnail('post-image'); ?>
-					
-				</div> <!-- /featured-media -->
-					
-			<?php endif; ?>
+				<?php elseif ( has_post_thumbnail() ) : ?>
+						
+					<div class="featured-media">
 			
-			<div class="post-inner">
-												
-				<div class="post-header">
-																										
-					<h2 class="post-title"><?php the_title(); ?></h2>
-															
-				</div> <!-- /post-header section -->
+						<?php the_post_thumbnail( 'post-image' ); ?>
+						
+					</div><!-- .featured-media -->
+						
+				<?php endif; ?>
+
+			
+				<div class="post-inner">
+					
+					<div class="post-header">
+														
+						<?php the_title( '<h1 class="post-title">', '</h1>' ); ?>
+						
+																
+					</div><!-- .post-header -->
 				    
 			    <div class="post-content">
 			    
@@ -157,19 +167,15 @@ if ( 	isset( $_POST['trucollector_form_access_submitted'] )
 			</div> <!-- /post-inner -->
 			
 		
-		</div> <!-- /post -->
+			</div><!-- .post -->
+																
+			<?php 
+		endwhile; 
+
+	endif; 
+	
+	?>
+
+</div><!-- .content -->
 		
-	<?php endwhile; else: ?>
-	
-		<p><?php _e("We couldn't find any posts that matched your query. Please try again.", "fukasawa"); ?></p>
-
-	<?php endif; ?>
-	
-	
-	
-
-	<div class="clear"></div>
-	
-</div> <!-- /content -->
-								
 <?php get_footer(); ?>

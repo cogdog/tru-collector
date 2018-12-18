@@ -54,7 +54,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
  		$wSource = 					sanitize_text_field( stripslashes( $_POST['wSource'] ) );
  		$wNotes = 					sanitize_text_field( stripslashes( $_POST['wNotes'] ) );
  		$wFeatureImageID = 			$_POST['wFeatureImage'];
- 		if ( isset ($_POST['wAuthor'] ) ) $post_id = $_POST['post_id'];
+ 		if ( isset ($_POST['post_id'] ) ) $post_id = $_POST['post_id'];
  		$wCats = 					( isset ($_POST['wCats'] ) ) ? $_POST['wCats'] : array();
  		$wLicense = 				$_POST['wLicense'];
  		
@@ -177,23 +177,33 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 <?php get_header(); ?>
 
-<div class="content thin">		
 
-	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>				
+<div class="content thin">
+
+	<?php 
 	
-		<div <?php post_class('post single'); ?>>
+	if ( have_posts() ) : 
 		
+		while ( have_posts() ) : the_post(); 
+		
+			?>
+			
+			<div id="post-<?php the_ID(); ?>" <?php post_class( 'post single' ); ?>>		
+			
 			<?php if ( has_post_thumbnail() ) : ?>
 			
 				<?php $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail_size' ); $thumb_url = $thumb['0']; ?>
 		
-				<div class="featured-media">
-		
-					<?php the_post_thumbnail('post-image'); ?>
-					
-				</div> <!-- /featured-media -->
-					
-			<?php endif; ?>
+				<?php elseif ( has_post_thumbnail() ) : ?>
+						
+					<div class="featured-media">
+			
+						<?php the_post_thumbnail( 'post-image' ); ?>
+						
+					</div><!-- .featured-media -->
+						
+				<?php endif; ?>
+
 			
 			<div class="post-inner">
 												
@@ -418,16 +428,15 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 			</div> <!-- /post-inner -->
 			
 		
-		</div> <!-- /post -->
+			</div><!-- .post -->
+																
+			<?php 
+		endwhile; 
+
+	endif; 
+	
+	?>
+
+</div><!-- .content -->
 		
-	<?php endwhile; else: ?>
-	
-		<p><?php _e("We couldn't find the content. Please try again.", "fukasawa"); ?></p>
-
-	<?php endif; ?>
-
-	<div class="clear"></div>
-	
-</div> <!-- /content -->
-								
 <?php get_footer(); ?>

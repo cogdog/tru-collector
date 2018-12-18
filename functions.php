@@ -237,6 +237,13 @@ function trucollector_the_license( $lcode ) {
 	echo $all_licenses[$lcode];
 }
 
+function trucollector_get_the_license( $lcode ) {
+	// return the ttitle of a license
+	$all_licenses = trucollector_get_licences();
+	
+	return ($all_licenses[$lcode]);
+}
+
 
 function trucollector_get_license_count( $the_license ) {
 	// get the number of items with a given license code
@@ -1068,11 +1075,29 @@ function trucollector_collection_single_item() {
 	 }
 }
 
+
+function get_trucollector_collection_single_item() {
+	 if ( get_theme_mod( 'singular_item') != "" ) {
+	 	return get_theme_mod( 'singular_item');
+	 }	else {
+	 	return 'item';
+	 }
+}
+
+
 function trucollector_collection_plural_item() {
 	 if ( get_theme_mod( 'plural_item') != "" ) {
 	 	echo get_theme_mod( 'plural_item');
 	 }	else {
 	 	echo 'items';
+	 }
+}
+
+function get_trucollector_collection_plural_item() {
+	 if ( get_theme_mod( 'plural_item') != "" ) {
+	 	return ( get_theme_mod( 'plural_item'));
+	 }	else {
+	 	return  ('items');
 	 }
 }
 
@@ -1320,6 +1345,26 @@ function add_trucollector_scripts() {
 # -----------------------------------------------------------------
 
 
+function trucollector_archive_title( $title ) {
+    if ( is_category() ) {
+        $title = single_cat_title( ucfirst(get_trucollector_collection_plural_item()) .  ' Categorized "', false ) . '"';
+    } elseif ( is_tag() ) {
+        $title = single_tag_title( ucfirst(get_trucollector_collection_plural_item()) .  ' Tagged "', false ) . '"';
+    } elseif ( is_author() ) {
+        $title = '<span class="vcard">' . get_the_author() . '</span>';
+    } elseif ( is_post_type_archive() ) {
+        $title = post_type_archive_title( '', false );
+    } elseif ( is_tax() ) {
+        $title = single_term_title( '', false );
+    }
+  
+    return $title;
+}
+ 
+add_filter( 'get_the_archive_title', 'trucollector_archive_title' );
+
+
+
 function get_attachment_caption_by_id( $post_id ) {
 	// function to get the caption for an attachment (stored as post_excerpt)
 	// -- h/t http://wordpress.stackexchange.com/a/73894/14945
@@ -1406,23 +1451,46 @@ function make_links_clickable( $text ) {
 # -----------------------------------------------------------------
 
 add_action( 'rest_api_init', function () {
-	// redister the route, accept a paraemeter for the number of images to fetch
+  // redister a route for just random images, accept a paraemeter for the number of random images to fetch
   register_rest_route( 'splotcollector/v1', '/randy/(?P<n>\d+)', array(
     'methods' => 'GET',
     'callback' => 'trucollector_randy',
 	 'args' => array(
 		  'n' => array(
-			'validate_callback' => function($param, $request, $key) {
-			  return is_numeric( $param );
-			}
-		  ), 
-	 )  
-	
-    
-  ) );
+				'validate_callback' => function($param, $request, $key) {
+			  	return is_numeric( $param );
+				}
+		  	), 
+	 	)  
+  	) );
+
+  	
+  // redister a route for pechaflickr requests, accept a paraemeter for the number of random images to fetch
+  register_rest_route( 'splotcollector/v1', '/pechaflickr/(?P<n>\d+)/tag/(?P<tag>.*)', array(
+    'methods' => 'GET',
+    'callback' => 'trucollector_pechaflickr',
+	 'args' => array(
+		  'n' => array(
+				'validate_callback' => function($param, $request, $key) {
+			  	return is_numeric( $param );
+				}
+		  	), 
+		  'tag' => array(
+		  		'required' => false,
+		  		'type' => 'string',
+		  	), 
+		  	
+		  	
+	 	)  
+  	) );
+  	
+  	
+  	
 } );
 
+
 function trucollector_randy( $data ) {
+  // general function for getting random images, first test version
   
   // get specified random number of posts
  $posts = get_posts( array( 'orderby' => 'rand', 'posts_per_page' => $data['n']) );
@@ -1431,7 +1499,7 @@ function trucollector_randy( $data ) {
   if ( empty( $posts ) ) {
     return null;
   }
- 
+   
  // walk the results, add to array
   foreach ($posts as $item) {
   	$found[] = array(
@@ -1442,6 +1510,66 @@ function trucollector_randy( $data ) {
   }
  // server up some API goodness
  return new WP_REST_Response( $found, 200 );
+}
+
+function trucollector_pechaflickr( $data ) {
+	  // get results for a pechaflickr request
+  
+	  // get specified random number of posts
+	 $args = array( 
+		'orderby' => 'rand', 
+		'posts_per_page' => $data['n']
+	 );
+ 
+ 	// check tag parameter, an "x" indicates no tags; otherwise add to query
+	if (  $data['tag'] != 'x' )  $args['tag'] = strtolower($data['tag']);
+ 
+	 $posts = get_posts( $args );
+  
+	// bad news here
+	if ( empty( $posts ) ) {
+	return null;
+	}
+
+	// not enough pictures found
+	  if ( count($posts) < $data['n'] ) {
+		$response = array(
+			'Success' => false,
+			'Message' => 'Not enough images found'
+		);
+  	
+  	
+	  } else {
+ 	
+	 // we got results, walk and add to array
+	  foreach ($posts as $item) {
+	
+		// find code for license, if not present set to code for unknown
+		$lic = ( get_post_meta( $item->ID, 'license', 1 ) ) ? get_post_meta( $item->ID, 'license', 1 ) : 'u';
+  
+  		// assemble data
+		$found[] = array(
+			'title' => $item->post_title,
+			'url' => get_permalink( $item->ID ),
+			'shared_by' => get_post_meta( $item->ID, 'shared_by', 1 ), 
+			'license' => trucollector_get_the_license( $lic ),
+			'images' => array(
+				'thumb' => wp_get_attachment_image_src( get_post_thumbnail_id( $item->ID ), 'thumbnail')[0],
+				'large' => wp_get_attachment_image_src( get_post_thumbnail_id( $item->ID ), 'large')[0]
+			)
+		);
+	  }
+	  
+	$response = array(
+  		'Success' => true,
+  		'Message' => '',
+  		'Results' => $found
+  	);
+
+	  
+  } // if 
+ // server up some API goodness
+ return new WP_REST_Response( $response, 200 );
 }
 
 // Load plugin requirements file to display admin notices.

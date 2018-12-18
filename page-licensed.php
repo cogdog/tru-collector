@@ -1,6 +1,6 @@
-<?php
-// ------------------------ check vars ------------------------
+<?php get_header();
 
+// ------------------------ check vars ------------------------
 
 $page_id = $post->ID;
 
@@ -17,44 +17,48 @@ if ( isset( $wp_query->query_vars['flavor'] ) ) {
 	// no license in query string
 	$license_flavor = 'none';
 }
+
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+
 ?>
 
-<?php get_header(); ?>
+
 
 <div class="content thin">
 
 	<?php if ($license_flavor == 'none') :?>
+											        
+		<?php 
 	
-		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>				
-
-			<div <?php post_class('post single'); ?>>
+		if ( have_posts() ) : 
 		
+			while ( have_posts() ) : the_post(); 
 		
-		
-		
+				?>
+			
+				<div id="post-<?php the_ID(); ?>" <?php post_class( 'post single' ); ?>>
+				
 				<?php if ( has_post_thumbnail() ) : ?>
-			
-					<?php $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail_size' ); $thumb_url = $thumb['0']; ?>
-		
+						
 					<div class="featured-media">
-		
-						<?php the_post_thumbnail('post-image'); ?>
-					
-					</div> <!-- /featured-media -->
-					
-				<?php endif; ?>
 			
+						<?php the_post_thumbnail( 'post-image' ); ?>
+						
+					</div><!-- .featured-media -->
+						
+				<?php endif; ?>
+
 				<div class="post-inner">
-												
+					
 					<div class="post-header">
-																										
-						<h2 class="post-title"><?php the_title(); ?></h2>
-															
-					</div> <!-- /post-header section -->
+														
+						<?php the_title( '<h1 class="post-title">', '</h1>' ); ?>
+																
+					</div><!-- .post-header -->
+						
+					<div class="post-content">
 					
-					<div class="post-content">	
 						<?php the_content(); ?>
-					
 					
 							<?php if ( trucollector_option('use_license') > 0 ):?>
 								<ul>
@@ -70,63 +74,33 @@ if ( isset( $wp_query->query_vars['flavor'] ) ) {
 											echo '<li><a href="' . site_url() . '/licensed/' . $abbrev . '">' . $title . '</a> (' . $lcount . ")</li>\n";
 										}
 									}
-				
 								?>
 								</ul>
 							<?php else:?>
-	
 
-					
 							<p>The current settings for this site are to not use licenses; the site administrator can enable this feature from the <code>TRU Collector Options.</code> </p>
+							<?php endif?>
+
+					</div><!-- .post-content -->
 					
+					<div class="clear"></div>	
 					
-						<?php endif?>
+				<?php 
+		endwhile; 
 
-					</div>
-				</div>	
-			</div>
+	endif; 
 	
-	
-		<?php endwhile; else: ?>
-	
-			<p><?php _e("We couldn't find any posts that matched your query. Please try again.", "fukasawa"); ?></p>
-
-		<?php endif; ?>
-
-	<div class="clear"></div>	
-		
+	?>
 	<?php else:?>
 	
 		<?php
-			$args = array(
-				'post_type'  => 'product',
-				'meta_query' => array(
-					'relation' => 'OR',
-					array(
-						'key'     => 'color',
-						'value'   => 'orange',
-						'compare' => '=',
-					),
-							array(
-									'relation' => 'AND',
-									array(
-											'key' => 'color',
-											'value' => 'red',
-											'compare' => '=',
-									),
-									array(
-											'key' => 'size',
-											'value' => 'small',
-											'compare' => '=',
-									),
-					),
-				),
-			);		
-		
+			// construct query for licenses
+
 			if ( $license_flavor == 'u' ) {
 				// cover case where older sites used '?' for unknown
 
 				$args = array(
+					'paged'         => $paged,
 					'meta_query' => array(
 					'relation' => 'OR',
 						array(
@@ -147,70 +121,87 @@ if ( isset( $wp_query->query_vars['flavor'] ) ) {
 				// normal query
 				$args = array(
 					'meta_key'   => 'license',
-					'meta_value' => $license_flavor
+					'meta_value' => $license_flavor,
+					'paged'         => $paged,
 				);
 			}
 			
 		$my_query = new WP_Query( $args );
+		
+		// Pagination fix
+		$temp_query = $wp_query;
+		$wp_query   = NULL;
+		$wp_query   = $my_query;		
 		?>
 
-	
-	<div class="page-title">
-			
-		<div class="section-inner">
+	<?php if ( $my_query->have_posts() ): ?>
 
-			<h4><?php echo $my_query->found_posts?> Items Licensed <?php echo $all_licenses[$license_flavor]; ?> &bull;  <a href="<?php echo get_permalink($page_id);?>">All By Licenses</a>
+	
+		<div class="page-title">
 			
-			<?php
-			$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+			<div class="section-inner">
+
+				<h4><?php echo $my_query->found_posts?> Items Licensed <?php echo $all_licenses[$license_flavor]; ?> &bull;  <a href="<?php echo get_permalink($page_id);?>">All By Licenses</a>
 			
-			if ( "1" < $my_query->max_num_pages ) : ?>
+				<?php
 			
-				<span><?php printf( __('Page %s of %s', 'fukasawa'), $paged, $my_query->max_num_pages ); ?></span>
+				if ( "1" < $my_query->max_num_pages ) : ?>
+			
+					<span><?php printf( __('Page %s of %s', 'fukasawa'), $paged, $my_query->max_num_pages ); ?></span>
 				
-				<div class="clear"></div>
+					<div class="clear"></div>
 			
-			<?php endif; ?></h4>
+				<?php endif; ?></h4>
 					
-		</div> <!-- /section-inner -->
+			</div> <!-- /section-inner -->
 		
-	</div> <!-- /page-title -->
+		</div> <!-- /page-title -->
 	
 
-	<?php if ( $my_query->have_posts() ) : ?>
-	
-			
-			<div class="posts" id="posts">
-			
-				<?php while (  $my_query->have_posts() ) :  $my_query->the_post(); ?>
-						
-					<?php get_template_part( 'content', get_post_format() ); ?>
+		<div class="posts" id="posts">
+
+			<div class="grid-sizer"></div>
 				
-				<?php endwhile; ?>
-							
-			</div> <!-- /posts -->
+			<?php 
+			while ( $my_query->have_posts() ) : $my_query->the_post();
+			
+				get_template_part( 'content', get_post_format() );
+				
+			endwhile; 
+			?>
+		
+		</div><!-- .posts -->
 		
 			<?php if (  $my_query->max_num_pages > 1 ) : ?>
 			
+	
 				<div class="archive-nav">
 			
-					<div class="section-inner">
-			
-						<?php echo get_next_posts_link( '&laquo; ' . __('Older items', 'fukasawa')); ?>
-							
-						<?php echo get_previous_posts_link( __('Newer items', 'collectables') . ' &raquo;'); ?>
-					
-						<div class="clear"></div>
-				
-					</div>
-				
-				</div> <!-- /post-nav archive-nav -->
-							
-			<?php endif; ?>
-				
-		<?php endif; ?>
+					<?php 
 		
-	<?php endif; ?>
+						$nav_label = get_trucollector_collection_plural_item();
+			
+						echo get_next_posts_link( __( 'Older ' . $nav_label , 'fukasawa' ) . ' &rarr;' , $my_query->max_num_pages ); 
+			
+						echo get_previous_posts_link( '&larr; ' . __( 'Newer ' . $nav_label, 'fukasawa' )); 
+			
+						// Reset postdata
+						wp_reset_postdata();
+
+						// Reset main query object
+						$wp_query = NULL;
+						$wp_query = $temp_query;
+					?>
+		
+					<div class="clear"></div>
+					
+				</div><!-- .archive-nav -->
+		
+
+
+			<?php endif; ?>
+		<?php endif; ?>
+<?php endif; ?>
 	
 </div> <!-- /content -->
 								
