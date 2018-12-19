@@ -18,6 +18,7 @@ if ( isset( $wp_query->query_vars['flavor'] ) ) {
 	$license_flavor = 'none';
 }
 
+
 $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
 ?>
@@ -169,6 +170,8 @@ $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 				
 			endwhile; 
 			?>
+			
+			<div class="clear"></div>	
 		
 		</div><!-- .posts -->
 		

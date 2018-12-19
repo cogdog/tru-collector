@@ -187,13 +187,15 @@ function trucollector_queryvars( $qvars ) {
 }   
 
 // -----  rewrite rules for licensed pretty urls
-add_action('init', 'trucollector_rewrite_rules', 10, 0); 
+ add_action('init', 'trucollector_rewrite_rules', 10, 0); 
       
 function trucollector_rewrite_rules() {
 	$license_page = get_page_by_path('licensed');
 	
 	if ( $license_page ) {
-		add_rewrite_rule( '^licensed/([^/]*)/?',  'index.php?page_id=' . $license_page->ID . '&flavor=$matches[1]','top');	
+		add_rewrite_rule( '^licensed/([^/]+)/page/([0-9]{1,})/?',  'index.php?page_id=' . $license_page->ID . '&flavor=$matches[1]&paged=$matches[2]','top');
+	
+		add_rewrite_rule( '^licensed/([^/]*)/?',  'index.php?page_id=' . $license_page->ID . '&flavor=$matches[1]','top');
 	}	
 }
 
