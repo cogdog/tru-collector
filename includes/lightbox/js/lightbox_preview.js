@@ -134,13 +134,22 @@ function nl2br (str, is_xhtml) {
 			// flag for the editor type
 			if ( $('#wRichText').val() == 1) {
 				// get content from tinymce editor
-				wtext =  tinymce.get('wTextHTML').getContent();
+				
+				// using visual editor?
+				if ( $("#wp-wTextHTML-wrap").hasClass("tmce-active") ){
+					wtext =  tinymce.get('wTextHTML').getContent();
+					
+				// using HTML editor
+				} else {
+					wtext =  $('#wTextHTML').val();
+				}
+				
 			} else {
-				// get content from textarea
+				// get content from textarea for plain caption
 				wtext =  $('#wText').val();
 			}
 
-					
+
 			if ( $('#wTags').val() == '') {
 				tagd = ' ';
 			} else {
