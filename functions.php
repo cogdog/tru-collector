@@ -193,6 +193,7 @@ function trucollector_rewrite_rules() {
 	$license_page = get_page_by_path('licensed');
 	
 	if ( $license_page ) {
+		// first rule for paged results
 		add_rewrite_rule( '^licensed/([^/]+)/page/([0-9]{1,})/?',  'index.php?page_id=' . $license_page->ID . '&flavor=$matches[1]&paged=$matches[2]','top');
 	
 		add_rewrite_rule( '^licensed/([^/]*)/?',  'index.php?page_id=' . $license_page->ID . '&flavor=$matches[1]','top');
@@ -775,7 +776,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 
 	// setting for description  label prompt
 	$wp_customize->add_setting( 'item_description_prompt', array(
-		 'default'           => __( 'Enter a descriptive caption to include with the item.', 'fukasawa'),
+		 'default'           => __( 'Enter descriptive content to include with the item.', 'fukasawa'),
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
@@ -1308,6 +1309,11 @@ function add_trucollector_scripts() {
 		
 		// Build in tag auto complete script
    		wp_enqueue_script( 'suggest' );
+   		
+   		// Autoembed functionality in rich text editor
+   		// h/t https://wordpress.stackexchange.com/a/287623
+   		wp_enqueue_script( 'mce-view' );		
+   		
 
 		// custom jquery for the uploader on the form
 		wp_register_script( 'jquery.collector' , get_stylesheet_directory_uri() . '/js/jquery.collector.js', null , '1.0', TRUE );
@@ -1452,6 +1458,38 @@ function make_links_clickable( $text ) {
 # API stuff
 # -----------------------------------------------------------------
 
+// -----  expose post meta date to API
+add_action( 'rest_api_init', 'trucollector_create_api_posts_meta_field' );
+ 
+function trucollector_create_api_posts_meta_field() {
+ 
+	register_rest_field( 'post', 'splot_meta', array(
+								 'get_callback' => 'trucollector_get_splot_meta_for_api',
+ 								 'schema' => null,)
+ 	);
+}
+ 
+function trucollector_get_splot_meta_for_api( $object ) {
+	//get the id of the post object array
+	$post_id = $object['id'];
+
+	// meta data fields we wish to make available
+	$splot_meta_fields = ['author' => 'shared_by', 'license' => 'license', 'source' => 'source'];
+	
+	// array to hold stuff
+	$splot_meta = [];
+ 
+ 	foreach ($splot_meta_fields as $meta_key =>  $meta_value) {
+	 	//return the post meta for each field
+	 	$splot_meta[$meta_key] =  get_post_meta( $post_id, $meta_value, true );
+	 }
+	 
+	 return ($splot_meta);
+ 
+} 
+
+
+
 add_action( 'rest_api_init', function () {
   // redister a route for just random images, accept a paraemeter for the number of random images to fetch
   register_rest_route( 'splotcollector/v1', '/randy/(?P<n>\d+)', array(
@@ -1504,10 +1542,20 @@ function trucollector_randy( $data ) {
    
  // walk the results, add to array
   foreach ($posts as $item) {
+  
+  
+  	// find code for license, if not present set to code for unknown
+	$lic = ( get_post_meta( $item->ID, 'license', 1 ) ) ? get_post_meta( $item->ID, 'license', 1 ) : 'u';
+	
   	$found[] = array(
   		'title' => $item->post_title,
   		'link' => get_permalink( $item->ID ),
-  		'featuredimg' => wp_get_attachment_url( get_post_thumbnail_id( $item->ID ), 'thumbnail' )
+  		'sharedby' => get_post_meta( $item->ID, 'shared_by', 1 ), 
+		'license' => trucollector_get_the_license( $lic ),
+		'images' => array(
+			'thumb' => wp_get_attachment_image_src( get_post_thumbnail_id( $item->ID ), 'thumbnail')[0],
+			'large' => wp_get_attachment_image_src( get_post_thumbnail_id( $item->ID ), 'large')[0]
+		)
   	);
   }
  // server up some API goodness
