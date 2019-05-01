@@ -137,7 +137,8 @@ function nl2br (str, is_xhtml) {
 				
 				// using visual editor?
 				if ( $("#wp-wTextHTML-wrap").hasClass("tmce-active") ){
-					wtext =  tinymce.get('wTextHTML').getContent();
+					wtext = $('#wTextHTML_ifr').contents().find("html").html()
+
 					
 				// using HTML editor
 				} else {

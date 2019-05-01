@@ -62,7 +62,7 @@
 			<?php endif; ?>
 			
 			<div class="siteblurb"><strong><?php $item_count = wp_count_posts()->publish; echo $item_count ?></strong> total <?php 
-			if ( $item_count === 1 ) {  
+			if ( $item_count == 1 ) {  
 				trucollector_collection_single_item();
 			} else {
 				trucollector_collection_plural_item();

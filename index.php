@@ -38,6 +38,14 @@
 						<div class="clear"></div>
 						
 					</h4>
+					
+					<?php
+					// Show an optional term description.
+					$term_description = term_description();
+					if ( ! empty( $term_description ) ) :
+						printf( '<div class="taxonomy-description">%s</div>', $term_description );
+					endif;
+					?>
 							
 				</div><!-- .section-inner -->
 				

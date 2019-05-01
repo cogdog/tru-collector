@@ -83,48 +83,27 @@ if  (  is_single() ) {
 					</div><!-- .post-header -->
 						
 					<div class="post-content">
-					
-
-						<?php if ( is_single() AND $wAuthor == '')  : // empty meta data for author means post by email ?>
+																		
+						<?php the_content();?>
 						
-						<?php
-			    		// strip the img tags out of content for stuff sent by email
-							$content = get_the_content();
-							$content = preg_replace("/<img[^>]+\>/i", "", $content); 		  
-							$content = apply_filters('the_content', $content);
-							$content = str_replace(']]>', ']]>', $content);
-							echo $content;
-			    		?>
-			    	
-			    		<hr />
-			    	
-			    		<p><em>This item was posted by email.</em></p>
-			    	
-			    	
-			    	<?php else:?>
-						
-						
-						<?php if ( $post_format == 'video' ) { 
-							$content = $content_parts['extended'];
-							$content = apply_filters( 'the_content', $content );
-							echo $content;
-						} else {
-							the_content();
-						}
-						?>
-						
-					<?php endif; // is_single AND $wAuthor == '' ?>
 					
 					<?php if (  is_single() ): ?>
 						<p>
 						<?php
 							// Sharer
-							echo '<strong>Shared by:</strong> ' . $wAuthor . '<br />';
+							
+							
+							
+							if (  trucollector_option('show_sharedby') AND !empty($wAuthor) ) {
+								echo '<strong>Shared by:</strong> ' . $wAuthor . '<br />';
+							}
+							
 						
-							if ( ( trucollector_option('use_source') > 0 )  AND $wSource ) echo '<strong>Image Credit:</strong> ' .  make_links_clickable($wSource)  . '<br />';
+							if ( ( trucollector_option('use_source') > 0 )  AND !empty($wSource) ) {
+								echo '<strong>Image Credit:</strong> ' .  make_links_clickable($wSource)  . '<br />';
+							}
 						
-						
-							if  ( trucollector_option('use_license') > 0 ) {
+							if  ( trucollector_option('use_license') > 0 AND !empty($wLicense) ) {
 								echo '<strong>Reuse License:</strong> ';
 								trucollector_the_license( $wLicense );
 								echo '<br />';
@@ -136,18 +115,18 @@ if  (  is_single() ) {
 							}
 						
 							?>
-				    		<?php if  ( trucollector_option( 'show_link' ) != 0 ) :?>
+				    		<?php if  ( trucollector_option( 'show_link' ) != 0 AND has_post_thumbnail() ) :?>
 			    	
-								<form>
+							<form>
 								<label for="link">Link to image:</label>
 									<input type="text" class="form-control" id="link" value="<?php $iurl = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' ); echo $iurl[0];  ?>" onClick="this.select();" />
-								</form>		
+							</form>		
 					
 							<?php endif;?>						
-						
-					
 						</p>
 					<?php endif; // is_single?>
+					
+					
 					</div><!-- .post-content -->
 					
 					<div class="clear"></div>

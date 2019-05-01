@@ -471,6 +471,7 @@ function splot_user_login( $user_login = 'collector' ) {
 	// login the special user account to allow authoring
 	
 	// check for the correct user
+	// check for the correct user
 	$autologin_user = get_user_by( 'login', $user_login ); 
 	
 	if ( $autologin_user ) {
@@ -1309,10 +1310,13 @@ function add_trucollector_scripts() {
 		
 		// Build in tag auto complete script
    		wp_enqueue_script( 'suggest' );
+
    		
    		// Autoembed functionality in rich text editor
+   		// needs dependency on tiny_mce
    		// h/t https://wordpress.stackexchange.com/a/287623
-   		wp_enqueue_script( 'mce-view' );		
+   		
+   		wp_enqueue_script( 'mce-view', '', array('tiny_mce') );		
    		
 
 		// custom jquery for the uploader on the form

@@ -180,23 +180,9 @@ You can follow the link to create an account; for an email you can use a fictiti
 
 ** Note: As of version 1.1 of TRU Collector you no longer need to copy the password into the options page. ** If you are using a version of the theme that has a password field in the options, maybe it's a good time to update? Otherwise, [see an older version of this ReadMe](https://github.com/cogdog/tru-collector/blob/a8637ef4739a6aa64210fee5ddffe8426cfa62b3/README.md#author-account-setup) for instructions.
 
-### JetPack Post by Email (optional)
+### JetPack Post by Email (no longer built in)
 
-![](images/jetpack-not-installed.jpg)
-
-You can enable a feature that allows people to add an image to your site simply by sending it via email. This uses the Post By Email module that is part of the [Wordpress Jetpack plugin](http://jetpack.me/). The options will check that the plugin is installed and that the module is enabled.
-
-The subject line of the email becomes the title, the body of the email the content, and the first image attached becomes the Collectable -- that is why we suggest using a plugin such as [Auto Thumbailer](https://wordpress.org/plugins/auto-thumbnailer/) that converts the first image to the theme's featured image.
-
-To create an email address that can post via this plugin, any authenticated admin or editor user can generate the `*********@post.wordpress.com` address via their profile; you need not add it to the Collector user as you can only generate it for an account you are logged in to Wordpress with.
-
-The field here is just to keep the email address as a reference; it is not used anywhere in the site-- you most likely do not want to have this email address posted in a public space as it allows direct posting to the site.
-
-We (well I, the person writing this) recommend creating an email forwarding address to use as the one that you share; for example, if the email address I set up as a forwarder was `quickpost@splot.ca` and made to forward to `*********@post.wordpress.com` if I need to change the address, I can just do so at the Wordpress level, update my forwarder, and never have to tell people a new address to use.
-
-Also, your site looks a tad more credible without use of a `wordpress.com` email address (no offense, Wordpress, we love ya).
-
-Also, if you are using Post By Email, you will need to add the [Auto Thumbnailer plugin](https://wordpress.org/plugins/auto-thumbnailer/) so it generates featured images from the ones sent by email.
+This feature was unreliable and the coding around it created problems to minute to make it worthwhile. One could still implement it as a way to post, your mileage will vary.
 
 ## Customize the Add / Collect form
 
@@ -311,7 +297,8 @@ Go collect stuff!
 
 
 * **Name the items** New customizer panel to create the name of the item/items in the collection displayed below the site name (replacing generic "item/items")
-* **Preview Option** on collect form allows reviewing content in overlay preview before submitting.
+* **Better Rich Text Editor** the visual editor will now embed media WordPress supports (YouTube, twitter, soundcloud, etc)
+* **Preview Option** on collect form allows reviewing content in overlay preview before submitting (embedded tweets do not render in preview, just a big space).
 * **By Licenses Shortcode** useful for putting an indexed list of items by licenses into widget or any page.
 * **New Login Code** removes the need to copy the collector user's password to the theme options. The special user account is closed after their item is uploaded. Also, there are new admin notices to activate or install the two recommended plugins
 * **Enabled for WP-Ratings** With the Wp-Ratings Plugin installed, you can have front page and single item ratings for items
