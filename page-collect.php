@@ -253,7 +253,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 						
 						<?php else:?>
 						
-							<img src="https://placehold.it/150x150" alt="uploaded image" id="featurethumb" />
+							<img src="https://placehold.it/150x150?text=Upload+Image" alt="upload image" id="featurethumb" />
 						
 						
 						<?php endif?>
@@ -385,7 +385,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 				<?php endif?>
 				
 				
-				<?php if (trucollector_option('show_cats') ):?>
+				<?php if (trucollector_option('show_tags') ):?>
 					<fieldset  id="theTags">
 						<label for="wTags"><?php  trucollector_form_item_tags() ?></label>
 						<p><?php  trucollector_form_item_tags_prompt() ?></p>

@@ -2,7 +2,7 @@
 Theme Name: 	TRU Collector
 Theme URI: 		https://github.com/cogdog/tru-collector
 Description: 	SPLOT Image Collector (Child of Fukasawa) for sites built around shared collections of images
-Version: 		1.6
+Version: 		1.61
 Template:       fukasawa
 Author: 		CogDog
 Author URI: 	https://cog.dog/
@@ -32,7 +32,7 @@ License:		GNU General Public License v2.0 & Apache License 2.0
     margin: 0 auto;
 } 
 
-h1.blog-title {
+h1.blog-title, h2.blog-title {
     text-align: center;
 }
 
