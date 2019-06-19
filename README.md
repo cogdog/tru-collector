@@ -54,7 +54,7 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 * [Learning on/with the Open Web Conference Photos](https://www.conf.owlteh.org/photos/)
 * [SPLOT Collector](http://splot.ca/collector/) - the development and very first site, stuff can and will break
 * [UDG Agora Image Pool](http://udg.theagoraonline.net/imagepool) used by University of Guadalajara faculty and students sharing media in the UDG Agora Project
-* [When I Needed Help Gallery](http://gallery.whenineededhelp.com/) an anonymous sharing of domestic abuse survival site
+* [Wordbox](http://origin.coventry.domains/wordbox/) Coventry University Art and Design Skills Hub
 
 Please please pretty please, if you make a TRU Collector site, fork this repo to edit this Readme with a link to your new site. If you have problems, feature suggestions, piles of unmarked bills to send my way, please [contact me via the issues area](https://github.com/cogdog/tru-collector/issues) on this repo.
 
