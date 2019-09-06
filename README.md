@@ -114,9 +114,7 @@ In this plugins settings, restrict access to **Editors and Administrators** or j
 
 ![Remove Dashboard Access settings](images/dashboard-access-settings.jpg "Remove Dashboard Access settings")
 
-(7) If you wish to set up a feature to let visitors send photos to your collector via email, install the [Wordpress Jetpack plugin](http://jetpack.me/). You will also need a plugin the converts the first image of a post to a Featured Image;  I like [Auto Thumbailer](https://wordpress.org/plugins/auto-thumbnailer/). See below for setup instructions.
-
-(8) You might want to set up in advance some Wordpress Categories for your Collectables; in the options you will choose one as default (and for the love of all that is holy, *change the name of the Uncategorized category*!
+(7) You might want to set up in advance some Wordpress Categories for your Collectables; in the options you will choose one as default (and for the love of all that is holy, *change the name of the Uncategorized category*!
 
 
 ## Setting Up The Site Via TRU Collector options
@@ -124,14 +122,36 @@ In this plugins settings, restrict access to **Editors and Administrators** or j
 These instructions are a reference for the settings within the TRU Collector; if you are reading this, you got as far as installing and activating the theme. Below are basic instructions for all of the theme options, which, if this were designed well, you likely do not need me to explain, but #BecauseDocumentation here we go.
 
 
-### Access and Publishing Controls
-![](images/access-publishing.jpg)
+### Access to Collector
+
+![](images/access-code.jpg)
 
 Leave this field blank if you want any visitor to be able to access the submission form on your site (you can always make it less accessible by not having any links as menus for the form. 
 
-If you want to provide an access code (a very weak password), just enter it. Any requests to access to form will be sent to the **front desk** page where a visitor must enter in the code you have entered here to see the form.
+If you want to provide an access code (a very weak password), just enter it. Any requests to access to form will be sent to the **Welcome Desk** page where a visitor must enter in the code you have entered here to see the form.
 
 Enter a decent **Access Hint** that will be displayed if someone does not enter the correct code.
+
+### Special Pages Setup
+
+![](images/special-pages.jpg)
+
+This theme has three pages that must be created; each is associated with a specific template that provide it's functionality. Activating the theme *should* create these all for you when the theme is activated, but if not, create them as described below. You can edit the content of  the pages to customize the prompt seen by writers on your site.
+
+If the theme does not do so automatically (and it should) create these Wordpress **Pages**. You can modify the titles, and add whatever content you want to appear at the top as instructions. Unlike previous versions, there is no need for a specific url  for the page. 
+
+* **Collect** -- The page that provides the collection form, see [http://splot.ca/collector/collect](http://splot.ca/collector/collect).  Whatever you include in the body (not required) is added to the top of the form, maybe for extra instructions.e.g. for a site at `http://coolest.site.org/` the page can be published at `http://coolest.site.org/collecting` When you create a Collection Form page, under **Page Atributes**, select the Template named `Add to Collection`.
+
+* **Welcome Desk** -- The page that provides users will see first if they must enter an access code to access the writing tool (see below). If no access code is required, it redirects to the page above for the writing form-- like  [http://splot.ca/collector/desk](http://splot.ca/collector/desk).  Whatever you include in the body (not required) is added to the top of the form, maybe for a friendly prompt .e.g. for a site at `http://coolest.site.org/` the page might be published at `http://coolest.site.org/guard_dog` When you create a Welcome Desk page, under **Page Atributes**, select the Template named `Welcome Desk`.
+
+* **Browse Items By License** -- If you ask visitors to select a reuse license, this page provides a way to see all items that share the same license-- like [http://splot.ca/collector/licensed/](http://splot.ca/collector/licensed/).  When you create a Browse By License page, under **Page Atributes**, select the Template named `Items by License`.
+
+In the theme options, make sure you have selected the Page that is designated for these purposes.
+
+
+### Publish Settings
+
+![](images/publish-settings.jpg)
 
 The Status for New Collectable lets you set up moderation for new submissions (by choosing `Set to draft`) whereas `Publish immediately` provides instant gratification to your visitors though leaves open the problems of a site where anyone can publish (the latter option thus works for sites where you set up an **Access Code** as described above).
 
@@ -141,7 +161,7 @@ Enter any email addresses who should be notified of new submissions; you can use
 
 The default settings are for typical blogs where newest content is displayed first. The sort options allow you to change that across the site- the home page, category/tag archives, and search results.
 
-![](images/sort-options.jpg)
+![](images/index-sorting.jpg)
 
 **Date Published** is the default option, the order is **Descending**, or newest first, change to **Ascending** to have oldest items appear first. 
 
@@ -150,25 +170,40 @@ Change the sort otder to **Title** to... yes... sort items alphabetically by eac
 
 ### Fields and Options for Items
 
-![](images/item-options.jpg)
+![](images/items1.jpg)
 
 Set the description options to choose whether provide a field for visitors to enter a caption/description for their shared item, and whether to require that something be entered. By setting to **No** this will not appear on the submission form or on a single item display.
 
 Next is the option to enable a rich text editor in place of the default simple text area input. Use this if you want a site where people create formatted blog=post like content or plain text captions.
 
-The Source Field and rights license settings operate similarly the description fields options above as to how they are used. 
+Enabling  **Display Name of Person Sharing** provides the input field to the form, and enables the display of its value on a single view.
 
 The **Source** field is a single line text entry where a visitor can type in the source of the image (if it includes a URL it will be automatically hyperlinked when the image page is displayed).
 
-The **Rights License** is a drop down menu offering a variety of Creative Commons licenses as well as `All Rights Reserved` (boo!), and a `Usage Rights Unknown` choice.
+Enabling  **Show URL for media item** enables the display of a link for the uploaded media on a single view.
 
-At this time, the only way to edit the licenses displayed (e.g. if you do not want certain ones) is (pathetically on the part of the programmer) to edit `functions.php` in the template directory. Look for the function `trucollector_get_licences` and comment out the lines containing license options to hide.
+![](images/items2.jpg)
+
+
+The **Rights License** is a drop down menu offering a variety of Creative Commons licenses as well as `All Rights Reserved` (boo!), and a `Usage Rights Unknown` choice.
 
 Enabling the **Cut and Paste Attribution** adds to the image display a field with an automatically formed attribution statement (based on the image's rights license choice) that can be copied after clicking on the text.
 
 Check **Enable Comments on Items**  to add a standard blog comment field at the bottom of all published items.
 
+If you want users to choose categories, enable it on the form (setting to "no" will hide categories on the view page).
+
 If you have not set up any categories, the **Default Category for New Collectables** menu just give you a choice of `Uncategorized`. If you want to modify this setting, first save your options,  edit your **Collectable Categories** (standard Wordpress Categories accessed under Collectables in the Dashboard), and return here to set up the desired default category. Please, don't leave `Uncategorized` on your site!
+
+If you want users to enter tags, enable it on the form (setting to "no" will hide tags on the view page).
+
+The last option here creates field on the input form for users to send information that is not displayed.
+
+![](images/items3.jpg)
+
+Activating the email form field creates a means for visitors who wish to edit their entry later to get a special edit link sent via email. Even when activated, this field is always optional. A SPLOT always lets the user decide whether to share this information.
+
+If you use this option, you can also enter a specific domain (or a comma separated list) to say require email addresses to be official work or school ones.
 
 ### Author Account Setup
 ![](images/author-account-none.jpg)
@@ -180,10 +215,6 @@ To provide access to the media uploader, this site uses a Wordpress Authoring Ro
 You can follow the link to create an account; for an email you can use a fictitious one on your domain. We suggest using the strong password that Wordpress suggests.
 
 ** Note: As of version 1.1 of TRU Collector you no longer need to copy the password into the options page. ** If you are using a version of the theme that has a password field in the options, maybe it's a good time to update? Otherwise, [see an older version of this ReadMe](https://github.com/cogdog/tru-collector/blob/a8637ef4739a6aa64210fee5ddffe8426cfa62b3/README.md#author-account-setup) for instructions.
-
-### JetPack Post by Email (no longer built in)
-
-This feature was unreliable and the coding around it created problems to minute to make it worthwhile. One could still implement it as a way to post, your mileage will vary.
 
 ## Customize the Add / Collect form
 
@@ -225,9 +256,9 @@ If you have ftp/sftp access to your site (or this can be done in a cpanel file m
 
 For those that lack direct file upload access or maybe that idea sends shivers down the spine, upload and activate the [Easy Theme and Plugin Upgrades](https://wordpress.org/plugins/easy-theme-and-plugin-upgrades/) plugin -- this will allow you to upload a newer version of a theme as a ZIP archive, the same way you add a theme by uploading.
 
-## Adding Hyperlinks to Captions
+## Shortcode Adding Hyperlinks to Simple Captions
 
-Any HTML put into the editor for the caption is stripped out. But a new feature allows hyperlinks to be created using a "shortcode" format:
+Any HTML put into the plain text editor for the caption is stripped out. But a new feature allows hyperlinks to be created using a "shortcode" format:
 
 ![](images/shortcode-link.jpg)
 
@@ -243,6 +274,12 @@ To present the link just as a URL, simply use
 
 which will produce the hyperlink like http://www.themostamazingwebsiteontheinternet.com/ -- all links will open in a new window.
 
+## Licensed Shortcode
+
+![](images/license-shortcode.jpg)
+
+For use in a sidebar (see for example View By License at [http://splot.ca/collector/](http://splot.ca/collector/)) or any other Page, add the shortcode `[licensed]` to display a linked list (and count) of all items on your site by re-use license. The default is just to list the licenses that are used; to see all, use the `[licensed show="all"]`.
+
 ## Add Public Ratings
 
 Installing the [WP-Ratings Plugin](https://wordpress.org/plugins/wp-postratings/) enables public star (or other scale) ratings on items from the front page, archives, and single items. Visitors can rate content using a variety of ratings (1-5 stars, thumbs up/down, etc).
@@ -255,15 +292,11 @@ See it in action on the SPLOT demo site [front page](http://splot.ca/collector/)
 
 Install the [WP-Tiles plugin](https://wordpress.org/plugins/wp-tiles/) to create alternative views of your collections as a tiled gallery. The plugin provides  way to create a variety of grid styles, and can be added to a Page in your site using a shortcode. This can even be set to be the FRONT page of your site using **Settings** -> **Reading** in your WordPress dashboard as was down for the [#OWLTEH18 Conference Photos site](https://www.conf.owlteh.org/photos/):
 
-
 ![](images/mural-owlteh18.jpg)
 
 Or see examples as internal pages from the [SPLOT demo site](http://splot.ca/collector/mural/) or the [Mural UDG project Accumulador site](https://muraludg.org/acumulador/mural/).
 
 Learn more about using this plugin https://cogdogblog.com/2018/01/tiling-splots/
-
-
-
 
 ## Fix Rotated Mobile Phone Photos
 
@@ -275,11 +308,7 @@ I like short links, so I typically use a Custom Permalink setting (under `Settin
 
 ![Simplest Permalink](images/permalink.jpg "custom permalink") 
 
-The theme creates three Pages for you with custom templates. You can edit their content to provide additional information prompt:
-
-* **Desk** The screen where users must enter an access code
-* **Collect** The page that includes the form people use to upload content
-* **Random** No content needed, it just performs a redirect to a random collectable. Just leave it alone
+The theme creates a special URL `/random` to provide a link that shows a random item, e.g. http://splot.ca/collector/random
 
 Set up your own menus as needed; make sure that you click the `Location` tab to tell Wordpress to use the menu you create.
 
@@ -293,6 +322,9 @@ Go collect stuff!
 
 ## Relatively New Features
 
+* **Post Publishing Editing** Not enabled by default, but a new theme option can add to the collection form an email field (optional) that sends a user a special link that can be used to edit an entry later. This also adds a button to single item pages that can request the edit link.
+
+**Options for Special Pages**  No longer are pages for the Welcome Desk (where access codes are entered) and Collector form required to have a set URL; you can create any Page desired for these functions, and set them as the active ones via the theme options.
 
 [![SPLOT Previews](http://img.youtube.com/vi/6trhgkbt7hA/0.jpg)](https://www.youtube.com/watch?v=6trhgkbt7hA "SPLOT Previews")
 

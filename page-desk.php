@@ -1,85 +1,8 @@
 <?php
 
-// ------------------------ defaults ------------------------
-
-
-// defaultz
-$feedback_msg = $log_out_warning = $wAccess = '';
-
-$errors = array();
-
-// the passcode to enter
-$wAccessCode = trucollector_option('accesscode');
-
-// ------------------------ door check -----------------------
-
-
-// already logged in? go directly to the tool
-if ( is_user_logged_in() ) {
-	
-	if ( current_user_can( 'edit_others_posts' ) ) {
-
-		// If user has edit/admin role, send them to the tool
-		wp_redirect( splot_redirect_url() );
-  		exit;
-
-	} else {
-	
-		// if the correct user found, go directly to the tool
-		if ( trucollector_check_user() ) {			
-	  		wp_redirect( splot_redirect_url() );
-  			exit;
-  			
-  		} else {
-			// we need to force a click through a logout
-			$log_out_warning = true;
-			$feedback_msg = 'First, please <a href="' . wp_logout_url( site_url('/') . 'collect'  ) . '">activate lasers</a>';
-  		}
-  	}
-  	
-} elseif ( $wAccessCode == '')  {
-	
-	// no code required, log 'em in
-	splot_user_login();
-	exit;
-
-}
-
-
-// ------------------------ presets ------------------------
-
-
-// verify that a  form was submitted and it passes the nonce check
-if ( 	isset( $_POST['trucollector_form_access_submitted'] ) 
-		&& wp_verify_nonce( $_POST['trucollector_form_access_submitted'], 'trucollector_form_access' ) ) {
- 
-	// grab the variables from the form
-	$wAccess = 	stripslashes( $_POST['wAccess'] );
-	
-	// let's do some validation, store an error message for each problem found
-	$errors = array();
-	
-	if ( $wAccess != $wAccessCode ) $errors[] = '<p><strong>Incorrect Access Code</strong> - try again? Hint: ' . trucollector_option('accesshint'); 	
-	
-	if ( count($errors) > 0 ) {
-		// form errors, build feedback string to display the errors
-		$feedback_msg = '';
-		
-		// Hah, each one is an oops, get it? 
-		foreach ($errors as $oops) {
-			$feedback_msg .= $oops;
-		}
-		
-		$feedback_msg .= '</p>';
-		
-	} else {
-
-		splot_user_login();
-		exit;
-	}
-
-		
-} // end form submmitted check
+/*
+Template Name: Welcome Desk
+*/
 ?>
 
 <?php get_header(); ?>
@@ -123,24 +46,36 @@ if ( 	isset( $_POST['trucollector_form_access_submitted'] )
 			    <div class="post-content">
 			    
 			    	<?php the_content(); ?>
-	
-	
-					<?php if ($log_out_warning):?>
-						<div class="notify notify-green"><span class="symbol icon-tick"></span>
-						<?php echo $feedback_msg?>
-						</div>
+			    		
+					<?php  
+						
+						// defaultz
+						$wAccess = '';
 
-					<?php else:?>
-					
-	
-					
-						<?php  
-						// set up box code colors CSS
+						// get the passcode needed to enter
+						$wAccessCode = trucollector_option('accesscode');
 
-						if ( count( $errors ) ) {
-							$box_style = '<div class="notify notify-red"><span class="symbol icon-error"></span> ';
-							echo $box_style . $feedback_msg . '</div>';
-						} 
+
+						// already logged in but as different user on multisite?
+	
+						if ( is_user_logged_in() and !trucollector_check_user()  ) {
+							// we need to force a click through a logout
+							return '<div class="notify notify-green"><span class="symbol icon-tick"></span>' .'Now <a href="' . splot_redirect_url() . '" class="pretty-button pretty-button-green">activate the writing tool</a>.</div>';	  	
+						}
+
+						// verify that a  form was submitted and it passes the nonce check
+						if ( isset( $_POST['trucollector_form_access_submitted'] ) 
+								&& wp_verify_nonce( $_POST['trucollector_form_access_submitted'], 'trucollector_form_access' ) ) {
+ 
+							// grab the variables from the form
+							$wAccess = 	stripslashes( $_POST['wAccess'] );
+	
+							// let's do some validation of the code
+							if ( $wAccess != $wAccessCode ) {
+								echo '<div class="notify notify-red"><span class="symbol icon-error"></span> <p><strong>Incorrect Access Code</strong> - try again? Hint: ' . trucollector_option('accesshint') . '</p></div>'; 	
+
+							} // end form submmitted check
+						}
 						?>   
 
 	 					<form  id="trucollectordesk" class="trucollectordesk" method="post" action="">
@@ -157,8 +92,6 @@ if ( 	isset( $_POST['trucollector_form_access_submitted'] )
 								</fieldset>
 				
 						</form>
-				
-					<?php endif?>
 					
 			    	<?php wp_link_pages('before=<div class="clear"></div><p class="page-links">' . __('Pages:','fukasawa') . ' &after=</p>&seperator= <span class="sep">/</span> '); ?>
 			    

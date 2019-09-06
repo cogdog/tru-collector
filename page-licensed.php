@@ -1,4 +1,11 @@
-<?php get_header();
+<?php 
+
+/*
+Template Name: Items by License
+*/
+
+
+get_header();
 
 // ------------------------ check vars ------------------------
 

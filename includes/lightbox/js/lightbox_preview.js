@@ -164,7 +164,7 @@ function nl2br (str, is_xhtml) {
             });
 			
 			// build output
-			var wOutput = '<div class="post single" style="background-color:#f2f2f2;"><div class="content"><div class="featured-media"><img src="' + $('#wFeatureImageUrl').val()    + '" width="100%"></div><div style="background-color:#fff;padding: 7.5%;margin: 0 auto;"><div class="post-header"><h1 class="post-title">' + $('#wTitle').val() + '</h1></div></div><div class="post-content" style="background-color:#fff;;padding: 0 7.5%;margin:0 auto;"><p>' + wtext  + '</p><p><strong>Shared by </strong>' + $('#wAuthor').val() + '<br>' ;
+			var wOutput = '<div class="post single" style="background-color:#f2f2f2;"><div class="content"><div class="featured-media"><img src="' + $('#wFeatureImageUrl').val()    + '" width="100%"></div><div class="post-content" style="background-color:#fff;padding: 7.5%;margin: 0 auto;"><div class="post-header"><h1 class="post-title">' + $('#wTitle').val() + '</h1></div><p>' + wtext  + '</p><p><strong>Shared by </strong>' + $('#wAuthor').val() + '<br>' ;
 			
 			if ( $('#wLicense').val()) wOutput += '<strong>Reuse License:</strong> ' +  getLicenseName( $('#wLicense').val() )  + '<br />';
 			

@@ -4,22 +4,6 @@
 Template Name: Add to Collection
 */
 
-if ( !is_user_logged_in() ) {
-	// already not logged in? go to desk.
-  	wp_redirect ( site_url('/') . 'desk' );
-  	exit;
-  	
-} elseif ( !current_user_can( 'edit_others_posts' ) ) {
-	// okay user, who are you? we know you are not an admin or editor
-		
-	// if the collector user not found, we send you to the desk
-	if ( !trucollector_check_user() ) {
-		// now go to the desk and check in properly
-	  	wp_redirect ( site_url('/') . 'desk' );
-  		exit;
-  	}
-}
-
 // ------------------------ defaults ------------------------
 
 // default welcome message
@@ -27,18 +11,97 @@ $feedback_msg = trucollector_form_default_prompt() . ' Fields marked  <strong>*<
 
 // blank defaults
 
-$wTitle = $wText = $wSource = $wTags = $wNotes = '';
+$wTitle = $wText = $wSource = $wTags = $wNotes = $wEmail = '';
 $wAuthor = 'Anonymous';
 				
 $wFeatureImageID = 0;
+$wFeatureImageUrl =  get_stylesheet_directory_uri() . '/images/splot-test-drive.jpg';
 $wCats = array( trucollector_option('def_cat') ); // preload default category
 $wLicense = '--'; // default license
 $all_licenses = trucollector_get_licences();
+$is_re_edit = false;
 
 
 // not yet saved
 $is_published = false;
 $box_style = '<div class="notify"><span class="symbol icon-info"></span> ';
+
+
+// ------------------------ front gate ------------------------
+	
+// check for query vars that indicate this is a edit request
+$tk  = get_query_var( 'tk', 0 );    // magic token to check
+
+if ( ( $tk )  ) {
+	// re-edit attempt
+	$is_re_edit = true;
+	
+	// log in as author
+	if ( !is_user_logged_in() ) {
+		splot_user_login( 'collector', false );
+	}
+	
+	$wid = trucollector_get_id_from_tk( $tk );
+	
+	if ($wid) {
+		// found a post with the matching code, so set up for re-edit
+		
+		// default welcome message for a re-edit
+		$feedback_msg = trucollector_form_re_edit_prompt();
+
+		// get the post and then content for this item
+		$item = get_post( $wid );
+		$wText = $item->post_content; 
+
+		$wTitle = get_the_title( $wid );
+		$wAuthor =  get_post_meta( $wid, 'shared_by', 1 );
+		
+		$wEmail =  get_post_meta( $wid, 'wEmail', 1 );
+
+		$box_style = '<div class="notify notify-green"><span class="symbol icon-tick"></span> ';	
+
+		// get categories
+		$categories = get_the_category( $wid);
+		foreach ( $categories as $category ) { 
+			$wCats[] = $category->term_id;
+		}
+		
+		// festured image
+		$wFeatureImageID = get_post_thumbnail_id( $wid );
+		
+		// url for preview
+		$wFeatureImageUrl = get_the_post_thumbnail_url( $wid, 'post-image' );
+		
+		// source
+		$wSource = get_post_meta( $wid, 'source', 1 );
+
+		// notes
+		$wNotes = get_post_meta( $wid, 'editor_notes', 1 );
+
+		// license
+		$wLicense = get_post_meta( $wid, 'license', 1 );
+
+		// load the tags
+		$wTags = implode(', ', wp_get_post_tags( $wid, array( 'fields' => 'names' ) ) );
+				
+		// post id
+		$post_id = $wid;
+	
+	} else {
+		// no posts found with matching key
+	
+		$is_re_edit = false;
+
+		// updates for display	
+		$errors[] = '<strong>Token Mismatch</strong> - please check the url provided.';
+		// default welcome message
+		$feedback_msg = 'This URL does not match the edit key. Please check the link from your email again, or return to your published writing and click the button at the bottom to send an edit link.';
+		$is_published = true;  // not really but it serves to hide the form.
+		$box_style = '<div class="notify notify-red"><span class="symbol icon-error"></span> ';
+	}
+} 
+
+
 
 
 // ------------------- form processing ------------------------
@@ -50,6 +113,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
  		$wTitle = 					sanitize_text_field( stripslashes( $_POST['wTitle'] ) );
  		$wAuthor = 					( isset ($_POST['wAuthor'] ) ) ? sanitize_text_field( stripslashes($_POST['wAuthor']) ) : 'Anonymous';		
  		$wTags = 					sanitize_text_field( $_POST['wTags'] );	
+ 		$wEmail = 					sanitize_text_field( $_POST['wEmail'] );	
  		$wText = 					wp_kses_post( $_POST['wText'] );
  		$wSource = 					sanitize_text_field( stripslashes( $_POST['wSource'] ) );
  		$wNotes = 					sanitize_text_field( stripslashes( $_POST['wNotes'] ) );
@@ -71,6 +135,23 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
   		if (  trucollector_option('use_source') == '2' AND $wSource == '' ) $errors[] = '<strong>Source Missing</strong> - please the name or organization to credit as the source of this image.';
   		
   		if (  trucollector_option('use_license') == '2' AND $wLicense == '--' ) $errors[] = '<strong>License Not Selected</strong> - select an appropriate license for this item.'; 
+
+		// test for email only if enabled in options
+		if ( trucollector_option('show_email') )   {
+		
+			// check first for valid email address, blank is ok
+			if ( is_email( $wEmail ) OR empty($wEmail) ) {
+
+				// if email is good then check if we are limiting to domains
+				if ( !empty(trucollector_option('email_domains'))  AND !trucollector_allowed_email_domain( $wEmail ) ) {
+					$errors[] = '<strong>Email Address Not Allowed</strong> - The email address you entered <code>' . $wEmail . '</code> is not from an domain accepted in this site. This site requests that addresses are ones from domain[s] <code>' .  trucollector_option('email_domains') . '</code>. ';
+				}
+		
+			} else {
+				// bad email, sam.
+				$errors[] = '<strong>Invalid Email Address</strong> - the email address entered <code>' . $wEmail . '</code> is not a valid address. To skip entering an email address, make sure the field is empty. Pleae check and try again. ';
+			}
+		}
 		
  		 		
  		if ( count($errors) > 0 ) {
@@ -87,55 +168,121 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
  			$box_style = '<div class="notify notify-red"><span class="symbol icon-error"></span> ';
  			
  		} else {
- 			
- 			// good enough, let's make a post! 
- 			 			
-			$w_information = array(
+ 			$w_information = array(
 				'post_title' => $wTitle,
 				'post_content' => $wText,
-				'post_status' => trucollector_option('new_item_status'),
 				'post_category' => $wCats		
 			);
-
-			// insert as a new post
-			$post_id = wp_insert_post( $w_information );
 			
-			// store the author as post meta data
-			add_post_meta($post_id, 'shared_by', $wAuthor);
+	
+ 			
+ 			if 	($is_re_edit) {
+ 			// update an existing post
+ 			
+ 				$w_information['post_status'] =  'publish';
+ 				$w_information['ID'] = $post_id;
+ 				
+ 				// update the post
+				wp_update_post( $w_information );
+				
+				// update the tags
+				wp_set_post_tags( $post_id, $wTags);
 
-			// store the source of the image (text or URL)
-			if ( trucollector_option('use_source') > 0 ) {
-				add_post_meta($post_id, 'source', $wSource);
-			}
+				// store the author as post meta data
+				update_post_meta($post_id, 'shared_by', $wAuthor);
 			
-			// store the license code
-			if ( trucollector_option('use_license') > 0 ) {
-				add_post_meta($post_id, 'license', $wLicense);
-			}
+				// store the email as post meta data
+				update_post_meta($post_id, 'wEmail', $wEmail);				
+				
+				// store the source of the image (text or URL)
+				if ( trucollector_option('use_source') > 0 ) {
+					update_post_meta($post_id, 'source', $wSource);
+				}
+				
+				// update featured image
+				set_post_thumbnail( $post_id, $wFeatureImageID);
+
+			
+				// store the license code
+				if ( trucollector_option('use_license') > 0 ) {
+					update_post_meta($post_id, 'license', $wLicense);
+				}
 		
-			// store notes for editor
-			if ( $wNotes ) add_post_meta($post_id, 'editor_notes', $wNotes);
+				// store notes for editor
+				if ( $wNotes ) update_post_meta($post_id, 'editor_notes', $wNotes);
 
-			// add the tags
-			wp_set_post_tags( $post_id, $wTags);
+				// add the tags
+				wp_set_post_tags( $post_id, $wTags);
+				
+				// update edit key
+				trucollector_make_edit_link( $post_id );
+
+ 				
+ 				$feedback_msg = 'Your entry for <strong>"' . $wTitle . '"</strong> has been updated!  You can <a href="'. get_permalink( $post_id ) . '">review it now</a>  or <a href="' . site_url()  . '">return to ' . get_bloginfo() . '</a>.';
+ 			
+ 			} else {
+ 			// good enough, let's make a new post! 
+ 				$w_information['post_status'] =  trucollector_option('new_item_status');
+ 				
+ 				// insert as a new post
+				$post_id = wp_insert_post( $w_information );
+			
+				// store the author as post meta data
+				add_post_meta($post_id, 'shared_by', $wAuthor);
+			
+				// store the email as post meta data
+				add_post_meta($post_id, 'wEmail', $wEmail);				
+			
+
+				// store the source of the image (text or URL)
+				if ( trucollector_option('use_source') > 0 ) {
+					add_post_meta($post_id, 'source', $wSource);
+				}
+			
+				// store the license code
+				if ( trucollector_option('use_license') > 0 ) {
+					add_post_meta($post_id, 'license', $wLicense);
+				}
 		
-			// set featured image
-			set_post_thumbnail( $post_id, $wFeatureImageID);
-							
-			if ( trucollector_option('new_item_status') == 'publish' ) {
-				// feed back for published item
-				$feedback_msg = 'Your entry for <strong>' . $wTitle . '</strong> has been published!  You can <a href="'. get_permalink( $post_id ) . '">view it now</a>  or <a href="' . site_url()  . '">return to ' . get_bloginfo() . '</a>.';
-			
-			} else {
-				// feed back for item left in draft
-				$feedback_msg = 'Your entry for <strong>' . $wTitle . '</strong> has been submitted as a draft. Once it has been approved by a moderator, everyone can see it at <a href="' . site_url()  . '">return to ' . get_bloginfo() . '</a>.';	
-			
-			}		
+				// store notes for editor
+				if ( $wNotes ) add_post_meta($post_id, 'editor_notes', $wNotes);
 
-			// logout the special user
+				// add the tags
+				wp_set_post_tags( $post_id, $wTags);
+		
+				// set featured image
+				set_post_thumbnail( $post_id, $wFeatureImageID);
 			
-			if ( trucollector_check_user()=== true ) wp_logout();			
+				// create an edit key
+				trucollector_make_edit_link( $post_id );
 			
+				if  ( trucollector_option('new_item_status') == 'publish' ) {
+					// feed back for published item
+					$feedback_msg = 'Your entry for <strong>"' . $wTitle . '"</strong> has been published. ';
+					
+					// if user provided email address (only possible if the feature enabled), send instructions to use link to edit
+					
+					if ( $wEmail != '' ) {
+						trucollector_mail_edit_link( $post_id, 'publish' );
+						$feedback_msg .= 'Since you provided an email address, a message has been sent to <strong>' . $wEmail . '</strong>  with a special link that can be used at any time later to edit this item. '; 
+					}
+					
+					 $feedback_msg .= 'You can <a href="'. get_permalink( $post_id ) . '">view it now</a>  or <a href="' . site_url()  . '">return to ' . get_bloginfo() . '</a>.';
+			
+				} else {
+					// feed back for item left in draft
+					$feedback_msg = 'Your entry for <strong>"' . $wTitle . '"</strong> has been submitted as a draft. Once it has been approved by a moderator, everyone will be able to view it. ';
+					
+					// if user provided email address (only possible if the feature enabled), send instructions to use link to edit
+					if ( $wEmail != '' ) {
+
+						$feedback_msg .= 'Since you provided an email address, after it is published, you will see a special button you can use to have a special link sent by email that can be used to edit this item later. '; 
+					}
+
+					$feedback_msg .= 'For now, you can <a href="' . site_url()  . '">return to ' . get_bloginfo() . '</a>.';	
+			
+				}	
+
 			if ( trucollector_option( 'notify' ) != '') {
 			// Let's do some EMAIL!
 		
@@ -164,6 +311,11 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 				remove_filter( 'wp_mail_content_type', 'set_html_content_type' );	
 			
 				}
+ 			}
+
+			// logout the special user
+			
+			if ( trucollector_check_user()=== true ) wp_logout();
 				
 			// set the gate	open, we are done.
 			
@@ -245,10 +397,10 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 					
 					<div class="uploader">
 						<input id="wFeatureImage" name="wFeatureImage" type="hidden" value="<?php echo $wFeatureImageID?>" />
-						<input id="wFeatureImageUrl" type="hidden" value="<?php echo get_stylesheet_directory_uri()?>/images/splot-test-drive.jpg">
+						<input id="wFeatureImageUrl" type="hidden" value="<?php echo $wFeatureImageUrl ?>">
 
 						<?php if ( $wFeatureImageID ):
-							 echo wp_get_attachment_image( $wFeatureImageID, 'thumbnail' );
+							 echo wp_get_attachment_image( $wFeatureImageID, 'thumbnail', "", array( "id" => "featurethumb" )  );
 						?>
 						
 						<?php else:?>
@@ -393,7 +545,24 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 						<input type="text" name="wTags" id="wTags" value="<?php echo $wTags; ?>" tabindex="9"  />
 					</fieldset>
 				<?php endif?>
+
+
+
+				<?php if (trucollector_option('show_email') ):?>
+				<fieldset id="theEmail">
+					<label for="wEmail"><?php trucollector_form_item_email() ?> (optional)</label><br />
+					<p><?php trucollector_form_item_email_prompt() ?> 
+					<?php 
+						if  ( !empty( trucollector_option('email_domains') ) ) {
+							echo ' Allowable email addresses must be ones from domains <code>' . trucollector_option('email_domains') . '</code>.';
+						}
+					?>
+					
+					</p>
+					<input type="text" name="wEmail" id="wEmail" name="wEmail"  value="<?php echo $wEmail; ?>" />
+				</fieldset>	
 				
+				<?php endif?>				
 				
 				
 				<?php if (trucollector_option('show_notes') ):?>
@@ -415,7 +584,9 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 					
 					<a href="#preview" class="fancybox" title="Preview of your item. Close this overlay, make any changes, than click 'Share It'">Preview First</a>
 					
-					<input type="submit" value="Share Now" id="makeit" name="makeit" tabindex="12">
+					<?php $submitbutton = ($is_re_edit) ? "Update Now" : "Share Now";?>
+					
+					<input type="submit" value="<?php echo $submitbutton?>" id="makeit" name="makeit" tabindex="12">
 					
 				</fieldset>
 			

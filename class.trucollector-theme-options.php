@@ -128,8 +128,8 @@ class trucollector_Theme_Options {
 		$this->settings['access_heading'] = array(
 			'section' => 'general',
 			'title'   => '', // Not used for headings.
-			'desc'	 => 'Access and Publishing Controls',
-			'std'    => 'Set code to access collection form and how to handlew new submissions.',
+			'desc'	 => 'Access to Collector',
+			'std'    => 'Set code to access collection form',
 			'type'    => 'heading'
 		);
 		
@@ -142,6 +142,7 @@ class trucollector_Theme_Options {
 			'section' => 'general'
 		);
 
+
 		$this->settings['accesshint'] = array(
 			'title'   => __( 'Access Hint' ),
 			'desc'    => __( 'Provide a suggestion if someone cannot guess the code. Not super secure, but hey.' ),
@@ -149,6 +150,117 @@ class trucollector_Theme_Options {
 			'type'    => 'text',
 			'section' => 'general'
 		);
+
+		$this->settings['pages_heading'] = array(
+			'section' => 'general',
+			'title'   => '', // Not used for headings.
+			'desc'	 => 'Special Pages Setup',
+			'std'    => 'Choose the Pages used for special Collector functions',
+			'type'    => 'heading'
+		);
+		
+		// get all pages on site with template for the Writing Desk
+		$found_pages = get_pages_with_template('page-desk.php');
+		
+		// the function returns an array of id => page title, first item is the menu selection item
+		
+		$page_desc = 'Select the Page that should be used for the access code entry.';
+		
+		if ( count( $found_pages ) > 1 ) {
+			
+			$page_std =  array_keys( $found_pages)[1];
+			
+		} else {
+			$trypage = get_page_by_path('desk');
+		
+			if ( $trypage ) {
+				$page_std = $trypage->ID;
+				$found_pages = array( 0 => 'Select Page', $page_std => $trypage->post_title );
+		
+			} else {
+				$page_desc = 'No pages have been created with the Welcome Desk template. This is required to enable access to the sharing form. <a href="' . admin_url( 'post-new.php?post_type=page') . '">Create a new Page</a> and under <strong>Page Attributes</strong> select <code>Welcome Desk</code> for the Template.'; 
+				$page_std = '';
+			}
+		}
+	
+		$this->settings['desk_page'] = array(
+			'section' => 'general',
+			'title'   => __( 'Page For Access Code (Welcome Desk)'),
+			'desc'    => $page_desc,
+			'type'    => 'select',
+			'std'     =>  $page_std,
+			'choices' => $found_pages
+		);
+		
+		// get all pages on site with template for the Writing Form
+		$found_pages = get_pages_with_template('page-collect.php');
+		
+		// the function returns an array of id => page title, first item is the menu selection item
+		$page_desc = 'Set the Page that should be used for the sharing form.';
+		if ( count( $found_pages ) > 1 ) {
+			$page_desc = 'Set the Page that should be used for the sharing form.';
+			$page_std =  array_keys( $found_pages)[1];
+			
+		} else {
+			$trypage = get_page_by_path('collect');
+			
+			if ( $trypage ) {
+				$page_std = $trypage->ID;
+				$found_pages = array( 0 => 'Select Page', $page_std => $trypage->post_title );
+			} else {
+						$page_desc = 'No pages have been created with the Add to Collection template. This is required to enable access to the collector form. <a href="' . admin_url( 'post-new.php?post_type=page') . '">Create a new Page</a> and under <strong>Page Attributes</strong> select <code>Add to Collection</code> for the Template.'; 
+						$page_std = '';
+			}
+		}
+	
+		$this->settings['collect_page'] = array(
+			'section' => 'general',
+			'title'   => __( 'Page for the sharing form (Add to Collection)'),
+			'desc'    => $page_desc,
+			'type'    => 'select',
+			'std'     =>  $page_std,
+			'choices' => $found_pages
+		);
+
+		// get all pages on site with template for the Licenses
+		$found_pages = get_pages_with_template('page-licensed.php');
+		
+		// the function returns an array of id => page title, first item is the menu selection item
+		if ( count( $found_pages ) > 1 ) {
+			$page_desc = 'Set the Page that should be used for displaying content by licenses.';
+			$page_std =  array_keys( $found_pages)[1];
+			
+		} else {
+			$trypage = get_page_by_path('licensed');
+		
+			if ( $trypage ) {
+				$page_std = $trypage->ID;
+				$found_pages = array( 0 => 'Select Page', $page_std => $trypage->post_title );
+
+			} else {
+				$page_desc = 'No pages have been created with the Items by License template. This is used to display content by reuse license applied. <a href="' . admin_url( 'post-new.php?post_type=page') . '">Create a new Page</a> and under <strong>Page Attributes</strong> select <code>Items by License</code> for the Template.'; 
+				$page_std = '';
+			}
+		}
+
+		$this->settings['license_page'] = array(
+			'section' => 'general',
+			'title'   => __( 'Page for the Show By Licenses page (Items by License)'),
+			'desc'    => $page_desc,
+			'type'    => 'select',
+			'std'     =>  $page_std,
+			'choices' => $found_pages
+		);
+
+
+		$this->settings['publish_heading'] = array(
+			'section' => 'general',
+			'title'   => '', // Not used for headings.
+			'desc'	 => 'Publish Settings',
+			'std'    => '',
+			'type'    => 'heading'
+		);
+
 
 		$this->settings['new_item_status'] = array(
 			'section' => 'general',
@@ -161,14 +273,6 @@ class trucollector_Theme_Options {
 				'draft' => 'Set to draft',
 			)
 		);		
-
-		$this->settings['notify'] = array(
-			'title'   => __( 'Notification Emails' ),
-			'desc'    => __( 'Send notifications to these addresses (separate multiple ones wth commas). They must have an Editor Role on this site. Leave empty to disable notifications.' ),
-			'std'     => '',
-			'type'    => 'text',
-			'section' => 'general'
-		);
 		
 		// ------- sort options
 		$this->settings['sort_heading'] = array(
@@ -369,6 +473,44 @@ class trucollector_Theme_Options {
 							'1' => 'Yes'
 					)
 		);
+
+		$this->settings['show_email'] = array(
+			'section' => 'general',
+			'title'   => __( 'Activate email address field for providing access to editing after publication.'),
+			'desc'    => ' Setting to <strong>No</strong> will remove this feature from being available on published items.',
+			'type'    => 'radio',
+			'std'     => '0',
+			'choices' => array (
+							'0' => 'No',
+							'1' => 'Yes'
+					)
+		);
+		
+		$this->settings['email_domains'] = array(
+			'title'   => __( 'Limit email addresses to domain(s).' ),
+			'desc'    => __( 'Seperate multiple domains by commas' ),
+			'std'     => '',
+			'type'    => 'text',
+			'section' => 'general'
+		);
+
+		$this->settings['admin_heading'] = array(
+			'section' => 'general',
+			'title'   => '', // Not used for headings.
+			'desc'	 => 'Admin Settings',
+			'std'    => '',
+			'type'    => 'heading'
+		);
+
+		$this->settings['notify'] = array(
+			'title'   => __( 'Notification Emails' ),
+			'desc'    => __( 'Send notifications to these addresses (separate multiple ones wth commas). They must have an Editor Role on this site. Leave empty to disable notifications.' ),
+			'std'     => '',
+			'type'    => 'text',
+			'section' => 'general'
+		);
+
+
 
 		$this->settings['authorcheck'] = array(
 		'section' => 'general',

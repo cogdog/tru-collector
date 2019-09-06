@@ -6,6 +6,9 @@
   
 */
 
+
+
+
 jQuery(document).ready(function() { 
 
 	//hide the password field
@@ -23,6 +26,18 @@ jQuery(document).ready(function() {
 		}
 	  });
 
+	  jQuery(".fileuploader").change(function () {
+	  
+	    // get uploaded file name extension
+	    // h/t https://stackoverflow.com/a/4695156/2418186
+	    var fileExt = this.value.split('.').pop();
+	    
+	    if (fileExt != 'json') {
+
+			alert('This file is not a JSON data file. Try again?');
+			this.value = '';
+		} 
+	 });
 
 	// called for via click of upload button in theme options
 	jQuery(document).on('click', '.upload_image_button', function(e){

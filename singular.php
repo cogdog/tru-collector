@@ -124,6 +124,15 @@ if  (  is_single() ) {
 					
 							<?php endif;?>						
 						</p>
+						
+						<?php 
+							// show the request edit link button if option set and they have provided an email and post is published
+							if ( trucollector_option('show_email') and get_post_meta( $post->ID, 'wEmail', 1 ) and get_post_status() == 'publish' ) :?>
+							
+							<p>
+								<strong>Edit Link:</strong> <em>(emailed to author)</em><br /><a href="#" id="getEditLink" class="button" data-widurl="<?php echo get_bloginfo('url') . '/get-edit-link/' .   $post->ID ?>">Request Now</a> <span id="getEditLinkResponse" class="writenew"></span>
+							</p>
+							<?php endif?>
 					<?php endif; // is_single?>
 					
 					
@@ -163,11 +172,13 @@ if  (  is_single() ) {
 
 								<?php edit_post_link( __( 'Edit post', 'fukasawa' ), '<li>', '</li>' ); ?>
 							</ul>
-							
 							<div class="clear"></div>
+
+							
+							
 							
 						</div><!-- .post-meta-bottom -->
-
+													
 					<?php endif; ?>
 				
 				</div><!-- .post-inner -->
