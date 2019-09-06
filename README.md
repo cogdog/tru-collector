@@ -58,6 +58,13 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 
 Please please pretty please, if you make a TRU Collector site, fork this repo to edit this Readme with a link to your new site. If you have problems, feature suggestions, piles of unmarked bills to send my way, please [contact me via the issues area](https://github.com/cogdog/tru-collector/issues) on this repo.
 
+## Experiment Lab
+
+TRU Collector has Custom API endpoint that is used to offer up random photos from the site. See [The SPLOT Image Truck is Here!](https://cogdogblog.com/2019/03/splot-truck/) and these demo sites
+
+* [Inspire Me with a Random SPLOT Image](https://cogdog.github.io/splotlab/randysplot/)
+* [Glitch a Random SPLOT Image](https://cogdog.github.io/splotlab/glitchsplot/) (see [blog post](https://cogdogblog.com/2019/04/glitch-a-splot/))
+
 ### TRU Collector Sightings
 
 * Samantha Clarke presenting the way TRU Collector was used to build the [The Compendium of Bothersome Beasties](http://creditcontinue.coventry.domains/beasties/) at the ALTC 2018 Conference https://www.youtube.com/watch?v=e1f5PY-uREE
