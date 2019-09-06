@@ -240,13 +240,15 @@ A new section for the TRU Collector Customizer **Collection Info** allows you to
 
 ## Browse by Licenses
 
-As of version 0.5.5 The TRU Collector provides links that display archives of content that have the same reuse license (if the feature is activated via the TRU Collector options). Just make sure there is a Wordpress Page with the url / slug `/licensed` This page is created automatically on new sites, or simply by activating the theme again (activate the parent Fukasawa, then activate TRU Collector again).
+The TRU Collector provides archives of content that have the same reuse license (if the feature is activated via the TRU Collector options). Just make sure there is a Wordpress Page that uses the template  `Browse by license` -- and the Page is selected in the theme options (see above). This page is created automatically on new sites, or simply by activating the theme again (activate the parent Fukasawa, then activate TRU Collector again).
 
 ![](images/browse-licenses.jpg)
 
 This page (see [example](http://splot.ca/collector/licensed/)) provides links to view all content with the licenses available on the collect form. The url including `licensed/cc-by` yields all items with a Creative Commons CC By Attribution license [example](http://splot.ca/collector/licensed/cc-by).
 
 Use the page to find links to the ones you wish to use and add to your site's menus or widgets. If the links do not work, you may have to go to **Settings** -- **Permalinks** and just click save to regenerate the settings.
+
+![](images/license-shortcode.jpg)
 
 For extra flexibility there is a `[licensed]` shortcode that can be used in a widget or any page to display the same index list in a sidebar. By default, it lists only licenses used (e.g. it skips licenses with zero uses); to show all licenses, use the code `[licensed show="all"]`.
 
@@ -273,12 +275,6 @@ To present the link just as a URL, simply use
 `[link url="http://www.themostamazingwebsiteontheinternet.com/"]`
 
 which will produce the hyperlink like http://www.themostamazingwebsiteontheinternet.com/ -- all links will open in a new window.
-
-## Licensed Shortcode
-
-![](images/license-shortcode.jpg)
-
-For use in a sidebar (see for example View By License at [http://splot.ca/collector/](http://splot.ca/collector/)) or any other Page, add the shortcode `[licensed]` to display a linked list (and count) of all items on your site by re-use license. The default is just to list the licenses that are used; to see all, use the `[licensed show="all"]`.
 
 ## Add Public Ratings
 
