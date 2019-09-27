@@ -95,7 +95,6 @@ function trucollector_change_post_label() {
     
     $menu[5][0] = $thing_name . 's';
     $submenu['edit.php'][5][0] = 'All ' . $thing_name . 's';
-    $submenu['edit.php'][10][0] = 'Add ' . $thing_name;
     $submenu['edit.php'][15][0] = $thing_name .' Categories';
     $submenu['edit.php'][16][0] = $thing_name .' Tags';
     echo '';
@@ -184,6 +183,35 @@ function trucollector_order_items( $query ) {
 		
 	}
 }
+
+# -----------------------------------------------------------------
+# Remove the New Post buttons, links from dashboard
+# -----------------------------------------------------------------
+
+// remove sub menu from Posts menu
+add_action( 'admin_menu', 'trucollector_remove_admin_submenus', 999 );
+
+function trucollector_remove_admin_submenus() {
+	remove_submenu_page( 'edit.php', 'post-new.php' );
+}
+
+
+// remove from admin bar too
+add_action( 'admin_bar_menu', 'trucollector_remove_admin_menus', 999 );
+
+function trucollector_remove_admin_menus() {
+    global $wp_admin_bar;   
+    $wp_admin_bar->remove_node( 'new-post' );
+}
+
+
+// use CSS to hide the one on the posts listing
+function trucollector_custom_admin_styles(){
+    wp_enqueue_style( 'admin_css',  get_stylesheet_directory_uri() . '/includes/admin.css');
+}
+
+add_action('admin_enqueue_scripts', 'trucollector_custom_admin_styles');
+
 
 # -----------------------------------------------------------------
 # Make URLs by rewrites
