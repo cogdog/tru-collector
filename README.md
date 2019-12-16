@@ -39,22 +39,33 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 * [Cafecrema](https://cafecrema.procaffination.ca/) Cat pix
 * [The Compendium of Bothersome Beasties](http://creditcontinue.coventry.domains/beasties/) from Coventry University is a tool for self-reflection and formative assessment.
 * [CogDogRoo Image Collector](https://cog.dog/roo/collector/) for Alan Levine's Nov 2017 Workshops in Victoria, Australia
+* [Coventry University Digital Leaders](http://digitalleaders.coventry.domains/who/)
+* [DoOO Something](https://iwanna.dooosomething.org/) "Domain of One’s Own projects often start with domains/sites for individuals, but they can also include any other sites that individual or groups of staff and students might want the freedom to create for themselves."
 * [EduHack Directory](https://eduhack.eu/coursedirectory/)
 * [Fanny Central](https://fannycentral.com/) for collecting inappropriately captioned old images. 
+* [Flora and Fauna](https://florafauna.buffscreate.net/)
+* [Fun Photos](https://camp2019.photos.learn4growth.com/)
 * [GEOG 2221 Photo Collector](http://geog2221.trubox.ca/)  collecting images from participants in TRU’s GEOG 2221 Course: Regional Geography of Canada
 * [Image Pool](http://imagepool.trubox.ca/) - used for TRU workshops on finding images on the web 
 * [Imagery VISA 1101_01](http://imagery.trubox.ca/) collecting images from participants in TRU’s VISA 1110 Course: History of Art
+* [Mineral Books](https://mwynau.com/)
 * [OER18 Photos](https://oer18.oerconf.org/media/) photos for April 2018 conference in Bristol, UK.
 * [Oh No Not the Followers of the Apocalypse](http://ohnonotthe.followersoftheapocalyp.se/) FOTA Images from David Kernohan
 * [OpemMed Album](http://oercollector.openmedproject.eu/) Open Images from OpenMed meetings
 * [Online Ecosystem Maps](http://a202dmll.coventry.domains/maps/) a gallery of maps created by students enrolled in the A202DMLL Module (Develop your Online Presence & Own your Web Domain) at Coventry University.
 * [Online Worlds](http://coventry.domains/online-worlds/) another Coventry activity for collecting images of how people see their online worlds. 
 * [OWLTEH Catalogue](http://catalogue.owlteh.org/) Open Web For Learning & Teaching Expertise Hub -- a Catalogue of the Open Web: applications, platforms, techologies, or concepts
+* [PlayBox - CreativeCulture Compendium of Games for Playful Learning](https://playbox.mycapsule.my/) "Open space that acts as a resource centre for sharing creative and innovative artefacts used for gamification in STEAM subjects"
 * [Learning on/with the Open Web Participants](https://conf.owlteh.org/participants/) 
 * [Learning on/with the Open Web Conference Photos](https://www.conf.owlteh.org/photos/)
+* [The Legend of Extend](https://play.learningnuggets.ca/cms) Terry Greene's card collection
+* [Reclaim Roadshow Participants](https://roadshow.reclaimhosting.com/participants/)
 * [SPLOT Collector](http://splot.ca/collector/) - the development and very first site, stuff can and will break
+* [Tech Collect](https://techcollect.cbsinkinson.com/) CU Boulder
 * [UDG Agora Image Pool](http://udg.theagoraonline.net/imagepool) used by University of Guadalajara faculty and students sharing media in the UDG Agora Project
+* [What's Happening?](https://whatshappeningart.com/) "An Experimental Journey of Artistic Inquiry"
 * [Wordbox](http://origin.coventry.domains/wordbox/) Coventry University Art and Design Skills Hub
+* [Your Mineral Site](https://yourmineralsite.mineralcollective.com/)
 
 Please please pretty please, if you make a TRU Collector site, fork this repo to edit this Readme with a link to your new site. If you have problems, feature suggestions, piles of unmarked bills to send my way, please [contact me via the issues area](https://github.com/cogdog/tru-collector/issues) on this repo.
 
