@@ -44,6 +44,7 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 * [EduHack Directory](https://eduhack.eu/coursedirectory/)
 * [Fanny Central](https://fannycentral.com/) for collecting inappropriately captioned old images. 
 * [Femedtech Quilt of Care and Justice in Open Education](https://quilt.femedtech.net/) showcases quilt sections shared
+* [Fleming Techbank](http://techbank.flemingdomains.ca/) Fleming College's Digital Learning Technologies Inventory
 * [Flora and Fauna](https://florafauna.buffscreate.net/)
 * [Fun Photos](https://camp2019.photos.learn4growth.com/)
 * [GEOG 2221 Photo Collector](http://geog2221.trubox.ca/)  collecting images from participants in TRU’s GEOG 2221 Course: Regional Geography of Canada
