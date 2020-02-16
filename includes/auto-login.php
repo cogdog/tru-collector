@@ -15,7 +15,7 @@ function my_login_logo() { ?>
         body.login div#login h1 a {
             background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/site-login-logo.png);
             padding-bottom: 30px;
-        }    
+        }
 	#backtoblog {display:none;}
 	#nav {display:none;}
     </style>
@@ -30,8 +30,8 @@ add_filter( 'login_headerurl', 'login_link' );
 function login_link( $url ) {
 	return get_bloginfo( 'url' );
 }
- 
- 
+
+
 // Auto Login
 
 function splot_redirect_url() {
@@ -44,33 +44,33 @@ function splot_user_login( $user_login = 'collector', $redirect = true, $query_s
 	   Somestimes we want to do it without redirection
 	   other times we have to pass a query string
 	*/
-	
+
 	// check for the correct user
-	$autologin_user = get_user_by( 'login', $user_login ); 
-	
+	$autologin_user = get_user_by( 'login', $user_login );
+
 	// is this user logged in?
 	if ( $autologin_user ) {
-	
+
 		// just in case we have old cookies
-		wp_clear_auth_cookie(); 
-		
+		wp_clear_auth_cookie();
+
 		// set the user directly
 		wp_set_current_user( $autologin_user->ID, $autologin_user->user_login );
-		
+
 		// new cookie
 		wp_set_auth_cookie( $autologin_user->ID);
-		
+
 		// do the login
-		do_action( 'wp_login', $autologin_user->user_login );
-		
+		do_action( 'wp_login', $autologin_user->user_login, $autologin_user);
+
 		// send 'em on their way
 		if ($redirect) wp_redirect( splot_redirect_url() . $query_str  );
-		
-		
+
+
 	} else {
 		// uh on, problem
 		die ('Required account missing. Looks like there is not an account set up for "' . $user_login . '". See the theme options to set up.');
-	
+
 	}
 }
 
