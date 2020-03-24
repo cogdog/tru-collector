@@ -453,7 +453,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 							
 							<?php
 							// set up for inserting the WP post editor
-							$settings = array( 'textarea_name' => 'wText', 'editor_height' => '300',  'tabindex'  => "5", 'media_buttons' => false, 'drag_drop_upload' => true);
+							$settings = array( 'textarea_name' => 'wText', 'editor_height' => '300',  'tabindex'  => "5", 'media_buttons' => true, 'drag_drop_upload' => true);
 
 							wp_editor(  stripslashes( $wText ), 'wTextHTML', $settings );
 							

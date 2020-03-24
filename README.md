@@ -53,6 +53,7 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 * [Mineral Books](https://mwynau.com/)
 * [OER18 Photos](https://oer18.oerconf.org/media/) photos for April 2018 conference in Bristol, UK.
 * [Oh No Not the Followers of the Apocalypse](http://ohnonotthe.followersoftheapocalyp.se/) FOTA Images from David Kernohan
+* [Online Resilience](https://onlineresilience.uni-med.net/) UNIMED collection of  member organization responses to COVID-19
 * [OpemMed Album](http://oercollector.openmedproject.eu/) Open Images from OpenMed meetings
 * [Online Ecosystem Maps](http://a202dmll.coventry.domains/maps/) a gallery of maps created by students enrolled in the A202DMLL Module (Develop your Online Presence & Own your Web Domain) at Coventry University.
 * [Online Worlds](http://coventry.domains/online-worlds/) another Coventry activity for collecting images of how people see their online worlds. 
