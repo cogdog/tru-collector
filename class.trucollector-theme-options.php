@@ -18,7 +18,7 @@ class trucollector_Theme_Options {
 		$this->checkboxes = array();
 		$this->settings = array();
 		$this->get_settings();
-		
+
 		$this->sections['general'] = __( 'General Settings' );
 
 		// create a colllection of callbacks for each section heading
@@ -28,31 +28,31 @@ class trucollector_Theme_Options {
 
 		// enqueue scripts for media uploader
         add_action( 'admin_enqueue_scripts', 'trucollector_enqueue_options_scripts' );
-		
+
 		add_action( 'admin_menu', array( &$this, 'add_pages' ) );
 		add_action( 'admin_init', array( &$this, 'register_settings' ) );
-		
+
 		if ( ! get_option( 'trucollector_options' ) )
 			$this->initialize_settings();
 	}
-	
+
 	/* Add page(s) to the admin menu */
 	public function add_pages() {
 		$admin_page = add_theme_page( 'TRU Collector Options', 'TRU Collector Options', 'manage_options', 'trucollector-options', array( &$this, 'display_page' ) );
-		
-		// documents page, but don't add to menu		
+
+		// documents page, but don't add to menu
 		$docs_page = add_theme_page( 'TRU Collector Documentation', '', 'manage_options', 'trucollector-docs', array( &$this, 'display_docs' ) );
-		
+
 	}
 
 	/* HTML to display the theme options page */
 	public function display_page() {
 		echo '<div class="wrap">
 		<h1>TRU Collector Options</h1>';
-		
+
 		if ( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] == true )
 			echo '<div class="updated fade"><p>' . __( 'Theme options updated.' ) . '</p></div>';
-				
+
 		echo '<form action="options.php" method="post" enctype="multipart/form-data">';
 
 		settings_fields( 'trucollector_options' );
@@ -63,18 +63,18 @@ class trucollector_Theme_Options {
 		do_settings_sections( $_GET['page'] );
 
 
-		echo '<p class="submit"><input name="Submit" type="submit" class="button-primary" value="' . __( 'Save Changes' ) . '" /></p>			
+		echo '<p class="submit"><input name="Submit" type="submit" class="button-primary" value="' . __( 'Save Changes' ) . '" /></p>
 		</form>
 		</div>
-		
+
 		<script type="text/javascript">
 		jQuery(document).ready(function($) {
-			
+
 			$("input[type=text], textarea").each(function() {
 				if ($(this).val() == $(this).attr("placeholder") || $(this).val() == "")
 					$(this).css("color", "#999");
 			});
-			
+
 			$("input[type=text], textarea").focus(function() {
 				if ($(this).val() == $(this).attr("placeholder") || $(this).val() == "") {
 					$(this).val("");
@@ -86,7 +86,7 @@ class trucollector_Theme_Options {
 					$(this).css("color", "#999");
 				}
 			});
-			
+
 			// This will make the "warning" checkbox class really stand out when checked.
 			// I use it here for the Reset checkbox.
 			$(".warning").change(function() {
@@ -96,30 +96,30 @@ class trucollector_Theme_Options {
 					$(this).parent().css("background", "none").css("color", "inherit").css("fontWeight", "normal");
 			});
 		});
-		</script>';	
+		</script>';
 
 	}
 
 	/*  display documentation in a tab */
-	public function display_docs() {	
-		// This displays on the "Documentation" tab. 
-		
+	public function display_docs() {
+		// This displays on the "Documentation" tab.
+
 	 	echo '<div class="wrap">
 		<h1>TRU Collector Documentation</h1>
 		<h2 class="nav-tab-wrapper">
 		<a class="nav-tab" href="?page=trucollector-options">Settings</a>
 		<a class="nav-tab nav-tab-active" href="?page=trucollector-docs">Documentation</a></h2>';
-		
+
 		include( get_stylesheet_directory() . '/includes/trucollector-theme-options-docs.php');
-		
-		echo '</div>';		
+
+		echo '</div>';
 	}
 
 
 
 	/* Define all settings and their defaults */
 	public function get_settings() {
-	
+
 		/* General Settings
 		===========================================*/
 
@@ -132,7 +132,7 @@ class trucollector_Theme_Options {
 			'std'    => 'Set code to access collection form',
 			'type'    => 'heading'
 		);
-		
+
 
 		$this->settings['accesscode'] = array(
 			'title'   => __( 'Access Code' ),
@@ -158,31 +158,31 @@ class trucollector_Theme_Options {
 			'std'    => 'Choose the Pages used for special Collector functions',
 			'type'    => 'heading'
 		);
-		
+
 		// get all pages on site with template for the Writing Desk
 		$found_pages = get_pages_with_template('page-desk.php');
-		
+
 		// the function returns an array of id => page title, first item is the menu selection item
-		
+
 		$page_desc = 'Select the Page that should be used for the access code entry.';
-		
+
 		if ( count( $found_pages ) > 1 ) {
-			
+
 			$page_std =  array_keys( $found_pages)[1];
-			
+
 		} else {
 			$trypage = get_page_by_path('desk');
-		
+
 			if ( $trypage ) {
 				$page_std = $trypage->ID;
 				$found_pages = array( 0 => 'Select Page', $page_std => $trypage->post_title );
-		
+
 			} else {
-				$page_desc = 'No pages have been created with the Welcome Desk template. This is required to enable access to the sharing form. <a href="' . admin_url( 'post-new.php?post_type=page') . '">Create a new Page</a> and under <strong>Page Attributes</strong> select <code>Welcome Desk</code> for the Template.'; 
+				$page_desc = 'No pages have been created with the Welcome Desk template. This is required to enable access to the sharing form. <a href="' . admin_url( 'post-new.php?post_type=page') . '">Create a new Page</a> and under <strong>Page Attributes</strong> select <code>Welcome Desk</code> for the Template.';
 				$page_std = '';
 			}
 		}
-	
+
 		$this->settings['desk_page'] = array(
 			'section' => 'general',
 			'title'   => __( 'Page For Access Code (Welcome Desk)'),
@@ -191,28 +191,28 @@ class trucollector_Theme_Options {
 			'std'     =>  $page_std,
 			'choices' => $found_pages
 		);
-		
+
 		// get all pages on site with template for the Writing Form
 		$found_pages = get_pages_with_template('page-collect.php');
-		
+
 		// the function returns an array of id => page title, first item is the menu selection item
 		$page_desc = 'Set the Page that should be used for the sharing form.';
 		if ( count( $found_pages ) > 1 ) {
 			$page_desc = 'Set the Page that should be used for the sharing form.';
 			$page_std =  array_keys( $found_pages)[1];
-			
+
 		} else {
 			$trypage = get_page_by_path('collect');
-			
+
 			if ( $trypage ) {
 				$page_std = $trypage->ID;
 				$found_pages = array( 0 => 'Select Page', $page_std => $trypage->post_title );
 			} else {
-						$page_desc = 'No pages have been created with the Add to Collection template. This is required to enable access to the collector form. <a href="' . admin_url( 'post-new.php?post_type=page') . '">Create a new Page</a> and under <strong>Page Attributes</strong> select <code>Add to Collection</code> for the Template.'; 
+						$page_desc = 'No pages have been created with the Add to Collection template. This is required to enable access to the collector form. <a href="' . admin_url( 'post-new.php?post_type=page') . '">Create a new Page</a> and under <strong>Page Attributes</strong> select <code>Add to Collection</code> for the Template.';
 						$page_std = '';
 			}
 		}
-	
+
 		$this->settings['collect_page'] = array(
 			'section' => 'general',
 			'title'   => __( 'Page for the sharing form (Add to Collection)'),
@@ -224,21 +224,21 @@ class trucollector_Theme_Options {
 
 		// get all pages on site with template for the Licenses
 		$found_pages = get_pages_with_template('page-licensed.php');
-		
+
 		// the function returns an array of id => page title, first item is the menu selection item
 		if ( count( $found_pages ) > 1 ) {
 			$page_desc = 'Set the Page that should be used for displaying content by licenses.';
 			$page_std =  array_keys( $found_pages)[1];
-			
+
 		} else {
 			$trypage = get_page_by_path('licensed');
-		
+
 			if ( $trypage ) {
 				$page_std = $trypage->ID;
 				$found_pages = array( 0 => 'Select Page', $page_std => $trypage->post_title );
 
 			} else {
-				$page_desc = 'No pages have been created with the Items by License template. This is used to display content by reuse license applied. <a href="' . admin_url( 'post-new.php?post_type=page') . '">Create a new Page</a> and under <strong>Page Attributes</strong> select <code>Items by License</code> for the Template.'; 
+				$page_desc = 'No pages have been created with the Items by License template. This is used to display content by reuse license applied. <a href="' . admin_url( 'post-new.php?post_type=page') . '">Create a new Page</a> and under <strong>Page Attributes</strong> select <code>Items by License</code> for the Template.';
 				$page_std = '';
 			}
 		}
@@ -272,8 +272,8 @@ class trucollector_Theme_Options {
 				'publish' => 'Publish immediately',
 				'draft' => 'Set to draft',
 			)
-		);		
-		
+		);
+
 		// ------- sort options
 		$this->settings['sort_heading'] = array(
 			'section' => 'general',
@@ -295,7 +295,7 @@ class trucollector_Theme_Options {
 							'title' => 'Title',
 					)
 		);
-		
+
 		$this->settings['sort_direction'] = array(
 			'section' => 'general',
 			'title'   => __( 'Sort Order'),
@@ -307,10 +307,10 @@ class trucollector_Theme_Options {
 							'ASC' => 'Ascending',
 					)
 		);
-		
 
 
-		// ------- single item 
+
+		// ------- single item
 		$this->settings['single_heading'] = array(
 			'section' => 'general',
 			'title'   => '', // Not used for headings.
@@ -332,7 +332,7 @@ class trucollector_Theme_Options {
 							'2' => 'Yes, and make it required'
 					)
 		);
-		
+
 		$this->settings['caption_field'] = array(
 			'section' => 'general',
 			'title'   => __( 'Description Editing Field'),
@@ -343,6 +343,14 @@ class trucollector_Theme_Options {
 							's' => 'Simple plain text input field (accepts hypertext link shortcode)',
 							'r' => 'Rich text editor'
 					)
+		);
+
+		$this->settings['def_text'] = array(
+			'title'   => __( 'Default Description' ),
+			'desc'    => __( 'Enter default content that will appear in the collecting form editing field if you want tp provide some example of the type of response you wish to collect (e.g. headers, place holder example descriptions). Leave blank to start with an empty form field.' ),
+			'std'     => '',
+			'type'    => ( trucollector_option('caption_field') == 'r' ) ? 'richtextarea' : 'textarea',
+			'section' => 'general'
 		);
 
 		$this->settings['show_sharedby'] = array(
@@ -356,8 +364,7 @@ class trucollector_Theme_Options {
 							'1' => 'Yes'
 					)
 		);
-		
-	
+
 		$this->settings['use_source'] = array(
 			'section' => 'general',
 			'title'   => __( 'Use source field (e.g. to provide credit for images) on submission form and item display?'),
@@ -382,7 +389,7 @@ class trucollector_Theme_Options {
 							'1' => 'Yes'
 					)
 		);
-		
+
 		$this->settings['use_license'] = array(
 			'section' => 'general',
 			'title'   => __( 'Use rights license on submission form and item display?'),
@@ -395,7 +402,7 @@ class trucollector_Theme_Options {
 							'2' => 'Yes, and make it required'
 					)
 		);
-		
+
 		$this->settings['show_attribution'] = array(
 			'section' => 'general',
 			'title'   => __( 'Cut and Paste Attribution' ),
@@ -406,9 +413,9 @@ class trucollector_Theme_Options {
 				'0' => 'No',
 				'1' => 'Yes',
 			)
-		);		
-		
- 
+		);
+
+
  		$this->settings['allow_comments'] = array(
 			'section' => 'general',
 			'title'   => __( 'Allow Comments?' ),
@@ -416,11 +423,11 @@ class trucollector_Theme_Options {
 			'type'    => 'checkbox',
 			'std'     => 0 // Set to 1 to be checked by default, 0 to be unchecked by default.
 		);
-		
+
 
   		// Build array to hold options for select, an array of post categories
-  		
-  		
+
+
 		$this->settings['show_cats'] = array(
 			'section' => 'general',
 			'title'   => __( 'Show the categories menu on collection form and item displays?'),
@@ -434,12 +441,12 @@ class trucollector_Theme_Options {
 		);
 
 
-		// Walk those cats, store as array index=ID 
-	  	$all_cats = get_categories('hide_empty=0'); 
+		// Walk those cats, store as array index=ID
+	  	$all_cats = get_categories('hide_empty=0');
 		foreach ( $all_cats as $item ) {
   			$cat_options[$item->term_id] =  $item->name;
   		}
- 
+
 		$this->settings['def_cat'] = array(
 			'section' => 'general',
 			'title'   => __( 'Default Category for New Items'),
@@ -447,7 +454,7 @@ class trucollector_Theme_Options {
 			'type'    => 'select',
 			'std'     => get_option('default_category'),
 			'choices' => $cat_options
-		);	
+		);
 
 
 		$this->settings['show_tags'] = array(
@@ -474,24 +481,45 @@ class trucollector_Theme_Options {
 					)
 		);
 
+		$this->settings['email_heading'] = array(
+			'section' => 'general',
+			'title'   => '', // Not used for headings.
+			'desc'	 => 'Email Settings',
+			'std'    => '',
+			'type'    => 'heading'
+		);
+
 		$this->settings['show_email'] = array(
 			'section' => 'general',
-			'title'   => __( 'Activate email address field for providing access to editing after publication.'),
-			'desc'    => ' Setting to <strong>No</strong> will remove this feature from being available on published items.',
+			'title'   => __( 'Enable email address field.'),
+			'desc'    => ' Setting to <strong>No</strong> will remove this feature from being available on published items and remove option for selecting notification of comments.',
 			'type'    => 'radio',
-			'std'     => '0',
+			'std'     => '1',
 			'choices' => array (
 							'0' => 'No',
-							'1' => 'Yes'
+							'1' => 'Yes, but make it optional',
+							'2' => 'Yes, and make it required'
 					)
 		);
-		
+
 		$this->settings['email_domains'] = array(
 			'title'   => __( 'Limit email addresses to domain(s).' ),
 			'desc'    => __( 'Seperate multiple domains by commas' ),
 			'std'     => '',
 			'type'    => 'text',
 			'section' => 'general'
+		);
+
+		$this->settings['comment_notification'] = array(
+			'section' => 'general',
+			'title'   => __( 'Show option for comment notification.'),
+			'desc'    => ' Setting to <strong>Yes</strong> will provide a check box option for authors to receive notification of comments on their writing (only effective if comments enabled in the <strong>Fields and Options for Items</strong> section).',
+			'type'    => 'radio',
+			'std'     => '0',
+			'choices' => array (
+							'0' => 'No',
+							'1' => 'Yes'
+					)
 		);
 
 		$this->settings['admin_heading'] = array(
@@ -515,11 +543,11 @@ class trucollector_Theme_Options {
 		$this->settings['authorcheck'] = array(
 		'section' => 'general',
 		'title' 	=> '' ,// Not used for headings.
-		'desc'   => 'Author Account', 
+		'desc'   => 'Author Account',
 		'std'    =>  trucollector_author_user_check( 'collector' ),
 		'type'    => 'heading'
-		);					
-		
+		);
+
 
 		/* Reset
 		===========================================*/
@@ -531,7 +559,7 @@ class trucollector_Theme_Options {
 			'std'    => 'Think twice before resetting all options to defaults!',
 			'type'    => 'heading'
 		);
-		
+
 		$this->settings['reset_theme'] = array(
 			'section' => 'general',
 			'title'   => __( 'Reset All Options' ),
@@ -541,12 +569,12 @@ class trucollector_Theme_Options {
 			'desc'    => __( 'Check this box and click "Save Changes" below to reset theme options to their defaults.' )
 		);
 
-		
+
 	}
-	
+
 	public function display_general() {
 		// section heading for general setttings
-		echo '<p>These settings manaage the behavior and appearance of your site. There are quite a few of them!</p>';		
+		echo '<p>These settings manaage the behavior and appearance of your site. There are quite a few of them!</p>';
 	}
 
 
@@ -565,17 +593,17 @@ class trucollector_Theme_Options {
 			$options[$id] = $std;
 		elseif ( ! isset( $options[$id] ) )
 			$options[$id] = 0;
-		
+
 		$field_class = '';
 		if ( $class != '' )
 			$field_class = ' ' . $class;
-			
-			
+
+
 		switch ( $type ) {
-		
+
 			case 'heading':
 				echo '<tr><td colspan="2" class="alternate"><h3>' . $desc . '</h3><p>' . $std . '</p></td></tr>';
-				
+
 				break;
 
 			case 'checkbox':
@@ -598,9 +626,6 @@ class trucollector_Theme_Options {
 				break;
 
 			case 'radio':
-			
-					if ( $desc != '' ) echo '<br /><span class="description">' . $desc . '</span><br />';
-
 				$i = 0;
 				foreach ( $choices as $value => $label ) {
 					echo '<input class="radio' . $field_class . '" type="radio" name="trucollector_options[' . $id . ']" id="' . $id . $i . '" value="' . esc_attr( $value ) . '" ' . checked( $options[$id], $value, false ) . '> <label for="' . $id . $i . '">' . $label . '</label>';
@@ -608,6 +633,8 @@ class trucollector_Theme_Options {
 						echo '<br />';
 					$i++;
 				}
+				if ( $desc != '' ) echo '<span class="description">' . $desc . '</span><br />';
+
 
 
 				break;
@@ -617,11 +644,26 @@ class trucollector_Theme_Options {
 
 				if ( $desc != '' )
 					echo '<br /><span class="description">' . $desc . '</span>';
+				break;
+
+
+			case 'richtextarea':
+
+				// set up for inserting the WP post editor
+				$rich_settings = array( 'textarea_name' => 'trucollector_options[' . $id . ']' , 'editor_height' => '200', 'editor_class' => $field_class );
+
+				$textdefault = (isset( $options[$id] ) ) ? $options[$id] : $std;
+
+				wp_editor(   $textdefault , $id , $rich_settings );
+
+				if ( $desc != '' )
+					echo '<br /><span class="description">' . $desc . '</span>';
 
 				break;
-				
+
+
 			case 'medialoader':
-			
+
 				echo '<div id="uploader_' . $id . '">';
 
 				if ( $options[$id] )  {
@@ -636,11 +678,11 @@ class trucollector_Theme_Options {
 </div><!-- uploader -->';
 
 
-				
-				if ( $desc != '' ) echo '<br /><span class="description">' . $desc . '</span>';	
 
-				break;				
-				
+				if ( $desc != '' ) echo '<br /><span class="description">' . $desc . '</span>';
+
+				break;
+
 			case 'password':
 				echo '<input class="regular-text' . $field_class . '" type="text" id="' . $id . '" name="trucollector_options[' . $id . ']" value="' . esc_attr( $options[$id] ) . '" /><input type="button" id="showHide" value="Show" />';
 
@@ -654,26 +696,26 @@ class trucollector_Theme_Options {
 				echo '<input class="regular-text' . $field_class . '" type="text" id="' . $id . '" name="trucollector_options[' . $id . ']" placeholder="' . $std . '" value="' . esc_attr( $options[$id] ) . '" />';
 
 				if ( $desc != '' ) {
-				
+
 					if ($id == 'def_thumb') $desc .= '<br /><a href="' . $options[$id] . '" target="_blank"><img src="' . $options[$id] . '" style="overflow: hidden;" width="' . $options["index_thumb_w"] . '"></a>';
 					echo '<br /><span class="description">' . $desc . '</span>';
 				}
 
 				break;
 		}
-	}	
-			
+	}
+
 	/* Initialize settings to their default values */
 	public function initialize_settings() {
-	
+
 		$default_settings = array();
 		foreach ( $this->settings as $id => $setting ) {
 			if ( $setting['type'] != 'heading' )
 				$default_settings[$id] = $setting['std'];
 		}
-	
+
 		update_option( 'trucollector_options', $default_settings );
-	
+
 	}
 
 
@@ -687,15 +729,15 @@ class trucollector_Theme_Options {
 		}
 
 		$this->get_settings();
-	
+
 		foreach ( $this->settings as $id => $setting ) {
 			$setting['id'] = $id;
 			$this->create_setting( $setting );
 		}
 
 	}
-	
-		
+
+
 	/* tool to create settings fields */
 	public function create_setting( $args = array() ) {
 
@@ -724,42 +766,42 @@ class trucollector_Theme_Options {
 
 		if ( $type == 'checkbox' )
 			$this->checkboxes[] = $id;
-				
+
 
 		add_settings_field( $id, $title, array( $this, 'display_setting' ), 'trucollector-options', $section, $field_args );
 
 	}
-	
-	
+
+
 	public function validate_settings( $input ) {
-		
+
 		if ( ! isset( $input['reset_theme'] ) ) {
 			$options = get_option( 'trucollector_options' );
-			
+
 			if ( $input['notify'] != $options['notify'] ) {
 				$input['notify'] = str_replace(' ', '', $input['notify']);
 			}
-			
+
 			// if licenses not used, then show attribution must be false
-			
+
 			if ( $input['use_license'] == '0') {
 				$input['show_attribution'] == '0';
 			}
 
-					
+
 			foreach ( $this->checkboxes as $id ) {
 				if ( isset( $options[$id] ) && ! isset( $input[$id] ) )
 					unset( $options[$id] );
 			}
-						
+
 			return $input;
 		}
-		
+
 		return false;
 
 	}
  }
- 
+
 $theme_options = new trucollector_Theme_Options();
 
 function trucollector_option( $option ) {
