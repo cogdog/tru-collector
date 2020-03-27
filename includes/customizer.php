@@ -10,7 +10,7 @@ add_action( 'customize_register', 'trucollector_register_theme_customizer' );
 function trucollector_register_theme_customizer( $wp_customize ) {
 	// Create custom panel.
 	$wp_customize->add_panel( 'customize_collector', array(
-		'priority'       => 500,
+		'priority'       => 25,
 		'theme_supports' => '',
 		'title'          => __( 'TRU Collector', 'fukasawa'),
 		'description'    => __( 'Customizer Stuff', 'fukasawa'),
@@ -22,14 +22,14 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		'panel'    => 'customize_collector',
 		'priority' => 10
 	) );
-	
+
 	// Add section for the collect form
 	$wp_customize->add_section( 'collect_form' , array(
 		'title'    => __('Collect Form','fukasawa'),
 		'panel'    => 'customize_collector',
 		'priority' => 12
 	) );
-	
+
 	// Add setting for singular item
 	$wp_customize->add_setting( 'singular_item', array(
 		 'default'  => __( 'item', 'fukasawa'),
@@ -73,9 +73,9 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		    )
 	    )
 	);
-	
-	
-	
+
+
+
 	// Add setting for default prompt
 	$wp_customize->add_setting( 'default_prompt', array(
 		 'default'           => __( 'Add something to this collection? Yes! Use the form below to share it', 'fukasawa'),
@@ -91,7 +91,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		 'sanitize_callback' => 'sanitize_text'
 	) );
 
-	
+
 	// Add control for default prompt
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
@@ -106,14 +106,14 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		    )
 	    )
 	);
-	
+
 	// setting for title label
 	$wp_customize->add_setting( 'item_title', array(
 		 'default'           => __( 'Title for this Item', 'fukasawa'),
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
-	
+
 	// Control for title label
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
@@ -128,14 +128,14 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		    )
 	    )
 	);
-	
+
 	// setting for title description
 	$wp_customize->add_setting( 'item_title_prompt', array(
 		 'default'           => __( 'Enter a descriptive title that works well as a headline when listed in this site.', 'fukasawa'),
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
-	
+
 	// Control for title description
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
@@ -150,14 +150,14 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		    )
 	    )
 	);
-	
+
 	// setting for image upload label
 	$wp_customize->add_setting( 'item_upload', array(
 		 'default'           => __( 'Upload an Image for this Item', 'fukasawa'),
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
-	
+
 	// Control for image upload  label
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
@@ -179,7 +179,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
-	
+
 	// Control for image upload prompt
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
@@ -201,7 +201,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
-	
+
 	// Control for author  label
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
@@ -223,7 +223,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
-	
+
 	// Control for author  label prompt
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
@@ -245,11 +245,11 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
-	
+
 	// Control for description  label
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
-		'item_description', 
+		'item_description',
 		    array(
 		        'label'    => __( 'Description Label', 'fukasawa'),
 		        'priority' => 20,
@@ -267,7 +267,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
-	
+
 	// Control for description  label prompt
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
@@ -289,7 +289,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
-	
+
 	// Control for image source  label
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
@@ -311,7 +311,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
-	
+
 	// Control for image source prompt
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
@@ -333,7 +333,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
-	
+
 	// Control for license  label
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
@@ -355,7 +355,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
-	
+
 	// Control for license prompt
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
@@ -377,7 +377,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
-	
+
 	// Control for categories  label
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
@@ -399,7 +399,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
-	
+
 	// Control for categories prompt
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
@@ -414,14 +414,14 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		    )
 	    )
 	);
-	
+
 	// setting for tags  label
 	$wp_customize->add_setting( 'item_tags', array(
 		 'default'           => __( 'Tags', 'fukasawa'),
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
-	
+
 	// Control for tags  label
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
@@ -443,7 +443,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
-	
+
 	// Control for tags prompt
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
@@ -466,7 +466,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
-	
+
 	// Control for email address  label
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
@@ -488,7 +488,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
-	
+
 	// Control for email address prompt
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
@@ -502,16 +502,16 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		        'type'     => 'textarea'
 		    )
 	    )
-	);	
-	
-	
+	);
+
+
 	// setting for editor notes  label
 	$wp_customize->add_setting( 'item_editor_notes', array(
 		 'default'           => __( 'Notes to the Editor', 'fukasawa'),
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
-	
+
 	// Control for editor notes  label
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
@@ -533,7 +533,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
-	
+
 	// Control for editor notes prompt
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
@@ -556,7 +556,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
-	
+
 	// Control for editor notes  label
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
@@ -578,7 +578,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
-	
+
 	// Control for editor notes prompt
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
@@ -600,7 +600,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
-	
+
 	// Add control for re-edit prompt
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
@@ -617,7 +617,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 	);
 
 
-			
+
  	// Sanitize text
 	function sanitize_text( $text ) {
 	    return sanitize_text_field( $text );
