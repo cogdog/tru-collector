@@ -191,11 +191,16 @@ Change the sort otder to **Title** to... yes... sort items alphabetically by eac
 
 ### Fields and Options for Items
 
-![](images/items1.jpg)
+![](images/description-options.jpg)
 
-Set the description options to choose whether provide a field for visitors to enter a caption/description for their shared item, and whether to require that something be entered. By setting to **No** this will not appear on the submission form or on a single item display.
+Set the description options to choose whether provide a field for visitors to enter a caption/description for their shared item, and whether to require that something be entered. By setting to **No** this will not appear on the submission form or will any descriptions be displayed..
 
 Next is the option to enable a rich text editor in place of the default simple text area input. Use this if you want a site where people create formatted blog=post like content or plain text captions.
+
+You can also populate the editor (other type) with default content, for example, if you wanted  descriptions to have certain headings.
+
+
+![](images/items1.jpg)
 
 Enabling  **Display Name of Person Sharing** provides the input field to the form, and enables the display of its value on a single view.
 
@@ -220,11 +225,16 @@ If you want users to enter tags, enable it on the form (setting to "no" will hid
 
 The last option here creates field on the input form for users to send information that is not displayed.
 
-![](images/items3.jpg)
 
-Activating the email form field creates a means for visitors who wish to edit their entry later to get a special edit link sent via email. Even when activated, this field is always optional. A SPLOT always lets the user decide whether to share this information.
+### Email Options
+
+![](images/email-options.jpg)
+
+Activating the email form field creates a means for visitors who wish to edit their entry later to get a special edit link sent via email. This feature can be disabled; enabled as optional, or as a required entry.
 
 If you use this option, you can also enter a specific domain (or a comma separated list) to say require email addresses to be official work or school ones.
+
+The third setting here can activate a checkbox on the entry form that let's a visitor choose to receive comment notifications via email.
 
 ### Author Account Setup
 ![](images/author-account-none.jpg)
@@ -241,17 +251,22 @@ You can follow the link to create an account; for an email you can use a fictiti
 
 You can now customize the field labels and the descriptions of the form where people submit new items to a TRU Collector site. On your site navigate to the collect form, and  activate the Wordpress Customizer from the admin bar. 
 
-There is a special section at the bottom to open:
+There is a special section TRU Collector tab to open:
 
 ![](images/customizer-tab.jpg)
 
-Then from this pane, open "Collect Form" (eventually the theme options will live here too)
+Then from this pane, open "Collect Form" 
 
 ![](images/customizer-collect-tab.jpg)
 
 And then you will see a series of fields to edit for all form field elements. For each, you can edit the title/label of the field and the prompt that appears below. As you type in the customizer fields on the left, you will see a live preview on the right (ignore the silly pizza references in the screenshot, the author was just hungry):
 
 ![](images/customizer-edit-form.jpg)
+
+A new feature is a menu item under **Customize** that allows you to open the customizer with the current collection form displayed.
+
+![](images/customize-form.jpg)
+
 
 ## Customize the collection
 
@@ -339,12 +354,15 @@ Go collect stuff!
 
 ## Relatively New Features
 
+* **Default Description Content** And one more new theme option to pre-populate the description field with default content.
+
+* **Comment Options**  The email entry form now has an option to require entry, as well as another one to allow content creator to choose to receive email notifications of comments.
+
 * **Post Publishing Editing** Not enabled by default, but a new theme option can add to the collection form an email field (optional) that sends a user a special link that can be used to edit an entry later. This also adds a button to single item pages that can request the edit link.
 
 **Options for Special Pages**  No longer are pages for the Welcome Desk (where access codes are entered) and Collector form required to have a set URL; you can create any Page desired for these functions, and set them as the active ones via the theme options.
 
 [![SPLOT Previews](http://img.youtube.com/vi/6trhgkbt7hA/0.jpg)](https://www.youtube.com/watch?v=6trhgkbt7hA "SPLOT Previews")
-
 
 * **Name the items** New customizer panel to create the name of the item/items in the collection displayed below the site name (replacing generic "item/items")
 * **Better Rich Text Editor** the visual editor will now embed media WordPress supports (YouTube, twitter, soundcloud, etc)
