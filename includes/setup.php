@@ -391,7 +391,7 @@ function splot_default_menu() {
 # For the Collection Form
 # -----------------------------------------------------------------
 
-add_action('wp_enqueue_scripts', 'add_trucollector_scripts');
+add_action('wp_enqueue_scripts', 'add_trucollector_scripts', 100);
 
 function add_trucollector_scripts() {
 
@@ -407,6 +407,11 @@ function add_trucollector_scripts() {
         array( $parent_style ),
         wp_get_theme()->get('Version')
     );
+
+	// we override the parent theme global.js so we can use one that hides loading animation
+	wp_dequeue_script( 'fukasawa_global' );
+    wp_deregister_script( 'fukasawa_global' );
+    wp_enqueue_script('trucollector_global', get_stylesheet_directory_uri().'/js/global.js', array( 'jquery', 'masonry', 'imagesloaded', 'fukasawa_flexslider' ), '', true );
 
 
  	if ( is_page( trucollector_get_collect_page() ) ) { // use on just our form page
@@ -457,10 +462,6 @@ function add_trucollector_scripts() {
 		wp_enqueue_script( 'jquery.editlink' );
 	}
 }
-
-# -----------------------------------------------------------------
-# Comments
-# -----------------------------------------------------------------
 
 
 # -----------------------------------------------------------------
