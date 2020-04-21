@@ -25,11 +25,11 @@
 		} elseif ( is_search() ) {
 			$archive_title = sprintf( _x( 'Search results: "%s"', 'Variable: search query text', 'fukasawa' ), get_search_query() );
 		} elseif ( $paged > 1 ) {
-			$archive_title = sprintf( __( 'Page %1$s of %2$s', 'fukasawa' ), $paged, $wp_query->max_num_pages );
+			$archive_title = sprintf( __( ' (page %1$s of %2$s)', 'fukasawa' ), $paged, $wp_query->max_num_pages );
 		}
 
 		if ( ( is_archive() || is_search() ) && 1 < $wp_query->max_num_pages ) {
-			$archive_subtitle = sprintf( __( 'Page %1$s of %2$s', 'fukasawa' ), $paged, $wp_query->max_num_pages );
+			$archive_subtitle = sprintf( __( ' (page %1$s of %2$s)', 'fukasawa' ), $paged, $wp_query->max_num_pages );
 		}
 
 		if ( $archive_title ) : ?>

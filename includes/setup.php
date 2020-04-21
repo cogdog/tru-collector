@@ -176,10 +176,11 @@ add_action( 'pre_get_posts', 'trucollector_order_items' );
 
 function trucollector_order_items( $query ) {
 
-	if ( ( $query->is_home() && $query->is_main_query()) OR $query->is_archive() OR $query->is_search() ) {
-
-		$query->set( 'orderby', trucollector_option('sort_by')  );
-		$query->set( 'order', trucollector_option('sort_direction') );
+	if ( $query->is_main_query() ) {
+		if (  $query->is_home() OR $query->is_archive() ) {
+			$query->set( 'orderby', trucollector_option('sort_by')  );
+			$query->set( 'order', trucollector_option('sort_direction') );
+		}
 
 	}
 }

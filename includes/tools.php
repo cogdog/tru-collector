@@ -13,17 +13,17 @@ function page_with_template_exists ( $template ) {
 				'meta_key' => '_wp_page_template',
 				'meta_value' => $template
 			));
-	 
+
 	// did we find any?
 	$pages_found = ( count ($seekpages) ) ? true : false ;
-	
+
 	// report to base
 	return ($pages_found);
 }
 
 function get_pages_with_template ( $template ) {
 	// returns array of pages with a given template
-	
+
 	// look for pages that use the given template
 	$seekpages = get_posts (array (
 				'post_type' => 'page',
@@ -31,16 +31,16 @@ function get_pages_with_template ( $template ) {
 				'meta_value' => $template,
 				'posts_per_page' => -1
 	));
-	
+
 	// holder for results
 	$tpages = array(0 => 'Select Page');
-	
+
 
 	// Walk those results, store ID of pages found
 	foreach ( $seekpages as $p ) {
 		$tpages[$p->ID] = $p->post_title;
 	}
-	
+
 	return $tpages;
 }
 
@@ -48,7 +48,7 @@ function trucollector_get_collect_page() {
 
 	// return slud for page set in theme options for writing page (newer versions of SPLOT)
 	if ( trucollector_option( 'collect_page' ) )  {
-		return ( get_post_field( 'post_name', get_post( trucollector_option( 'collect_page' ) ) ) ); 
+		return ( get_post_field( 'post_name', get_post( trucollector_option( 'collect_page' ) ) ) );
 	} else {
 		// older versions of SPLOT use the slug
 		return ('collect');
@@ -59,7 +59,7 @@ function trucollector_get_desk_page() {
 
 	// return slug for page set in theme options for welcome desk page (newer versions of SPLOT)
 	if (  trucollector_option( 'desk_page' ) ) {
-		return ( get_post_field( 'post_name', get_post( trucollector_option( 'desk_page' ) ) ) ); 
+		return ( get_post_field( 'post_name', get_post( trucollector_option( 'desk_page' ) ) ) );
 	} else {
 		// older versions of SPLOT use the slug
 		return ('desk');
@@ -71,7 +71,7 @@ function trucollector_get_license_page() {
 
 	// return slug for page set in theme options for view by license page (newer versions of SPLOT)
 	if (  trucollector_option( 'license_page' ) ) {
-		return ( get_post_field( 'post_name', get_post( trucollector_option( 'license_page' ) ) ) ); 
+		return ( get_post_field( 'post_name', get_post( trucollector_option( 'license_page' ) ) ) );
 	} else {
 		// older versions of SPLOT use the slug
 		return ('licensed');
@@ -82,7 +82,7 @@ function trucollector_get_license_page_id() {
 
 	// return slug for page set in theme options for view by license page (newer versions of SPLOT)
 	if (  trucollector_option( 'license_page' ) ) {
-		return ( trucollector_option( 'license_page' ) ); 
+		return ( trucollector_option( 'license_page' ) );
 	} else {
 		// older versions of SPLOT use the slug
 		return ( get_page_by_path('licensed')->ID );
@@ -102,10 +102,10 @@ function trucollector_archive_title( $title ) {
     } elseif ( is_tax() ) {
         $title = single_term_title( '', false );
     }
-  
+
     return $title;
 }
- 
+
 add_filter( 'get_the_archive_title', 'trucollector_archive_title' );
 
 
@@ -134,39 +134,54 @@ function get_attachment_caption_by_id( $post_id ) {
 	// -- h/t http://wordpress.stackexchange.com/a/73894/14945
 
     $the_attachment = get_post( $post_id );
-    return ( $the_attachment->post_excerpt ); 
+    return ( $the_attachment->post_excerpt );
 }
+
+
+/**
+ * Recursively sort an array of taxonomy terms hierarchically. Child categories will be
+ * placed under a 'children' member of their parent term.
+ * @param Array   $cats     taxonomy term objects to sort
+ * @param Array   $into     result array to put them in
+ * @param integer $parentId the current parent ID to put them in
+   h/t http://wordpress.stackexchange.com/a/99516/14945
+ */
+function trucollector_sort_terms_hierarchicaly( Array &$cats, Array &$into, $parentId = 0 )
+{
+    foreach ($cats as $i => $cat) {
+        if ($cat->parent == $parentId) {
+            $into[$cat->term_id] = $cat;
+            unset($cats[$i]);
+        }
+    }
+
+    foreach ($into as $topCat) {
+        $topCat->children = array();
+        trucollector_sort_terms_hierarchicaly($cats, $topCat->children, $topCat->term_id);
+    }
+}
+
 
 function trucollector_author_user_check( $expected_user = 'collector' ) {
 	// checks for the proper authoring account set up
 
 	$auser = get_user_by( 'login', $expected_user );
-		
+
 	if ( !$auser) {
 		return ('Authoring account not set up. You need to <a href="' . admin_url( 'user-new.php') . '">create a user account</a> with login name <strong>' . $expected_user . '</strong> with a role of <strong>Author</strong>. Make a killer strong password; no one uses it.');
 	} elseif ( $auser->roles[0] != 'author') {
-	
+
 		// for multisite lets check if user is not member of blog
 		if ( is_multisite() AND !is_user_member_of_blog( $auser->ID, get_current_blog_id() ) )  {
-			return ('The user account <strong>' . $expected_user . '</strong> is set up but has not been added as a user to this site (and needs to have a role of <strong>Author</strong>). You can <a href="' . admin_url( 'user-edit.php?user_id=' . $auser->ID ) . '">edit it now</a>'); 
-			
+			return ('The user account <strong>' . $expected_user . '</strong> is set up but has not been added as a user to this site (and needs to have a role of <strong>Author</strong>). You can <a href="' . admin_url( 'user-edit.php?user_id=' . $auser->ID ) . '">edit it now</a>');
+
 		} else {
-		
-			return ('The user account <strong>' . $expected_user . '</strong> is set up but needs to have it\'s role set to <strong>Author</strong>. You can <a href="' . admin_url( 'user-edit.php?user_id=' . $auser->ID ) . '">edit it now</a>'); 
+
+			return ('The user account <strong>' . $expected_user . '</strong> is set up but needs to have it\'s role set to <strong>Author</strong>. You can <a href="' . admin_url( 'user-edit.php?user_id=' . $auser->ID ) . '">edit it now</a>');
 		}
-		
+
 	} else {
 		return ('The authoring account <strong>' .$expected_user . '</strong> is correctly set up.');
-	}
-}
-
-function splot_jetpack_post_email_check ( ) {
-// returns a status check for the Jetpack plugin and that post by email module is active
-
-	if ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'post-by-email' ) ) {
-		return  ('The Jetpack plugin is installed and Post By Email module is active. You may proceed to setup posting by email. You will need to install and/or activate a plugin that automatically creates thumbnails from post images such as <a href="https://wordpress.org/plugins/auto-thumbnailer/" target="_blank">Auto Thumbnailer</a>.'); 
-	} else {
-		return  ('The Jetpack plugin is <strong>not installed</strong> or the Post By Email module is <strong>not active</strong>. Check your  <a href="' . admin_url( 'plugins.php') . '">plugins</a>  or JetPack settings'); 
 	}
 }
 
@@ -174,14 +189,14 @@ function splot_jetpack_post_email_check ( ) {
 function trucollector_check_user( $allowed='collector' ) {
 	// checks if the current logged in user is who we expect
    $current_user = wp_get_current_user();
-	
+
 	// return check of match
 	return ( strtolower( $current_user->user_login ) == $allowed );
 }
 
 function splot_the_author() {
 	// utility to put in template to show status of special logins
-	// nothing is printed if there is not current user, 
+	// nothing is printed if there is not current user,
 	//   echos (1) if logged in user is the special account
 	//   echos (0) if logged in user is the another account
 	//   in both cases the code is linked to a logout script
