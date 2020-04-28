@@ -409,12 +409,6 @@ function add_trucollector_scripts() {
         wp_get_theme()->get('Version')
     );
 
-	// we override the parent theme global.js so we can use one that hides loading animation
-	wp_dequeue_script( 'fukasawa_global' );
-    wp_deregister_script( 'fukasawa_global' );
-    wp_enqueue_script('trucollector_global', get_stylesheet_directory_uri().'/js/global.js', array( 'jquery', 'masonry', 'imagesloaded', 'fukasawa_flexslider' ), '', true );
-
-
  	if ( is_page( trucollector_get_collect_page() ) ) { // use on just our form page
 
 		 // add media scripts if we are on our maker page and not an admin

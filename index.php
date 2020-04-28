@@ -7,14 +7,6 @@
 		$nav_label = get_trucollector_collection_plural_item();
 		?>
 
-		<div id="loading">
-			<div id="spinner">
-				<img  src="<?php echo get_stylesheet_directory_uri(); ?>/images/loading.gif" alt="Loading..."><br />
-				Loading <?php echo $nav_label;?>
-			</div>
-		</div>
-
-
 		<?php
 		$paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
 		$archive_title = '';
