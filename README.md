@@ -65,6 +65,7 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 * [The Legend of Extend](https://play.learningnuggets.ca/cms) Terry Greene's card collection
 * [Reclaim Roadshow Participants](https://roadshow.reclaimhosting.com/participants/)
 * [SPLOT Collector](http://splot.ca/collector/) - the development and very first site, stuff can and will break
+* [Summer Camp SPLOT](https://trubox.ca/splot/) Thompson Rivers University 
 * [Tech Collect](https://techcollect.cbsinkinson.com/) CU Boulder
 * [UDG Agora Image Pool](http://udg.theagoraonline.net/imagepool) used by University of Guadalajara faculty and students sharing media in the UDG Agora Project
 * [What's Happening?](https://whatshappeningart.com/) "An Experimental Journey of Artistic Inquiry"

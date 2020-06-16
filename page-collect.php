@@ -133,14 +133,14 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
  		$errors = array();
 
 
- 		if ( $wFeatureImageID == 0) $errors[] = '<strong>Image File Missing</strong> - upload the image you wish to add to represent this item.';
- 		if ( $wTitle == '' ) $errors[] = '<strong>Title Missing</strong> - enter a descriptive title for this item.';
+ 		if ( $wFeatureImageID == 0) $errors[] = '<strong>Image File Missing</strong> - upload the image you wish to add to represent this ' . get_trucollector_collection_single_item() . '.';
+ 		if ( $wTitle == '' ) $errors[] = '<strong>Title Missing</strong> - enter a descriptive title for this ' . get_trucollector_collection_single_item() . '.';
 
- 		if (  trucollector_option('use_caption') == '2' AND $wText == '' ) $errors[] = '<strong>Description Missing</strong> - please enter a detailed description for this utem.';
+ 		if (  trucollector_option('use_caption') == '2' AND $wText == '' ) $errors[] = '<strong>Description Missing</strong> - please enter a detailed description for this ' . get_trucollector_collection_single_item() . '.';
 
   		if (  trucollector_option('use_source') == '2' AND $wSource == '' ) $errors[] = '<strong>Source Missing</strong> - please the name or organization to credit as the source of this image.';
 
-  		if (  trucollector_option('use_license') == '2' AND $wLicense == '--' ) $errors[] = '<strong>License Not Selected</strong> - select an appropriate license for this item.';
+  		if (  trucollector_option('use_license') == '2' AND $wLicense == '--' ) $errors[] = '<strong>License Not Selected</strong> - select an appropriate license for this ' . get_trucollector_collection_single_item() . '.';
 
 		// test for email only if enabled in options
 		if ( trucollector_option('show_email') == '1' )   {
@@ -150,7 +150,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 				// if email is good then check if we are limiting to domains
 				if ( !empty(trucollector_option('email_domains'))  AND !trucollector_allowed_email_domain( $wEmail ) ) {
-					$errors[] = '<strong>Email Address Not Allowed</strong> - The email address you entered <code>' . $wEmail . '</code> is not from an domain accepted in this site. This site requests that addresses are ones from domain[s] <code>' .  trucollector_option('email_domains') . '</code>. ';
+					$errors[] = '<strong>Email Address Not Allowed</strong> - The email address you entered <code>' . $wEmail . '</code> is not from a domain accepted for this site. This site requests that addresses are ones from domain[s] <code>' .  trucollector_option('email_domains') . '</code>. ';
 					}
 
 				} else {
@@ -181,7 +181,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
  		if ( count($errors) > 0 ) {
  			// form errors, build feedback string to display the errors
- 			$feedback_msg = 'Sorry, but there are a few errors in your submission. Please correct and try again. We really want to add your item. <ul>';
+ 			$feedback_msg = 'Sorry, but there are a few errors in your submission. Please correct and try again. We really want to add your ' . get_trucollector_collection_single_item() . '.<ul>';
 
  			// Hah, each one is an oops, get it?
  			foreach ($errors as $oops) {
@@ -429,7 +429,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 					<div class="uploader">
 						<input id="wFeatureImage" name="wFeatureImage" type="hidden" value="<?php echo $wFeatureImageID?>" />
-						<input id="wFeatureImageUrl" type="hidden" value="<?php echo $wFeatureImageUrl ?>">
+						<input id="wFeatureImageUrl" name="wFeatureImageUrl" type="hidden" value="<?php echo $wFeatureImageUrl ?>">
 
 						<?php if ( $wFeatureImageID ):
 							 echo wp_get_attachment_image( $wFeatureImageID, 'thumbnail', "", array( "id" => "featurethumb" )  );
