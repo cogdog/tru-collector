@@ -52,7 +52,7 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 * [Imagery VISA 1101_01](http://imagery.trubox.ca/) collecting images from participants in TRU’s VISA 1110 Course: History of Art
 * [Mineral Books](https://mwynau.com/)
 * [OER18 Photos](https://oer18.oerconf.org/media/) photos for April 2018 conference in Bristol, UK.
-* [OER20 Who is Who](https://oer20.socialbingo.oerconf.org/)
+* [OER20 Who is Who](https://oer20.oerconf.org/socialbingo/)
 * [Oh No Not the Followers of the Apocalypse](http://ohnonotthe.followersoftheapocalyp.se/) FOTA Images from David Kernohan
 * [Online Resilience](https://onlineresilience.uni-med.net/) UNIMED collection of  member organization responses to COVID-19
 * [OpemMed Album](http://oercollector.openmedproject.eu/) Open Images from OpenMed meetings
