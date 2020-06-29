@@ -68,7 +68,7 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 * [Summer Camp SPLOT](https://trubox.ca/splot/) Thompson Rivers University 
 * [Tech Collect](https://techcollect.cbsinkinson.com/) CU Boulder
 * [UDG Agora Image Pool](http://udg.theagoraonline.net/imagepool) used by University of Guadalajara faculty and students sharing media in the UDG Agora Project
-* [What's Happening?](https://whatshappeningart.com/) "An Experimental Journey of Artistic Inquiry"
+* [What's Happening?](http://whatshappeningart.com/) "An Experimental Journey of Artistic Inquiry"
 * [Wordbox](http://origin.coventry.domains/wordbox/) Coventry University Art and Design Skills Hub
 * [Your Mineral Site](https://yourmineralsite.mineralcollective.com/)
 
