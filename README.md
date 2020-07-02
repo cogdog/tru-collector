@@ -34,14 +34,18 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 
 * [Ada Lovelace Day](https://thinking.is.ed.ac.uk/ald2017/) 
 * [Animal Body Plans](http://bio2290.trubox.ca/) Biology 2290 at TRU
+* [Bavaradio](https://bavaradio.com/)
+* [Beyond The Hill](https://bthcovid19.com/) Hamilton College Community Covid-19 Archive
 * [Bingobones](http://bingobones.com/) Skulls and their Stories from some fun at the Open Education 2018 project
 * [Brand Storytelling](https://jmc3353.adamcroom.com/brandstorytelling/) Ad Copy Layout, University of Oklahoma
 * [Cafecrema](https://cafecrema.procaffination.ca/) Cat pix
 * [The Compendium of Bothersome Beasties](http://creditcontinue.coventry.domains/beasties/) from Coventry University is a tool for self-reflection and formative assessment.
 * [CogDogRoo Image Collector](https://cog.dog/roo/collector/) for Alan Levine's Nov 2017 Workshops in Victoria, Australia
 * [Coventry University Digital Leaders](http://digitalleaders.coventry.domains/who/)
+* [Covid19 and LCC - Our Story In Images](https://livetogether.openlcc.net/covid19images/) Lansing Community Colleges
 * [DoOO Something](https://iwanna.dooosomething.org/) "Domain of One’s Own projects often start with domains/sites for individuals, but they can also include any other sites that individual or groups of staff and students might want the freedom to create for themselves."
 * [EduHack Directory](https://eduhack.eu/coursedirectory/)
+* [EduHackathon](https://polito.eduhack.eu/)
 * [Fanny Central](https://fannycentral.com/) for collecting inappropriately captioned old images. 
 * [Femedtech Quilt of Care and Justice in Open Education](https://quilt.femedtech.net/) showcases quilt sections shared
 * [Fleming Techbank](http://techbank.flemingdomains.ca/) Fleming College's Digital Learning Technologies Inventory
@@ -68,6 +72,7 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 * [Summer Camp SPLOT](https://trubox.ca/splot/) Thompson Rivers University 
 * [Tech Collect](https://techcollect.cbsinkinson.com/) CU Boulder
 * [UDG Agora Image Pool](http://udg.theagoraonline.net/imagepool) used by University of Guadalajara faculty and students sharing media in the UDG Agora Project
+* [Virtual VSTE 2020](https://vste.org/vstevirtual2020/) Online Learning Virtual Showcase
 * [What's Happening?](http://whatshappeningart.com/) "An Experimental Journey of Artistic Inquiry"
 * [Wordbox](http://origin.coventry.domains/wordbox/) Coventry University Art and Design Skills Hub
 * [Your Mineral Site](https://yourmineralsite.mineralcollective.com/)

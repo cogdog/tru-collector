@@ -80,7 +80,7 @@ function trucollector_make_edit_link( $post_id ) {
 
 
 function  trucollector_get_edit_link( $post_id ) {
-	return ( get_bloginfo('url') . '/' . trucollector_get_collect_page() . '/&tk=' . get_post_meta( $post_id, 'wEditKey', 1) );
+	return ( get_bloginfo('url') . '/' . trucollector_get_collect_page() . '/?tk=' . get_post_meta( $post_id, 'wEditKey', 1) );
 
 }
 
