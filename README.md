@@ -71,6 +71,7 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 * [SPLOT Collector](http://splot.ca/collector/) - the development and very first site, stuff can and will break
 * [Summer Camp SPLOT](https://trubox.ca/splot/) Thompson Rivers University 
 * [Tech Collect](https://techcollect.cbsinkinson.com/) CU Boulder
+* [This is Us!](https://www.socialbingo.coventry.domains/) people from Coventry University for Staff Conference & Excellence Awards 2020
 * [UDG Agora Image Pool](http://udg.theagoraonline.net/imagepool) used by University of Guadalajara faculty and students sharing media in the UDG Agora Project
 * [Virtual VSTE 2020](https://vste.org/vstevirtual2020/) Online Learning Virtual Showcase
 * [What's Happening?](http://whatshappeningart.com/) "An Experimental Journey of Artistic Inquiry"
