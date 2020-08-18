@@ -107,15 +107,18 @@ Using this theme requires a self-hosted--or institutionally hosted (lucky you)--
 
 The TRU Collector is a child theme based on [the free and elegant Fukasawa theme by Anders Noren](https://wordpress.org/themes/fukasawa). Install this theme first from within the Wordpress Dashboard under **Appearance** -- **Themes** searching on `Fukasawa`.
 
-Download the TRU Collector theme (use the green **Clone or Download** button above) as a ZIP file.
+You can download a ZIP file of this theme via the green **Code*" button above (the Download Zip option) or directly `tru-collector-master.zip`. 
 
-The zip can be uploaded directly to your site via **Add Themes** in the Wordpress dashboard. Of you run into size upload limits or just prefer going old school like me, unzip the package and ftp the entire folder into your `wp-content/themes` directory.
+The zip can be uploaded directly to your site via **Themes** in the Wordpress dashboard, then **Add Theme** and finally **Upload Theme**. If you run into size upload limits or just prefer going old school like me, unzip the package and ftp the entire folder into your `wp-content/themes` directory.
 
 To get the theme working, activate the "TRU Collector" theme when it appears in your Wordpress dashboard under **Appearance** --> **Themes**. 
 
 ### Updating the TRU Collector Theme (manually)
 
 *Note (Dec 18, 2018) If your site's images are stacked, or it looks like there are only 1 or 2 in a collection, it's likely because of a change to the parent Fukasawa theme and or the WordPress 5.0 update that was automatically updated on your site. An update to TRU Collector version 1.5 or later will fix this issue.*
+
+As of WordPress version 5.5 themes uploaded as .ZIP files can now be updated the same way you installed it; just download the newest version, and update it  via **Themes** in the Wordpress dashboard, then **Add Theme** and finally **Upload Theme**. You will be asked to confirm updating the theme with the newer version.  
+
 
 If you have ftp/sftp access to your site (or this can be done in a cpanel file manager), simply upload the new theme files to the `wp-content/themes` directory that includes the older version theme. 
 
