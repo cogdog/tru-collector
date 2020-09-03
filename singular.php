@@ -104,7 +104,7 @@ if  (  is_single() ) {
 							}
 
 							if  ( trucollector_option('use_license') > 0 AND !empty($wLicense) ) {
-								echo '<strong>Reuse License:</strong> ';
+								echo '<strong>' . trucollector_get_display_license_label() . ':</strong> ';
 								trucollector_the_license( $wLicense );
 								echo '<br />';
 

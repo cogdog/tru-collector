@@ -43,9 +43,12 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 * [CogDogRoo Image Collector](https://cog.dog/roo/collector/) for Alan Levine's Nov 2017 Workshops in Victoria, Australia
 * [Coventry University Digital Leaders](http://digitalleaders.coventry.domains/who/)
 * [Covid19 and LCC - Our Story In Images](https://livetogether.openlcc.net/covid19images/) Lansing Community Colleges
+* [CAISSIE: Critical Analysis of Images Site Seeing, Imaging, Examining](https://caissie.trubox.ca/)
+* [Cup of Tea With Ms E](https://cupofteawithmse.opened.ca/)
 * [DoOO Something](https://iwanna.dooosomething.org/) "Domain of One’s Own projects often start with domains/sites for individuals, but they can also include any other sites that individual or groups of staff and students might want the freedom to create for themselves."
 * [EduHack Directory](https://eduhack.eu/coursedirectory/)
 * [EduHackathon](https://polito.eduhack.eu/)
+* [Extraordinary Stories of Open and Online in the Covid-19 Era](https://splot.ca/extraordinary/)
 * [Fanny Central](https://fannycentral.com/) for collecting inappropriately captioned old images. 
 * [Femedtech Quilt of Care and Justice in Open Education](https://quilt.femedtech.net/) showcases quilt sections shared
 * [Fleming Techbank](http://techbank.flemingdomains.ca/) Fleming College's Digital Learning Technologies Inventory
