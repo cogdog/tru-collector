@@ -348,6 +348,23 @@ Learn more about using this plugin https://cogdogblog.com/2018/01/tiling-splots/
 
 If contributors to your collection will be uploading photos directly from a smart phone, install the [iOS Image Fixer plugin](https://wordpress.org/plugins/ios-images-fixer/) to fix [problems associated with portrait mode photos that end up uploaded as sideways images](https://wordpress.org/plugins/ios-images-fixer/).
 
+## Not So Big Featured Images 
+
+The images as shown in a single item view are meant by the theme to fill the space. One user of the theme setting a Collector up for conference participants to post bios, asked if they could be smaller as it put off a few of their testers.
+
+This is a job for adding some custom CSS to your own site (navigate to a single item and use the Customize link in the black admin bar). Then under "Additional CSS" try this bit of styling, it sizes them to half the width of the page and adds a bit of space (margin) at the top.
+
+````
+.single .featured-media img {
+    width: 50%;
+    margin: 5% auto 0;
+}
+````
+
+You will see results instantly, and you might try different values of the width and/or adjust the first percentage for margin (that puts space at the top).
+
+Once it seems sized appropriately, click "Publish"
+
 ## Other Wordpressy Things You Might Want to Do
 
 I like short links, so I typically use a Custom Permalink setting (under `Settings -- Permalinks`) of `/%post_id%/'
