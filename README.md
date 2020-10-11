@@ -45,6 +45,7 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 * [Covid19 and LCC - Our Story In Images](https://livetogether.openlcc.net/covid19images/) Lansing Community Colleges
 * [CAISSIE: Critical Analysis of Images Site Seeing, Imaging, Examining](https://caissie.trubox.ca/)
 * [Cup of Tea With Ms E](https://cupofteawithmse.opened.ca/)
+* [Digital Truth Making Conference](https://www2.hu-berlin.de/digitaltruthmaking/network/) used for participant intros, networking (password protected but [see tweeted screenshot](https://twitter.com/cogdog/status/1314619929006534657))
 * [DoOO Something](https://iwanna.dooosomething.org/) "Domain of One’s Own projects often start with domains/sites for individuals, but they can also include any other sites that individual or groups of staff and students might want the freedom to create for themselves."
 * [EduHack Directory](https://eduhack.eu/coursedirectory/)
 * [EduHackathon](https://polito.eduhack.eu/)
