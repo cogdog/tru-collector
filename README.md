@@ -56,6 +56,7 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 * [Flora and Fauna](https://florafauna.buffscreate.net/)
 * [Fun Photos](https://camp2019.photos.learn4growth.com/)
 * [GEOG 2221 Photo Collector](http://geog2221.trubox.ca/)  collecting images from participants in TRU’s GEOG 2221 Course: Regional Geography of Canada
+* [Inclusive Design Un-Guide Reflection Bank](http://inclusivedesign.middcreate.net/reflect/)
 * [Image Pool](http://imagepool.trubox.ca/) - used for TRU workshops on finding images on the web 
 * [Imagery VISA 1101_01](http://imagery.trubox.ca/) collecting images from participants in TRU’s VISA 1110 Course: History of Art
 * [Mineral Books](https://mwynau.com/)
