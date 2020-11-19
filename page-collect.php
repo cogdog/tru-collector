@@ -7,11 +7,11 @@ Template Name: Add to Collection
 // ------------------------ defaults ------------------------
 
 // default welcome message
-$feedback_msg = trucollector_form_default_prompt() . ' Fields marked  <strong>*</strong> are required.';
+$feedback_msg = trucollector_form_default_prompt() . ' Fields marked <strong>*</strong> are required.';
 
 // blank defaults
 
-$wTitle =  $wSource = $wTags = $wNotes = $wEmail = '';
+$wTitle =  $wSource = $wTags = $wNotes = $wEmail = $wAlt = '';
 $wAuthor = 'Anonymous';
 
 $wFeatureImageID = $wCommentNotify = 0;
@@ -73,6 +73,9 @@ if ( ( $tk )  ) {
 		// url for preview
 		$wFeatureImageUrl = get_the_post_thumbnail_url( $wid, 'post-image' );
 
+		// get image alt tag
+		$wAlt = get_post_meta($wFeatureImageID, '_wp_attachment_image_alt', true);
+
 		// source
 		$wSource = get_post_meta( $wid, 'source', 1 );
 
@@ -123,7 +126,12 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
  		$wSource = 					sanitize_text_field( stripslashes( $_POST['wSource'] ) );
  		$wNotes = 					sanitize_text_field( stripslashes( $_POST['wNotes'] ) );
  		$wFeatureImageID = 			$_POST['wFeatureImage'];
- 		if ( isset ($_POST['post_id'] ) ) $post_id = $_POST['post_id'];
+
+ 		$wAlt = 					( isset ($_POST['wAlt'] ) ) ? sanitize_text_field($_POST['wAlt']) : '';
+
+ 		// featured image URL used for preview.
+ 		$wFeatureImageUrl = wp_get_attachment_image_url ( $wFeatureImageID, 'post-image' );
+
  		$wCats = 					( isset ($_POST['wCats'] ) ) ? $_POST['wCats'] : array();
  		$wLicense = 				$_POST['wLicense'];
  		$wCommentNotify = 			( isset ( $_POST['wCommentNotify'] ) ) ? 1 : 0;
@@ -132,8 +140,11 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
  		// let's do some validation, store an error message for each problem found
  		$errors = array();
 
+		// do we have image?
+ 		if ( $wFeatureImageID == 0) {
+ 			$errors[] = '<strong>Image File Missing</strong> - upload the image you wish to add to represent this ' . get_trucollector_collection_single_item() . '.';
+ 		}
 
- 		if ( $wFeatureImageID == 0) $errors[] = '<strong>Image File Missing</strong> - upload the image you wish to add to represent this ' . get_trucollector_collection_single_item() . '.';
  		if ( $wTitle == '' ) $errors[] = '<strong>Title Missing</strong> - enter a descriptive title for this ' . get_trucollector_collection_single_item() . '.';
 
  		if (  trucollector_option('use_caption') == '2' AND $wText == '' ) $errors[] = '<strong>Description Missing</strong> - please enter a detailed description for this ' . get_trucollector_collection_single_item() . '.';
@@ -199,8 +210,6 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 				'post_category' => $wCats
 			);
 
-
-
  			if 	($is_re_edit) {
  			// update an existing post
 
@@ -227,6 +236,8 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 				// update featured image
 				set_post_thumbnail( $post_id, $wFeatureImageID);
 
+				// update featured image alt
+				update_post_meta($wFeatureImageID, '_wp_attachment_image_alt', $wAlt);
 
 				// store the license code
 				if ( trucollector_option('use_license') > 0 ) {
@@ -285,6 +296,10 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 				// set featured image
 				set_post_thumbnail( $post_id, $wFeatureImageID);
+
+				// update featured image alt
+				update_post_meta($wFeatureImageID, '_wp_attachment_image_alt', $wAlt);
+
 
 				// create an edit key
 				trucollector_make_edit_link( $post_id );
@@ -436,13 +451,8 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 						?>
 
 						<?php else:?>
-
-							<img src="https://placehold.it/150x150?text=Upload+Image" alt="upload image" id="featurethumb" />
-
-
+							<img src="https://placehold.it/150x150?text=Upload+Image" alt="Upload Image" id="featurethumb" />
 						<?php endif?>
-
-
 
 						<br />
 
@@ -452,15 +462,16 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 						<p><?php trucollector_form_item_upload_prompt() ?><br clear="left"></p>
 
+
+					<label for="wAlt">Alternative Description for Image (Recommended)</label><br />
+					<p>To provide better web accessibility and search results, enter a short alternative text that can be substituted for this image.</p>
+					<input type="text" name="wAlt" id="wAlt"  value="<?php echo $wAlt; ?>" tabindex="3" />
 				</fieldset>
-
-
-
 
 				<fieldset id="theAuthor">
 					<label for="wAuthor"><?php trucollector_form_item_author()?></label><br />
 					<p><?php trucollector_form_item_author_prompt()?></p>
-					<input type="text" name="wAuthor" id="wAuthor" class="required" value="<?php echo $wAuthor; ?>" tabindex="3" />
+					<input type="text" name="wAuthor" id="wAuthor" class="required" value="<?php echo $wAuthor; ?>" tabindex="4" />
 				</fieldset>
 
 
@@ -476,7 +487,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 							<input id="wRichText" type="hidden" value="0">
 
-							<textarea name="wText" id="wText" rows="4"  tabindex="4"><?php echo stripslashes( $wText );?></textarea><p style="font-size:0.8rem">To create hyperlinks use this shortcode<br /><code>[link url="http://www.themostamazingwebsiteontheinternet.com/" text="the coolest site on the internet"]</code><br />If you omit <code>text=</code> the URL will be the link text.</p>
+							<textarea name="wText" id="wText" rows="4"  tabindex="5"><?php echo stripslashes( $wText );?></textarea><p style="font-size:0.8rem">To create hyperlinks use this shortcode<br /><code>[link url="http://www.themostamazingwebsiteontheinternet.com/" text="the coolest site on the internet"]</code><br />If you omit <code>text=</code> the URL will be the link text.</p>
 
 							<?php else:?>
 
@@ -485,7 +496,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 							<?php
 							// set up for inserting the WP post editor
-							$settings = array( 'textarea_name' => 'wText', 'editor_height' => '300',  'tabindex'  => "5", 'media_buttons' => true, 'drag_drop_upload' => true);
+							$settings = array( 'textarea_name' => 'wText', 'editor_height' => '300',  'tabindex'  => "6", 'media_buttons' => true, 'drag_drop_upload' => true);
 
 							wp_editor(  stripslashes( $wText ), 'wTextHTML', $settings );
 
@@ -506,7 +517,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 					<fieldset id="theSource">
 						<label for="wSource"><?php trucollector_form_item_image_source() ?> <?php echo $required?></label>
 						<p><?php trucollector_form_item_image_source_prompt() ?></p>
-						<input type="text" name="wSource" id="wSource" class="required" value="<?php echo $wSource; ?>" tabindex="6" />
+						<input type="text" name="wSource" id="wSource" class="required" value="<?php echo $wSource; ?>" tabindex="7" />
 					</fieldset>
 
 				<?php endif?>
@@ -520,7 +531,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 						<label for="wLicense"><?php trucollector_form_item_license() ?> <?php echo $required?></label>
 						<p><?php trucollector_form_item_license_prompt() ?></p>
 
-						<select name="wLicense" id="wLicense" tabindex="7" />
+						<select name="wLicense" id="wLicense" tabindex="8" />
 						<option value="--">Select a License</option>
 
 						<?php
@@ -559,7 +570,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 							$checked = ( in_array( $acat->term_id, $wCats) ) ? ' checked="checked"' : '';
 
-							echo '<label><input type="checkbox" name="wCats[]" tabindex="8" value="' . $acat->term_id . '"' . $checked . '> ' . $acat->name . '</label><br />';
+							echo '<label><input type="checkbox" name="wCats[]" tabindex="9" value="' . $acat->term_id . '"' . $checked . '> ' . $acat->name . '</label><br />';
 						}
 
 						?>
@@ -574,7 +585,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 						<label for="wTags"><?php  trucollector_form_item_tags() ?></label>
 						<p><?php  trucollector_form_item_tags_prompt() ?></p>
 
-						<input type="text" name="wTags" id="wTags" value="<?php echo $wTags; ?>" tabindex="9"  />
+						<input type="text" name="wTags" id="wTags" value="<?php echo $wTags; ?>" tabindex="10"  />
 					</fieldset>
 				<?php endif?>
 
@@ -611,7 +622,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 							<label for="wNotes"><?php trucollector_form_item_editor_notes() ?></label>
 							<p><?php trucollector_form_item_editor_notes_prompt() ?></p>
 
-							<textarea name="wNotes" id="wNotes" rows="10"  tabindex="9"><?php echo stripslashes( $wNotes );?></textarea>
+							<textarea name="wNotes" id="wNotes" rows="10"  tabindex="11"><?php echo stripslashes( $wNotes );?></textarea>
 					</fieldset>
 				<?php endif?>
 

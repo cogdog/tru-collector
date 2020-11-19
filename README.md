@@ -389,7 +389,7 @@ Go collect stuff!
 ## Relatively New Features
 
 
-* **Loading Animation** Main pages can be slow to load as the jQuery code generates the masonry display of content, leaving a blank grey screen. So a "Loading..." gif appears until the page is assembled. 
+* **Alt Text Field** Sharing form now includes a place to enter alternative text for the main image for better web accessibility. 
 * **Default Description Content** And one more new theme option to pre-populate the description field with default content.
 * **Comment Options**  The email entry form now has an option to require entry, as well as another one to allow content creator to choose to receive email notifications of comments.
 * **Post Publishing Editing** Not enabled by default, but a new theme option can add to the collection form an email field (optional) that sends a user a special link that can be used to edit an entry later. This also adds a button to single item pages that can request the edit link.

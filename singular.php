@@ -66,7 +66,7 @@ if  (  is_single() ) {
 
 					<div class="featured-media">
 
-						<?php the_post_thumbnail( 'post-image' ); ?>
+						<?php the_post_thumbnail( 'post-image' );?>
 
 					</div><!-- .featured-media -->
 
@@ -88,6 +88,7 @@ if  (  is_single() ) {
 
 
 					<?php if (  is_single() ): ?>
+						<div class="splot_meta">
 						<p>
 						<?php
 							// Sharer
@@ -104,7 +105,7 @@ if  (  is_single() ) {
 							}
 
 							if  ( trucollector_option('use_license') > 0 AND !empty($wLicense) ) {
-								echo '<strong>' . trucollector_get_display_license_label() . ':</strong> ';
+								echo '<strong>Reuse License:</strong> ';
 								trucollector_the_license( $wLicense );
 								echo '<br />';
 
@@ -133,6 +134,7 @@ if  (  is_single() ) {
 								<strong>Edit Link:</strong> <em>(emailed to author)</em><br /><a href="#" id="getEditLink" class="button" data-widurl="<?php echo get_bloginfo('url') . '/get-edit-link/' .   $post->ID ?>">Request Now</a> <span id="getEditLinkResponse" class="writenew"></span>
 							</p>
 							<?php endif?>
+						</div><!-- spplot_meta -->
 					<?php endif; // is_single?>
 
 
