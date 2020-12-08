@@ -153,9 +153,11 @@ add_filter( 'post_updated_messages', 'trucollector_post_updated_messages', 10, 1
 add_filter('comment_form_defaults', 'trucollector_comment_mod');
 
 function trucollector_comment_mod( $defaults ) {
-	$defaults['title_reply'] = 'Provide Feedback';
+	$defaults['title_reply'] = get_trucollector_comment_title();
+
+	$defaults['title_reply_after'] = '</h3>' . get_trucollector_comment_extra_intro();
 	$defaults['logged_in_as'] = '';
-	$defaults['title_reply_to'] = 'Provide Feedback for %s';
+	$defaults['title_reply_to'] =  get_trucollector_comment_title() . ' for %s';
 	return $defaults;
 }
 

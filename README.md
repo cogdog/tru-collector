@@ -291,6 +291,10 @@ A new section for the TRU Collector Customizer **Collection Info** allows you to
 
 ![](images/customize-collection-info.jpg)
 
+You can also change the header and add extra instructions/prompts if you want to modify how the comments area is displayed.
+
+![](images/customize-comments.jpg)
+
 ## Browse by Licenses
 
 The TRU Collector provides archives of content that have the same reuse license (if the feature is activated via the TRU Collector options). Just make sure there is a Wordpress Page that uses the template  `Browse by license` -- and the Page is selected in the theme options (see above). This page is created automatically on new sites, or simply by activating the theme again (activate the parent Fukasawa, then activate TRU Collector again).
@@ -380,7 +384,7 @@ Set up your own menus as needed; make sure that you click the `Location` tab to 
 
 ![Menu Configuration](images/menu.jpg "menu options") 
 
-Get rid of the default widgets on the site; make it your own
+Get rid of the default widgets on the site, make it your own!
 
 ![Widgets](images/widgets.jpg "suggested widget set up") 
 
@@ -388,7 +392,7 @@ Go collect stuff!
 
 ## Relatively New Features
 
-
+* *Customize Comments** Modify the title where comments are displayed and add an extra prompt.
 * **Alt Text Field** Sharing form now includes a place to enter alternative text for the main image for better web accessibility. 
 * **Default Description Content** And one more new theme option to pre-populate the description field with default content.
 * **Comment Options**  The email entry form now has an option to require entry, as well as another one to allow content creator to choose to receive email notifications of comments.

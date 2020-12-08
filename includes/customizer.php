@@ -65,7 +65,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		'plural_item',
 		    array(
 		        'label'    => __( 'Plural Items', 'fukasawa'),
-		        'priority' => 11,
+		        'priority' => 15,
 		        'description' => __( 'The name for more than one thing in this collection' ),
 		        'section'  => 'collections',
 		        'settings' => 'plural_item',
@@ -74,6 +74,49 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 	    )
 	);
 
+	// Add setting for comment titles
+	$wp_customize->add_setting( 'comment_title', array(
+		 'default'  => __( 'Provide Feedback', 'fukasawa'),
+		 'type' => 'theme_mod',
+		 'sanitize_callback' => 'sanitize_text'
+	) );
+
+	// Control  label
+	$wp_customize->add_control( new WP_Customize_Control(
+	    $wp_customize,
+		'comment_title',
+		    array(
+		        'label'    => __( 'Title for Comments Section', 'fukasawa'),
+		        'priority' => 21,
+		        'description' => __( 'Make as specific as needed' ),
+		        'section'  => 'collections',
+		        'settings' => 'comment_title',
+		        'type'     => 'text'
+		    )
+	    )
+	);
+
+	// Add setting for Extra instructions for comments
+	$wp_customize->add_setting( 'comment_extra_intro', array(
+		 'default'  => __( '', 'fukasawa'),
+		 'type' => 'theme_mod',
+		 'sanitize_callback' => 'sanitize_text'
+	) );
+
+	// Control fortitle label
+	$wp_customize->add_control( new WP_Customize_Control(
+	    $wp_customize,
+		'comment_extra_intro',
+		    array(
+		        'label'    => __( 'Extra Instructions for Comment Area', 'fukasawa'),
+		        'priority' => 25,
+		        'description' => __( 'Specify suggestions as needed to guide comment input' ),
+		        'section'  => 'collections',
+		        'settings' => 'comment_extra_intro',
+		        'type'     => 'text'
+		    )
+	    )
+	);
 
 
 	// Add setting for default prompt
@@ -691,6 +734,24 @@ function get_trucollector_collection_plural_item() {
 	 	return  ('items');
 	 }
 }
+
+
+function get_trucollector_comment_title() {
+	 if ( get_theme_mod( 'comment_title') != "" ) {
+	 	return ( get_theme_mod( 'comment_title'));
+	 }	else {
+	 	return  ('Provide Feedback');
+	 }
+}
+
+function get_trucollector_comment_extra_intro() {
+	 if ( get_theme_mod( 'comment_extra_intro') != "" ) {
+	 	return ( '<p class="comment_notes">' . get_theme_mod( 'comment_extra_intro') . '</p>');
+	 }	else {
+	 	return  ('');
+	 }
+}
+
 
 
 function trucollector_form_default_prompt() {
