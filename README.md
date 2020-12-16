@@ -46,6 +46,7 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 * [CAISSIE: Critical Analysis of Images Site Seeing, Imaging, Examining](https://caissie.trubox.ca/)
 * [Cup of Tea With Ms E](https://cupofteawithmse.opened.ca/)
 * [Digital Truth Making Conference](https://www2.hu-berlin.de/digitaltruthmaking/network/) used for participant intros, networking (password protected but [see tweeted screenshot](https://twitter.com/cogdog/status/1314619929006534657))
+* [Do It Ourselves](https://dio.trubox.ca/) Meme images collected for GEOG 2221: Regional Geography of Canada (TRU)
 * [DoOO Something](https://iwanna.dooosomething.org/) "Domain of One’s Own projects often start with domains/sites for individuals, but they can also include any other sites that individual or groups of staff and students might want the freedom to create for themselves."
 * [EduHack Directory](https://eduhack.eu/coursedirectory/)
 * [EduHackathon](https://polito.eduhack.eu/)
@@ -60,6 +61,7 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 * [Inclusive Design Un-Guide Reflection Bank](http://inclusivedesign.middcreate.net/reflect/)
 * [Image Pool](http://imagepool.trubox.ca/) - used for TRU workshops on finding images on the web 
 * [Imagery VISA 1101_01](http://imagery.trubox.ca/) collecting images from participants in TRU’s VISA 1110 Course: History of Art
+* [Memes and Animated GIFs](https://memeworkshop.trubox.ca/) for a TRU workshop
 * [Mineral Books](https://mwynau.com/)
 * [OER18 Photos](https://oer18.oerconf.org/media/) photos for April 2018 conference in Bristol, UK.
 * [OER20 Who is Who](https://oer20.oerconf.org/socialbingo/)
@@ -73,10 +75,15 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 * [Learning on/with the Open Web Participants](https://conf.owlteh.org/participants/) 
 * [Learning on/with the Open Web Conference Photos](https://www.conf.owlteh.org/photos/)
 * [The Legend of Extend](https://play.learningnuggets.ca/cms) Terry Greene's card collection
+* [LIB 100 Online](https://lib100.info/) Wake Forest University
 * [Reclaim Roadshow Participants](https://roadshow.reclaimhosting.com/participants/)
 * [SPLOT Collector](http://splot.ca/collector/) - the development and very first site, stuff can and will break
+* [Students Writing on Material Culture in China](https://hst137.tdh.bergbuilds.domains/projectfall20/) for HST 137 at Muhlenberg College
 * [Summer Camp SPLOT](https://trubox.ca/splot/) Thompson Rivers University 
+* [T3+BLENDLAC 2020](http://mariocandof.digital.brynmawr.edu/t3blendlac2020/) Conference participants
 * [Tech Collect](https://techcollect.cbsinkinson.com/) CU Boulder
+* [Templebreedy Archive](https://deochandoras.com/) Collecting tombstones!
+* [Things That Make Me Smile](http://erikaab.ds.lib.uw.edu/smile/) Things great and small that brought joy to us in 2020.
 * [This is Us!](https://www.socialbingo.coventry.domains/) people from Coventry University for Staff Conference & Excellence Awards 2020
 * [UDG Agora Image Pool](http://udg.theagoraonline.net/imagepool) used by University of Guadalajara faculty and students sharing media in the UDG Agora Project
 * [Virtual VSTE 2020](https://vste.org/vstevirtual2020/) Online Learning Virtual Showcase
