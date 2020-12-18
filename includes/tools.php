@@ -4,6 +4,12 @@
 # Useful spanners and wrenches
 # -----------------------------------------------------------------
 
+
+function splot_redirect_url() {
+	// where to send to collect form
+	return ( home_url('/') . trucollector_get_collect_page() );
+}
+
 function page_with_template_exists ( $template ) {
 	// returns true if at least one Page exists that uses given template
 
@@ -54,18 +60,6 @@ function trucollector_get_collect_page() {
 		return ('collect');
 	}
 }
-
-function trucollector_get_desk_page() {
-
-	// return slug for page set in theme options for welcome desk page (newer versions of SPLOT)
-	if (  trucollector_option( 'desk_page' ) ) {
-		return ( get_post_field( 'post_name', get_post( trucollector_option( 'desk_page' ) ) ) );
-	} else {
-		// older versions of SPLOT use the slug
-		return ('desk');
-	}
-}
-
 
 function trucollector_get_license_page() {
 
@@ -128,15 +122,97 @@ function trucollector_allowed_email_domain( $email ) {
 }
 
 
+# -----------------------------------------------------------------
+# Media
+# -----------------------------------------------------------------
+
+// return the maxium upload file size in omething more useful than bytes
+function trucollector_max_upload() {
+	$maxupload = wp_max_upload_size() / 1000000;
+	return ( round( $maxupload ) . ' Mb');
+
+}
+
+function trucollector_get_upload_max() {
+	// in case not set in options, return the max
+	return ( trucollector_option('upload_max') ) ? trucollector_option('upload_max') . ' Mb' : trucollector_max_upload();
+
+}
+
+// function to get the caption for an attachment (stored as post_excerpt)
+// -- h/t http://wordpress.stackexchange.com/a/73894/14945
 
 function get_attachment_caption_by_id( $post_id ) {
-	// function to get the caption for an attachment (stored as post_excerpt)
-	// -- h/t http://wordpress.stackexchange.com/a/73894/14945
-
     $the_attachment = get_post( $post_id );
     return ( $the_attachment->post_excerpt );
 }
 
+// for uploading images
+function trucollector_insert_attachment( $file_handler, $post_id ) {
+
+	if ($_FILES[$file_handler]['error'] !== UPLOAD_ERR_OK) return (false);
+
+	require_once( ABSPATH . "wp-admin" . '/includes/image.php' );
+	require_once( ABSPATH . "wp-admin" . '/includes/file.php' );
+	require_once( ABSPATH . "wp-admin" . '/includes/media.php' );
+
+	$attach_id = media_handle_upload( $file_handler, $post_id );
+
+	return ($attach_id);
+
+}
+
+# -----------------------------------------------------------------
+# Allow Previews
+# -----------------------------------------------------------------
+
+
+function  splotbox_show_drafts( $query ) {
+// show drafts only for single previews
+    if ( is_user_logged_in() || is_feed() || !is_single() )
+        return;
+
+    $query->set( 'post_status', array( 'publish', 'draft' ) );
+}
+
+add_action( 'pre_get_posts', 'splotbox_show_drafts' );
+
+// enable previews of posts for non-logged in users
+// ----- h/t https://wordpress.stackexchange.com/a/164088/14945
+
+add_filter( 'the_posts', 'splotbox_reveal_previews', 10, 2 );
+
+function splotbox_reveal_previews( $posts, $wp_query ) {
+
+    //making sure the post is a preview to avoid showing published private posts
+    if ( !is_preview() )
+        return $posts;
+
+    if ( is_user_logged_in() )
+    	 return $posts;
+
+    if ( count( $posts ) )
+        return $posts;
+
+    if ( !empty( $wp_query->query['p'] ) ) {
+        return array ( get_post( $wp_query->query['p'] ) );
+    }
+}
+
+function splotbox_is_preview() {
+	return ( get_query_var( 'ispre', 0 ) == 1);
+}
+
+
+function trucollector_preview_notice() {
+	return ('<div class="notify"><span class="symbol icon-info"></span>
+This is a preview of your entry that shows how it will look when published. <a href="#" onclick="self.close();return false;">Close this window/tab</a> when done to return to the sharing form. Make any changes and click "Revise Draft" again or if it is ready, click "Publish Now".
+				</div>');
+}
+
+# -----------------------------------------------------------------
+# Useful spanners and wrenches
+# -----------------------------------------------------------------
 
 /**
  * Recursively sort an array of taxonomy terms hierarchically. Child categories will be
@@ -159,53 +235,6 @@ function trucollector_sort_terms_hierarchicaly( Array &$cats, Array &$into, $par
         $topCat->children = array();
         trucollector_sort_terms_hierarchicaly($cats, $topCat->children, $topCat->term_id);
     }
-}
-
-
-function trucollector_author_user_check( $expected_user = 'collector' ) {
-	// checks for the proper authoring account set up
-
-	$auser = get_user_by( 'login', $expected_user );
-
-	if ( !$auser) {
-		return ('Authoring account not set up. You need to <a href="' . admin_url( 'user-new.php') . '">create a user account</a> with login name <strong>' . $expected_user . '</strong> with a role of <strong>Author</strong>. Make a killer strong password; no one uses it.');
-	} elseif ( $auser->roles[0] != 'author') {
-
-		// for multisite lets check if user is not member of blog
-		if ( is_multisite() AND !is_user_member_of_blog( $auser->ID, get_current_blog_id() ) )  {
-			return ('The user account <strong>' . $expected_user . '</strong> is set up but has not been added as a user to this site (and needs to have a role of <strong>Author</strong>). You can <a href="' . admin_url( 'user-edit.php?user_id=' . $auser->ID ) . '">edit it now</a>');
-
-		} else {
-
-			return ('The user account <strong>' . $expected_user . '</strong> is set up but needs to have it\'s role set to <strong>Author</strong>. You can <a href="' . admin_url( 'user-edit.php?user_id=' . $auser->ID ) . '">edit it now</a>');
-		}
-
-	} else {
-		return ('The authoring account <strong>' .$expected_user . '</strong> is correctly set up.');
-	}
-}
-
-
-function trucollector_check_user( $allowed='collector' ) {
-	// checks if the current logged in user is who we expect
-   $current_user = wp_get_current_user();
-
-	// return check of match
-	return ( strtolower( $current_user->user_login ) == $allowed );
-}
-
-function splot_the_author() {
-	// utility to put in template to show status of special logins
-	// nothing is printed if there is not current user,
-	//   echos (1) if logged in user is the special account
-	//   echos (0) if logged in user is the another account
-	//   in both cases the code is linked to a logout script
-
-	if ( is_user_logged_in() and !current_user_can( 'edit_others_posts' ) ) {
-		$user_code = ( trucollector_check_user() ) ? 1 : 0;
-		echo '<a href="' . wp_logout_url( site_url() ). '">(' . $user_code  .')</a>';
-	}
-
 }
 
 function set_html_content_type() {

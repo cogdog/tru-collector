@@ -1,8 +1,6 @@
 /* TRU Collector: TRU Collector  Scripts
    code by Alan Levine @cogdog http://cogdog.info
 
-   media uploader scripts somewhat lifted from
-   http://mikejolley.com/2012/12/using-the-new-wordpress-3-5-media-uploader-in-plugins/
 */
 
 
@@ -15,52 +13,65 @@ function getAbsolutePath() {
 jQuery(document).ready(function() {
 	// called for via click of upload button in theme options
 
-	jQuery(document).on('click', '.upload_image_button', function(e){
+	jQuery('#splotdropzone input').change(function () {
 
-		// disable default behavior
-		e.preventDefault();
+		if (this.value) {
+			// prompt for drop area
 
-		// Create the media frame
-		// use title and label passed from data-items in form button
+			// get the file size
+			let file_size_MB = (this.files[0].size / 1000000.0).toFixed(2);
 
-		file_frame = wp.media.frames.file_frame = wp.media({
-		  title: jQuery( this ).data( 'uploader_title' ),
-		  button: {
-			text: jQuery( this ).data( 'uploader_button_text' ),
-		  },
-		  multiple: false  // Set to true to allow multiple files to be selected
-		});
+			if ( file_size_MB >  parseFloat(collectorObject.uploadMax)) {
+            	alert('Error: The size of your image, ' + file_size_MB + ' Mb, is greater than the maximum allowed for this site (' + collectorObject.uploadMax + ' Mb). Try a different file or see if you can shrink the size of this one.');
+            	jQuery('#wUploadImage').val("");
+            } else {
 
-		// fetch the type for this option so we can use it, comes from data-ctype value
-		// in form button
 
-		// set up call back from image selection from media uploader
-		file_frame.on( 'select', function() {
+            	jQuery('#wDefThumbURL').text( jQuery('#headerthumb').attr('src'));
+				      jQuery('#dropmessage').text('Selected Image: ' + this.value.substring(12));
 
-		  // attachment object from upload
-		  attachment = file_frame.state().get('selection').first().toJSON();
+              // generate a preview of image in the thumbnail source
+              // h/t https://codepen.io/waqasy/pen/rkuJf
+              if (this.files && this.files[0]) {
+                var freader = new FileReader();
 
-		  // insert the base url into the hidden field for the option value
-		  jQuery("#wFeatureImage").val(attachment.id);
+                freader.onload = function (e) {
+                  jQuery('#headerthumb').attr('src', e.target.result);
+                };
 
-		  // update alternative text field
-		  jQuery("#wAlt").val(attachment.alt);
+                freader.readAsDataURL(this.files[0]);
 
-		  // insert the post image URL in hidden element to be used for previews, strip thumbnail from url (lazy)
-		  jQuery("#wFeatureImageUrl").val(attachment.sizes.thumbnail.url.replace("-150x150", "") );
+                 // update status
+                jQuery("#uploadresponse").html('Image selected. When you <strong>Save/Update</strong> below this file will be uploaded (' + file_size_MB + ' Mb).');
 
-		  // remove srcset if it is a re-edit
-		  jQuery("#featurethumb").removeAttr('srcset');
+            } else {
+              // no files received?
+               reset_dropzone();
+            }
+			}
 
-		  // Now update the thumbnail preview image
-		  jQuery("#featurethumb").attr("src", attachment.sizes.thumbnail.url);
-
-		});
-
-		// Finally, open the modal
-		file_frame.open();
-
+		} else {
+			// cancel clicked
+			reset_dropzone();
+		}
 	});
+
+
+	jQuery("#headerthumb").click(function(){
+		jQuery("#splotdropzone input").click();
+	});
+
+	function reset_dropzone() {
+		//reset thumbnail preview
+		jQuery('#headerthumb').attr('src', jQuery('#wDefThumbURL').text());
+
+		// clear status field
+		jQuery("#uploadresponse").text('');
+
+		// reset drop zone prompt
+		jQuery('#dropmessage').text('Drag file or click to select one to upload');
+
+	}
 
 	jQuery('#wTags').suggest( getAbsolutePath() + "wp-admin/admin-ajax.php?action=ajax-tag-search&tax=post_tag", {multiple:true, multipleSep: ","});
 

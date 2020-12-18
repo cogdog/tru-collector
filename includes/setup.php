@@ -29,25 +29,6 @@ function trucollector_setup () {
   	wp_insert_post( $page_data );
 
   }
-
- if (! page_with_template_exists( 'page-desk.php' ) ) {
-
-  	// create the welcome desk page if it does not exist
-  	$page_data = array(
-  		'post_title' 	=> 'Welcome Desk',
-  		'post_content'	=> 'You are but one special key word away from being able to add images to this collection. Hopefully the kind owner of this site has provided you the key phrase. Spelling and capitalization do count. If you are said owner, editing this page will let you personalize this bit.',
-  		'post_name'		=> 'desk',
-  		'post_status'	=> 'publish',
-  		'post_type'		=> 'page',
-  		'post_author' 	=> 1,
-  		'post_date' 	=> date('Y-m-d H:i:s', time() - 172800),
-  		'page_template'	=> 'page-desk.php',
-  	);
-
-  	wp_insert_post( $page_data );
-
-  }
-
 	if (! page_with_template_exists( 'page-licensed.php' ) ) {
 
   	// create index page and archive for licenses.
@@ -170,6 +151,7 @@ function trucollector_queryvars( $qvars ) {
 	$qvars[] = 'tk'; // flag for edit key
 	$qvars[] = 'elink'; // for edit link requests
 	$qvars[] = 'wid'; // id for sending email edit link
+	$qvars[] = 'ispre'; // flag for preview when not logged in
 	return $qvars;
 }
 
@@ -199,7 +181,7 @@ function trucollector_remove_admin_submenus() {
 }
 
 
-// remove from admin bar too
+// remove new post from admin bar too
 add_action( 'admin_bar_menu', 'trucollector_remove_admin_menus', 999 );
 
 function trucollector_remove_admin_menus() {
@@ -246,75 +228,6 @@ function trucollector_rewrite_rules() {
 add_action( 'template_redirect', 'trucollector_write_director' );
 
 function trucollector_write_director() {
-
-	if ( is_page( trucollector_get_collect_page() ) and !isset( $_POST['trucollector_form_make_submitted'] ) ) {
-
-		// check for query vars that indicate this is a edit request/ build qstring
-		$tk  = get_query_var( 'tk', 0 );    // magic token to check
-
-		$args = ( $tk )  ? '?tk=' . $tk : '';
-
-			// normal entry check for author
-		if ( !is_user_logged_in() ) {
-			// not already logged in? go to desk.
-			wp_redirect ( home_url('/') . trucollector_get_desk_page()  . $args );
-			exit;
-
-		} elseif ( !current_user_can( 'edit_others_posts' ) ) {
-			// okay user, who are you? we know you are not an admin or editor
-
-			// if the writer user not found, we send you to the desk
-			if ( !trucollector_check_user() ) {
-				// now go to the desk and check in properly
-				wp_redirect ( home_url('/') . trucollector_get_desk_page() . $args  );
-				exit;
-			}
-		}
-
-	}
-
-	if ( is_page(trucollector_get_desk_page()) ) {
-
-
-		// check for query vars that indicate this is a edit request/ build qstring
-		$tk  = get_query_var( 'tk', 0 );    // magic token to check
-
-		$args = ( $tk )  ? '?tk=' . $tk : '';
-
-
-		// already logged in? go directly to the tool
-		if ( is_user_logged_in() ) {
-
-			if ( current_user_can( 'edit_others_posts' ) ) {
-				// If user has edit/admin role, send them to the tool
-				wp_redirect( splot_redirect_url() . $args );
-				exit;
-
-			} else {
-
-				// if the correct user already logged in, go directly to the tool
-				if ( trucollector_check_user() ) {
-					wp_redirect( splot_redirect_url()  . $args );
-					exit;
-				}
-			}
-
-		} elseif ( trucollector_option('accesscode') == '')  {
-			splot_user_login('collector', true, $args );
-			exit;
-		} elseif ( isset( $_POST['trucollector_form_access_submitted'] )
-		&& wp_verify_nonce( $_POST['trucollector_form_access_submitted'], 'trucollector_form_access' ) ) {
-
-			// access code from the form
-			if ( stripslashes( $_POST['wAccess'] ) == trucollector_option('accesscode') ) {
-				splot_user_login('collector', true, $args );
-				exit;
-			}
-
-		}
-
-	}
-
   if ( get_query_var('random') == 1 ) {
 		 // set arguments for WP_Query on published posts to get 1 at random
 		$args = array(
@@ -341,17 +254,6 @@ function trucollector_write_director() {
 
 		trucollector_mail_edit_link ($wid);
    		exit;
-
-   	/*
-   } elseif ( get_query_var('tk') ) {
-   		// catch all if the collect page URL has changed, capture and redirect
-
-
-   		$tk  = get_query_var( 'tk', 0 );    // magic token to check
-		$args = ( $tk )  ? '?tk=' . $tk : '';
-		wp_redirect( splot_redirect_url()  . $args );
-		exit;
-	*/
 	}
 }
 
@@ -452,29 +354,28 @@ function add_trucollector_scripts() {
 
    		wp_enqueue_script( 'mce-view', '', array('tiny_mce') );
 
+ 		// tinymce mods
+		add_filter("mce_external_plugins", "trucollector_register_buttons");
+		add_filter('mce_buttons','trucollector_tinymce_buttons');
+		add_filter('mce_buttons_2','trucollector_tinymce_2_buttons');
+
 
 		// custom jquery for the uploader on the form
 		wp_register_script( 'jquery.collector' , get_stylesheet_directory_uri() . '/js/jquery.collector.js', null , '1.0', TRUE );
+
+
+		// add a local variable for the site's home url
+		wp_localize_script(
+		  'jquery.collector',
+		  'collectorObject',
+		  array(
+		  	'ajaxUrl' => admin_url('admin-ajax.php'),
+			'siteUrl' => esc_url(home_url()),
+			'uploadMax' => trucollector_option('upload_max' )
+		  )
+		);
+
 		wp_enqueue_script( 'jquery.collector' );
-
-
-
-		// add scripts for fancybox (used for previews of collected items)
-		//-- h/t http://code.tutsplus.com/tutorials/add-a-responsive-lightbox-to-your-wordpress-theme--wp-28100
-		wp_register_script( 'fancybox', get_stylesheet_directory_uri() . '/includes/lightbox/js/jquery.fancybox.pack.js', array( 'jquery' ), false, true );
-		wp_enqueue_script( 'fancybox' );
-
-		// Lightbox formatting for preview screated with rich text editor
-		wp_register_script( 'lightbox_preview', get_stylesheet_directory_uri() . '/includes/lightbox/js/lightbox_preview.js', array( 'fancybox' ), '1.1', null , '1.0', TRUE );
-		wp_enqueue_script( 'lightbox_preview' );
-
-		// fancybox styles
-		wp_register_style( 'lightbox-style', get_stylesheet_directory_uri() . '/includes/lightbox/css/jquery.fancybox.css' );
-		wp_enqueue_style( 'lightbox-style' );
-
-		// used to display formatted dates
-		wp_register_script( 'moment' , get_stylesheet_directory_uri() . '/js/moment.js', null, '1.0', TRUE );
-		wp_enqueue_script( 'moment' );
 
 	}  elseif ( is_single() ) {
 		// on single pages, enable the editlink capability
@@ -490,7 +391,6 @@ function add_trucollector_scripts() {
 # -----------------------------------------------------------------
 
 // possibly add contributor email to comment notifications
-// add_filter( 'comment_moderation_recipients', 'trucollector_comment_notification_recipients', 15, 2 );
 add_filter( 'comment_notification_recipients', 'trucollector_comment_notification_recipients', 15, 2 );
 
 function trucollector_comment_notification_recipients( $emails, $comment_id ) {
@@ -544,4 +444,194 @@ function trucollector_ok_to_notify( $comment ) {
 	return ( trucollector_option('allow_comments') and get_post_meta( $comment->comment_post_ID, 'wCommentNotify', 1 ) );
 }
 
+
+# -----------------------------------------------------------------
+# login stuff
+# -----------------------------------------------------------------
+
+// Add custom logo to entry screen... because we can
+// While we are at it, use CSS to hide the back to blog and retried password links
+
+add_action( 'login_enqueue_scripts', 'splot_login_logo' );
+
+function splot_login_logo() { ?>
+    <style type="text/css">
+        body.login div#login h1 a {
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/images/site-login-logo.png);
+            height:90px;
+			width:320px;
+			background-size: 320px 90px;
+			background-repeat: no-repeat;
+			padding-bottom: 0px;
+        }
+    </style>
+<?php }
+
+
+// Make logo link points to blog, not Wordpress.org Change Dat
+// -- h/t http://www.sitepoint.com/design-a-stylized-custom-wordpress-login-screen/
+
+add_filter( 'login_headerurl', 'splot_login_link' );
+
+function splot_login_link( $url ) {
+	return 'https://splot.ca/';
+}
+
+/* Customize message above registration form */
+
+add_filter('login_message', 'splot_add_login_message');
+
+function splot_add_login_message() {
+	return '<p class="message">To do all that is SPLOT!</p>';
+}
+
+// login page title
+add_filter( 'login_headertext', 'splot_login_logo_url_title' );
+
+function splot_login_logo_url_title() {
+	return 'The grand mystery of all things SPLOT';
+}
+
+# -----------------------------------------------------------------
+# Tiny-MCE mods
+# -----------------------------------------------------------------
+
+add_filter( 'tiny_mce_before_init', 'trucollector_tinymce_settings' );
+
+function trucollector_tinymce_settings( $settings ) {
+
+	$settings['images_upload_handler'] = 'function (blobInfo, success, failure) {
+    var xhr, formData;
+
+    xhr = new XMLHttpRequest();
+    xhr.withCredentials = false;
+    xhr.open(\'POST\', \'' . admin_url('admin-ajax.php') . '\');
+
+    xhr.onload = function() {
+      var json;
+
+      if (xhr.status != 200) {
+        failure(\'HTTP Error: \' + xhr.status);
+        return;
+      }
+
+      json = JSON.parse(xhr.responseText);
+
+      if (!json || typeof json.location != \'string\') {
+        failure(\'Invalid JSON: \' + xhr.responseText);
+        return;
+      }
+
+      success(json.location);
+    };
+
+    formData = new FormData();
+    formData.append(\'file\', blobInfo.blob(), blobInfo.filename());
+	formData.append(\'action\', \'trucollector_upload_action\');
+    xhr.send(formData);
+  }';
+
+	return $settings;
+}
+
+// add button for image upload
+function trucollector_register_buttons( $plugin_array ) {
+	$plugin_array['imgbutton'] = get_stylesheet_directory_uri() . '/js/image-button.js';
+	return $plugin_array;
+}
+
+// remove  buttons from the visual editor
+
+function trucollector_tinymce_buttons($buttons) {
+	//Remove the more button
+	$remove = array('wp_more', 'fullscreen');
+
+	// Find the array key and then unset
+
+	foreach ($remove as $notneeded) {
+		if ( ( $key = array_search($notneeded,$buttons) ) !== false ) unset($buttons[$key]);
+	}
+
+	// now add the image button in, and the second one that acts like a label
+	$buttons[] = 'image';
+	$buttons[] = 'imgbutton';
+
+	return $buttons;
+ }
+
+// remove  more buttons from the visual editor
+
+
+function trucollector_tinymce_2_buttons( $buttons)  {
+	//Remove the keybord shortcut and paste text buttons
+	$remove = array('wp_help','pastetext');
+
+	return array_diff($buttons,$remove);
+ }
+
+
+// this is the handler used in the tiny_mce editor to manage iage upload
+add_action( 'wp_ajax_nopriv_trucollector_upload_action', 'trucollector_upload_action' ); //allow on front-end
+add_action( 'wp_ajax_trucollector_upload_action', 'trucollector_upload_action' );
+
+function trucollector_upload_action() {
+
+    $newupload = 0;
+
+    if ( !empty($_FILES) ) {
+        $files = $_FILES;
+        foreach($files as $file) {
+            $newfile = array (
+                    'name' => $file['name'],
+                    'type' => $file['type'],
+                    'tmp_name' => $file['tmp_name'],
+                    'error' => $file['error'],
+                    'size' => $file['size']
+            );
+
+            $_FILES = array('upload'=>$newfile);
+            foreach($_FILES as $file => $array) {
+                $newupload = media_handle_upload( $file, 0);
+            }
+        }
+    }
+    echo json_encode( array('id'=> $newupload, 'location' => wp_get_attachment_image_src( $newupload, 'large' )[0], 'caption' => get_attachment_caption_by_id( $newupload ) ) );
+    die();
+}
+
+# -----------------------------------------------------------------
+# For the Writing Form
+# -----------------------------------------------------------------
+
+add_action('wp_head', 'trucollector_no_featured_image');
+
+function trucollector_no_featured_image() {
+	if ( is_page( trucollector_get_collect_page() ) and isset( $_POST['trucollector_form_make_submitted'] ) ) {
+    ?>
+        <style>
+            .featured-media {
+                display:none;
+            }
+        </style>
+    <?php
+    }
+}
+
+// filter content on writing page so we do not submit the page content if form is submitted
+add_filter( 'the_content', 'trucollector_firstview' );
+
+function trucollector_firstview( $content ) {
+    // Check if we're inside the main loop on the writing page
+    if ( is_page( trucollector_get_collect_page() ) && in_the_loop() && is_main_query() ) {
+
+    	if ( isset( $_POST['trucollector_form_make_submitted'] ) ) {
+    		return '';
+    	} else {
+    		 return $content;
+    	}
+
+    }
+
+    return $content;
+}
 ?>

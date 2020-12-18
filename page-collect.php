@@ -4,111 +4,56 @@
 Template Name: Add to Collection
 */
 
-// ------------------------ defaults ------------------------
+// set blanks
+$wTitle =  $wSource = $wTags = $wNotes = $wEmail = $wAlt = $w_thumb_status = '';
+$wFeatureImageID = $wCommentNotify = $post_id = 0;
+$is_re_edit = $linkEmailed = $wAccessCodeOk = $is_published = false;
+$errors = array();
 
 // default welcome message
 $feedback_msg = trucollector_form_default_prompt() . ' Fields marked <strong>*</strong> are required.';
-
-// blank defaults
-
-$wTitle =  $wSource = $wTags = $wNotes = $wEmail = $wAlt = '';
 $wAuthor = 'Anonymous';
 
-$wFeatureImageID = $wCommentNotify = 0;
-$wFeatureImageUrl =  get_stylesheet_directory_uri() . '/images/splot-test-drive.jpg';
+// initial button states
+$previewBtnState = ' disabled';
+$submitBtnState = ' disabled';
+$box_style = '<div class="notify"><span class="symbol icon-info"></span> ';
+
 $wCats = array( trucollector_option('def_cat') ); // preload default category
 $wText = trucollector_option('def_text'); // default text for editing field
 $wLicense = '--'; // default license
 $all_licenses = trucollector_get_licences();
-$is_re_edit = false;
 
+// see if we have an incoming clear the code form variable only on writing form
+// ignored if options are not to use it
 
-// not yet saved
-$is_published = false;
-$box_style = '<div class="notify"><span class="symbol icon-info"></span> ';
+$wAccessCodeOk = isset( $_POST['wAccessCodeOk'] ) ? true : false;
 
+// check that an access code is in play and it's not been yet passed
+if ( !empty( trucollector_option('accesscode') ) AND !$wAccessCodeOk ) {
 
-// ------------------------ front gate ------------------------
+	// now see if we are to check the access code
+	if ( isset( $_POST['trucollector_form_access_submitted'] )
+	  AND wp_verify_nonce( $_POST['trucollector_form_access_submitted'], 'trucollector_form_access' ) ) {
 
-// check for query vars that indicate this is a edit request
-$tk  = get_query_var( 'tk', 0 );    // magic token to check
+	   // grab the entered code from  form
+		$wAccess = 	stripslashes( $_POST['wAccess'] );
 
-if ( ( $tk )  ) {
-	// re-edit attempt
-	$is_re_edit = true;
-
-	// log in as author
-	if ( !is_user_logged_in() ) {
-		splot_user_login( 'collector', false );
-	}
-
-	$wid = trucollector_get_id_from_tk( $tk );
-
-	if ($wid) {
-		// found a post with the matching code, so set up for re-edit
-
-		// default welcome message for a re-edit
-		$feedback_msg = trucollector_form_re_edit_prompt();
-
-		// get the post and then content for this item
-		$item = get_post( $wid );
-		$wText = $item->post_content;
-
-		$wTitle = get_the_title( $wid );
-		$wAuthor =  get_post_meta( $wid, 'shared_by', 1 );
-
-		$wEmail =  get_post_meta( $wid, 'wEmail', 1 );
-
-		$box_style = '<div class="notify notify-green"><span class="symbol icon-tick"></span> ';
-
-		// get categories
-		$categories = get_the_category( $wid);
-		foreach ( $categories as $category ) {
-			$wCats[] = $category->term_id;
+		// Validation of the code
+		if ( $wAccess != trucollector_option('accesscode') ) {
+			$box_style = '<div class="notify notify-red"><span class="symbol icon-error"></span> ';
+			$feedback_msg = '<p><strong>Incorrect Access Code</strong> - try again? Hint: ' . trucollector_option('accesshint') . '</p>';
+		} else {
+			$wAccessCodeOk = true;
 		}
-
-		// festured image
-		$wFeatureImageID = get_post_thumbnail_id( $wid );
-
-		// url for preview
-		$wFeatureImageUrl = get_the_post_thumbnail_url( $wid, 'post-image' );
-
-		// get image alt tag
-		$wAlt = get_post_meta($wFeatureImageID, '_wp_attachment_image_alt', true);
-
-		// source
-		$wSource = get_post_meta( $wid, 'source', 1 );
-
-		// notes
-		$wNotes = get_post_meta( $wid, 'editor_notes', 1 );
-
-		// license
-		$wLicense = get_post_meta( $wid, 'license', 1 );
-
-		// comment notification preference
-		$wCommentNotify = get_post_meta( $wid, 'wCommentNotify', 1 );
-
-
-		// load the tags
-		$wTags = implode(', ', wp_get_post_tags( $wid, array( 'fields' => 'names' ) ) );
-
-		// post id
-		$post_id = $wid;
-
 	} else {
-		// no posts found with matching key
-
-		$is_re_edit = false;
-
-		// updates for display
-		$errors[] = '<strong>Token Mismatch</strong> - please check the url provided.';
-		// default welcome message
-		$feedback_msg = 'This URL does not match the edit key. Please check the link from your email again, or return to your published writing and click the button at the bottom to send an edit link.';
-		$is_published = true;  // not really but it serves to hide the form.
-		$box_style = '<div class="notify notify-red"><span class="symbol icon-error"></span> ';
-	}
-}
-
+		$box_style = '<div class="notify"><span class="symbol icon-info"></span> ';
+		$feedback_msg = '<p>An access code is required to use the writing form on ' . get_bloginfo('name') . '</p>';
+	} // form check access code
+} else {
+	// set flag true just to clear all the other gates
+	$wAccessCodeOk = true;
+} // access code in  play check
 
 
 
@@ -125,20 +70,31 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
  		$wText = 					wp_kses_post( $_POST['wText'] );
  		$wSource = 					sanitize_text_field( stripslashes( $_POST['wSource'] ) );
  		$wNotes = 					sanitize_text_field( stripslashes( $_POST['wNotes'] ) );
- 		$wFeatureImageID = 			$_POST['wFeatureImage'];
+
+ 		$wFeatureImageID =			( isset ( $_POST['wFeatureImage'] ) ) ? $_POST['wFeatureImage'] : 0;
 
  		$wAlt = 					( isset ($_POST['wAlt'] ) ) ? sanitize_text_field($_POST['wAlt']) : '';
 
- 		// featured image URL used for preview.
- 		$wFeatureImageUrl = wp_get_attachment_image_url ( $wFeatureImageID, 'post-image' );
+ 		$wCats = 					( isset ($_POST['wCats'] ) ) ? $_POST['wCats'] : array( trucollector_option('def_cat') );
+ 		$wLicense = 				( isset ( $_POST['wLicense'] ) ) ? $_POST['wLicense'] : '';
 
- 		$wCats = 					( isset ($_POST['wCats'] ) ) ? $_POST['wCats'] : array();
- 		$wLicense = 				$_POST['wLicense'];
  		$wCommentNotify = 			( isset ( $_POST['wCommentNotify'] ) ) ? 1 : 0;
 
+ 		if ( isset ($_POST['post_id'] ) ) $post_id = $_POST['post_id'];
 
- 		// let's do some validation, store an error message for each problem found
- 		$errors = array();
+		// upload header image if we got one
+		if ($_FILES) {
+
+			foreach ( $_FILES as $file => $array ) {
+				$newupload = trucollector_insert_attachment( $file, $post_id );
+				if ( $newupload ) {
+					$wFeatureImageID = $newupload;
+					$w_thumb_status = 'Image uploaded. Choose another to replace it.';
+
+				}
+			}
+		}
+
 
 		// do we have image?
  		if ( $wFeatureImageID == 0) {
@@ -201,26 +157,177 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
  			$feedback_msg .= '</ul>';
 
+ 			// reset button states
+			$previewBtnState = ' disabled';
+			$submitBtnState = ' disabled';
+
+
  			$box_style = '<div class="notify notify-red"><span class="symbol icon-error"></span> ';
 
- 		} else {
- 			$w_information = array(
-				'post_title' => $wTitle,
-				'post_content' => $wText,
-				'post_category' => $wCats
-			);
+ 		} else { // good enough, let's set up a post!
 
- 			if 	($is_re_edit) {
- 			// update an existing post
 
- 				$w_information['post_status'] =  'publish';
- 				$w_information['ID'] = $post_id;
+			$post_status = trucollector_option('new_item_status');
 
- 				// update the post
+			if ( isset( $_POST['makeit'] ) ) {
+
+				// set status (will be either 'publish' or 'pending') for post based on theme settings
+				$post_status = trucollector_option('new_item_status');
+
+				$is_published = true;
+				$box_style = '<div class="notify"><span class="symbol icon-info"></span> ';
+
+				// set up notifications, email messages for later use
+				if  ( $post_status == 'publish' ) {
+					// feed back for published item
+
+
+					// feed back for published item
+					$feedback_msg = 'Your ' . get_trucollector_collection_single_item()  . '  "' . $wTitle . '" has been published! ';
+
+
+					// if user provided email address (only possible if the feature enabled), send instructions to use link to edit
+
+					if ( $wEmail != '' ) {
+						$feedback_msg .= 'Since you provided an email address, a message has been sent to <strong>' . $wEmail . '</strong>  with a special link that can be used at any time later to edit this ' . get_trucollector_collection_single_item() . '. ';
+					} else {
+						$feedback_msg .=  ' You might want to save this link <code>' .  trucollector_get_edit_link( $post_id ) . '</code> in a safe place as it allows you to edit your ' . get_trucollector_collection_single_item() . ' at a later time. ';
+					} // wEmail != ''
+
+					 $feedback_msg .= 'You can <a href="'. get_permalink( $post_id ) . '">view it now</a>  or <a href="' . site_url()  . '">return to ' . get_bloginfo() . '</a>.';
+
+					 // for email
+					$message = 'A new ' . get_trucollector_collection_single_item() . ' <strong>"' . $wTitle . '"</strong> written by <strong>' . $wAuthor . '</strong> has been published to ' . get_bloginfo() . '. You can <a href="'. site_url() . '/?p=' . $post_id  . '">view it now</a>';
+
+
+				} elseif ( $post_status == 'pending' ) {
+
+					$feedback_msg = 'Your ' . get_trucollector_collection_single_item()  . '  "' . $wTitle . '" is now in the queue for publishing. ';
+
+
+					if ( $wEmail != '' ) {
+						$feedback_msg .= 'Since you provided an email address, a message has been sent to <strong>' . $wEmail . '</strong>  with a special link that can be used at any time later to edit this ' . get_trucollector_collection_single_item() . '. ';
+
+					} else {
+						$feedback_msg .=  ' You might want to save this link <code>' .  trucollector_get_edit_link( $post_id ) . '</code> in a safe place as it allows you to edit your ' . get_trucollector_collection_single_item() . ' at a later time. ';
+					} // wEmail != ''
+
+					$feedback_msg .= 'You can <a href="'. site_url() . '/?p=' . $post_id . '&preview=true&ispre=1' . '"  target="_blank">preview it now</a> (link opens in a new window). It will appear on <strong>' . get_bloginfo() . '</strong> as soon as it has been reviewed. Now you can <a href="' . site_url()  . '">return to ' . get_bloginfo() . '</a>.';
+
+					$message = 'A new ' . get_trucollector_collection_single_item() . ' <strong>"' . $wTitle . '"</strong> written by <strong>' . $wAuthor . '</strong> has been submitted to ' . get_bloginfo() . '. You can <a href="'. site_url() . '/?p=' . $post_id . 'preview=true' . '">preview it now</a>.<br /><br /> To publish it, simply <a href="' . admin_url( 'edit.php?post_status=pending&post_type=post') . '">find it in the pending items</a> and change its status from <strong>Pending</strong> to <strong>Publish</strong>';
+
+				} // post_status == 'publish'
+
+			} else {
+			// updated button clicked
+				$post_status = 'draft';
+				$box_style = '<div class="notify notify-green"><span class="symbol icon-tick"></span> ';
+
+				$feedback_msg = 'Your draft has been updated and can again be <a href="'. site_url() . '/?p=' . $post_id . '&preview=true&ispre=1' . '" target="_blank">previewed</a> to review changes. When ready to publish <a href="#theButtons">just scroll down</a> and click "Share Now" to add it to' . get_bloginfo( 'name' ) . '.';
+
+				// enable preview and submit buttons
+				$previewBtnState = '';
+				$submitBtnState = '';
+
+			} // isset( $_POST['makeit'] )
+
+		$w_information = array(
+			'post_title' => $wTitle,
+			'post_content' => $wText,
+			'post_category' => $wCats,
+			'post_status' => $post_status
+		);
+
+		// Is this a first draft?
+		if ( $post_id == 0 ) {
+
+			// insert as a new post
+			$post_id = wp_insert_post( $w_information );
+
+			// store the author as post meta data
+			add_post_meta($post_id, 'shared_by', $wAuthor);
+
+			// store the email as post meta data
+			add_post_meta($post_id, 'wEmail', $wEmail);
+
+
+			// store the source of the image (text or URL)
+			if ( trucollector_option('use_source') > 0 ) {
+				add_post_meta($post_id, 'source', $wSource);
+			}
+
+			// store the license code
+			if ( trucollector_option('use_license') > 0 ) {
+				add_post_meta($post_id, 'license', $wLicense);
+			}
+
+			// store notes for editor
+			if ( $wNotes ) add_post_meta($post_id, 'editor_notes', $wNotes);
+
+
+			// track the comment notification preference
+			if ( trucollector_option( 'allow_comments' )  ) add_post_meta($post_id, 'wCommentNotify',  $wCommentNotify);
+
+			// add the tags
+			wp_set_post_tags( $post_id, $wTags);
+
+			// set featured image
+			set_post_thumbnail( $post_id, $wFeatureImageID);
+
+			// update featured image alt
+			update_post_meta($wFeatureImageID, '_wp_attachment_image_alt', $wAlt);
+
+			// create an edit key
+			trucollector_make_edit_link( $post_id );
+
+			if ( $wEmail != '' ) {
+				trucollector_mail_edit_link( $post_id, 'draft' );
+				$linkEmailed = true;
+			}
+
+			// feedback for first check of item
+			$feedback_msg = 'A draft of your ' . get_trucollector_collection_single_item() . ' has been saved. You can <a href="'. site_url() . '/?p=' . $post_id . '&preview=true&ispre=1' . '" target="_blank">preview it now</a>. This will open in a new tab/window. Or make any changes below, check your information again and/or <a href="#theButtons">scroll down</a> to submit it to ' . get_bloginfo() . '.';
+
+
+
+		 } else {
+			// the post exists, let's update and process the post
+
+			// check if we have a publish button click
+			if ( isset ( $_POST['makeit'] ) ) { // final processing
+
+				if ( trucollector_option( 'notify' ) != '') {
+				// Let's do some EMAIL!
+
+					// who gets mail? They do.
+					$to_recipients = explode( "," ,  trucollector_option( 'notify' ) );
+
+					$subject = 'New ' . get_trucollector_collection_single_item() . ' submitted to ' . get_bloginfo();
+
+					if ( $wNotes ) $message .= '<br /><br />There are some extra notes from the author:<blockquote>' . $wNotes . '</blockquote>';
+
+					// turn on HTML mail
+					add_filter( 'wp_mail_content_type', 'set_html_content_type' );
+
+					// mail it!
+					wp_mail( $to_recipients, $subject, $message);
+
+					// Reset content-type to avoid conflicts -- http://core.trac.wordpress.org/ticket/23578
+					remove_filter( 'wp_mail_content_type', 'set_html_content_type' );
+
+				} else {
+					// updated but still in draft mode
+
+					// if user provided email address, send instructions to use link to edit if not done before
+					if ( isset( $wEmail ) and !$linkEmailed  ) trucollector_mail_edit_link( $post_id, 'draft' );
+
+				}  // isset( $_POST['makeit']
+
+				// add the id to our array of post information so we can issue an update
+				$w_information['ID'] = $post_id;
+
+		 		// update the post
 				wp_update_post( $w_information );
-
-				// update the tags
-				wp_set_post_tags( $post_id, $wTags);
 
 				// store the author as post meta data
 				update_post_meta($post_id, 'shared_by', $wAuthor);
@@ -233,65 +340,19 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 					update_post_meta($post_id, 'source', $wSource);
 				}
 
-				// update featured image
-				set_post_thumbnail( $post_id, $wFeatureImageID);
-
-				// update featured image alt
-				update_post_meta($wFeatureImageID, '_wp_attachment_image_alt', $wAlt);
-
 				// store the license code
 				if ( trucollector_option('use_license') > 0 ) {
 					update_post_meta($post_id, 'license', $wLicense);
 				}
 
-
-				// track the comment notification preference
-				if ( trucollector_option( 'allow_comments' )  ) update_post_meta( $post_id, 'wCommentNotify',  $wCommentNotify );
-
 				// store notes for editor
 				if ( $wNotes ) update_post_meta($post_id, 'editor_notes', $wNotes);
 
-				// add the tags
-				wp_set_post_tags( $post_id, $wTags);
-
-				// update edit key
-				trucollector_make_edit_link( $post_id );
-
-
- 				$feedback_msg = 'Your entry for <strong>"' . $wTitle . '"</strong> has been updated!  You can <a href="'. get_permalink( $post_id ) . '">review it now</a>  or <a href="' . site_url()  . '">return to ' . get_bloginfo() . '</a>.';
-
- 			} else {
- 			// good enough, let's make a new post!
- 				$w_information['post_status'] =  trucollector_option('new_item_status');
-
- 				// insert as a new post
-				$post_id = wp_insert_post( $w_information );
-
-				// store the author as post meta data
-				add_post_meta($post_id, 'shared_by', $wAuthor);
-
-				// store the email as post meta data
-				add_post_meta($post_id, 'wEmail', $wEmail);
-
-
-				// store the source of the image (text or URL)
-				if ( trucollector_option('use_source') > 0 ) {
-					add_post_meta($post_id, 'source', $wSource);
-				}
-
-				// store the license code
-				if ( trucollector_option('use_license') > 0 ) {
-					add_post_meta($post_id, 'license', $wLicense);
-				}
-
-				// store notes for editor
-				if ( $wNotes ) add_post_meta($post_id, 'editor_notes', $wNotes);
-
 
 				// track the comment notification preference
-				if ( trucollector_option( 'allow_comments' )  ) add_post_meta($post_id, 'wCommentNotify',  $wCommentNotify);
+				if ( trucollector_option( 'allow_comments' )  ) update_post_meta($post_id, 'wCommentNotify',  $wCommentNotify);
 
-				// add the tags
+				// update the tags
 				wp_set_post_tags( $post_id, $wTags);
 
 				// set featured image
@@ -301,80 +362,89 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 				update_post_meta($wFeatureImageID, '_wp_attachment_image_alt', $wAlt);
 
 
-				// create an edit key
-				trucollector_make_edit_link( $post_id );
+			} // isset( $_POST['makeit']
+		} // post_id = 0
 
-				if  ( trucollector_option('new_item_status') == 'publish' ) {
-					// feed back for published item
-					$feedback_msg = 'Your entry for <strong>"' . $wTitle . '"</strong> has been published. ';
+	} // count errors
 
-					// if user provided email address (only possible if the feature enabled), send instructions to use link to edit
+} elseif ( $wAccessCodeOk ) {
+	// first time entry
+	// default welcome message
 
-					if ( $wEmail != '' ) {
-						trucollector_mail_edit_link( $post_id, 'publish' );
-						$feedback_msg .= 'Since you provided an email address, a message has been sent to <strong>' . $wEmail . '</strong>  with a special link that can be used at any time later to edit this item. ';
-					} else {
-						$feedback_msg .=  ' You might want to save this link <code>' .  trucollector_get_edit_link( $post_id ) . '</code> in a safe place as it allows you to edit your item at a later time. ';
-					}
+	$box_style = '<div class="notify"><span class="symbol icon-info"></span> ';
 
-					 $feedback_msg .= 'You can <a href="'. get_permalink( $post_id ) . '">view it now</a>  or <a href="' . site_url()  . '">return to ' . get_bloginfo() . '</a>.';
+	// ------------------------ re-edit check ------------------------
 
-				} else {
-					// feed back for item left in draft
-					$feedback_msg = 'Your entry for <strong>"' . $wTitle . '"</strong> has been submitted as a draft. Once it has been approved by a moderator, everyone will be able to view it. ';
+	// check for query vars that indicate this is a edit request
+	$tk  = get_query_var( 'tk', 0 );    // magic token to check
 
-					// if user provided email address (only possible if the feature enabled), send instructions to use link to edit
-					if ( $wEmail != '' ) {
+	// is re-edit attempt
+	if ( ( $tk )  ) {
 
-						$feedback_msg .= 'Since you provided an email address, after it is published, you will see a  button you can use to have a special link sent by email that can be used to edit this item later. ';
-					} else {
-						$feedback_msg .=  ' You might want to save this link <code>' .  trucollector_get_edit_link( $post_id ) . '</code> in a safe place as it allows you to edit your item at a later time. ';
-					}
+		$is_re_edit = true;
 
-					$feedback_msg .= 'For now, you can <a href="' . site_url()  . '">return to ' . get_bloginfo() . '</a>.';
+		$wid = trucollector_get_id_from_tk( $tk );
 
-				}
+		if ( $wid ) {
+			// found a post with the matching code, so set up for re-edit
 
-			if ( trucollector_option( 'notify' ) != '') {
-			// Let's do some EMAIL!
+			// default welcome message for a re-edit
+			$feedback_msg = trucollector_form_re_edit_prompt();
 
-				// who gets mail? They do.
-				$to_recipients = explode( "," ,  trucollector_option( 'notify' ) );
+			// get the post and then content for this item
+			$item = get_post( $wid );
+			$wText = $item->post_content;
 
-				$subject = 'New item submitted to ' . get_bloginfo();
+			$wTitle = get_the_title( $wid );
+			$wAuthor =  get_post_meta( $wid, 'shared_by', 1 );
 
-				if ( trucollector_option('new_item_status') == 'publish' ) {
-					$message = 'An item <strong>"' . $wTitle . '"</strong> shared by <strong>' . $wAuthor . '</strong> has been published to ' . get_bloginfo() . '. You can <a href="'. site_url() . '/?p=' . $post_id  . '">view it now</a>';
+			$wEmail =  get_post_meta( $wid, 'wEmail', 1 );
 
-
-				} else {
-					$message = 'An item <strong>"' . $wTitle . '"</strong> shared by <strong>' . $wAuthor . '</strong> has been submitted to ' . get_bloginfo() . '. If logged in to the site, you can <a href="'. site_url() . '/?p=' . $post_id . 'preview=true' . '">preview it now</a>.<br /><br /> To  publish it, simply <a href="' . admin_url( 'edit.php?post_status=draft&post_type=post') . '">find it in the drafts</a> and change it\'s status from <strong>Draft</strong> to <strong>Publish</strong>';
-				}
-
-				if ( $wNotes ) $message .= '<br /><br />There are some extra notes from the author:<blockquote>' . $wNotes . '</blockquote>';
-
-				// turn on HTML mail
-				add_filter( 'wp_mail_content_type', 'set_html_content_type' );
-
-				// mail it!
-				wp_mail( $to_recipients, $subject, $message);
-
-				// Reset content-type to avoid conflicts -- http://core.trac.wordpress.org/ticket/23578
-				remove_filter( 'wp_mail_content_type', 'set_html_content_type' );
-
-				}
- 			}
-
-			// logout the special user
-
-			if ( trucollector_check_user()=== true ) wp_logout();
-
-			// set the gate	open, we are done.
-
-			$is_published = true;
 			$box_style = '<div class="notify notify-green"><span class="symbol icon-tick"></span> ';
 
-		} // count errors
+			// get categories
+			$categories = get_the_category( $wid);
+			foreach ( $categories as $category ) {
+				$wCats[] = $category->term_id;
+			}
+
+			// festured image
+			$wFeatureImageID = get_post_thumbnail_id( $wid );
+
+			// get image alt tag
+			$wAlt = get_post_meta($wFeatureImageID, '_wp_attachment_image_alt', true);
+
+			// source
+			$wSource = get_post_meta( $wid, 'source', 1 );
+
+			// notes
+			$wNotes = get_post_meta( $wid, 'editor_notes', 1 );
+
+			// license
+			$wLicense = get_post_meta( $wid, 'license', 1 );
+
+			// comment notification preference
+			$wCommentNotify = get_post_meta( $wid, 'wCommentNotify', 1 );
+
+			// load the tags
+			$wTags = implode(', ', wp_get_post_tags( $wid, array( 'fields' => 'names' ) ) );
+
+			// post id
+			$post_id = $wid;
+
+		} else {
+			// no posts found with matching key
+
+			$is_re_edit = false;
+
+			// updates for display
+			$errors[] = '<strong>Token Mismatch</strong> - please check the url provided.';
+			// default welcome message
+			$feedback_msg = 'This URL does not match the edit key. Please check the link from your email again, or return to your published ' . get_trucollector_collection_single_item() . ' and click the button at the bottom to send an edit link.';
+			$is_published = true;  // not really but it serves to hide the form.
+			$box_style = '<div class="notify notify-red"><span class="symbol icon-error"></span> ';
+		} // end is wid
+	} // end is tk
 
 } // end form submmitted check
 ?>
@@ -423,14 +493,26 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 		    		<?php echo $box_style . $feedback_msg . '</div>';?>
 
-			    	<?php wp_link_pages('before=<div class="clear"></div><p class="page-links">' . __('Pages:','fukasawa') . ' &after=</p>&seperator= <span class="sep">/</span> '); ?>
+				<?php if (!$wAccessCodeOk) : // show the access code form ?>
+
+					<form  id="splotboxform" method="post" action="">
+						<fieldset>
+							<label for="wAccess">Access Code</label><br />
+							<p>Enter the special code to access the sharing form</p>
+							<input type="text" name="wAccess" id="wAccess" class="required" value="<?php echo $wAccess?>"  />
+						</fieldset>
+
+						<fieldset>
+						<?php wp_nonce_field( 'trucollector_form_access', 'trucollector_form_access_submitted' )?>
+
+						<input type="submit" class="pretty-button pretty-button-final" value="Check Code" id="checkit" name="checkit">
+						</fieldset>
+					</form>
+
+			<?php elseif ( !$is_published ) : // show form it has not been published ?>
 
 
-	<?php if ( is_user_logged_in() and !$is_published ) : // show form if logged in and it has not been published ?>
-
-		<form  id="collectorform" class="collectorform" method="post" action="" enctype="multipart/form-data">
-
-
+				<form  id="collectorform" class="collectorform" method="post" action="" enctype="multipart/form-data">
 					<fieldset id="theTitle">
 					<label for="wTitle"><?php trucollector_form_item_title() ?> <strong>*</strong></label><br />
 					<p><?php trucollector_form_item_title_prompt() ?> </p>
@@ -444,23 +526,36 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 					<div class="uploader">
 						<input id="wFeatureImage" name="wFeatureImage" type="hidden" value="<?php echo $wFeatureImageID?>" />
-						<input id="wFeatureImageUrl" name="wFeatureImageUrl" type="hidden" value="<?php echo $wFeatureImageUrl ?>">
 
-						<?php if ( $wFeatureImageID ):
-							 echo wp_get_attachment_image( $wFeatureImageID, 'thumbnail', "", array( "id" => "featurethumb" )  );
+						<?php
+
+						if ($wFeatureImageID) {
+							// header image identified
+							$defthumb = wp_get_attachment_image_src( $wFeatureImageID, 'thumbnail' );
+						} else {
+							// header image optional, use placeholder
+							$defthumb = [];
+							$defthumb[] = 'https://placehold.it/150x150?text=Upload+Image';
+
+						}
+
+						echo '<img src="' . $defthumb[0] . '" alt="Upload Image" id="headerthumb" />';
 						?>
 
-						<?php else:?>
-							<img src="https://placehold.it/150x150?text=Upload+Image" alt="Upload Image" id="featurethumb" />
-						<?php endif?>
+						<input id="wDefThumbURL" name="wDefThumbURL" type="hidden" value="<?php echo $defthumb[0]?>" />
 
-						<br />
 
-						<input type="button" id="wFeatureImage_button"  class="btn btn-success btn-medium  upload_image_button" name="_wImage_button"  data-uploader_title="Add a New Image" data-uploader_button_text="Select Image" value="Select Image" tabindex="2" />
+
 
 						</div>
 
-						<p><?php trucollector_form_item_upload_prompt() ?><br clear="left"></p>
+						<p><?php trucollector_form_item_upload_prompt() ?> <span id="uploadresponse"><?php echo $w_thumb_status?></span><br clear="left"></p>
+
+						<div id="splotdropzone">
+							<input type="file" accept="image/*" name="wUploadImage" id="wUploadImage">
+							<p id="dropmessage">Drag file or click to select file to upload</p>
+						</div>
+
 
 
 					<label for="wAlt">Alternative Description for Image (Recommended)</label><br />
@@ -629,16 +724,35 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 				<fieldset id="theButtons">
 					<label for="theButtons"><?php trucollector_form_item_submit_buttons() ?></label>
 					<?php  wp_nonce_field( 'trucollector_form_make', 'trucollector_form_make_submitted' ); ?>
-
 					<p><?php trucollector_form_item_submit_buttons_prompt() ?></p>
 
 
+					<?php if ( $post_id ) : //draft saved at least once?>
 
-					<a href="#preview" class="fancybox" title="Preview of your item. Close this overlay, make any changes, than click 'Share It'">Preview First</a>
+						<?php
+						// set up button names
 
-					<?php $submitbutton = ($is_re_edit) ? "Update Now" : "Share Now";?>
+						if ( $is_re_edit ) {
+							$save_btn_txt = "Publish Changes";
+						} else {
+							$save_btn_txt = ( trucollector_option('new_item_status') == 'publish') ? "Share Now" : "Submit for Review";
+						}
+						?>
 
-					<input type="submit" value="<?php echo $submitbutton?>" id="makeit" name="makeit" tabindex="12">
+						<input type="submit" value="Check Info" id="checkit" name="checkit">
+						<a href="<?php echo site_url() . '/?p=' . $post_id . '&preview=true&ispre=1'?>" title="Preview of your item."  id="wPreview" class="fbutton<?php echo $previewBtnState?>" target="_blank">Preview</a>
+						<input type="submit" value="<?php echo $save_btn_txt?>" id="makeit" name="makeit" <?php echo $submitBtnState?>>
+
+					<?php else:?>
+
+						<input type="submit" value="Check and Review" id="checkit" name="checkit">
+
+
+					<?php endif?>
+
+				<input name="post_id" type="hidden" value="<?php echo $post_id?>" />
+				<input name="wAccessCodeOk" type="hidden" value="true" />
+
 
 				</fieldset>
 

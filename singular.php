@@ -84,6 +84,13 @@ if  (  is_single() ) {
 
 					<div class="post-content">
 
+
+							<?php  if ( is_single() AND is_preview() ):?>
+								<div class="notify"><span class="symbol icon-info"></span>
+This is a preview of your <?php echo get_trucollector_collection_single_item()?> that shows how it will look when published. <a href="#" onclick="self.close();return false;">Close this window/tab</a> when done to return to the submission form. Make any changes and check the info again or if it is ready, click <strong>Share Now</strong>
+							</div>
+							<?php endif?>
+
 						<?php the_content();?>
 
 
@@ -138,6 +145,10 @@ if  (  is_single() ) {
 					<?php endif; // is_single?>
 
 
+					<?php if ( is_single() AND is_preview() ):?>
+						<div class="notify"><span class="symbol icon-info"></span> Once done reviewing your <?php echo get_trucollector_collection_single_item()?>, <a href="#" onclick="self.close();return false;">Close this window/tab</a> to return to the editing form.</div>
+					<?php endif?>
+
 					</div><!-- .post-content -->
 
 					<div class="clear"></div>
@@ -185,7 +196,7 @@ if  (  is_single() ) {
 
 				</div><!-- .post-inner -->
 
-				<?php if ( is_single() ) : ?>
+				<?php if ( is_single() AND !is_preview() ): ?>
 
 					<div class="post-navigation">
 

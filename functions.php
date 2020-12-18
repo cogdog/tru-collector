@@ -1,5 +1,5 @@
 <?php
-/*  tru-writer theme functions	
+/*  tru-writer theme functions
 	http://github.com/cogdog/tru-collector
 */
 
@@ -7,7 +7,6 @@
 
 require_once( __DIR__ . '/includes/setup.php'); // set up and inits
 require_once( __DIR__ . '/includes/admin-options.php'); // theme options interface
-require_once( __DIR__ . '/includes/auto-login.php'); // manages secret login
 require_once( __DIR__ . '/includes/customizer.php'); // customizer
 require_once( __DIR__ . '/includes/edit-link.php'); // manage editing links
 require_once( __DIR__ . '/includes/licences.php'); // licenses are cool

@@ -399,7 +399,8 @@ Go collect stuff!
 
 ## Relatively New Features
 
-* *Customize Comments** Modify the title where comments are displayed and add an extra prompt.
+* **Authorless** Removed need for the secret WordPress account, all contributions made without dashboard access. Removed "desk" template, no longer needed. New drop zone for uploading images, plus inline image uploader added to rich text editor. 
+* **Customize Comments** Modify the title where comments are displayed and add an extra prompt.
 * **Alt Text Field** Sharing form now includes a place to enter alternative text for the main image for better web accessibility. 
 * **Default Description Content** And one more new theme option to pre-populate the description field with default content.
 * **Comment Options**  The email entry form now has an option to require entry, as well as another one to allow content creator to choose to receive email notifications of comments.

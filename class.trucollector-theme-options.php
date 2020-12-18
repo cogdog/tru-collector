@@ -120,6 +120,9 @@ class trucollector_Theme_Options {
 	/* Define all settings and their defaults */
 	public function get_settings() {
 
+		// for file upload checks
+		$max_upload_size = round(wp_max_upload_size() / 1000000);
+
 		/* General Settings
 		===========================================*/
 
@@ -157,39 +160,6 @@ class trucollector_Theme_Options {
 			'desc'	 => 'Special Pages Setup',
 			'std'    => 'Choose the Pages used for special Collector functions',
 			'type'    => 'heading'
-		);
-
-		// get all pages on site with template for the Writing Desk
-		$found_pages = get_pages_with_template('page-desk.php');
-
-		// the function returns an array of id => page title, first item is the menu selection item
-
-		$page_desc = 'Select the Page that should be used for the access code entry.';
-
-		if ( count( $found_pages ) > 1 ) {
-
-			$page_std =  array_keys( $found_pages)[1];
-
-		} else {
-			$trypage = get_page_by_path('desk');
-
-			if ( $trypage ) {
-				$page_std = $trypage->ID;
-				$found_pages = array( 0 => 'Select Page', $page_std => $trypage->post_title );
-
-			} else {
-				$page_desc = 'No pages have been created with the Welcome Desk template. This is required to enable access to the sharing form. <a href="' . admin_url( 'post-new.php?post_type=page') . '">Create a new Page</a> and under <strong>Page Attributes</strong> select <code>Welcome Desk</code> for the Template.';
-				$page_std = '';
-			}
-		}
-
-		$this->settings['desk_page'] = array(
-			'section' => 'general',
-			'title'   => __( 'Page For Access Code (Welcome Desk)'),
-			'desc'    => $page_desc,
-			'type'    => 'select',
-			'std'     =>  $page_std,
-			'choices' => $found_pages
 		);
 
 		// get all pages on site with template for the Writing Form
@@ -319,6 +289,13 @@ class trucollector_Theme_Options {
 			'type'    => 'heading'
 		);
 
+		$this->settings['upload_max'] = array(
+			'title'   => __( 'Maximum Upload File Size' ),
+			'desc'    => __( 'Set limit for file uploads in Mb (maximum possible for this site is ' . $max_upload_size . ' Mb).' ),
+			'std'     => $max_upload_size,
+			'type'    => 'text',
+			'section' => 'general'
+		);
 
 		$this->settings['use_caption'] = array(
 			'section' => 'general',
@@ -481,6 +458,7 @@ class trucollector_Theme_Options {
 					)
 		);
 
+
 		$this->settings['email_heading'] = array(
 			'section' => 'general',
 			'title'   => '', // Not used for headings.
@@ -537,17 +515,6 @@ class trucollector_Theme_Options {
 			'type'    => 'text',
 			'section' => 'general'
 		);
-
-
-
-		$this->settings['authorcheck'] = array(
-		'section' => 'general',
-		'title' 	=> '' ,// Not used for headings.
-		'desc'   => 'Author Account',
-		'std'    =>  trucollector_author_user_check( 'collector' ),
-		'type'    => 'heading'
-		);
-
 
 		/* Reset
 		===========================================*/

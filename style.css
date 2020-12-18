@@ -2,7 +2,7 @@
 Theme Name: 	TRU Collector
 Theme URI: 		https://github.com/cogdog/tru-collector
 Description: 	SPLOT Image Collector (Child of Fukasawa) for collections of content organized around images, also with options for full rich text writing, embedded media, attribution, licenses.
-Version: 		1.996
+Version: 		2.0
 Template:       fukasawa
 Author: 		CogDog
 Author URI: 	https://cog.dog/
@@ -265,6 +265,90 @@ h1.blog-title, h2.blog-title {
     font-size: 0.8em;
 }
 
+
+#collectorform a.fbutton, a.splotbutton {
+    padding: 12px 16px;
+    margin: 0;
+    border: none;
+    background: #333;
+    color: #fff;
+    font-size: 0.9rem;
+    line-height: 1;
+    -webkit-appearance: none;
+    border-radius: 3px;
+    -webkit-appearance: none;
+}
+
+#collectorform a.fbutton:hover, a.splotbutton:hover {
+	cursor: pointer;
+	background: #ca2017;
+	color: #fff;
+}
+
+#collectorform a.disabled, #collectorform input[type="submit"][disabled], #collectorform input[type="button"][disabled] {
+   pointer-events: none;
+   cursor: default;
+   opacity:0.4;
+}
+
+#collectorform input[type="submit"][disabled]:hover {
+	background: #333;
+	opacity:0.4;
+}
+
+/* -------------------------------  image drop zone ----------------------------------*/
+
+
+#footlocker {
+	display: none;
+}
+
+#uploadresponse {
+    color: #673ab7;
+}
+
+img#headerthumb {
+    float: left;
+    margin: 0 1em 0 0;
+    cursor: pointer;
+    object-fit: cover;
+    width: 150px;
+    height: 150px;
+}
+
+#splotdropzone {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0 0 1em 0;
+    width: 100%;
+    height: 200px;
+    border: 3px dashed #999;
+    background: url(images/upload-icon.png) no-repeat center 20%, url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAAH0lEQVQoU2NkIAIwEqGGgfaK/jMwIGyhvXUonibKOgCoygEKFVx9rwAAAABJRU5ErkJggg==) repeat !important;
+    cursor: pointer;
+}
+
+#splotdropzone input {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  opacity: 0;
+}
+
+#dropmessage {
+	width: 100%;
+	height: 100%;
+	padding-top: 70px;
+	text-align: center;
+	word-break: break-word;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1em;
+	font-weight:bold;
+	color: #333;
+}
 
 @media (max-width: 1000px) {
 	.siteblurb {
