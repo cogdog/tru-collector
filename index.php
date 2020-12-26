@@ -13,9 +13,17 @@
 		$archive_subtitle = '';
 
 		if ( is_archive() ) {
-			$archive_title = get_the_archive_title();
+			$archive_title = $wp_query->found_posts . ' ' . get_the_archive_title();
 		} elseif ( is_search() ) {
-			$archive_title = sprintf( _x( 'Search results: "%s"', 'Variable: search query text', 'fukasawa' ), get_search_query() );
+			$archive_title = sprintf(
+						_n(
+							'%s ' . get_trucollector_collection_single_item() . ' found for "%s"',
+							'%s ' . get_trucollector_collection_plural_item() . ' found for "%s"',
+							$wp_query->found_posts,
+							'fukasawa'
+						),
+						number_format_i18n( $wp_query->found_posts ),
+						get_search_query());
 		} elseif ( $paged > 1 ) {
 			$archive_title = sprintf( __( ' (page %1$s of %2$s)', 'fukasawa' ), $paged, $wp_query->max_num_pages );
 		}
