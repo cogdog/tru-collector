@@ -13,9 +13,9 @@ by Alan Levine http://cogdog.info/ or http://cogdogblog.com/
 
 ## What is this?
 
-This Wordpress Theme powers [TRU Collector](http://splot.ca/collector/) a site to allow collections of items (termed "collectables") where contributions can be made without any  logins. This is done by using a generic author account that is silently activated. The user never sees any sign of the innards of Wordpress but can create posts for each collectable. 
+This Wordpress Theme powers [TRU Collector](http://splot.ca/collector/) a site to allow collections of items (termed "collectables") where contributions can be made without any  logins. The user never sees any sign of the innards of Wordpress but can create posts for each collectable. 
 
-The options  allow you to create a simple Upload and go mode, but you can also allow (and require or not), captions, a source description (maybe more than *hey, I found it on GOOGLE*) or a complete rich text editor, and choose a selection of licenses to apply.
+The options allow you to create a simple Upload and go mode, but you can also allow (and require or not), captions, a source description (maybe more than *hey, I found it on GOOGLE*) or a complete rich text editor, and choose a selection of licenses to apply.
 
 You can even enable an address that allows people to publish directly to your collection by old fashioned email.
 
@@ -104,38 +104,60 @@ TRU Collector has Custom API endpoint that is used to offer up random photos fro
 
 * Samantha Clarke presenting the way TRU Collector was used to build the [The Compendium of Bothersome Beasties](http://creditcontinue.coventry.domains/beasties/) at the ALTC 2018 Conference https://www.youtube.com/watch?v=e1f5PY-uREE
 
-## Installing From Reclaim Hosting
 
-If you are wise enough to host your web sites at [Reclaim Hosting](http://reclaimhosting.com/) you have the option of installing a fully functioning site with this theme ([a copy of the demo site](http://lab.cogdogblog.com/collector/)) including recommended plugins, configured settings and sample content, all done  in one click. *But wait there is more!* With this method of installing your site, future updates to the theme are automatically added to your site.
+## Installing TRU Collector
 
-In your cpanel, under **Applications** go to **All Applications**. This theme is available listed under Fratured Applications; just install from there.
-
-![](images/reclaim-featured.jpg "Reclaim Hosting Featured Applications")
-
-*Note that unlike other WordPress installs, this one will not preserve your username/password, so be sure to save that information.* When it's done, log into your new site and start making it your own. 
-
-### Installing TRU Writer from Scratch
-
-Using this theme requires a self-hosted--or institutionally hosted (lucky you)-- Wordpress site (the kind that you download from [wordpress.org](http://www.wordpress.org). You cannot use this theme on the free "wordpress.com" site. Maybe check out [Reclaim Hosting](https://reclaimhosting.com/) if you need to set up your own hosting space. 
+Using this theme requires a self-hosted--or institutionally hosted (lucky you)-- Wordpress site (the kind that you download from [wordpress.org](http://www.wordpress.org). You cannot use this theme on the free "wordpress.com" site unless you have a business plan. Maybe check out [Reclaim Hosting](https://reclaimhosting.com/) if you choose to set up your own hosting space. 
 
 The TRU Collector is a child theme based on [the free and elegant Fukasawa theme by Anders Noren](https://wordpress.org/themes/fukasawa). Install this theme first from within the Wordpress Dashboard under **Appearance** -- **Themes** searching on `Fukasawa`.
+
+### Installing TRU Collector from Scratch
 
 You can download a ZIP file of this theme via the green **Code*" button above (use the Download Zip option). 
 
 The zip can be uploaded directly to your site via **Themes** in the Wordpress dashboard, then **Add Theme** and finally **Upload Theme**. If you run into size upload limits or just prefer going old school like me, unzip the package and ftp the entire folder into your `wp-content/themes` directory.
 
-To get the theme working, activate the "TRU Collector" theme when it appears in your Wordpress dashboard under **Appearance** --> **Themes**. 
-
 ### Updating the TRU Collector Theme (manually)
 
-*Note (Dec 18, 2018) If your site's images are stacked, or it looks like there are only 1 or 2 in a collection, it's likely because of a change to the parent Fukasawa theme and or the WordPress 5.0 update that was automatically updated on your site. An update to TRU Collector version 1.5 or later will fix this issue.*
+As of WordPress version 5.5, themes uploaded as .ZIP files can now be updated the same way you installed it. Just download the newest version, and update it by going to **Themes** in the Wordpress dashboard, then **Add Theme** and finally **Upload Theme**. You will be asked to confirm updating the theme with the newer version.  
 
-As of WordPress version 5.5 themes uploaded as .ZIP files can now be updated the same way you installed it; just download the newest version, and update it  via **Themes** in the Wordpress dashboard, then **Add Theme** and finally **Upload Theme**. You will be asked to confirm updating the theme with the newer version.  
+### Installing TRU Collector in One Click with WP Pusher (get automatic updates!)
 
+To have your site stay up to date automatically, I recommend trying the [WP Pusher plugin](https://wppusher.com/) which makes it easier to install themes and plugins that are published in GitHub. It takes a few steps to set up, but it's the most direct way to get updates to the theme.
 
-If you have ftp/sftp access to your site (or this can be done in a cpanel file manager), simply upload the new theme files to the `wp-content/themes` directory that includes the older version theme. 
+To use WP-Pusher you will need to have or create an account on [GitHub](https://github.com/) (free). Log in. 
 
-For those that lack direct file upload access or maybe that idea sends shivers down the spine, upload and activate the [Easy Theme and Plugin Upgrades](https://wordpress.org/plugins/easy-theme-and-plugin-upgrades/) plugin -- this will allow you to upload a newer version of a theme as a ZIP archive, the same way you add a theme by uploading.
+Next [download WP Pusher plugin](https://wppusher.com/download) as a ZIP file. From the plugins area of your Wordpress dashboard, click the **Upload Plugin** button, select that zip file to upload, and activate the plugin.
+
+Then click the **WP Pusher** option in your Wordpress Dashboard, and then click the **GitHub** tab. Next click the **Obtain a GitHub Token** button to get an authentication token. Copy the one that is generated, paste into the field for it, and finally, click **Save GitHub** Token.
+
+Now you are ready to install TRU Collector! 
+
+![](images/wp-pusher.jpg "WP Pusher Settings")
+
+Look under **WP Pusher** for **Install Theme**. In the form that appears, under **Theme Repository**, enter `cogdog/tru-collector`. Also check the option for **Push-to-Deploy** (this will automatically update your site when the theme is updated) finally, click **Install Theme**.
+
+Woah Neo?
+
+Not only does this install the theme without any messy download/uploads, each time I update the theme on GitHub, your site will be automatically updated to the newest version.  
+
+### Installing From Reclaim Hosting
+
+If you are wise enough to host your web sites at [Reclaim Hosting](http://reclaimhosting.com/) you have the option of installing a fully functioning site with this theme ([a copy of the demo site](http://lab.cogdogblog.com/collector/)) including recommended plugins, configured settings and sample content, all done  in one click. *But wait there is more!* With this method of installing your site, future updates to the theme are automatically added to your site (though not as frequently as the WP Pusher method).
+
+In your cpanel, under **Applications** go to **All Applications**. This theme is available listed under Fratured Applications; just install from there.
+
+![](images/reclaim-featured.jpg "Reclaim Hosting Featured Applications")
+
+*Note that unlike other WordPress installs, this one will not preserve your username/password, so be sure to save that information.* When it's done, log into your new site and start making it your own following the steps below.
+
+## Inserting Demo Content
+
+If you want a site that is not completely empty, after setting up with WP-Pusher or from scratch, you can import all the content set up on the [public demo site](https://lab.cogdogblog.com/collector). 
+
+Install all content by [downloading the WordPress export for that site](https://github.com/cogdog/tru-collector/blob/master/data/tru-collector.xml).  Running the WordPress Importer (under **Tools** -- **Import**) and upload that file when prompted.
+
+You can also get a copy of the Widgets used on that site too. First intall/activate the [Widget Importer & Exporter plugin](https://wordpress.org/plugins/widget-importer-exporter/). Download the [Collector Widgets data file](https://github.com/cogdog/tru-collector/blob/master/data/tru-collector-widgets.wie). Look under the **Tools** menu for **[Widget Importer & Exporter** and use the Import Widgets section to upload the data file. Boom! You got my widgets.
 
 ## Setting Up a New Collector site
 
@@ -143,23 +165,17 @@ For those that lack direct file upload access or maybe that idea sends shivers d
 
 (1) Create a fresh new Wordpress site. 
 
-(2) Create a user with login name of "collector" with Author role. No one actually uses the account, the site invisible logs in guests as this user. Make note of and save somewhere the password that Wordpress generates. Leaving it cryptic is fine, no one needs to use it.
+(2) Install the [Fukasawa theme](https://wordpress.org/themes/fukasawa) from the Wordpress Dashboard (I'll gamble that you know how to install themes, search on `Fukasawa` from Appearances -- Themes. It does not need to be activated, it just needs to be present.
 
-(3) Install the [Fukasawa theme](https://wordpress.org/themes/fukasawa) from the Wordpress Dashboard (I'll gamble that you know how to install themes, search on `Fukasawa` from Appearances -- Themes. It does not need to be activated, it just needs to be present.
+(3) Install the TRU Collector via one of the methods described above.
 
-(4) Install the TRU Collector theme downloaded as part of this repo (use the green **clone or download** button above or [download directly](https://github.com/cogdog/tru-collector/archive/master.zip)).
-
-(5) Activate TRU Collector as the site's theme. In this theme, Posts are renamed **collectables** and thus on the dashboard:
+(4) Activate TRU Collector as the site's theme. In this theme, Posts are renamed **collectables** and thus on the dashboard:
 
 ![Renamed Posts Menu](images/collectables.jpg "collectables menu")
 
-(6) Install and activate the [Remove Dashboard Access plugin](https://wordpress.org/plugins/remove-dashboard-access-for-non-admins/).  The tru-collector theme's options panel will nudge you to install it. This plugin is used to keep the logged in `collector` user from seeing the Wordpress dashboard. Any attempt to reach the dashboard outside of Administrators or editors results in a redirect to the front of the site. The site will work without it, but it makes your  site a tad more bullet proof.
+(5) You might want to set up in advance some Wordpress Categories for your Collectables; in the options you will choose one as default (and for the love of all that is holy, *change the name of the Uncategorized category*!
 
-In this plugins settings, restrict access to **Editors and Administrators** or just **Administrators** depending if you will have a moderator user. The default redirect should be for the main URL of the site. 
-
-![Remove Dashboard Access settings](images/dashboard-access-settings.jpg "Remove Dashboard Access settings")
-
-(7) You might want to set up in advance some Wordpress Categories for your Collectables; in the options you will choose one as default (and for the love of all that is holy, *change the name of the Uncategorized category*!
+Next, you should configure the options.
 
 
 ## Setting Up The Site Via TRU Collector options
@@ -179,19 +195,15 @@ Enter a decent **Access Hint** that will be displayed if someone does not enter 
 
 ### Special Pages Setup
 
-![](images/special-pages.jpg)
+This theme has three pages that must be created; each is associated with a specific template that provide it's functionality. Activating the theme *should* create these all for you when the theme is activated, but if not, create them as described below. You can edit the content of the pages to customize the prompt seen by contributors to your site.
 
-This theme has three pages that must be created; each is associated with a specific template that provide it's functionality. Activating the theme *should* create these all for you when the theme is activated, but if not, create them as described below. You can edit the content of  the pages to customize the prompt seen by writers on your site.
-
-If the theme does not do so automatically (and it should) create these Wordpress **Pages**. You can modify the titles, and add whatever content you want to appear at the top as instructions. Unlike previous versions, there is no need for a specific url  for the page. 
+If the theme does not do so automatically (and it should) create these Wordpress **Pages**. You can modify the titles, and add whatever content you want to appear at the top as instructions. Unlike previous versions, there is no need for a specific url for the page. 
 
 * **Collect** -- The page that provides the collection form, see [http://splot.ca/collector/collect](http://splot.ca/collector/collect).  Whatever you include in the body (not required) is added to the top of the form, maybe for extra instructions.e.g. for a site at `http://coolest.site.org/` the page can be published at `http://coolest.site.org/collecting` When you create a Collection Form page, under **Page Atributes**, select the Template named `Add to Collection`.
 
-* **Welcome Desk** -- The page that provides users will see first if they must enter an access code to access the writing tool (see below). If no access code is required, it redirects to the page above for the writing form-- like  [http://splot.ca/collector/desk](http://splot.ca/collector/desk).  Whatever you include in the body (not required) is added to the top of the form, maybe for a friendly prompt .e.g. for a site at `http://coolest.site.org/` the page might be published at `http://coolest.site.org/guard_dog` When you create a Welcome Desk page, under **Page Atributes**, select the Template named `Welcome Desk`.
-
 * **Browse Items By License** -- If you ask visitors to select a reuse license, this page provides a way to see all items that share the same license-- like [http://splot.ca/collector/licensed/](http://splot.ca/collector/licensed/).  When you create a Browse By License page, under **Page Atributes**, select the Template named `Items by License`.
 
-In the theme options, make sure you have selected the Page that is designated for these purposes.
+In the theme options, make sure you have identified the Page that is designated for these purposes.
 
 
 ### Publish Settings
@@ -234,7 +246,6 @@ Enabling  **Show URL for media item** enables the display of a link for the uplo
 
 ![](images/items2.jpg)
 
-
 The **Rights License** is a drop down menu offering a variety of Creative Commons licenses as well as `All Rights Reserved` (boo!), and a `Usage Rights Unknown` choice.
 
 Enabling the **Cut and Paste Attribution** adds to the image display a field with an automatically formed attribution statement (based on the image's rights license choice) that can be copied after clicking on the text.
@@ -259,17 +270,6 @@ Activating the email form field creates a means for visitors who wish to edit th
 If you use this option, you can also enter a specific domain (or a comma separated list) to say require email addresses to be official work or school ones.
 
 The third setting here can activate a checkbox on the entry form that let's a visitor choose to receive comment notifications via email.
-
-### Author Account Setup
-![](images/author-account-none.jpg)
-
-To provide access to the media uploader, this site uses a Wordpress Authoring Role account that is logged into invisibly to your site. So your site needs a user account with a name of **collector** and a role of **Author**. If this site is on a mulitsite Wordpress install, and the TRU Collector has been used on another site, the `collector` account already exists, so you need to add it to the site via the Author tools. 
-
-![](images/add-author.jpg)
-
-You can follow the link to create an account; for an email you can use a fictitious one on your domain. We suggest using the strong password that Wordpress suggests.
-
-** Note: As of version 1.1 of TRU Collector you no longer need to copy the password into the options page. ** If you are using a version of the theme that has a password field in the options, maybe it's a good time to update? Otherwise, [see an older version of this ReadMe](https://github.com/cogdog/tru-collector/blob/a8637ef4739a6aa64210fee5ddffe8426cfa62b3/README.md#author-account-setup) for instructions.
 
 ## Customize the Add / Collect form
 
@@ -315,12 +315,6 @@ Use the page to find links to the ones you wish to use and add to your site's me
 ![](images/license-shortcode.jpg)
 
 For extra flexibility there is a `[licensed]` shortcode that can be used in a widget or any page to display the same index list in a sidebar. By default, it lists only licenses used (e.g. it skips licenses with zero uses); to show all licenses, use the code `[licensed show="all"]`.
-
-## Updating the Theme
-
-If you have ftp/sftp access to your site (or this can be done in a cpanel file manager), simply upload the new theme files to the `wp-content/themes` directory that includes the older version theme. 
-
-For those that lack direct file upload access or maybe that idea sends shivers down the spine, upload and activate the [Easy Theme and Plugin Upgrades](https://wordpress.org/plugins/easy-theme-and-plugin-upgrades/) plugin -- this will allow you to upload a newer version of a theme as a ZIP archive, the same way you add a theme by uploading.
 
 ## Shortcode Adding Hyperlinks to Simple Captions
 
@@ -399,6 +393,7 @@ Go collect stuff!
 
 ## Relatively New Features
 
+* **Tag Suggestions** Tags entry field provides autocomplete suggestions
 * **Authorless** Removed need for the secret WordPress account, all contributions made without dashboard access. Removed "desk" template, no longer needed. New drop zone for uploading images, plus inline image uploader added to rich text editor. 
 * **Customize Comments** Modify the title where comments are displayed and add an extra prompt.
 * **Alt Text Field** Sharing form now includes a place to enter alternative text for the main image for better web accessibility. 

@@ -1,8 +1,0 @@
-{
-    "version": 5,
-    "options": {
-        "trucollector_options": "a:14:{s:10:\"accesscode\";s:0:\"\";s:10:\"accesshint\";s:40:\"Name of this site (lower the case, Ace!)\";s:15:\"new_item_status\";s:7:\"publish\";s:6:\"notify\";s:0:\"\";s:7:\"sort_by\";s:4:\"date\";s:14:\"sort_direction\";s:4:\"DESC\";s:11:\"use_caption\";s:1:\"2\";s:13:\"caption_field\";s:1:\"s\";s:10:\"use_source\";s:1:\"1\";s:11:\"use_license\";s:1:\"2\";s:16:\"show_attribution\";s:1:\"1\";s:14:\"allow_comments\";s:1:\"1\";s:7:\"def_cat\";s:1:\"3\";s:11:\"postbyemail\";s:0:\"\";}"
-    },
-    "no_autoload": [
-    ]
-}

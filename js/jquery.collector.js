@@ -10,6 +10,8 @@ function getAbsolutePath() {
     return loc.href.substring(0, loc.href.length - ((loc.pathname + loc.search + loc.hash).length - pathName.length));
 }
 
+jQuery('#wTags').suggest( collectorObject.ajaxUrl + "?action=splot_ajax_tag_search&tax=post_tag", {multiple:true, multipleSep: ","});
+
 jQuery(document).ready(function() {
 	// called for via click of upload button in theme options
 
@@ -72,8 +74,5 @@ jQuery(document).ready(function() {
 		jQuery('#dropmessage').text('Drag file or click to select one to upload');
 
 	}
-
-	jQuery('#wTags').suggest( getAbsolutePath() + "wp-admin/admin-ajax.php?action=ajax-tag-search&tax=post_tag", {multiple:true, multipleSep: ","});
-
 
 });

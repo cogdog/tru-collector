@@ -2,7 +2,7 @@
 Theme Name: 	TRU Collector
 Theme URI: 		https://github.com/cogdog/tru-collector
 Description: 	SPLOT Image Collector (Child of Fukasawa) for collections of content organized around images, also with options for full rich text writing, embedded media, attribution, licenses.
-Version: 		2.0
+Version: 		2.1
 Template:       fukasawa
 Author: 		CogDog
 Author URI: 	https://cog.dog/
@@ -36,30 +36,13 @@ h1.blog-title, h2.blog-title {
     text-align: center;
 }
 
-#loading {
-  height: 500px;
-  position: relative;
-
-}
-
-#spinner {
- margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-
-	color: #999;
-	text-transform: uppercase;
-	font-size: 80%;
-	text-align: center;
-
-}
-
 /* in case of URLs in the excerpt */
 .post-excerpt p {
     word-wrap: break-word;
+}
+
+.post-content fieldset {
+    word-break: break-word;
 }
 
 
@@ -72,7 +55,6 @@ h1.blog-title, h2.blog-title {
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     font-size: 1rem;
 }
-
 
 
 /* show featured image in forms */
@@ -109,7 +91,6 @@ h1.blog-title, h2.blog-title {
 	border-radius: 3px;
 	-webkit-appearance: none;
 	margin-left: 10px;
-
 }
 
 
@@ -129,19 +110,13 @@ h1.blog-title, h2.blog-title {
 }
 
 
-/* media uploader */
-.upload-instructions, .max-upload-size {
-    text-align: center;
-}
 
 #collectorform .uploader {
 	float:left;
 	margin: 0 1.3em 1.3em 0;
 }
 
-.post-content fieldset {
-    word-break: break-word;
-}
+
 
 
 /* some pretty buttons all done in CSS
@@ -360,3 +335,29 @@ img#headerthumb {
     	margin-right: 0;
 	}
 }
+
+/* -------------------- style the autocomplete stuff ----------------------------------*/
+/* h/t http://sudarmuthu.com/blog/using-wordpress-built-in-tag-auto-complete-script-in-your-plugins/#comment-644312 */
+.ac_results
+{
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	position: absolute;
+	z-index: 10000;
+	display: none;
+	border-width: 1px;
+	border-style: solid;
+	background-color: white;
+}
+
+.ac_results li
+{
+	padding: 4px 6px;
+	white-space: nowrap;
+	text-align: left;
+}
+
+.ac_over { cursor: pointer; }
+.ac_match { text-decoration: underline; }
+

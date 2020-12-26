@@ -80,7 +80,6 @@ function trucollector_change_post_label() {
     $submenu['edit.php'][16][0] = $thing_name .' Tags';
     echo '';
 
-
     add_submenu_page('edit.php', 'Collectable for Review', 'Collectable for Review', 'edit_pages', 'edit.php?post_status=draft&post_type=post' );
 }
 
@@ -130,17 +129,6 @@ function trucollector_post_updated_messages ( $msg ) {
 
 add_filter( 'post_updated_messages', 'trucollector_post_updated_messages', 10, 1 );
 
-// modify the comment form
-add_filter('comment_form_defaults', 'trucollector_comment_mod');
-
-function trucollector_comment_mod( $defaults ) {
-	$defaults['title_reply'] = get_trucollector_comment_title();
-
-	$defaults['title_reply_after'] = '</h3>' . get_trucollector_comment_extra_intro();
-	$defaults['logged_in_as'] = '';
-	$defaults['title_reply_to'] =  get_trucollector_comment_title() . ' for %s';
-	return $defaults;
-}
 
 // -----  add allowable url parameters
 add_filter('query_vars', 'trucollector_queryvars' );
@@ -339,13 +327,14 @@ function add_trucollector_scripts() {
 
  	if ( is_page( trucollector_get_collect_page() ) ) { // use on just our form page
 
-		 // add media scripts if we are on our maker page and not an admin
-		 // after http://wordpress.stackexchange.com/a/116489/14945
+		if (! is_admin() ) {
+			// add media scripts if we are on our collect page and not an admin
+		 	// after http://wordpress.stackexchange.com/a/116489/14945
+			wp_enqueue_media();
 
-		if (! is_admin() ) wp_enqueue_media();
-
-		// Build in tag auto complete script
-   		wp_enqueue_script( 'suggest' );
+			// Build in tag auto complete script
+			wp_enqueue_script( 'suggest' );
+		}
 
 
    		// Autoembed functionality in rich text editor
@@ -361,7 +350,7 @@ function add_trucollector_scripts() {
 
 
 		// custom jquery for the uploader on the form
-		wp_register_script( 'jquery.collector' , get_stylesheet_directory_uri() . '/js/jquery.collector.js', null , '1.0', TRUE );
+		wp_register_script( 'jquery.collector' , get_stylesheet_directory_uri() . '/js/jquery.collector.js', array( 'suggest') , false, true );
 
 
 		// add a local variable for the site's home url
@@ -389,6 +378,19 @@ function add_trucollector_scripts() {
 # -----------------------------------------------------------------
 # Comments
 # -----------------------------------------------------------------
+
+// modify the comment form
+add_filter('comment_form_defaults', 'trucollector_comment_mod');
+
+function trucollector_comment_mod( $defaults ) {
+	$defaults['title_reply'] = get_trucollector_comment_title();
+
+	$defaults['title_reply_after'] = '</h3>' . get_trucollector_comment_extra_intro();
+	$defaults['logged_in_as'] = '';
+	$defaults['title_reply_to'] =  get_trucollector_comment_title() . ' for %s';
+	return $defaults;
+}
+
 
 // possibly add contributor email to comment notifications
 add_filter( 'comment_notification_recipients', 'trucollector_comment_notification_recipients', 15, 2 );
@@ -600,7 +602,90 @@ function trucollector_upload_action() {
 }
 
 # -----------------------------------------------------------------
-# For the Writing Form
+# Tag Search
+# -----------------------------------------------------------------
+
+add_filter( 'wp_headers', 'splot_send_cors_headers', 11, 1 );
+
+function splot_send_cors_headers( $headers ) {
+	if ( is_page( trucollector_get_collect_page() ) ) {
+    	$headers['Access-Control-Allow-Origin'] = '*';
+    }
+    return $headers;
+}
+
+// this is the handler used in the tiny_mce editor to manage image upload
+add_action( 'wp_ajax_nopriv_splot_ajax_tag_search', 'splot_ajax_tag_search' ); //allow on front-end
+add_action( 'wp_ajax_splot_ajax_tag_search', 'splot_ajax_tag_search' );
+
+
+/* local version of wp_ajax_ajax_tag_search without exit for user capabilties
+   (this requires a logged in user which we do not always have
+
+   modified from
+   https://developer.wordpress.org/reference/functions/wp_ajax_ajax_tag_search
+*/
+
+function splot_ajax_tag_search() {
+    if ( ! isset( $_GET['tax'] ) ) {
+        wp_die( 0 );
+    }
+
+    $taxonomy = sanitize_key( $_GET['tax'] );
+    $tax      = get_taxonomy( $taxonomy );
+
+    if ( ! $tax ) {
+        wp_die( 0 );
+    }
+
+    $s = wp_unslash( $_GET['q'] );
+
+    $comma = _x( ',', 'tag delimiter' );
+    if ( ',' !== $comma ) {
+        $s = str_replace( $comma, ',', $s );
+    }
+
+    if ( false !== strpos( $s, ',' ) ) {
+        $s = explode( ',', $s );
+        $s = $s[ count( $s ) - 1 ];
+    }
+
+    $s = trim( $s );
+
+    /**
+     * Filters the minimum number of characters required to fire a tag search via Ajax.
+     *
+     * @since 4.0.0
+     *
+     * @param int         $characters The minimum number of characters required. Default 2.
+     * @param WP_Taxonomy $tax        The taxonomy object.
+     * @param string      $s          The search term.
+     */
+    $term_search_min_chars = (int) apply_filters( 'term_search_min_chars', 2, $tax, $s );
+
+    /*
+     * Require $term_search_min_chars chars for matching (default: 2)
+     * ensure it's a non-negative, non-zero integer.
+     */
+    if ( ( 0 == $term_search_min_chars ) || ( strlen( $s ) < $term_search_min_chars ) ) {
+        wp_die();
+    }
+
+    $results = get_terms(
+        array(
+            'taxonomy'   => $taxonomy,
+            'name__like' => $s,
+            'fields'     => 'names',
+            'hide_empty' => false,
+        )
+    );
+
+    echo implode( "\n", $results );
+    wp_die();
+}
+
+# -----------------------------------------------------------------
+# For the Collection Form
 # -----------------------------------------------------------------
 
 add_action('wp_head', 'trucollector_no_featured_image');
@@ -634,4 +719,5 @@ function trucollector_firstview( $content ) {
 
     return $content;
 }
+
 ?>
