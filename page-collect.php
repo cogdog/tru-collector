@@ -535,7 +535,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 						} else {
 							// header image optional, use placeholder
 							$defthumb = [];
-							$defthumb[] = 'https://placehold.it/150x150?text=Upload+Image';
+							$defthumb[] = 'https://place-hold.it/150x150?text=Upload+Image';
 
 						}
 
