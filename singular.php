@@ -78,7 +78,7 @@ if  (  is_single() ) {
 
 						<?php the_title( '<h1 class="post-title">', '</h1>' ); ?>
 
-						<?php if (  is_single() AND function_exists('the_ratings')) { the_ratings(); } ?>
+						<?php if (  is_single() AND !is_preview() AND function_exists('the_ratings')) { the_ratings(); } ?>
 
 					</div><!-- .post-header -->
 
@@ -232,7 +232,7 @@ This is a preview of your <?php echo get_trucollector_collection_single_item()?>
 
 				<?php endif; ?>
 
-				<?php if ( comments_open() AND  trucollector_option('allow_comments')) : ?>
+				<?php if ( comments_open() AND trucollector_option('allow_comments') AND !is_preview() ) : ?>
 
 					<?php comments_template( '', true ); ?>
 
