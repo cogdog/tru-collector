@@ -72,7 +72,9 @@
 		        		<img src="<?php echo esc_url( $custom_logo_url ); ?>" />
 					</a>
 					<span class="screen-reader-text"><?php echo get_bloginfo( 'title' ); ?></span>
-		        </<?php echo $blog_title_elem; ?>>
+					</<?php echo $blog_title_elem; ?>>
+					<div class="siteblurb">
+
 
 			<?php elseif ( get_bloginfo( 'description' ) || get_bloginfo( 'title' ) ) : ?>
 
@@ -80,15 +82,19 @@
 					<a href="<?php echo esc_url( home_url() ); ?>" rel="home"><?php echo get_bloginfo( 'title' ); ?></a>
 				</<?php echo $blog_title_elem; ?>>
 
-				<div class="siteblurb"><?php echo esc_attr( get_bloginfo( 'description' ) ); ?></div>
+				<div class="siteblurb"><?php echo esc_attr( get_bloginfo( 'description' ) ); ?>
+
 			<?php endif; ?>
 
-			<div class="siteblurb"><strong><?php $item_count = wp_count_posts()->publish; echo $item_count ?></strong> total <?php
-			if ( $item_count == 1 ) {
-				trucollector_collection_single_item();
-			} else {
-				trucollector_collection_plural_item();
-			}?>  collected</div>
+
+				<span class="splotcount"><strong><?php $item_count = wp_count_posts()->publish; echo $item_count ?></strong> total <?php
+				if ( $item_count == 1 ) {
+					trucollector_collection_single_item();
+				} else {
+					trucollector_collection_plural_item();
+				}?>  collected
+				</span> <!-- splotcount -->
+			</div> <!-- siteblurb -->
 
 
 			<button type="button" class="nav-toggle">

@@ -2,13 +2,15 @@
 Theme Name: 	TRU Collector
 Theme URI: 		https://github.com/cogdog/tru-collector
 Description: 	SPLOT Image Collector (Child of Fukasawa) for collections of content organized around images, also with options for full rich text writing, embedded media, attribution, licenses.
-Version: 		2.1
+Version: 		2.11
 Template:       fukasawa
 Author: 		CogDog
 Author URI: 	https://cog.dog/
 License:		GNU General Public License v2.0 & Apache License 2.0
 */
 
+
+/* ------- typography ------------------------------------------------------- */
 @font-face {
 	font-family: 'Genericons';
 		src: url('genericons/font/Genericons.woff') format('woff'),
@@ -18,9 +20,7 @@ License:		GNU General Public License v2.0 & Apache License 2.0
 	font-style: normal;
 }
 
-.post-meta-bottom .post-tags a { margin-right: 0; }
-.post-meta-bottom .post-tags a:before { content: ""; }
-
+/* ------- main stuff ------------------------------------------------------- */
 
 .siteblurb {
 	padding: 0 1em;
@@ -36,15 +36,22 @@ h1.blog-title, h2.blog-title {
     text-align: center;
 }
 
-/* in case of URLs in the excerpt */
-.post-excerpt p {
-    word-wrap: break-word;
+.taxonomy-description p {
+    margin: 0.5em 10px;
+    font-size: 0.8em;
+    font-weight: 400;
+    font-style: italic;
+    color: #999;
 }
 
-.post-content fieldset {
-    word-break: break-word;
+span.splotcount {
+    display: block;
+    margin-top: 0.3em;
 }
 
+/* ------- single item -------------------------------------------------------- */
+.post-meta-bottom .post-tags a { margin-right: 0; }
+.post-meta-bottom .post-tags a:before { content: ""; }
 
 /* nice box for item metadata */
 .splot_meta {
@@ -54,8 +61,23 @@ h1.blog-title, h2.blog-title {
     margin: 1em 0;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
     font-size: 1rem;
+    word-wrap: break-word;
 }
 
+
+#getEditLinkResponse {
+    padding: 0.5em;
+    background: #f2f2f2;
+    color: #5f5e5e;
+    font-size: 0.8em;
+}
+
+/* ------- the form  -------------------------------------------------------- */
+
+#collectorform .uploader {
+	float:left;
+	margin: 0 1.3em 1.3em 0;
+}
 
 /* show featured image in forms */
 #featurethumb {
@@ -67,6 +89,9 @@ h1.blog-title, h2.blog-title {
 	font-style: normal;
 }
 
+.post-content fieldset {
+    word-break: break-word;
+}
 
 /* link buttons in forms */
 #theButtons a {
@@ -77,7 +102,6 @@ h1.blog-title, h2.blog-title {
 	 transition: all 0.2s ease-in-out;
 	 text-decoration: none;
 }
-
 
 #theButtons a  {
 	padding: 12px 16px;
@@ -93,7 +117,6 @@ h1.blog-title, h2.blog-title {
 	margin-left: 10px;
 }
 
-
 #theButtons a:hover {
 	cursor: pointer;
 	background: #019EBD;
@@ -101,23 +124,101 @@ h1.blog-title, h2.blog-title {
 	border: none;
 }
 
-.taxonomy-description p {
-    margin: 0.5em 10px;
-    font-size: 0.8em;
-    font-weight: 400;
-    font-style: italic;
-    color: #999;
+#collectorform a.fbutton, a.splotbutton {
+    padding: 12px 16px;
+    margin: 0;
+    border: none;
+    background: #333;
+    color: #fff;
+    font-size: 0.9rem;
+    line-height: 1;
+    -webkit-appearance: none;
+    border-radius: 3px;
+    -webkit-appearance: none;
 }
 
-
-
-#collectorform .uploader {
-	float:left;
-	margin: 0 1.3em 1.3em 0;
+#collectorform a.fbutton:hover, a.splotbutton:hover {
+	cursor: pointer;
+	background: #ca2017;
+	color: #fff;
 }
 
+#collectorform a.disabled, #collectorform input[type="submit"][disabled], #collectorform input[type="button"][disabled] {
+   pointer-events: none;
+   cursor: default;
+   opacity:0.4;
+}
 
+#collectorform input[type="submit"][disabled]:hover {
+	background: #333;
+	opacity:0.4;
+}
 
+/* -------------------------------  image drop zone ----------------------------------*/
+
+#footlocker {
+	display: none;
+}
+
+#uploadresponse {
+    color: #673ab7;
+}
+
+img#headerthumb {
+    float: left;
+    margin: 0 1em 0 0;
+    cursor: pointer;
+    object-fit: cover;
+    width: 150px;
+    height: 150px;
+}
+
+#splotdropzone {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0 0 1em 0;
+    width: 100%;
+    height: 200px;
+    border: 3px dashed #999;
+    background: url(images/upload-icon.png) no-repeat center 20%, url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAAH0lEQVQoU2NkIAIwEqGGgfaK/jMwIGyhvXUonibKOgCoygEKFVx9rwAAAABJRU5ErkJggg==) repeat !important;
+    cursor: pointer;
+}
+
+#splotdropzone input {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  opacity: 0;
+}
+
+#dropmessage {
+	width: 100%;
+	height: 100%;
+	padding-top: 70px;
+	text-align: center;
+	word-break: break-word;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1em;
+	font-weight:bold;
+	color: #333;
+}
+
+@media (max-width: 1000px) {
+	.siteblurb {
+		margin: 1em;
+		font-size: 0.75rem
+	}
+
+	.blog-title {
+    	margin-right: 0;
+	}
+}
+
+/* ------- buttons and boxes --------------------------------------------------- */
 
 /* some pretty buttons all done in CSS
    h/t http://www.graemeboy.com/modern-css-buttons */
@@ -233,109 +334,6 @@ h1.blog-title, h2.blog-title {
 .notify-red { background: #ffecec; border-color: #fad9d7; }
 .notify-green { background: #e9ffd9; border-color: #D1FAB6; }
 
-#getEditLinkResponse {
-    padding: 0.5em;
-    background: #f2f2f2;
-    color: #5f5e5e;
-    font-size: 0.8em;
-}
-
-
-#collectorform a.fbutton, a.splotbutton {
-    padding: 12px 16px;
-    margin: 0;
-    border: none;
-    background: #333;
-    color: #fff;
-    font-size: 0.9rem;
-    line-height: 1;
-    -webkit-appearance: none;
-    border-radius: 3px;
-    -webkit-appearance: none;
-}
-
-#collectorform a.fbutton:hover, a.splotbutton:hover {
-	cursor: pointer;
-	background: #ca2017;
-	color: #fff;
-}
-
-#collectorform a.disabled, #collectorform input[type="submit"][disabled], #collectorform input[type="button"][disabled] {
-   pointer-events: none;
-   cursor: default;
-   opacity:0.4;
-}
-
-#collectorform input[type="submit"][disabled]:hover {
-	background: #333;
-	opacity:0.4;
-}
-
-/* -------------------------------  image drop zone ----------------------------------*/
-
-
-#footlocker {
-	display: none;
-}
-
-#uploadresponse {
-    color: #673ab7;
-}
-
-img#headerthumb {
-    float: left;
-    margin: 0 1em 0 0;
-    cursor: pointer;
-    object-fit: cover;
-    width: 150px;
-    height: 150px;
-}
-
-#splotdropzone {
-    position: relative;
-    top: 0;
-    left: 0;
-    margin: 0 0 1em 0;
-    width: 100%;
-    height: 200px;
-    border: 3px dashed #999;
-    background: url(images/upload-icon.png) no-repeat center 20%, url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAJCAYAAADgkQYQAAAAH0lEQVQoU2NkIAIwEqGGgfaK/jMwIGyhvXUonibKOgCoygEKFVx9rwAAAABJRU5ErkJggg==) repeat !important;
-    cursor: pointer;
-}
-
-#splotdropzone input {
-  position: absolute;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  outline: none;
-  opacity: 0;
-}
-
-#dropmessage {
-	width: 100%;
-	height: 100%;
-	padding-top: 70px;
-	text-align: center;
-	word-break: break-word;
-	font-family: 'Open Sans', sans-serif;
-	font-size: 1em;
-	font-weight:bold;
-	color: #333;
-}
-
-@media (max-width: 1000px) {
-	.siteblurb {
-		margin: 1em;
-		font-size: 0.75rem
-	}
-
-	.blog-title {
-    	margin-right: 0;
-	}
-}
-
 /* -------------------- style the autocomplete stuff ----------------------------------*/
 /* h/t http://sudarmuthu.com/blog/using-wordpress-built-in-tag-auto-complete-script-in-your-plugins/#comment-644312 */
 .ac_results
@@ -360,4 +358,3 @@ img#headerthumb {
 
 .ac_over { cursor: pointer; }
 .ac_match { text-decoration: underline; }
-

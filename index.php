@@ -2,12 +2,8 @@
 
 <div class="content">
 
-	<?php if ( have_posts() ) :
-
-		$nav_label = get_trucollector_collection_plural_item();
-		?>
-
 		<?php
+
 		$paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
 		$archive_title = '';
 		$archive_subtitle = '';
@@ -17,8 +13,8 @@
 		} elseif ( is_search() ) {
 			$archive_title = sprintf(
 						_n(
-							'%s ' . get_trucollector_collection_single_item() . ' found for "%s"',
-							'%s ' . get_trucollector_collection_plural_item() . ' found for "%s"',
+							'%s ' . ucfirst(get_trucollector_collection_single_item()) . ' found for "%s"',
+							'%s ' .  ucfirst(get_trucollector_collection_plural_item()) . ' found for "%s"',
 							$wp_query->found_posts,
 							'fukasawa'
 						),
@@ -32,32 +28,33 @@
 			$archive_subtitle = sprintf( __( ' (page %1$s of %2$s)', 'fukasawa' ), $paged, $wp_query->max_num_pages );
 		}
 
+		$archive_description = get_the_archive_description();
+
 		if ( $archive_title ) : ?>
 
 			<div class="page-title">
 
-				<div class="section-inner">
+				<div class="section-inner clear">
 
-					<h4>
+					<h1 class="archive-title">
 						<?php
 						echo $archive_title;
 
 						if ( $archive_subtitle ) {
-							echo '<span>' . $archive_subtitle . '</span>';
+							echo '<span class="archive-subtitle">' . $archive_subtitle . '</span>';
 						}
 						?>
 
-						<div class="clear"></div>
 
-					</h4>
+					</h1>
 
-					<?php
-					// Show an optional term description.
-					$term_description = term_description();
-					if ( ! empty( $term_description ) ) :
-						printf( '<div class="taxonomy-description">%s</div>', $term_description );
-					endif;
-					?>
+					<?php if ( $archive_description ) : ?>
+
+						<div class="archive-description">
+							<?php echo wp_kses_post( wpautop( $archive_description ) ); ?>
+						</div><!-- .archive-description -->
+
+					<?php endif; ?>
 
 				</div><!-- .section-inner -->
 
@@ -65,37 +62,30 @@
 
 		<?php endif; ?>
 
-		<div class="posts" id="posts">
+		<?php if ( have_posts() ) : ?>
+			<div class="posts" id="posts">
 
-			<div class="grid-sizer"></div>
+				<?php
 
-			<?php
-			while ( have_posts() ) : the_post();
+				while ( have_posts() ) : the_post();
+					$template_part_name = get_post_type() == 'post' ? get_post_format() : get_post_type();
+					get_template_part( 'content', $template_part_name );
+				endwhile;
 
-				get_template_part( 'content', get_post_format() );
+				?>
 
-			endwhile;
-			?>
+			</div><!-- .posts -->
+			<?php get_template_part( 'pagination' ); ?>
 
-		</div><!-- .posts -->
+	<?php elseif ( is_search() ) : ?>
 
-	<?php endif; ?>
+		<div class="post-content">
 
-	<?php if ( $wp_query->max_num_pages > 1 ) : ?>
+            <p><?php _e( "No results found for your search. You can give it another try through the form below.", 'fukasawa' ); ?></p>
 
-		<div class="archive-nav">
+            <?php get_search_form(); ?>
 
-			<?php
-
-				echo get_next_posts_link( __( 'Previous ' . $nav_label , 'fukasawa' ) . ' &rarr;' );
-
-				echo get_previous_posts_link( '&larr; ' . __( 'Next ' . $nav_label, 'fukasawa' ) );
-
-			?>
-
-			<div class="clear"></div>
-
-		</div><!-- .archive-nav -->
+        </div><!-- .post-content -->
 
 	<?php endif; ?>
 
