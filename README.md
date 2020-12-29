@@ -334,7 +334,9 @@ To present the link just as a URL, simply use
 
 which will produce the hyperlink like http://www.themostamazingwebsiteontheinternet.com/ -- all links will open in a new window.
 
-## Add Public Ratings
+## Optional / Suggested Add-ons
+
+### Add Public Ratings
 
 Installing the [WP-Ratings Plugin](https://wordpress.org/plugins/wp-postratings/) enables public star (or other scale) ratings on items from the front page, archives, and single items. Visitors can rate content using a variety of ratings (1-5 stars, thumbs up/down, etc).
 
@@ -342,7 +344,11 @@ Installing the [WP-Ratings Plugin](https://wordpress.org/plugins/wp-postratings/
 
 See it in action on the SPLOT demo site [front page](http://splot.ca/collector/) or [single item](http://splot.ca/collector/393/).
 
-## Tiled Displays 
+### OpenGraph Tags for Social Media Sharing
+
+If you would like Twitter Cards and Facebook shares to use the main images and provide a more complete display, install, activate, and configure a plugin like [Open Graph and Twitter Card Tags](https://wordpress.org/plugins/wonderm00ns-simple-facebook-open-graph-tags/). This adds the special [open graph tags](https://ogp.me/) to your site's pages to enable better social media share previews.
+
+### Tiled Displays 
 
 Install the [WP-Tiles plugin](https://wordpress.org/plugins/wp-tiles/) to create alternative views of your collections as a tiled gallery. The plugin provides  way to create a variety of grid styles, and can be added to a Page in your site using a shortcode. This can even be set to be the FRONT page of your site using **Settings** -> **Reading** in your WordPress dashboard as was down for the [#OWLTEH18 Conference Photos site](https://www.conf.owlteh.org/photos/):
 
@@ -352,11 +358,11 @@ Or see examples as internal pages from the [SPLOT demo site](http://splot.ca/col
 
 Learn more about using this plugin https://cogdogblog.com/2018/01/tiling-splots/
 
-## Fix Rotated Mobile Phone Photos
+### Fix Rotated Mobile Phone Photos
 
 If contributors to your collection will be uploading photos directly from a smart phone, install the [iOS Image Fixer plugin](https://wordpress.org/plugins/ios-images-fixer/) to fix [problems associated with portrait mode photos that end up uploaded as sideways images](https://wordpress.org/plugins/ios-images-fixer/).
 
-## Not So Big Featured Images 
+### Not So Big Featured Images 
 
 The images as shown in a single item view are meant by the theme to fill the space. One user of the theme setting a Collector up for conference participants to post bios, asked if they could be smaller as it put off a few of their testers.
 
@@ -373,7 +379,7 @@ You will see results instantly, and you might try different values of the width 
 
 Once it seems sized appropriately, click "Publish"
 
-## Other Wordpressy Things You Might Want to Do
+### Other Wordpressy Things You Might Want to Do
 
 I like short links, so I typically use a Custom Permalink setting (under `Settings -- Permalinks`) of `/%post_id%/'
 
