@@ -88,7 +88,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		 'sanitize_callback' => 'sanitize_text'
 	) );
 
-	// Control for title label
+	// Control for label
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
 		'item_singular',
@@ -103,20 +103,20 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 	    )
 	);
 
-	// Add setting for singular item
+	// Add setting for plural item
 	$wp_customize->add_setting( 'plural_item', array(
 		 'default'  => __( 'items', 'fukasawa'),
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
 
-	// Control fortitle label
+	// Control  label
 	$wp_customize->add_control( new WP_Customize_Control(
 	    $wp_customize,
 		'plural_item',
 		    array(
 		        'label'    => __( 'Plural Items', 'fukasawa'),
-		        'priority' => 15,
+		        'priority' => 12,
 		        'description' => __( 'The name for more than one thing in this collection' ),
 		        'section'  => 'collections',
 		        'settings' => 'plural_item',
@@ -124,6 +124,58 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		    )
 	    )
 	);
+
+
+
+
+
+
+
+
+	// Add setting for singular comment
+	$wp_customize->add_setting( 'singular_comment', array(
+		 'default'  => __( 'comment', 'fukasawa'),
+		 'type' => 'theme_mod',
+		 'sanitize_callback' => 'sanitize_text'
+	) );
+
+	// Control for label
+	$wp_customize->add_control( new WP_Customize_Control(
+	    $wp_customize,
+		'singular_comment',
+		    array(
+		        'label'    => __( 'Name for Single Comment', 'fukasawa'),
+		        'priority' => 13,
+		        'description' => __( 'The name for comment (e.g. "response")' ),
+		        'section'  => 'collections',
+		        'settings' => 'singular_comment',
+		        'type'     => 'text'
+		    )
+	    )
+	);
+
+	// Add setting for plural item
+	$wp_customize->add_setting( 'plural_comment', array(
+		 'default'  => __( 'comments', 'fukasawa'),
+		 'type' => 'theme_mod',
+		 'sanitize_callback' => 'sanitize_text'
+	) );
+
+	// Control  label
+	$wp_customize->add_control( new WP_Customize_Control(
+	    $wp_customize,
+		'plural_comment',
+		    array(
+		        'label'    => __( 'Name for Multiple Comments', 'fukasawa'),
+		        'priority' => 14,
+		        'description' => __( 'The name for more than one comment (e.g. "responses")' ),
+		        'section'  => 'collections',
+		        'settings' => 'plural_comment',
+		        'type'     => 'text'
+		    )
+	    )
+	);
+
 
 	// Add setting for comment titles
 	$wp_customize->add_setting( 'comment_title', array(
@@ -770,6 +822,10 @@ function get_trucollector_collection_single_item() {
 }
 
 
+
+
+
+
 function trucollector_collection_plural_item() {
 	 if ( get_theme_mod( 'plural_item') != "" ) {
 	 	echo get_theme_mod( 'plural_item');
@@ -786,6 +842,22 @@ function get_trucollector_collection_plural_item() {
 	 }
 }
 
+
+function get_trucollector_collection_single_comment_name() {
+	 if ( get_theme_mod( 'singular_comment') != "" ) {
+	 	return get_theme_mod( 'singular_comment');
+	 }	else {
+	 	return 'comment';
+	 }
+}
+
+function get_trucollector_collection_plural_comment_name() {
+	 if ( get_theme_mod( 'plural_comment') != "" ) {
+	 	return ( get_theme_mod( 'plural_comment'));
+	 }	else {
+	 	return  ('comments');
+	 }
+}
 
 function get_trucollector_comment_title() {
 	 if ( get_theme_mod( 'comment_title') != "" ) {
