@@ -50,15 +50,7 @@ class Splot_Theme_Plugin_Enhancements {
 
 		// Define plugins recommended / required
 		$this->plugins = array(
-			
-			array(
-				'slug'    => 'remove-dashboard-access-for-non-admins',
-				'name'    => 'Remove Dashboard Access',
-				'message' => sprintf(
-					esc_html__( 'The %1$s is recommended to hide the dashboard from the special writer user account used to guest author on this site.', 'trucollector' ),
-					'<strong>' . esc_html__( 'Remove Dashboard Access plugin', 'trucollector' ) . '</strong>' ),
-			),
-			
+
 			array(
 				'slug'    => 'wp-postratings',
 				'name'    => 'WP-PostRatings',
@@ -66,11 +58,11 @@ class Splot_Theme_Plugin_Enhancements {
 					esc_html__( 'The %1$s is useful if you want to have visitors rate your collections', 'trucollector' ),
 					'<strong>' . esc_html__( 'WP-PostRatings plugin', 'trucollector' ) . '</strong>' ),
 			),
-			
-			
+
+
 		);
-		
-		
+
+
 		// Set the status of each of these enhancements and determine if a notice is necessary.
 		$this->set_plugin_status();
 

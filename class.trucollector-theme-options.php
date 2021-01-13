@@ -240,7 +240,7 @@ class trucollector_Theme_Options {
 			'std'     => 'publish',
 			'choices' => array(
 				'publish' => 'Publish immediately',
-				'draft' => 'Set to draft',
+				'pending' => 'Set to draft',
 			)
 		);
 
@@ -755,6 +755,14 @@ class trucollector_Theme_Options {
 				$input['show_attribution'] == '0';
 			}
 
+			// fix older site options that used 'draft' for save status
+			if ($options['new_item_status']  == 'draft') {
+				$input['new_item_status'] = 'pending';
+
+			}
+
+
+
 
 			foreach ( $this->checkboxes as $id ) {
 				if ( isset( $options[$id] ) && ! isset( $input[$id] ) )
@@ -774,7 +782,12 @@ $theme_options = new trucollector_Theme_Options();
 function trucollector_option( $option ) {
 	$options = get_option( 'trucollector_options' );
 	if ( isset( $options[$option] ) )
-		return $options[$option];
+		// fix older site options that used 'draft' for save status
+		if ($option == 'new_item_status' and $options['new_item_status'] == 'draft') {
+			return 'pending';
+		} else {
+			return $options[$option];
+		}
 	else
 		return false;
 }

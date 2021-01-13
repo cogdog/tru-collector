@@ -168,11 +168,13 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 
 			$post_status = trucollector_option('new_item_status');
+			if ($post_status == 'draft') $post_status = 'pending'; // fix wrong status from older versions
 
 			if ( isset( $_POST['makeit'] ) ) {
 
 				// set status (will be either 'publish' or 'pending') for post based on theme settings
 				$post_status = trucollector_option('new_item_status');
+				
 
 				$is_published = true;
 				$box_style = '<div class="notify"><span class="symbol icon-info"></span> ';
@@ -216,7 +218,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 					$message = 'A new ' . get_trucollector_collection_single_item() . ' <strong>"' . $wTitle . '"</strong> written by <strong>' . $wAuthor . '</strong> has been submitted to ' . get_bloginfo() . '. You can <a href="'. site_url() . '/?p=' . $post_id . 'preview=true' . '">preview it now</a>.<br /><br /> To publish it, simply <a href="' . admin_url( 'edit.php?post_status=pending&post_type=post') . '">find it in the pending items</a> and change its status from <strong>Pending</strong> to <strong>Publish</strong>';
 
-				} // post_status == 'publish'
+				} // post_status == 'publish / pending'
 
 			} else {
 			// updated button clicked

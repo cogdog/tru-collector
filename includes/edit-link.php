@@ -105,7 +105,7 @@ function trucollector_mail_edit_link ( $wid, $mode = 'request' )  {
 	$wTitle = htmlspecialchars_decode( get_the_title( $wid ) );
 
 	// general how to use this link info
-	$edit_instructions = '<p>To be able to edit this work use this special access link <a href="' . get_bloginfo('url') . '/' . trucollector_get_collect_page() . '/?tk=' . $wEditKey  . '">' . get_bloginfo('url') . '/' . trucollector_get_collect_page() . '?tk=' . $wEditKey  . '</p>It should open so you can make any modifications to it. Save this email as a way to always return to edit your item or use the Request Edit Link button at the bottom of your published work.</p>';
+	$edit_instructions = '<p>To be able to edit this ' . get_trucollector_collection_single_item() . ' use this special access link <a href="' . get_bloginfo('url') . '/' . trucollector_get_collect_page() . '/?tk=' . $wEditKey  . '">' . get_bloginfo('url') . '/' . trucollector_get_collect_page() . '?tk=' . $wEditKey  . '</p>It should open so you can make any modifications to it. Save this email as a way to always return to edit your ' . get_trucollector_collection_single_item() . ' or use the Request Edit Link button at the bottom the published version.</p>';
 
 	if ( $mode == 'request' ) {
 		// subject and message for a edit link request from the button press
@@ -117,7 +117,7 @@ function trucollector_mail_edit_link ( $wid, $mode = 'request' )  {
 		// message for a just been published notification
 		$subject = '"' . $wTitle . '" ' . ' is now published';
 
-		$message = 'The shared item <a href="' . $wLink . '">' . $wTitle . '</a> has been published on ' . get_bloginfo( 'name')  . ' and is now available at <strong><a href="' . $wLink . '">' . $wLink . '</a></strong>.</p>' . $edit_instructions;
+		$message = 'The shared ' . get_trucollector_collection_single_item() . ' <a href="' . $wLink . '">' . $wTitle . '</a> has been published on ' . get_bloginfo( 'name')  . ' and is now available at <strong><a href="' . $wLink . '">' . $wLink . '</a></strong>.</p>' . $edit_instructions;
 	}
 
 	// turn on HTML mail
