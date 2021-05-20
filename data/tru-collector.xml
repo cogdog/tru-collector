@@ -16,7 +16,7 @@
 <!-- 7. WordPress will then import each of the posts, pages, comments, categories, etc. -->
 <!--    contained in this file into your site. -->
 
-	<!-- generator="WordPress/5.6" created="2020-12-28 23:50" -->
+	<!-- generator="WordPress/5.7" created="2021-03-22 19:10" -->
 <rss version="2.0"
 	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 	xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -29,7 +29,7 @@
 	<title>SPLOT Collector</title>
 	<link>https://lab.cogdogblog.com/collector</link>
 	<description>If it splots like a duck...</description>
-	<pubDate>Mon, 28 Dec 2020 23:50:16 +0000</pubDate>
+	<pubDate>Mon, 22 Mar 2021 19:10:49 +0000</pubDate>
 	<language>en</language>
 	<wp:wxr_version>1.2</wp:wxr_version>
 	<wp:base_site_url>https://lab.cogdogblog.com/collector</wp:base_site_url>
@@ -216,10 +216,10 @@
 			<wp:term><wp:term_id>13</wp:term_id><wp:term_taxonomy>nav_menu</wp:term_taxonomy><wp:term_slug><![CDATA[main]]></wp:term_slug><wp:term_name><![CDATA[main]]></wp:term_name>
 </wp:term>
 
-	<generator>https://wordpress.org/?v=5.6</generator>
+	<generator>https://wordpress.org/?v=5.7</generator>
 
 		<item>
-		<title>About The Collector</title>
+		<title><![CDATA[About The Collector]]></title>
 		<link>https://lab.cogdogblog.com/collector/about/</link>
 		<pubDate>Fri, 05 Oct 2018 18:14:56 +0000</pubDate>
 		<dc:creator><![CDATA[ofjef3]]></dc:creator>
@@ -257,6 +257,8 @@ Learn <a href="https://github.com/cogdog/tru-collector">more about TRU Collector
 		<wp:post_id>2</wp:post_id>
 		<wp:post_date><![CDATA[2018-10-05 18:14:56]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2018-10-05 18:14:56]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2018-10-05 18:38:43]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2018-10-05 18:38:43]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[open]]></wp:comment_status>
 		<wp:ping_status><![CDATA[open]]></wp:ping_status>
 		<wp:post_name><![CDATA[about]]></wp:post_name>
@@ -280,7 +282,7 @@ Learn <a href="https://github.com/cogdog/tru-collector">more about TRU Collector
 		</wp:postmeta>
 							</item>
 					<item>
-		<title>Collect</title>
+		<title><![CDATA[Collect]]></title>
 		<link>https://lab.cogdogblog.com/collector/collect/</link>
 		<pubDate>Wed, 03 Oct 2018 18:21:33 +0000</pubDate>
 		<dc:creator><![CDATA[ofjef3]]></dc:creator>
@@ -291,6 +293,8 @@ Learn <a href="https://github.com/cogdog/tru-collector">more about TRU Collector
 		<wp:post_id>5</wp:post_id>
 		<wp:post_date><![CDATA[2018-10-03 18:21:33]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2018-10-03 18:21:33]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2018-10-03 18:21:33]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2018-10-03 18:21:33]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[collect]]></wp:post_name>
@@ -306,7 +310,7 @@ Learn <a href="https://github.com/cogdog/tru-collector">more about TRU Collector
 		</wp:postmeta>
 							</item>
 					<item>
-		<title>Welcome Desk</title>
+		<title><![CDATA[Welcome Desk]]></title>
 		<link>https://lab.cogdogblog.com/collector/desk/</link>
 		<pubDate>Wed, 03 Oct 2018 18:21:33 +0000</pubDate>
 		<dc:creator><![CDATA[ofjef3]]></dc:creator>
@@ -317,6 +321,8 @@ Learn <a href="https://github.com/cogdog/tru-collector">more about TRU Collector
 		<wp:post_id>6</wp:post_id>
 		<wp:post_date><![CDATA[2018-10-03 18:21:33]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2018-10-03 18:21:33]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2018-10-03 18:21:33]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2018-10-03 18:21:33]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[desk]]></wp:post_name>
@@ -332,7 +338,7 @@ Learn <a href="https://github.com/cogdog/tru-collector">more about TRU Collector
 		</wp:postmeta>
 							</item>
 					<item>
-		<title>Random</title>
+		<title><![CDATA[Random]]></title>
 		<link>https://lab.cogdogblog.com/collector/random/</link>
 		<pubDate>Wed, 03 Oct 2018 18:21:33 +0000</pubDate>
 		<dc:creator><![CDATA[ofjef3]]></dc:creator>
@@ -343,6 +349,8 @@ Learn <a href="https://github.com/cogdog/tru-collector">more about TRU Collector
 		<wp:post_id>7</wp:post_id>
 		<wp:post_date><![CDATA[2018-10-03 18:21:33]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2018-10-03 18:21:33]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2018-10-03 18:21:33]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2018-10-03 18:21:33]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[random]]></wp:post_name>
@@ -358,7 +366,7 @@ Learn <a href="https://github.com/cogdog/tru-collector">more about TRU Collector
 		</wp:postmeta>
 							</item>
 					<item>
-		<title>Items by License</title>
+		<title><![CDATA[Items by License]]></title>
 		<link>https://lab.cogdogblog.com/collector/licensed/</link>
 		<pubDate>Wed, 03 Oct 2018 18:21:33 +0000</pubDate>
 		<dc:creator><![CDATA[ofjef3]]></dc:creator>
@@ -369,6 +377,8 @@ Learn <a href="https://github.com/cogdog/tru-collector">more about TRU Collector
 		<wp:post_id>8</wp:post_id>
 		<wp:post_date><![CDATA[2018-10-03 18:21:33]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2018-10-03 18:21:33]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2018-10-03 18:21:33]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2018-10-03 18:21:33]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[licensed]]></wp:post_name>
@@ -384,7 +394,7 @@ Learn <a href="https://github.com/cogdog/tru-collector">more about TRU Collector
 		</wp:postmeta>
 							</item>
 					<item>
-		<title>hamster</title>
+		<title><![CDATA[hamster]]></title>
 		<link>https://lab.cogdogblog.com/collector/hamster/</link>
 		<pubDate>Mon, 19 Sep 2016 06:48:16 +0000</pubDate>
 		<dc:creator><![CDATA[ofjef3]]></dc:creator>
@@ -395,6 +405,8 @@ Learn <a href="https://github.com/cogdog/tru-collector">more about TRU Collector
 		<wp:post_id>25</wp:post_id>
 		<wp:post_date><![CDATA[2016-09-18 23:48:16]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2016-09-19 06:48:16]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2016-09-18 23:48:16]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2016-09-19 06:48:16]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[open]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[hamster]]></wp:post_name>
@@ -415,7 +427,7 @@ Learn <a href="https://github.com/cogdog/tru-collector">more about TRU Collector
 		</wp:postmeta>
 							</item>
 					<item>
-		<title>25698857623_9210b4d545_k</title>
+		<title><![CDATA[25698857623_9210b4d545_k]]></title>
 		<link>https://lab.cogdogblog.com/collector/25698857623_9210b4d545_k/</link>
 		<pubDate>Mon, 19 Sep 2016 06:10:55 +0000</pubDate>
 		<dc:creator><![CDATA[ofjef3]]></dc:creator>
@@ -426,6 +438,8 @@ Learn <a href="https://github.com/cogdog/tru-collector">more about TRU Collector
 		<wp:post_id>20</wp:post_id>
 		<wp:post_date><![CDATA[2016-09-18 23:10:55]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2016-09-19 06:10:55]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2016-09-18 23:10:55]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2016-09-19 06:10:55]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[open]]></wp:comment_status>
 		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
 		<wp:post_name><![CDATA[25698857623_9210b4d545_k]]></wp:post_name>
@@ -446,7 +460,536 @@ Learn <a href="https://github.com/cogdog/tru-collector">more about TRU Collector
 		</wp:postmeta>
 							</item>
 					<item>
-		<title>Looking For Good Photos</title>
+		<title><![CDATA[pool-831996_1280]]></title>
+		<link>https://lab.cogdogblog.com/collector/pool-831996_1280/</link>
+		<pubDate>Mon, 19 Sep 2016 06:49:59 +0000</pubDate>
+		<dc:creator><![CDATA[ofjef3]]></dc:creator>
+		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/wp-content/uploads/2016/09/pool-831996_1280.jpg</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>27</wp:post_id>
+		<wp:post_date><![CDATA[2016-09-18 23:49:59]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2016-09-19 06:49:59]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2016-09-18 23:49:59]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2016-09-19 06:49:59]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[pool-831996_1280]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[https://lab.cogdogblog.com/collector/wp-content/uploads/2016/09/pool-831996_1280.jpg]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2016/09/pool-831996_1280.jpg]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1280;s:6:"height";i:853;s:4:"file";s:28:"2016/09/pool-831996_1280.jpg";s:5:"sizes";a:7:{s:9:"thumbnail";a:4:{s:4:"file";s:28:"pool-831996_1280-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:28:"pool-831996_1280-300x200.jpg";s:5:"width";i:300;s:6:"height";i:200;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:28:"pool-831996_1280-768x512.jpg";s:5:"width";i:768;s:6:"height";i:512;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:29:"pool-831996_1280-1024x682.jpg";s:5:"width";i:1024;s:6:"height";i:682;s:9:"mime-type";s:10:"image/jpeg";}s:14:"post-thumbnail";a:4:{s:4:"file";s:26:"pool-831996_1280-88x88.jpg";s:5:"width";i:88;s:6:"height";i:88;s:9:"mime-type";s:10:"image/jpeg";}s:10:"post-image";a:4:{s:4:"file";s:28:"pool-831996_1280-973x648.jpg";s:5:"width";i:973;s:6:"height";i:648;s:9:"mime-type";s:10:"image/jpeg";}s:10:"post-thumb";a:4:{s:4:"file";s:28:"pool-831996_1280-508x339.jpg";s:5:"width";i:508;s:6:"height";i:339;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[add-author]]></title>
+		<link>https://lab.cogdogblog.com/collector/cool/setting-up/attachment/add-author/</link>
+		<pubDate>Mon, 19 Sep 2016 07:15:20 +0000</pubDate>
+		<dc:creator><![CDATA[ofjef3]]></dc:creator>
+		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/wp-content/uploads/2016/09/add-author.jpg</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>30</wp:post_id>
+		<wp:post_date><![CDATA[2016-09-19 00:15:20]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2016-09-19 07:15:20]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2016-09-19 00:15:20]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2016-09-19 07:15:20]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[add-author]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>28</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[https://lab.cogdogblog.com/collector/wp-content/uploads/2016/09/add-author.jpg]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2016/09/add-author.jpg]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:5:{s:5:"width";i:800;s:6:"height";i:578;s:4:"file";s:22:"2016/09/add-author.jpg";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:22:"add-author-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:22:"add-author-300x217.jpg";s:5:"width";i:300;s:6:"height";i:217;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:22:"add-author-768x555.jpg";s:5:"width";i:768;s:6:"height";i:555;s:9:"mime-type";s:10:"image/jpeg";}s:14:"post-thumbnail";a:4:{s:4:"file";s:20:"add-author-88x88.jpg";s:5:"width";i:88;s:6:"height";i:88;s:9:"mime-type";s:10:"image/jpeg";}s:10:"post-thumb";a:4:{s:4:"file";s:22:"add-author-508x367.jpg";s:5:"width";i:508;s:6:"height";i:367;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[4663389392_219a09e628_b]]></title>
+		<link>https://lab.cogdogblog.com/collector/4663389392_219a09e628_b/</link>
+		<pubDate>Sat, 23 Sep 2017 23:04:34 +0000</pubDate>
+		<dc:creator><![CDATA[ofjef3]]></dc:creator>
+		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/wp-content/uploads/2017/09/4663389392_219a09e628_b.jpg</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>33</wp:post_id>
+		<wp:post_date><![CDATA[2017-09-23 16:04:34]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2017-09-23 23:04:34]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2017-09-23 16:04:34]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2017-09-23 23:04:34]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[4663389392_219a09e628_b]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[https://lab.cogdogblog.com/collector/wp-content/uploads/2017/09/4663389392_219a09e628_b.jpg]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2017/09/4663389392_219a09e628_b.jpg]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1024;s:6:"height";i:1011;s:4:"file";s:35:"2017/09/4663389392_219a09e628_b.jpg";s:5:"sizes";a:7:{s:9:"thumbnail";a:4:{s:4:"file";s:35:"4663389392_219a09e628_b-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:35:"4663389392_219a09e628_b-300x296.jpg";s:5:"width";i:300;s:6:"height";i:296;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:35:"4663389392_219a09e628_b-768x758.jpg";s:5:"width";i:768;s:6:"height";i:758;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:37:"4663389392_219a09e628_b-1024x1011.jpg";s:5:"width";i:1024;s:6:"height";i:1011;s:9:"mime-type";s:10:"image/jpeg";}s:14:"post-thumbnail";a:4:{s:4:"file";s:33:"4663389392_219a09e628_b-88x88.jpg";s:5:"width";i:88;s:6:"height";i:88;s:9:"mime-type";s:10:"image/jpeg";}s:10:"post-image";a:4:{s:4:"file";s:35:"4663389392_219a09e628_b-973x961.jpg";s:5:"width";i:973;s:6:"height";i:961;s:9:"mime-type";s:10:"image/jpeg";}s:10:"post-thumb";a:4:{s:4:"file";s:35:"4663389392_219a09e628_b-508x502.jpg";s:5:"width";i:508;s:6:"height";i:502;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[4663389392_219a09e628_b]]></title>
+		<link>https://lab.cogdogblog.com/collector/4663389392_219a09e628_b-2/</link>
+		<pubDate>Sat, 23 Sep 2017 23:07:22 +0000</pubDate>
+		<dc:creator><![CDATA[collector]]></dc:creator>
+		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/wp-content/uploads/2017/09/4663389392_219a09e628_b-1.jpg</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>34</wp:post_id>
+		<wp:post_date><![CDATA[2017-09-23 16:07:22]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2017-09-23 23:07:22]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2017-09-23 16:07:22]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2017-09-23 23:07:22]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[4663389392_219a09e628_b-2]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[https://lab.cogdogblog.com/collector/wp-content/uploads/2017/09/4663389392_219a09e628_b-1.jpg]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2017/09/4663389392_219a09e628_b-1.jpg]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1024;s:6:"height";i:1011;s:4:"file";s:37:"2017/09/4663389392_219a09e628_b-1.jpg";s:5:"sizes";a:7:{s:9:"thumbnail";a:4:{s:4:"file";s:37:"4663389392_219a09e628_b-1-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:37:"4663389392_219a09e628_b-1-300x296.jpg";s:5:"width";i:300;s:6:"height";i:296;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:37:"4663389392_219a09e628_b-1-768x758.jpg";s:5:"width";i:768;s:6:"height";i:758;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:39:"4663389392_219a09e628_b-1-1024x1011.jpg";s:5:"width";i:1024;s:6:"height";i:1011;s:9:"mime-type";s:10:"image/jpeg";}s:14:"post-thumbnail";a:4:{s:4:"file";s:35:"4663389392_219a09e628_b-1-88x88.jpg";s:5:"width";i:88;s:6:"height";i:88;s:9:"mime-type";s:10:"image/jpeg";}s:10:"post-image";a:4:{s:4:"file";s:37:"4663389392_219a09e628_b-1-973x961.jpg";s:5:"width";i:973;s:6:"height";i:961;s:9:"mime-type";s:10:"image/jpeg";}s:10:"post-thumb";a:4:{s:4:"file";s:37:"4663389392_219a09e628_b-1-508x502.jpg";s:5:"width";i:508;s:6:"height";i:502;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[year-of-the-splot]]></title>
+		<link>https://lab.cogdogblog.com/collector/year-of-the-splot/</link>
+		<pubDate>Wed, 14 Mar 2018 20:00:14 +0000</pubDate>
+		<dc:creator><![CDATA[ofjef3]]></dc:creator>
+		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/wp-content/uploads/2018/03/year-of-the-splot.jpg</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>36</wp:post_id>
+		<wp:post_date><![CDATA[2018-03-14 13:00:14]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-03-14 20:00:14]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2018-03-14 13:00:14]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2018-03-14 20:00:14]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[year-of-the-splot]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[https://lab.cogdogblog.com/collector/wp-content/uploads/2018/03/year-of-the-splot.jpg]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2018/03/year-of-the-splot.jpg]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:5:{s:5:"width";i:677;s:6:"height";i:665;s:4:"file";s:29:"2018/03/year-of-the-splot.jpg";s:5:"sizes";a:4:{s:9:"thumbnail";a:4:{s:4:"file";s:29:"year-of-the-splot-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:29:"year-of-the-splot-300x295.jpg";s:5:"width";i:300;s:6:"height";i:295;s:9:"mime-type";s:10:"image/jpeg";}s:14:"post-thumbnail";a:4:{s:4:"file";s:27:"year-of-the-splot-88x88.jpg";s:5:"width";i:88;s:6:"height";i:88;s:9:"mime-type";s:10:"image/jpeg";}s:10:"post-thumb";a:4:{s:4:"file";s:29:"year-of-the-splot-508x499.jpg";s:5:"width";i:508;s:6:"height";i:499;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[About]]></title>
+		<link>https://lab.cogdogblog.com/collector/misc/46/</link>
+		<pubDate>Fri, 05 Oct 2018 18:33:58 +0000</pubDate>
+		<dc:creator><![CDATA[ofjef3]]></dc:creator>
+		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/?p=46</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>46</wp:post_id>
+		<wp:post_date><![CDATA[2018-10-05 18:33:58]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-10-05 18:33:58]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2018-10-12 22:59:50]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2018-10-12 22:59:50]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[46]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>1</wp:menu_order>
+		<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+										<category domain="nav_menu" nicename="main"><![CDATA[main]]></category>
+						<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+		<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+		<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+		<wp:meta_value><![CDATA[page]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[By License]]></title>
+		<link>https://lab.cogdogblog.com/collector/misc/47/</link>
+		<pubDate>Fri, 05 Oct 2018 18:33:58 +0000</pubDate>
+		<dc:creator><![CDATA[ofjef3]]></dc:creator>
+		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/?p=47</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>47</wp:post_id>
+		<wp:post_date><![CDATA[2018-10-05 18:33:58]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-10-05 18:33:58]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2018-10-12 22:59:50]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2018-10-12 22:59:50]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[47]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>4</wp:menu_order>
+		<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+										<category domain="nav_menu" nicename="main"><![CDATA[main]]></category>
+						<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+		<wp:meta_value><![CDATA[page]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+		<wp:meta_value><![CDATA[8]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+		<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+		<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[]]></title>
+		<link>https://lab.cogdogblog.com/collector/misc/48/</link>
+		<pubDate>Fri, 05 Oct 2018 18:33:58 +0000</pubDate>
+		<dc:creator><![CDATA[ofjef3]]></dc:creator>
+		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/?p=48</guid>
+		<description></description>
+		<content:encoded><![CDATA[ ]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>48</wp:post_id>
+		<wp:post_date><![CDATA[2018-10-05 18:33:58]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-10-05 18:33:58]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2018-10-12 22:59:50]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2018-10-12 22:59:50]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[48]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>3</wp:menu_order>
+		<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+										<category domain="nav_menu" nicename="main"><![CDATA[main]]></category>
+						<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+		<wp:meta_value><![CDATA[page]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+		<wp:meta_value><![CDATA[7]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+		<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+		<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[Add To Pool]]></title>
+		<link>https://lab.cogdogblog.com/collector/misc/add-to-pool/</link>
+		<pubDate>Fri, 05 Oct 2018 18:33:58 +0000</pubDate>
+		<dc:creator><![CDATA[ofjef3]]></dc:creator>
+		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/?p=49</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>49</wp:post_id>
+		<wp:post_date><![CDATA[2018-10-05 18:33:58]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-10-05 18:33:58]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2018-10-12 22:59:50]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2018-10-12 22:59:50]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[add-to-pool]]></wp:post_name>
+		<wp:status><![CDATA[publish]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>2</wp:menu_order>
+		<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+										<category domain="nav_menu" nicename="main"><![CDATA[main]]></category>
+						<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
+		<wp:meta_value><![CDATA[5]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
+		<wp:meta_value><![CDATA[page]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
+		<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
+		<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[collector-site]]></title>
+		<link>https://lab.cogdogblog.com/collector/about/attachment/collector-site/</link>
+		<pubDate>Fri, 05 Oct 2018 18:38:22 +0000</pubDate>
+		<dc:creator><![CDATA[ofjef3]]></dc:creator>
+		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/wp-content/uploads/2018/10/collector-site.jpg</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>52</wp:post_id>
+		<wp:post_date><![CDATA[2018-10-05 18:38:22]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-10-05 18:38:22]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2018-10-05 18:38:22]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2018-10-05 18:38:22]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[collector-site]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>2</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[https://lab.cogdogblog.com/collector/wp-content/uploads/2018/10/collector-site.jpg]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2018/10/collector-site.jpg]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:5:{s:5:"width";i:630;s:6:"height";i:339;s:4:"file";s:26:"2018/10/collector-site.jpg";s:5:"sizes";a:4:{s:9:"thumbnail";a:4:{s:4:"file";s:26:"collector-site-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:26:"collector-site-300x161.jpg";s:5:"width";i:300;s:6:"height";i:161;s:9:"mime-type";s:10:"image/jpeg";}s:14:"post-thumbnail";a:4:{s:4:"file";s:24:"collector-site-88x88.jpg";s:5:"width";i:88;s:6:"height";i:88;s:9:"mime-type";s:10:"image/jpeg";}s:10:"post-thumb";a:4:{s:4:"file";s:26:"collector-site-508x273.jpg";s:5:"width";i:508;s:6:"height";i:273;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"1";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[splot-duck]]></title>
+		<link>https://lab.cogdogblog.com/collector/splot-duck/</link>
+		<pubDate>Fri, 05 Oct 2018 18:39:56 +0000</pubDate>
+		<dc:creator><![CDATA[ofjef3]]></dc:creator>
+		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/wp-content/uploads/2018/10/splot-duck.jpg</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>54</wp:post_id>
+		<wp:post_date><![CDATA[2018-10-05 18:39:56]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2018-10-05 18:39:56]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2018-10-05 18:39:56]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2018-10-05 18:39:56]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[splot-duck]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[https://lab.cogdogblog.com/collector/wp-content/uploads/2018/10/splot-duck.jpg]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2018/10/splot-duck.jpg]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:5:{s:5:"width";i:900;s:6:"height";i:729;s:4:"file";s:22:"2018/10/splot-duck.jpg";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:22:"splot-duck-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:22:"splot-duck-300x243.jpg";s:5:"width";i:300;s:6:"height";i:243;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:22:"splot-duck-768x622.jpg";s:5:"width";i:768;s:6:"height";i:622;s:9:"mime-type";s:10:"image/jpeg";}s:14:"post-thumbnail";a:4:{s:4:"file";s:20:"splot-duck-88x88.jpg";s:5:"width";i:88;s:6:"height";i:88;s:9:"mime-type";s:10:"image/jpeg";}s:10:"post-thumb";a:4:{s:4:"file";s:22:"splot-duck-508x411.jpg";s:5:"width";i:508;s:6:"height";i:411;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[Brittle Brush and Duck Rock]]></title>
+		<link>https://lab.cogdogblog.com/collector/brittle-brush-and-duck-rock/</link>
+		<pubDate>Tue, 12 Nov 2019 01:59:55 +0000</pubDate>
+		<dc:creator><![CDATA[collector]]></dc:creator>
+		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/wp-content/uploads/2019/11/desert-flowers-arizona.jpg</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>65</wp:post_id>
+		<wp:post_date><![CDATA[2019-11-12 01:59:55]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2019-11-12 01:59:55]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2019-11-12 01:59:55]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2019-11-12 01:59:55]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[brittle-brush-and-duck-rock]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[https://lab.cogdogblog.com/collector/wp-content/uploads/2019/11/desert-flowers-arizona.jpg]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2019/11/desert-flowers-arizona.jpg]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1024;s:6:"height";i:681;s:4:"file";s:34:"2019/11/desert-flowers-arizona.jpg";s:5:"sizes";a:7:{s:9:"thumbnail";a:4:{s:4:"file";s:34:"desert-flowers-arizona-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:34:"desert-flowers-arizona-300x200.jpg";s:5:"width";i:300;s:6:"height";i:200;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:34:"desert-flowers-arizona-768x511.jpg";s:5:"width";i:768;s:6:"height";i:511;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:35:"desert-flowers-arizona-1024x681.jpg";s:5:"width";i:1024;s:6:"height";i:681;s:9:"mime-type";s:10:"image/jpeg";}s:14:"post-thumbnail";a:4:{s:4:"file";s:32:"desert-flowers-arizona-88x88.jpg";s:5:"width";i:88;s:6:"height";i:88;s:9:"mime-type";s:10:"image/jpeg";}s:10:"post-image";a:4:{s:4:"file";s:34:"desert-flowers-arizona-973x647.jpg";s:5:"width";i:973;s:6:"height";i:647;s:9:"mime-type";s:10:"image/jpeg";}s:10:"post-thumb";a:4:{s:4:"file";s:34:"desert-flowers-arizona-508x338.jpg";s:5:"width";i:508;s:6:"height";i:338;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:2:"13";s:6:"credit";s:0:"";s:6:"camera";s:19:"Canon EOS REBEL T1i";s:7:"caption";s:0:"";s:17:"created_timestamp";s:10:"1270212163";s:9:"copyright";s:37:"CC-BY creative commons by attribution";s:12:"focal_length";s:2:"46";s:3:"iso";s:3:"100";s:13:"shutter_speed";s:6:"0.0125";s:5:"title";s:27:"Brittle Brush and Duck Rock";s:11:"orientation";s:1:"1";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[inspire-ave-calvar-oJnIxxSpCCE-unsplash]]></title>
+		<link>https://lab.cogdogblog.com/collector/inspire-ave-calvar-ojnixxspcce-unsplash/</link>
+		<pubDate>Wed, 13 Jan 2021 02:36:51 +0000</pubDate>
+		<dc:creator><![CDATA[ofjef3]]></dc:creator>
+		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/wp-content/uploads/2021/01/inspire-ave-calvar-oJnIxxSpCCE-unsplash.jpg</guid>
+		<description></description>
+		<content:encoded><![CDATA[]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>70</wp:post_id>
+		<wp:post_date><![CDATA[2021-01-13 02:36:51]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2021-01-13 02:36:51]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2021-01-13 02:36:51]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2021-01-13 02:36:51]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
+		<wp:post_name><![CDATA[inspire-ave-calvar-ojnixxspcce-unsplash]]></wp:post_name>
+		<wp:status><![CDATA[inherit]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[attachment]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+						<wp:attachment_url><![CDATA[https://lab.cogdogblog.com/collector/wp-content/uploads/2021/01/inspire-ave-calvar-oJnIxxSpCCE-unsplash.jpg]]></wp:attachment_url>
+											<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
+		<wp:meta_value><![CDATA[2021/01/inspire-ave-calvar-oJnIxxSpCCE-unsplash.jpg]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
+		<wp:meta_value><![CDATA[a:5:{s:5:"width";i:2400;s:6:"height";i:1600;s:4:"file";s:51:"2021/01/inspire-ave-calvar-oJnIxxSpCCE-unsplash.jpg";s:5:"sizes";a:9:{s:6:"medium";a:4:{s:4:"file";s:51:"inspire-ave-calvar-oJnIxxSpCCE-unsplash-300x200.jpg";s:5:"width";i:300;s:6:"height";i:200;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:52:"inspire-ave-calvar-oJnIxxSpCCE-unsplash-1024x683.jpg";s:5:"width";i:1024;s:6:"height";i:683;s:9:"mime-type";s:10:"image/jpeg";}s:9:"thumbnail";a:4:{s:4:"file";s:51:"inspire-ave-calvar-oJnIxxSpCCE-unsplash-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:51:"inspire-ave-calvar-oJnIxxSpCCE-unsplash-768x512.jpg";s:5:"width";i:768;s:6:"height";i:512;s:9:"mime-type";s:10:"image/jpeg";}s:9:"1536x1536";a:4:{s:4:"file";s:53:"inspire-ave-calvar-oJnIxxSpCCE-unsplash-1536x1024.jpg";s:5:"width";i:1536;s:6:"height";i:1024;s:9:"mime-type";s:10:"image/jpeg";}s:9:"2048x2048";a:4:{s:4:"file";s:53:"inspire-ave-calvar-oJnIxxSpCCE-unsplash-2048x1365.jpg";s:5:"width";i:2048;s:6:"height";i:1365;s:9:"mime-type";s:10:"image/jpeg";}s:14:"post-thumbnail";a:4:{s:4:"file";s:49:"inspire-ave-calvar-oJnIxxSpCCE-unsplash-88x88.jpg";s:5:"width";i:88;s:6:"height";i:88;s:9:"mime-type";s:10:"image/jpeg";}s:10:"post-image";a:4:{s:4:"file";s:51:"inspire-ave-calvar-oJnIxxSpCCE-unsplash-973x649.jpg";s:5:"width";i:973;s:6:"height";i:649;s:9:"mime-type";s:10:"image/jpeg";}s:10:"post-thumb";a:4:{s:4:"file";s:51:"inspire-ave-calvar-oJnIxxSpCCE-unsplash-508x339.jpg";s:5:"width";i:508;s:6:"height";i:339;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_attachment_image_alt]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[Looking For Good Photos]]></title>
 		<link>https://lab.cogdogblog.com/collector/cool/looking-for-good-photos/</link>
 		<pubDate>Mon, 19 Sep 2016 06:11:58 +0000</pubDate>
 		<dc:creator><![CDATA[ofjef3]]></dc:creator>
@@ -457,6 +1000,8 @@ Learn <a href="https://github.com/cogdog/tru-collector">more about TRU Collector
 		<wp:post_id>21</wp:post_id>
 		<wp:post_date><![CDATA[2016-09-18 23:11:58]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2016-09-19 06:11:58]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2016-09-18 23:11:58]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2016-09-19 06:11:58]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[open]]></wp:comment_status>
 		<wp:ping_status><![CDATA[open]]></wp:ping_status>
 		<wp:post_name><![CDATA[looking-for-good-photos]]></wp:post_name>
@@ -504,475 +1049,7 @@ Learn <a href="https://github.com/cogdog/tru-collector">more about TRU Collector
 		</wp:postmeta>
 							</item>
 					<item>
-		<title>pool-831996_1280</title>
-		<link>https://lab.cogdogblog.com/collector/pool-831996_1280/</link>
-		<pubDate>Mon, 19 Sep 2016 06:49:59 +0000</pubDate>
-		<dc:creator><![CDATA[ofjef3]]></dc:creator>
-		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/wp-content/uploads/2016/09/pool-831996_1280.jpg</guid>
-		<description></description>
-		<content:encoded><![CDATA[]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>27</wp:post_id>
-		<wp:post_date><![CDATA[2016-09-18 23:49:59]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2016-09-19 06:49:59]]></wp:post_date_gmt>
-		<wp:comment_status><![CDATA[open]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[pool-831996_1280]]></wp:post_name>
-		<wp:status><![CDATA[inherit]]></wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[https://lab.cogdogblog.com/collector/wp-content/uploads/2016/09/pool-831996_1280.jpg]]></wp:attachment_url>
-											<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2016/09/pool-831996_1280.jpg]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1280;s:6:"height";i:853;s:4:"file";s:28:"2016/09/pool-831996_1280.jpg";s:5:"sizes";a:7:{s:9:"thumbnail";a:4:{s:4:"file";s:28:"pool-831996_1280-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:28:"pool-831996_1280-300x200.jpg";s:5:"width";i:300;s:6:"height";i:200;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:28:"pool-831996_1280-768x512.jpg";s:5:"width";i:768;s:6:"height";i:512;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:29:"pool-831996_1280-1024x682.jpg";s:5:"width";i:1024;s:6:"height";i:682;s:9:"mime-type";s:10:"image/jpeg";}s:14:"post-thumbnail";a:4:{s:4:"file";s:26:"pool-831996_1280-88x88.jpg";s:5:"width";i:88;s:6:"height";i:88;s:9:"mime-type";s:10:"image/jpeg";}s:10:"post-image";a:4:{s:4:"file";s:28:"pool-831996_1280-973x648.jpg";s:5:"width";i:973;s:6:"height";i:648;s:9:"mime-type";s:10:"image/jpeg";}s:10:"post-thumb";a:4:{s:4:"file";s:28:"pool-831996_1280-508x339.jpg";s:5:"width";i:508;s:6:"height";i:339;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
-		<title>add-author</title>
-		<link>https://lab.cogdogblog.com/collector/cool/setting-up/attachment/add-author/</link>
-		<pubDate>Mon, 19 Sep 2016 07:15:20 +0000</pubDate>
-		<dc:creator><![CDATA[ofjef3]]></dc:creator>
-		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/wp-content/uploads/2016/09/add-author.jpg</guid>
-		<description></description>
-		<content:encoded><![CDATA[]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>30</wp:post_id>
-		<wp:post_date><![CDATA[2016-09-19 00:15:20]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2016-09-19 07:15:20]]></wp:post_date_gmt>
-		<wp:comment_status><![CDATA[open]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[add-author]]></wp:post_name>
-		<wp:status><![CDATA[inherit]]></wp:status>
-		<wp:post_parent>28</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[https://lab.cogdogblog.com/collector/wp-content/uploads/2016/09/add-author.jpg]]></wp:attachment_url>
-											<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2016/09/add-author.jpg]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:5:{s:5:"width";i:800;s:6:"height";i:578;s:4:"file";s:22:"2016/09/add-author.jpg";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:22:"add-author-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:22:"add-author-300x217.jpg";s:5:"width";i:300;s:6:"height";i:217;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:22:"add-author-768x555.jpg";s:5:"width";i:768;s:6:"height";i:555;s:9:"mime-type";s:10:"image/jpeg";}s:14:"post-thumbnail";a:4:{s:4:"file";s:20:"add-author-88x88.jpg";s:5:"width";i:88;s:6:"height";i:88;s:9:"mime-type";s:10:"image/jpeg";}s:10:"post-thumb";a:4:{s:4:"file";s:22:"add-author-508x367.jpg";s:5:"width";i:508;s:6:"height";i:367;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
-		<title>4663389392_219a09e628_b</title>
-		<link>https://lab.cogdogblog.com/collector/4663389392_219a09e628_b/</link>
-		<pubDate>Sat, 23 Sep 2017 23:04:34 +0000</pubDate>
-		<dc:creator><![CDATA[ofjef3]]></dc:creator>
-		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/wp-content/uploads/2017/09/4663389392_219a09e628_b.jpg</guid>
-		<description></description>
-		<content:encoded><![CDATA[]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>33</wp:post_id>
-		<wp:post_date><![CDATA[2017-09-23 16:04:34]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2017-09-23 23:04:34]]></wp:post_date_gmt>
-		<wp:comment_status><![CDATA[open]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[4663389392_219a09e628_b]]></wp:post_name>
-		<wp:status><![CDATA[inherit]]></wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[https://lab.cogdogblog.com/collector/wp-content/uploads/2017/09/4663389392_219a09e628_b.jpg]]></wp:attachment_url>
-											<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2017/09/4663389392_219a09e628_b.jpg]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1024;s:6:"height";i:1011;s:4:"file";s:35:"2017/09/4663389392_219a09e628_b.jpg";s:5:"sizes";a:7:{s:9:"thumbnail";a:4:{s:4:"file";s:35:"4663389392_219a09e628_b-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:35:"4663389392_219a09e628_b-300x296.jpg";s:5:"width";i:300;s:6:"height";i:296;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:35:"4663389392_219a09e628_b-768x758.jpg";s:5:"width";i:768;s:6:"height";i:758;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:37:"4663389392_219a09e628_b-1024x1011.jpg";s:5:"width";i:1024;s:6:"height";i:1011;s:9:"mime-type";s:10:"image/jpeg";}s:14:"post-thumbnail";a:4:{s:4:"file";s:33:"4663389392_219a09e628_b-88x88.jpg";s:5:"width";i:88;s:6:"height";i:88;s:9:"mime-type";s:10:"image/jpeg";}s:10:"post-image";a:4:{s:4:"file";s:35:"4663389392_219a09e628_b-973x961.jpg";s:5:"width";i:973;s:6:"height";i:961;s:9:"mime-type";s:10:"image/jpeg";}s:10:"post-thumb";a:4:{s:4:"file";s:35:"4663389392_219a09e628_b-508x502.jpg";s:5:"width";i:508;s:6:"height";i:502;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
-		<title>4663389392_219a09e628_b</title>
-		<link>https://lab.cogdogblog.com/collector/4663389392_219a09e628_b-2/</link>
-		<pubDate>Sat, 23 Sep 2017 23:07:22 +0000</pubDate>
-		<dc:creator><![CDATA[collector]]></dc:creator>
-		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/wp-content/uploads/2017/09/4663389392_219a09e628_b-1.jpg</guid>
-		<description></description>
-		<content:encoded><![CDATA[]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>34</wp:post_id>
-		<wp:post_date><![CDATA[2017-09-23 16:07:22]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2017-09-23 23:07:22]]></wp:post_date_gmt>
-		<wp:comment_status><![CDATA[open]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[4663389392_219a09e628_b-2]]></wp:post_name>
-		<wp:status><![CDATA[inherit]]></wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[https://lab.cogdogblog.com/collector/wp-content/uploads/2017/09/4663389392_219a09e628_b-1.jpg]]></wp:attachment_url>
-											<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2017/09/4663389392_219a09e628_b-1.jpg]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1024;s:6:"height";i:1011;s:4:"file";s:37:"2017/09/4663389392_219a09e628_b-1.jpg";s:5:"sizes";a:7:{s:9:"thumbnail";a:4:{s:4:"file";s:37:"4663389392_219a09e628_b-1-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:37:"4663389392_219a09e628_b-1-300x296.jpg";s:5:"width";i:300;s:6:"height";i:296;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:37:"4663389392_219a09e628_b-1-768x758.jpg";s:5:"width";i:768;s:6:"height";i:758;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:39:"4663389392_219a09e628_b-1-1024x1011.jpg";s:5:"width";i:1024;s:6:"height";i:1011;s:9:"mime-type";s:10:"image/jpeg";}s:14:"post-thumbnail";a:4:{s:4:"file";s:35:"4663389392_219a09e628_b-1-88x88.jpg";s:5:"width";i:88;s:6:"height";i:88;s:9:"mime-type";s:10:"image/jpeg";}s:10:"post-image";a:4:{s:4:"file";s:37:"4663389392_219a09e628_b-1-973x961.jpg";s:5:"width";i:973;s:6:"height";i:961;s:9:"mime-type";s:10:"image/jpeg";}s:10:"post-thumb";a:4:{s:4:"file";s:37:"4663389392_219a09e628_b-1-508x502.jpg";s:5:"width";i:508;s:6:"height";i:502;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
-		<title>year-of-the-splot</title>
-		<link>https://lab.cogdogblog.com/collector/year-of-the-splot/</link>
-		<pubDate>Wed, 14 Mar 2018 20:00:14 +0000</pubDate>
-		<dc:creator><![CDATA[ofjef3]]></dc:creator>
-		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/wp-content/uploads/2018/03/year-of-the-splot.jpg</guid>
-		<description></description>
-		<content:encoded><![CDATA[]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>36</wp:post_id>
-		<wp:post_date><![CDATA[2018-03-14 13:00:14]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2018-03-14 20:00:14]]></wp:post_date_gmt>
-		<wp:comment_status><![CDATA[open]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[year-of-the-splot]]></wp:post_name>
-		<wp:status><![CDATA[inherit]]></wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[https://lab.cogdogblog.com/collector/wp-content/uploads/2018/03/year-of-the-splot.jpg]]></wp:attachment_url>
-											<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2018/03/year-of-the-splot.jpg]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:5:{s:5:"width";i:677;s:6:"height";i:665;s:4:"file";s:29:"2018/03/year-of-the-splot.jpg";s:5:"sizes";a:4:{s:9:"thumbnail";a:4:{s:4:"file";s:29:"year-of-the-splot-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:29:"year-of-the-splot-300x295.jpg";s:5:"width";i:300;s:6:"height";i:295;s:9:"mime-type";s:10:"image/jpeg";}s:14:"post-thumbnail";a:4:{s:4:"file";s:27:"year-of-the-splot-88x88.jpg";s:5:"width";i:88;s:6:"height";i:88;s:9:"mime-type";s:10:"image/jpeg";}s:10:"post-thumb";a:4:{s:4:"file";s:29:"year-of-the-splot-508x499.jpg";s:5:"width";i:508;s:6:"height";i:499;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
-		<title>About</title>
-		<link>https://lab.cogdogblog.com/collector/misc/46/</link>
-		<pubDate>Fri, 05 Oct 2018 18:33:58 +0000</pubDate>
-		<dc:creator><![CDATA[ofjef3]]></dc:creator>
-		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/?p=46</guid>
-		<description></description>
-		<content:encoded><![CDATA[]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>46</wp:post_id>
-		<wp:post_date><![CDATA[2018-10-05 18:33:58]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2018-10-05 18:33:58]]></wp:post_date_gmt>
-		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[46]]></wp:post_name>
-		<wp:status><![CDATA[publish]]></wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>1</wp:menu_order>
-		<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-										<category domain="nav_menu" nicename="main"><![CDATA[main]]></category>
-						<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
-		<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
-		<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
-		<wp:meta_value><![CDATA[page]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
-		<title>By License</title>
-		<link>https://lab.cogdogblog.com/collector/misc/47/</link>
-		<pubDate>Fri, 05 Oct 2018 18:33:58 +0000</pubDate>
-		<dc:creator><![CDATA[ofjef3]]></dc:creator>
-		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/?p=47</guid>
-		<description></description>
-		<content:encoded><![CDATA[]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>47</wp:post_id>
-		<wp:post_date><![CDATA[2018-10-05 18:33:58]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2018-10-05 18:33:58]]></wp:post_date_gmt>
-		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[47]]></wp:post_name>
-		<wp:status><![CDATA[publish]]></wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>4</wp:menu_order>
-		<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-										<category domain="nav_menu" nicename="main"><![CDATA[main]]></category>
-						<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
-		<wp:meta_value><![CDATA[page]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
-		<wp:meta_value><![CDATA[8]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
-		<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
-		<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
-		<title></title>
-		<link>https://lab.cogdogblog.com/collector/misc/48/</link>
-		<pubDate>Fri, 05 Oct 2018 18:33:58 +0000</pubDate>
-		<dc:creator><![CDATA[ofjef3]]></dc:creator>
-		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/?p=48</guid>
-		<description></description>
-		<content:encoded><![CDATA[ ]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>48</wp:post_id>
-		<wp:post_date><![CDATA[2018-10-05 18:33:58]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2018-10-05 18:33:58]]></wp:post_date_gmt>
-		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[48]]></wp:post_name>
-		<wp:status><![CDATA[publish]]></wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>3</wp:menu_order>
-		<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-										<category domain="nav_menu" nicename="main"><![CDATA[main]]></category>
-						<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
-		<wp:meta_value><![CDATA[page]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
-		<wp:meta_value><![CDATA[7]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
-		<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
-		<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
-		<title>Add To Pool</title>
-		<link>https://lab.cogdogblog.com/collector/misc/add-to-pool/</link>
-		<pubDate>Fri, 05 Oct 2018 18:33:58 +0000</pubDate>
-		<dc:creator><![CDATA[ofjef3]]></dc:creator>
-		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/?p=49</guid>
-		<description></description>
-		<content:encoded><![CDATA[]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>49</wp:post_id>
-		<wp:post_date><![CDATA[2018-10-05 18:33:58]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2018-10-05 18:33:58]]></wp:post_date_gmt>
-		<wp:comment_status><![CDATA[closed]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[add-to-pool]]></wp:post_name>
-		<wp:status><![CDATA[publish]]></wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>2</wp:menu_order>
-		<wp:post_type><![CDATA[nav_menu_item]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-										<category domain="nav_menu" nicename="main"><![CDATA[main]]></category>
-						<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_object_id]]></wp:meta_key>
-		<wp:meta_value><![CDATA[5]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_url]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_xfn]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_classes]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:1:{i:0;s:0:"";}]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_target]]></wp:meta_key>
-		<wp:meta_value><![CDATA[]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_object]]></wp:meta_key>
-		<wp:meta_value><![CDATA[page]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_menu_item_parent]]></wp:meta_key>
-		<wp:meta_value><![CDATA[0]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_menu_item_type]]></wp:meta_key>
-		<wp:meta_value><![CDATA[post_type]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
-		<title>collector-site</title>
-		<link>https://lab.cogdogblog.com/collector/about/attachment/collector-site/</link>
-		<pubDate>Fri, 05 Oct 2018 18:38:22 +0000</pubDate>
-		<dc:creator><![CDATA[ofjef3]]></dc:creator>
-		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/wp-content/uploads/2018/10/collector-site.jpg</guid>
-		<description></description>
-		<content:encoded><![CDATA[]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>52</wp:post_id>
-		<wp:post_date><![CDATA[2018-10-05 18:38:22]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2018-10-05 18:38:22]]></wp:post_date_gmt>
-		<wp:comment_status><![CDATA[open]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[collector-site]]></wp:post_name>
-		<wp:status><![CDATA[inherit]]></wp:status>
-		<wp:post_parent>2</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[https://lab.cogdogblog.com/collector/wp-content/uploads/2018/10/collector-site.jpg]]></wp:attachment_url>
-											<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2018/10/collector-site.jpg]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:5:{s:5:"width";i:630;s:6:"height";i:339;s:4:"file";s:26:"2018/10/collector-site.jpg";s:5:"sizes";a:4:{s:9:"thumbnail";a:4:{s:4:"file";s:26:"collector-site-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:26:"collector-site-300x161.jpg";s:5:"width";i:300;s:6:"height";i:161;s:9:"mime-type";s:10:"image/jpeg";}s:14:"post-thumbnail";a:4:{s:4:"file";s:24:"collector-site-88x88.jpg";s:5:"width";i:88;s:6:"height";i:88;s:9:"mime-type";s:10:"image/jpeg";}s:10:"post-thumb";a:4:{s:4:"file";s:26:"collector-site-508x273.jpg";s:5:"width";i:508;s:6:"height";i:273;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"1";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
-		<title>splot-duck</title>
-		<link>https://lab.cogdogblog.com/collector/splot-duck/</link>
-		<pubDate>Fri, 05 Oct 2018 18:39:56 +0000</pubDate>
-		<dc:creator><![CDATA[ofjef3]]></dc:creator>
-		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/wp-content/uploads/2018/10/splot-duck.jpg</guid>
-		<description></description>
-		<content:encoded><![CDATA[]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>54</wp:post_id>
-		<wp:post_date><![CDATA[2018-10-05 18:39:56]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2018-10-05 18:39:56]]></wp:post_date_gmt>
-		<wp:comment_status><![CDATA[open]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[splot-duck]]></wp:post_name>
-		<wp:status><![CDATA[inherit]]></wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[https://lab.cogdogblog.com/collector/wp-content/uploads/2018/10/splot-duck.jpg]]></wp:attachment_url>
-											<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2018/10/splot-duck.jpg]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:5:{s:5:"width";i:900;s:6:"height";i:729;s:4:"file";s:22:"2018/10/splot-duck.jpg";s:5:"sizes";a:5:{s:9:"thumbnail";a:4:{s:4:"file";s:22:"splot-duck-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:22:"splot-duck-300x243.jpg";s:5:"width";i:300;s:6:"height";i:243;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:22:"splot-duck-768x622.jpg";s:5:"width";i:768;s:6:"height";i:622;s:9:"mime-type";s:10:"image/jpeg";}s:14:"post-thumbnail";a:4:{s:4:"file";s:20:"splot-duck-88x88.jpg";s:5:"width";i:88;s:6:"height";i:88;s:9:"mime-type";s:10:"image/jpeg";}s:10:"post-thumb";a:4:{s:4:"file";s:22:"splot-duck-508x411.jpg";s:5:"width";i:508;s:6:"height";i:411;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:1:"0";s:6:"credit";s:0:"";s:6:"camera";s:0:"";s:7:"caption";s:0:"";s:17:"created_timestamp";s:1:"0";s:9:"copyright";s:0:"";s:12:"focal_length";s:1:"0";s:3:"iso";s:1:"0";s:13:"shutter_speed";s:1:"0";s:5:"title";s:0:"";s:11:"orientation";s:1:"0";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
-		<title>Brittle Brush and Duck Rock</title>
-		<link>https://lab.cogdogblog.com/collector/brittle-brush-and-duck-rock/</link>
-		<pubDate>Tue, 12 Nov 2019 01:59:55 +0000</pubDate>
-		<dc:creator><![CDATA[collector]]></dc:creator>
-		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/wp-content/uploads/2019/11/desert-flowers-arizona.jpg</guid>
-		<description></description>
-		<content:encoded><![CDATA[]]></content:encoded>
-		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
-		<wp:post_id>65</wp:post_id>
-		<wp:post_date><![CDATA[2019-11-12 01:59:55]]></wp:post_date>
-		<wp:post_date_gmt><![CDATA[2019-11-12 01:59:55]]></wp:post_date_gmt>
-		<wp:comment_status><![CDATA[open]]></wp:comment_status>
-		<wp:ping_status><![CDATA[closed]]></wp:ping_status>
-		<wp:post_name><![CDATA[brittle-brush-and-duck-rock]]></wp:post_name>
-		<wp:status><![CDATA[inherit]]></wp:status>
-		<wp:post_parent>0</wp:post_parent>
-		<wp:menu_order>0</wp:menu_order>
-		<wp:post_type><![CDATA[attachment]]></wp:post_type>
-		<wp:post_password><![CDATA[]]></wp:post_password>
-		<wp:is_sticky>0</wp:is_sticky>
-						<wp:attachment_url><![CDATA[https://lab.cogdogblog.com/collector/wp-content/uploads/2019/11/desert-flowers-arizona.jpg]]></wp:attachment_url>
-											<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attached_file]]></wp:meta_key>
-		<wp:meta_value><![CDATA[2019/11/desert-flowers-arizona.jpg]]></wp:meta_value>
-		</wp:postmeta>
-							<wp:postmeta>
-		<wp:meta_key><![CDATA[_wp_attachment_metadata]]></wp:meta_key>
-		<wp:meta_value><![CDATA[a:5:{s:5:"width";i:1024;s:6:"height";i:681;s:4:"file";s:34:"2019/11/desert-flowers-arizona.jpg";s:5:"sizes";a:7:{s:9:"thumbnail";a:4:{s:4:"file";s:34:"desert-flowers-arizona-150x150.jpg";s:5:"width";i:150;s:6:"height";i:150;s:9:"mime-type";s:10:"image/jpeg";}s:6:"medium";a:4:{s:4:"file";s:34:"desert-flowers-arizona-300x200.jpg";s:5:"width";i:300;s:6:"height";i:200;s:9:"mime-type";s:10:"image/jpeg";}s:12:"medium_large";a:4:{s:4:"file";s:34:"desert-flowers-arizona-768x511.jpg";s:5:"width";i:768;s:6:"height";i:511;s:9:"mime-type";s:10:"image/jpeg";}s:5:"large";a:4:{s:4:"file";s:35:"desert-flowers-arizona-1024x681.jpg";s:5:"width";i:1024;s:6:"height";i:681;s:9:"mime-type";s:10:"image/jpeg";}s:14:"post-thumbnail";a:4:{s:4:"file";s:32:"desert-flowers-arizona-88x88.jpg";s:5:"width";i:88;s:6:"height";i:88;s:9:"mime-type";s:10:"image/jpeg";}s:10:"post-image";a:4:{s:4:"file";s:34:"desert-flowers-arizona-973x647.jpg";s:5:"width";i:973;s:6:"height";i:647;s:9:"mime-type";s:10:"image/jpeg";}s:10:"post-thumb";a:4:{s:4:"file";s:34:"desert-flowers-arizona-508x338.jpg";s:5:"width";i:508;s:6:"height";i:338;s:9:"mime-type";s:10:"image/jpeg";}}s:10:"image_meta";a:12:{s:8:"aperture";s:2:"13";s:6:"credit";s:0:"";s:6:"camera";s:19:"Canon EOS REBEL T1i";s:7:"caption";s:0:"";s:17:"created_timestamp";s:10:"1270212163";s:9:"copyright";s:37:"CC-BY creative commons by attribution";s:12:"focal_length";s:2:"46";s:3:"iso";s:3:"100";s:13:"shutter_speed";s:6:"0.0125";s:5:"title";s:27:"Brittle Brush and Duck Rock";s:11:"orientation";s:1:"1";s:8:"keywords";a:0:{}}}]]></wp:meta_value>
-		</wp:postmeta>
-							</item>
-					<item>
-		<title>Magical Machine</title>
+		<title><![CDATA[Magical Machine]]></title>
 		<link>https://lab.cogdogblog.com/collector/general/magical-machine/</link>
 		<pubDate>Mon, 19 Sep 2016 06:49:15 +0000</pubDate>
 		<dc:creator><![CDATA[ofjef3]]></dc:creator>
@@ -983,6 +1060,8 @@ Learn <a href="https://github.com/cogdog/tru-collector">more about TRU Collector
 		<wp:post_id>26</wp:post_id>
 		<wp:post_date><![CDATA[2016-09-18 23:49:15]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2016-09-19 06:49:15]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2018-10-05 18:58:32]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2018-10-05 18:58:32]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[open]]></wp:comment_status>
 		<wp:ping_status><![CDATA[open]]></wp:ping_status>
 		<wp:post_name><![CDATA[magical-machine]]></wp:post_name>
@@ -1028,17 +1107,15 @@ Learn <a href="https://github.com/cogdog/tru-collector">more about TRU Collector
 		</wp:postmeta>
 							</item>
 					<item>
-		<title>Setting Up Your Image Collector SPLOT</title>
+		<title><![CDATA[Setting Up Your Image Collector SPLOT]]></title>
 		<link>https://lab.cogdogblog.com/collector/cool/setting-up/</link>
 		<pubDate>Wed, 10 Oct 2018 23:51:43 +0000</pubDate>
 		<dc:creator><![CDATA[ofjef3]]></dc:creator>
 		<guid isPermaLink="false">http://connectedcourses.stateu.org/seeds/collector/28/</guid>
 		<description></description>
-		<content:encoded><![CDATA[Installed via Reclaim Hosting''s cpanel installer, this is a version of the <a href="https://github.com/cogdog/tru-collector">TRU Collector</a> fully built out with many things that you would have to do to create a site like this from scratch.
+		<content:encoded><![CDATA[Installed via Reclaim Hosting's cpanel installer, this is a version of the <a href="https://github.com/cogdog/tru-collector">TRU Collector</a> fully built out with many things that you would have to do to create a site like this from scratch. The most up to date documentation is <a href="https://github.com/cogdog/tru-collector">available from the theme's home</a>.
 
-It helps you dive right into creating a pool of images or other things you might build a collection around.
-
-Once you have installed a copy of this into your own site, you have a few more things to do to get the pool going.
+This pre-built version helps you dive right into creating a pool of images or other things you might build a collection around. When you have installed a copy of this into your own site, you have a few more things to do to get the pool going.
 
 Once you have done these, you can delete the earlier "Collectables" in the pool (the dog and the animated hamster), although you are welcome to keep them. You might want to edit this post, and under the Publish settings in the top right, change the status to <code>Draft</code>. That way, it will not appear on the site, but you can preview it from the Dashboard if you need to check these instructions.
 
@@ -1046,7 +1123,6 @@ Also be sure to refer to the <a href="https://github.com/cogdog/tru-collector#se
 <h2>Wordpress Settings</h2>
 Make sure you are logged into your site (add <code>/admin</code>) to your URL. You can tell you are logged in if you see the black admin menu bar on top of every page your site. The following are some things you should do first to customize the site.
 <ol>
- 	<li><strong>Make sure an Author Account is set up.</strong> This is critical! Go to Users in the Wordpress Dashboard, and if there is not an account named <strong>collector</strong> set one up (you can enter an email like <code>collector@yourdomain.com</code> it is never used). Set the account's role to <code>author</code> (<a href="https://github.com/cogdog/tru-collector/raw/master/wp-content/themes/tru-collector/images/add-author.jpg" target="_blank" rel="noopener">see example settings</a>).Then go to a browser where you are not logged into this site, and try the link to Add a photo. If you get to the upload form, you are golden.</li>
  	<li><strong>Customize the site and tagline</strong> Go to <code>Settings -&gt; General</code></li>
  	<li><strong>Make Your Own Categories</strong> Go to <code>Collectables -&gt; Collectable Categories</code>. Delete the silly ones that come with this, and create your own meaningful categories.</li>
  	<li><strong>Update the About Page</strong> Go to <code>Pages</code> and look for the About page. Make it describe your own site, not this one.</li>
@@ -1078,11 +1154,7 @@ Then from this pane, open "Collect Form" (eventually the theme options will live
 And then you will see a series of fields to edit for all form field elements. For each, you can edit the title/label of the field and the prompt that appears below. As you type in the customizer fields on the left, you will see a live preview on the right (ignore the silly pizza references in the screenshot, the author was just hungry):
 
 <a href="https://github.com/cogdog/tru-collector/blob/master/images/customizer-edit-form.jpg" target="_blank" rel="noopener noreferrer"><img class="aligncenter" src="https://github.com/cogdog/tru-collector/raw/master/images/customizer-edit-form.jpg" alt="" /></a>
-
-&nbsp;
-
-Browse/View By Reuse License
-
+<h2>Browse/View By Reuse License</h2>
 The TRU Collector provides links that display archives of content that have the same reuse license (if the feature is activated via the TRU Collector options). Just make sure there is a Wordpress Page with the url / slug <code>/licensed</code>
 
 <code></code>This page is created automatically on new sites, or simply by activating the theme again (activate the parent Fukasawa, then activate TRU Collector again). It only displays ones that have been used, and includes a count of the number of items in the collection using that license.
@@ -1110,33 +1182,20 @@ To present the link just as a URL, simply use
 which will produce the hyperlink like <a href="http://www.themostamazingwebsiteontheinternet.com/" rel="nofollow">http://www.themostamazingwebsiteontheinternet.com/</a> -- all links will open in a new window.
 
 If you want to give your site users more editing tools, enable the Rich Text Editor option in the TRU Collector Options.
-
-&nbsp;
 <h2>Enable Public Ratings</h2>
 Activating the <a href="https://wordpress.org/plugins/wp-postratings/" rel="nofollow">WP-Ratings Plugin</a> that comes with this theme installed enables public star (or other scale) ratings on items from the front page, archives, and single items.
 <h2>Fix Rotated Mobile Phone Photos</h2>
 If contributors to your collection will be uploading photos directly from a smart phone, the <a href="https://wordpress.org/plugins/ios-images-fixer/" rel="nofollow">iOS Image Fixer plugin</a> comes with this install enabled, so it can fix <a href="https://wordpress.org/plugins/ios-images-fixer/" rel="nofollow">problems associated with portrait mode photos that end up uploaded as sideways images</a>.
 
-Set up your own menus as needed; make sure that you click the <code>Location</code> tab to tell Wordpress to use the menu you create.
-
-<a href="https://github.com/cogdog/tru-collector/blob/master/images/menu.jpg" target="_blank" rel="noopener noreferrer"><img title="menu options" src="https://github.com/cogdog/tru-collector/raw/master/images/menu.jpg" alt="Menu Configuration" /></a>
-
-&nbsp;
-
 Get rid of the default widgets on the site; make it your own
 
-<a href="https://github.com/cogdog/tru-collector/blob/master/images/widgets.jpg" target="_blank" rel="noopener noreferrer"><img title="suggested widget set up" src="https://github.com/cogdog/tru-collector/raw/master/images/widgets.jpg" alt="Widgets" /></a>
-<h2>Bonus Settings: Post By Email</h2>
-If you want to add a feature to allow submissions to your site via email:
-<ol>
- 	<li><strong>Install and activate the JetPack plugin</strong> Look for the link in the Wordpress Dashboard under <code>Plugins</code>.</li>
- 	<li><strong>Enable the Post By Email option</strong> Check that this module is turned on in the JetPack settings.</li>
- 	<li><strong>Get an Address</strong> Go to your own account settings in Wordpress, and look for the Post by Email Heading. Click the button to "generate an address". This will create an email account that looks like <code>somemumbojumbo897@post.wordpress.com</code>. Copy the address, and paste it into the field to store this info in the Collector Options (this does no function, but provides you a place to store the password).Try sending an image to that address via email. Be prepared to be amazed.</li>
-</ol>]]></content:encoded>
+<a href="https://github.com/cogdog/tru-collector/blob/master/images/widgets.jpg" target="_blank" rel="noopener noreferrer"><img title="suggested widget set up" src="https://github.com/cogdog/tru-collector/raw/master/images/widgets.jpg" alt="Widgets" /></a>]]></content:encoded>
 		<excerpt:encoded><![CDATA[Read on to learn how to customize this site.]]></excerpt:encoded>
 		<wp:post_id>28</wp:post_id>
 		<wp:post_date><![CDATA[2018-10-10 23:51:43]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2018-10-10 23:51:43]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2021-03-22 19:10:41]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2021-03-22 19:10:41]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[open]]></wp:comment_status>
 		<wp:ping_status><![CDATA[open]]></wp:ping_status>
 		<wp:post_name><![CDATA[setting-up]]></wp:post_name>
@@ -1196,9 +1255,17 @@ If you want to add a feature to allow submissions to your site via email:
 		<wp:meta_key><![CDATA[_wp_old_date]]></wp:meta_key>
 		<wp:meta_value><![CDATA[2016-09-18]]></wp:meta_value>
 		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[wEditKey]]></wp:meta_key>
+		<wp:meta_value><![CDATA[18c8767831b39355700dcb9426abb57b976e09c2]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_encloseme]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:postmeta>
 							</item>
 					<item>
-		<title>Sound Track for a Workshop</title>
+		<title><![CDATA[Sound Track for a Workshop]]></title>
 		<link>https://lab.cogdogblog.com/collector/cool/sound-track-for-a-workshop/</link>
 		<pubDate>Sat, 23 Sep 2017 23:09:24 +0000</pubDate>
 		<dc:creator><![CDATA[collector]]></dc:creator>
@@ -1209,6 +1276,8 @@ If you want to add a feature to allow submissions to your site via email:
 		<wp:post_id>35</wp:post_id>
 		<wp:post_date><![CDATA[2017-09-23 16:09:24]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2017-09-23 23:09:24]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2017-09-23 16:09:24]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2017-09-23 23:09:24]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[open]]></wp:comment_status>
 		<wp:ping_status><![CDATA[open]]></wp:ping_status>
 		<wp:post_name><![CDATA[sound-track-for-a-workshop]]></wp:post_name>
@@ -1251,7 +1320,7 @@ If you want to add a feature to allow submissions to your site via email:
 		</wp:postmeta>
 							</item>
 					<item>
-		<title>Year of the SPLOT</title>
+		<title><![CDATA[Year of the SPLOT]]></title>
 		<link>https://lab.cogdogblog.com/collector/cool/year-of-the-splot/</link>
 		<pubDate>Wed, 14 Mar 2018 13:01:19 +0000</pubDate>
 		<dc:creator><![CDATA[ofjef3]]></dc:creator>
@@ -1262,6 +1331,8 @@ If you want to add a feature to allow submissions to your site via email:
 		<wp:post_id>37</wp:post_id>
 		<wp:post_date><![CDATA[2018-03-14 13:01:19]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2018-03-14 13:01:19]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2018-10-12 19:49:43]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2018-10-12 19:49:43]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[open]]></wp:comment_status>
 		<wp:ping_status><![CDATA[open]]></wp:ping_status>
 		<wp:post_name><![CDATA[year-of-the-splot]]></wp:post_name>
@@ -1307,7 +1378,7 @@ If you want to add a feature to allow submissions to your site via email:
 		</wp:postmeta>
 							</item>
 					<item>
-		<title>It Makes This Kind of Sound</title>
+		<title><![CDATA[It Makes This Kind of Sound]]></title>
 		<link>https://lab.cogdogblog.com/collector/misc/it-makes-this-kind-of-sound/</link>
 		<pubDate>Fri, 05 Oct 2018 18:44:06 +0000</pubDate>
 		<dc:creator><![CDATA[ofjef3]]></dc:creator>
@@ -1320,6 +1391,8 @@ Need more SPLOT in your life? Learn more at [link url="http://show.cogdog.casa/s
 		<wp:post_id>55</wp:post_id>
 		<wp:post_date><![CDATA[2018-10-05 18:44:06]]></wp:post_date>
 		<wp:post_date_gmt><![CDATA[2018-10-05 18:44:06]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2020-07-01 00:07:38]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2020-07-01 00:07:38]]></wp:post_modified_gmt>
 		<wp:comment_status><![CDATA[open]]></wp:comment_status>
 		<wp:ping_status><![CDATA[open]]></wp:ping_status>
 		<wp:post_name><![CDATA[it-makes-this-kind-of-sound]]></wp:post_name>
@@ -1356,9 +1429,70 @@ Need more SPLOT in your life? Learn more at [link url="http://show.cogdog.casa/s
 		<wp:meta_key><![CDATA[_edit_last]]></wp:meta_key>
 		<wp:meta_value><![CDATA[1]]></wp:meta_value>
 		</wp:postmeta>
+							</item>
+					<item>
+		<title><![CDATA[Got Some Reading Time?]]></title>
+		<link>https://lab.cogdogblog.com/collector/?p=71</link>
+		<pubDate>Mon, 22 Mar 2021 19:07:08 +0000</pubDate>
+		<dc:creator><![CDATA[ofjef3]]></dc:creator>
+		<guid isPermaLink="false">https://lab.cogdogblog.com/collector/?p=71</guid>
+		<description></description>
+		<content:encoded><![CDATA[fds fdsafdsaf]]></content:encoded>
+		<excerpt:encoded><![CDATA[]]></excerpt:encoded>
+		<wp:post_id>71</wp:post_id>
+		<wp:post_date><![CDATA[2021-03-22 19:07:08]]></wp:post_date>
+		<wp:post_date_gmt><![CDATA[2021-03-22 19:07:08]]></wp:post_date_gmt>
+		<wp:post_modified><![CDATA[2021-03-22 19:07:08]]></wp:post_modified>
+		<wp:post_modified_gmt><![CDATA[2021-03-22 19:07:08]]></wp:post_modified_gmt>
+		<wp:comment_status><![CDATA[open]]></wp:comment_status>
+		<wp:ping_status><![CDATA[open]]></wp:ping_status>
+		<wp:post_name><![CDATA[__trashed]]></wp:post_name>
+		<wp:status><![CDATA[trash]]></wp:status>
+		<wp:post_parent>0</wp:post_parent>
+		<wp:menu_order>0</wp:menu_order>
+		<wp:post_type><![CDATA[post]]></wp:post_type>
+		<wp:post_password><![CDATA[]]></wp:post_password>
+		<wp:is_sticky>0</wp:is_sticky>
+										<category domain="category" nicename="cool"><![CDATA[Cool Stuff]]></category>
+						<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_trash_meta_status]]></wp:meta_key>
+		<wp:meta_value><![CDATA[pending]]></wp:meta_value>
+		</wp:postmeta>
 							<wp:postmeta>
-		<wp:meta_key><![CDATA[_encloseme]]></wp:meta_key>
-		<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		<wp:meta_key><![CDATA[_wp_trash_meta_time]]></wp:meta_key>
+		<wp:meta_value><![CDATA[1616440028]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[shared_by]]></wp:meta_key>
+		<wp:meta_value><![CDATA[Anonymous]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[wEmail]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[source]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[license]]></wp:meta_key>
+		<wp:meta_value><![CDATA[pd]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[wCommentNotify]]></wp:meta_key>
+		<wp:meta_value><![CDATA[0]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_thumbnail_id]]></wp:meta_key>
+		<wp:meta_value><![CDATA[70]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[wEditKey]]></wp:meta_key>
+		<wp:meta_value><![CDATA[506a58c4753ef74259a3c2c39e37ebaec0f48003]]></wp:meta_value>
+		</wp:postmeta>
+							<wp:postmeta>
+		<wp:meta_key><![CDATA[_wp_desired_post_slug]]></wp:meta_key>
+		<wp:meta_value><![CDATA[]]></wp:meta_value>
 		</wp:postmeta>
 							</item>
 				</channel>

@@ -62,6 +62,7 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 * [Image Pool](http://imagepool.trubox.ca/) - used for TRU workshops on finding images on the web 
 * [Imagery VISA 1101_01](http://imagery.trubox.ca/) collecting images from participants in TRU’s VISA 1110 Course: History of Art
 * [Memes and Animated GIFs](https://memeworkshop.trubox.ca/) for a TRU workshop
+* [Memes and GIFs Again](https://memeworkshop2.trubox.ca/)  second iteration of the TRU workshop
 * [Mineral Books](https://mwynau.com/)
 * [OER18 Photos](https://oer18.oerconf.org/media/) photos for April 2018 conference in Bristol, UK.
 * [OER20 Who is Who](https://oer20.oerconf.org/socialbingo/)

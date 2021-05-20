@@ -25,9 +25,9 @@ $wLicense = '--'; // default license
 $all_licenses = trucollector_get_licences();
 
 // see if we have an incoming clear the code form variable only on writing form
-// ignored if options are not to use it
+// ignored if options are not to use it or we are in the customizer
 
-$wAccessCodeOk = isset( $_POST['wAccessCodeOk'] ) ? true : false;
+$wAccessCodeOk = isset( $_POST['wAccessCodeOk'] ) ? true : (is_customize_preview()) ? true : false;
 
 // check that an access code is in play and it's not been yet passed
 if ( !empty( trucollector_option('accesscode') ) AND !$wAccessCodeOk ) {
@@ -42,13 +42,13 @@ if ( !empty( trucollector_option('accesscode') ) AND !$wAccessCodeOk ) {
 		// Validation of the code
 		if ( $wAccess != trucollector_option('accesscode') ) {
 			$box_style = '<div class="notify notify-red"><span class="symbol icon-error"></span> ';
-			$feedback_msg = '<p><strong>Incorrect Access Code</strong> - try again? Hint: ' . trucollector_option('accesshint') . '</p>';
+			$feedback_msg = '<strong>Incorrect Access Code</strong> - try again? Hint: ' . trucollector_option('accesshint') . '.';
 		} else {
 			$wAccessCodeOk = true;
 		}
 	} else {
 		$box_style = '<div class="notify"><span class="symbol icon-info"></span> ';
-		$feedback_msg = '<p>An access code is required to use the writing form on ' . get_bloginfo('name') . '</p>';
+		$feedback_msg = 'An access code is required to use the collection form on "' . get_bloginfo('name') . '".';
 	} // form check access code
 } else {
 	// set flag true just to clear all the other gates
@@ -174,7 +174,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 				// set status (will be either 'publish' or 'pending') for post based on theme settings
 				$post_status = trucollector_option('new_item_status');
-				
+
 
 				$is_published = true;
 				$box_style = '<div class="notify"><span class="symbol icon-info"></span> ';
