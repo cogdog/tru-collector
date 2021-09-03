@@ -43,7 +43,6 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 * [CogDogRoo Image Collector](https://cog.dog/roo/collector/) for Alan Levine's Nov 2017 Workshops in Victoria, Australia
 * [Coventry University Digital Leaders](http://digitalleaders.coventry.domains/who/)
 * [Covid19 and LCC - Our Story In Images](https://livetogether.openlcc.net/covid19images/) Lansing Community Colleges
-* [CAISSIE: Critical Analysis of Images Site Seeing, Imaging, Examining](https://caissie.trubox.ca/)
 * [Cup of Tea With Ms E](https://cupofteawithmse.opened.ca/)
 * [Digital Truth Making Conference](https://www2.hu-berlin.de/digitaltruthmaking/network/) used for participant intros, networking (password protected but [see tweeted screenshot](https://twitter.com/cogdog/status/1314619929006534657))
 * [Do It Ourselves](https://dio.trubox.ca/) Meme images collected for GEOG 2221: Regional Geography of Canada (TRU)
@@ -400,6 +399,7 @@ Go collect stuff!
 
 ## Relatively New Features
 
+* **Image Alt Displayed** alternative descriptions now displayed in the SPLOT meta data box below a single entry
 * **Tag Suggestions** Tags entry field provides autocomplete suggestions
 * **Authorless** Removed need for the secret WordPress account, all contributions made without dashboard access. Removed "desk" template, no longer needed. New drop zone for uploading images, plus inline image uploader added to rich text editor. 
 * **Customize Comments** Modify the title where comments are displayed and add an extra prompt. Also added fields to change the label e.g. "4 Comments" when displayed so that can be named whatever one likes.

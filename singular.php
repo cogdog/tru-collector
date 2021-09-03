@@ -7,6 +7,12 @@ if  (  is_single() ) {
 	$wSource = get_post_meta( $post->ID, 'source', 1 );
 	$wAuthor = get_post_meta( $post->ID, 'shared_by', 1 );
 	$wLicense = get_post_meta( $post->ID, 'license', 1 );
+
+	// festured image
+	$wFeatureImageID = get_post_thumbnail_id( $post->ID);
+    // get image alt tag
+	$wAlt = get_post_meta($wFeatureImageID, '_wp_attachment_image_alt', true);
+
 }
 ?>
 
@@ -110,6 +116,9 @@ This is a preview of your <?php echo get_trucollector_collection_single_item()?>
 							if ( ( trucollector_option('use_source') > 0 )  AND !empty($wSource) ) {
 								echo '<strong>Image Credit:</strong> ' .  make_links_clickable($wSource)  . '<br />';
 							}
+
+							 // alt descriptions y'all should be doing
+							 echo '<strong>Image Alterntive Description:</strong> ' .  $wAlt  . '<br />';
 
 							if  ( trucollector_option('use_license') > 0 AND !empty($wLicense) ) {
 								echo '<strong>Reuse License:</strong> ';
