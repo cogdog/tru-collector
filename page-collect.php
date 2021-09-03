@@ -6,7 +6,7 @@ Template Name: Add to Collection
 
 // set blanks
 $wTitle =  $wSource = $wTags = $wNotes = $wEmail = $wAlt = $w_thumb_status = '';
-$wFeatureImageID = $wCommentNotify = $post_id = 0;
+$wFeatureImageID = $wCommentNotify = $post_id =  0;
 $is_re_edit = $linkEmailed = $wAccessCodeOk = $is_published = false;
 $errors = array();
 
@@ -21,6 +21,7 @@ $box_style = '<div class="notify"><span class="symbol icon-info"></span> ';
 
 $wCats = array( trucollector_option('def_cat') ); // preload default category
 $wText = trucollector_option('def_text'); // default text for editing field
+$wAltRequired = trucollector_option('img_alt');
 $wLicense = '--'; // default license
 $all_licenses = trucollector_get_licences();
 
@@ -102,6 +103,8 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
  		}
 
  		if ( $wTitle == '' ) $errors[] = '<strong>Title Missing</strong> - enter a descriptive title for this ' . get_trucollector_collection_single_item() . '.';
+
+ 		 if (  trucollector_option('img_alt') == '1' AND $wAlt == '' ) $errors[] = '<strong>Image Alternative Text Missing</strong> - please enter text description to make your image accessible for visually impaired visitors.';
 
  		if (  trucollector_option('use_caption') == '2' AND $wText == '' ) $errors[] = '<strong>Description Missing</strong> - please enter a detailed description for this ' . get_trucollector_collection_single_item() . '.';
 
@@ -558,9 +561,11 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 							<p id="dropmessage">Drag file or click to select file to upload</p>
 						</div>
 
+					<?php
+  						$required = (trucollector_option('img_alt') == 1) ? '<strong>*</strong>' : '(highly reccomennded)';
+  				   ?>
 
-
-					<label for="wAlt">Alternative Description for Image (Recommended)</label><br />
+					<label for="wAlt">Alternative Description for Image <?php echo $required?></label><br />
 					<p>To provide better web accessibility and search results, enter a short alternative text that can be substituted for this image.</p>
 					<input type="text" name="wAlt" id="wAlt"  value="<?php echo $wAlt; ?>" tabindex="3" />
 				</fieldset>

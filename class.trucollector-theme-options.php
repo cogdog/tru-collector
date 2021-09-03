@@ -322,6 +322,20 @@ class trucollector_Theme_Options {
 					)
 		);
 
+		$this->settings['img_alt'] = array(
+			'section' => 'general',
+			'title'   => __( 'Make alternative descriptions for images required?'),
+			'desc'    => '',
+			'type'    => 'radio',
+			'std'     => '0',
+			'choices' => array (
+							'0' => 'No, it is optional',
+							'1' => 'Yes, make it required'
+					)
+		);
+
+
+
 		$this->settings['def_text'] = array(
 			'title'   => __( 'Default Description' ),
 			'desc'    => __( 'Enter default content that will appear in the collecting form editing field if you want tp provide some example of the type of response you wish to collect (e.g. headers, place holder example descriptions). Leave blank to start with an empty form field.' ),
