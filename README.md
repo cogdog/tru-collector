@@ -399,7 +399,7 @@ Go collect stuff!
 
 ## Relatively New Features
 
-* **Image Alt Displayed** alternative descriptions now displayed in the SPLOT meta data box below a single entry. Also, a new theme option where it can be set as a required item.
+* **Image Alt Displayed** alternative descriptions now displayed in the SPLOT meta data box below a single entry. Also, a new theme option where it can be set as a required item. And a Customizer option to change the label and prompt for the image alt text fields.
 * **Tag Suggestions** Tags entry field provides autocomplete suggestions
 * **Authorless** Removed need for the secret WordPress account, all contributions made without dashboard access. Removed "desk" template, no longer needed. New drop zone for uploading images, plus inline image uploader added to rich text editor. 
 * **Customize Comments** Modify the title where comments are displayed and add an extra prompt. Also added fields to change the label e.g. "4 Comments" when displayed so that can be named whatever one likes.

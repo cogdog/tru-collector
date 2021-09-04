@@ -118,7 +118,7 @@ This is a preview of your <?php echo get_trucollector_collection_single_item()?>
 							}
 
 							 // alt descriptions y'all should be doing
-							 echo '<strong>Image Alterntive Description:</strong> ' .  $wAlt  . '<br />';
+							 echo '<strong>' . trucollector_form_item_img_alt_get() . ':</strong> ' .  $wAlt  . '<br />';
 
 							if  ( trucollector_option('use_license') > 0 AND !empty($wLicense) ) {
 								echo '<strong>Reuse License:</strong> ';

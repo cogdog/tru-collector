@@ -76,7 +76,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 
 	// Add section for the collect form
 	$wp_customize->add_section( 'collect_form' , array(
-		'title'    => __('Collect Form','fukasawa'),
+		'title'    => __('Collection Form','fukasawa'),
 		'panel'    => 'customize_collector',
 		'priority' => 12
 	) );
@@ -94,7 +94,6 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		'item_singular',
 		    array(
 		        'label'    => __( 'Singular Item', 'fukasawa'),
-		        'priority' => 11,
 		        'description' => __( 'The name for one thing in this collection' ),
 		        'section'  => 'collections',
 		        'settings' => 'singular_item',
@@ -116,7 +115,6 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		'plural_item',
 		    array(
 		        'label'    => __( 'Plural Items', 'fukasawa'),
-		        'priority' => 12,
 		        'description' => __( 'The name for more than one thing in this collection' ),
 		        'section'  => 'collections',
 		        'settings' => 'plural_item',
@@ -145,7 +143,6 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		'singular_comment',
 		    array(
 		        'label'    => __( 'Name for Single Comment', 'fukasawa'),
-		        'priority' => 13,
 		        'description' => __( 'The name for comment (e.g. "response")' ),
 		        'section'  => 'collections',
 		        'settings' => 'singular_comment',
@@ -167,7 +164,6 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		'plural_comment',
 		    array(
 		        'label'    => __( 'Name for Multiple Comments', 'fukasawa'),
-		        'priority' => 14,
 		        'description' => __( 'The name for more than one comment (e.g. "responses")' ),
 		        'section'  => 'collections',
 		        'settings' => 'plural_comment',
@@ -190,7 +186,6 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		'comment_title',
 		    array(
 		        'label'    => __( 'Title for Comments Section', 'fukasawa'),
-		        'priority' => 21,
 		        'description' => __( 'Make as specific as needed' ),
 		        'section'  => 'collections',
 		        'settings' => 'comment_title',
@@ -212,7 +207,6 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		'comment_extra_intro',
 		    array(
 		        'label'    => __( 'Extra Instructions for Comment Area', 'fukasawa'),
-		        'priority' => 25,
 		        'description' => __( 'Specify suggestions as needed to guide comment input' ),
 		        'section'  => 'collections',
 		        'settings' => 'comment_extra_intro',
@@ -224,15 +218,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 
 	// Add setting for default prompt
 	$wp_customize->add_setting( 'default_prompt', array(
-		 'default'           => __( 'Add something to this collection? Yes! Use the form below to share it', 'fukasawa'),
-		 'type' => 'theme_mod',
-		 'sanitize_callback' => 'sanitize_text'
-	) );
-
-
-	// Add setting for singular item
-	$wp_customize->add_setting( 'default_prompt', array(
-		 'default'           => __( '', 'fukasawa'),
+		 'default'           => __( 'Add a ' . get_trucollector_collection_single_item()  . ' to this collection? Excellent! Use the form below to share it.', 'fukasawa'),
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
@@ -244,7 +230,6 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		'default_prompt',
 		    array(
 		        'label'    => __( 'Default Prompt', 'fukasawa'),
-		        'priority' => 10,
 		        'description' => __( 'The opening message above the form.' ),
 		        'section'  => 'collect_form',
 		        'settings' => 'default_prompt',
@@ -266,7 +251,6 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		'item_title',
 		    array(
 		        'label'    => __( 'Title Label', 'fukasawa'),
-		        'priority' => 11,
 		        'description' => __( '' ),
 		        'section'  => 'collect_form',
 		        'settings' => 'item_title',
@@ -288,7 +272,6 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		'item_title_prompt',
 		    array(
 		        'label'    => __( 'Title Prompt', 'fukasawa'),
-		        'priority' => 12,
 		        'description' => __( '' ),
 		        'section'  => 'collect_form',
 		        'settings' => 'item_title_prompt',
@@ -310,7 +293,6 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		'item_upload',
 		    array(
 		        'label'    => __( 'Image Upload Label', 'fukasawa'),
-		        'priority' => 13,
 		        'description' => __( '' ),
 		        'section'  => 'collect_form',
 		        'settings' => 'item_upload',
@@ -332,7 +314,6 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		'item_upload_prompt',
 		    array(
 		        'label'    => __( 'Image Upload Prompt', 'fukasawa'),
-		        'priority' => 14,
 		        'description' => __( 'Directions for image uploads' ),
 		        'section'  => 'collect_form',
 		        'settings' => 'item_upload_prompt',
@@ -340,6 +321,51 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		    )
 	    )
 	);
+
+
+	// setting for image alternative text label
+	$wp_customize->add_setting( 'item_img_alt', array(
+		 'default'           => __( 'Image Alt Text', 'fukasawa'),
+		 'type' => 'theme_mod',
+		 'sanitize_callback' => 'sanitize_text'
+	) );
+
+	// Control for image upload  label
+	$wp_customize->add_control( new WP_Customize_Control(
+	    $wp_customize,
+		'item_img_alt',
+		    array(
+		        'label'    => __( 'Image Alt Text Label', 'fukasawa'),
+		        'description' => __( '' ),
+		        'section'  => 'collect_form',
+		        'settings' => 'item_img_alt',
+		        'type'     => 'text'
+		    )
+	    )
+	);
+
+
+	// setting for image alternative text label prompt
+	$wp_customize->add_setting( 'item_img_alt_prompt', array(
+		 'default'           => __( 'To provide better web accessibility and search results, enter a short alternative text that can be substituted for this image.', 'fukasawa'),
+		 'type' => 'theme_mod',
+		 'sanitize_callback' => 'sanitize_text'
+	) );
+
+	// Control for image upload  label
+	$wp_customize->add_control( new WP_Customize_Control(
+	    $wp_customize,
+		'item_img_alt_prompt',
+		    array(
+		        'label'    => __( 'Prompt for Image Alt Text', 'fukasawa'),
+		        'description' => __( 'Make specific directions for your site' ),
+		        'section'  => 'collect_form',
+		        'settings' => 'item_img_alt_prompt',
+		        'type'     => 'textarea'
+		    )
+	    )
+	);
+
 
 	// setting for author  label
 	$wp_customize->add_setting( 'item_author', array(
@@ -354,7 +380,6 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		'item_author',
 		    array(
 		        'label'    => __( 'Credit Label', 'fukasawa'),
-		        'priority' => 15,
 		        'description' => __( '' ),
 		        'section'  => 'collect_form',
 		        'settings' => 'item_author',
@@ -376,7 +401,6 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		'item_author_prompt',
 		    array(
 		        'label'    => __( 'Image Upload Prompt', 'fukasawa'),
-		        'priority' => 16,
 		        'description' => __( 'Directions for the author/uploader credit' ),
 		        'section'  => 'collect_form',
 		        'settings' => 'item_author_prompt',
@@ -398,7 +422,6 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		'item_description',
 		    array(
 		        'label'    => __( 'Description Label', 'fukasawa'),
-		        'priority' => 20,
 		        'description' => __( '' ),
 		        'section'  => 'collect_form',
 		        'settings' => 'item_description',
@@ -420,7 +443,6 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		'item_description_prompt',
 		    array(
 		        'label'    => __( 'Item Description Prompt', 'fukasawa'),
-		        'priority' => 20,
 		        'description' => __( 'Directions for the description entry field' ),
 		        'section'  => 'collect_form',
 		        'settings' => 'item_description_prompt',
@@ -767,7 +789,6 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		'item_submit_buttons',
 		    array(
 		        'label'    => __( 'Preview and Share Buttons', 'fukasawa'),
-		        'priority' => 42,
 		        'description' => __( '' ),
 		        'section'  => 'collect_form',
 		        'settings' => 'item_submit_buttons',
@@ -789,7 +810,6 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		'item_submit_buttons_prompt',
 		    array(
 		        'label'    => __( 'Preview and Share Buttons Prompt', 'fukasawa'),
-		        'priority' => 50,
 		        'description' => __( '' ),
 		        'section'  => 'collect_form',
 		        'settings' => 'item_submit_buttons_prompt',
@@ -914,6 +934,23 @@ function trucollector_form_item_upload_prompt() {
 	 	echo get_theme_mod( 'item_upload_prompt');
 	 }	else {
 	 	echo 'Drag and drop an image file (or click to use a file selector) to upload it. You can use JPG, PNG, or GIF files up to ' . trucollector_get_upload_max() . ' Mb in size.';
+	 }
+}
+
+
+function trucollector_form_item_img_alt() {
+	 if ( get_theme_mod( 'item_img_alt') != "" ) {
+	 	echo get_theme_mod( 'item_img_alt');
+	 }	else {
+	 	echo 'Image Alt Text';
+	 }
+}
+
+function trucollector_form_item_img_alt_prompt() {
+	 if ( get_theme_mod( 'item_img_alt_prompt') != "" ) {
+	 	echo get_theme_mod( 'item_img_alt_prompt');
+	 }	else {
+	 	echo 'To provide better web accessibility and search results, enter a short alternative text that can be substituted for this image.';
 	 }
 }
 

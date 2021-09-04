@@ -11,7 +11,7 @@ $is_re_edit = $linkEmailed = $wAccessCodeOk = $is_published = false;
 $errors = array();
 
 // default welcome message
-$feedback_msg = trucollector_form_default_prompt() . ' Fields marked <strong>*</strong> are required.';
+$feedback_msg = trucollector_form_default_prompt();
 $wAuthor = 'Anonymous';
 
 // initial button states
@@ -519,7 +519,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 				<form  id="collectorform" class="collectorform" method="post" action="" enctype="multipart/form-data">
 					<fieldset id="theTitle">
-					<label for="wTitle"><?php trucollector_form_item_title() ?> <strong>*</strong></label><br />
+					<label for="wTitle"><?php trucollector_form_item_title() ?> (required)</label><br />
 					<p><?php trucollector_form_item_title_prompt() ?> </p>
 					<input type="text" name="wTitle" id="wTitle" class="required" value="<?php echo $wTitle; ?>" tabindex="1" />
 				</fieldset>
@@ -527,7 +527,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 
 				<fieldset id="theHeaderImage">
-					<label for="headerImage"><?php trucollector_form_item_upload() ?> <strong>*</strong></label>
+					<label for="headerImage"><?php trucollector_form_item_upload() ?> (required)</label>
 
 					<div class="uploader">
 						<input id="wFeatureImage" name="wFeatureImage" type="hidden" value="<?php echo $wFeatureImageID?>" />
@@ -562,11 +562,11 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 						</div>
 
 					<?php
-  						$required = (trucollector_option('img_alt') == 1) ? '<strong>*</strong>' : '(highly reccomennded)';
+  						$required = (trucollector_option('img_alt') == 1) ? '(required)' : '(highly reccomennded)';
   				   ?>
 
-					<label for="wAlt">Alternative Description for Image <?php echo $required?></label><br />
-					<p>To provide better web accessibility and search results, enter a short alternative text that can be substituted for this image.</p>
+					<label for="wAlt"><?php trucollector_form_item_img_alt()?> <?php echo $required?></label><br />
+					<p><?php trucollector_form_item_img_alt_prompt()?></p>
 					<input type="text" name="wAlt" id="wAlt"  value="<?php echo $wAlt; ?>" tabindex="3" />
 				</fieldset>
 
@@ -578,7 +578,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 
   				<?php if (  trucollector_option('use_caption') > '0'):
-  					$required = (trucollector_option('use_caption') == 2) ? '<strong>*</strong>' : '';
+  					$required = (trucollector_option('use_caption') == 2) ? '(required)' : '';
   				?>
 
 					<fieldset id="theText">
@@ -613,7 +613,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 
   				<?php if (  trucollector_option('use_source') > '0'):
-  					$required = (trucollector_option('use_source') == 2) ? '<strong>*</strong>' : '';
+  					$required = (trucollector_option('use_source') == 2) ? '(required)' : '';
   				?>
 
 					<fieldset id="theSource">
@@ -625,7 +625,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 				<?php endif?>
 
   				<?php if (  trucollector_option('use_license') > '0'):
-  					$required = (trucollector_option('use_license') == 2) ? '<strong>*</strong>' : '';
+  					$required = (trucollector_option('use_license') == 2) ? '(required)' : '';
   				?>
 
 

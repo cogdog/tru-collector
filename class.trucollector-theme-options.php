@@ -312,14 +312,22 @@ class trucollector_Theme_Options {
 
 		$this->settings['caption_field'] = array(
 			'section' => 'general',
-			'title'   => __( 'Description Editing Field'),
-			'desc'    => __( 'Use a plain text entry field or rich text editor.'),
+			'title'   => __( 'Description Field'),
+			'desc'    => __( 'Use plain text entry field as captions or rich text editor for full narrative.'),
 			'type'    => 'radio',
 			'std'     => 's',
 			'choices' => array (
 							's' => 'Simple plain text input field (accepts hypertext link shortcode)',
 							'r' => 'Rich text editor'
 					)
+		);
+
+		$this->settings['def_text'] = array(
+			'title'   => __( 'Default Description' ),
+			'desc'    => __( 'Enter default content that will appear in the collecting form editing field if you want tp provide some example of the type of response you wish to collect (e.g. headers, place holder example descriptions). Leave blank to start with an empty form field.' ),
+			'std'     => '',
+			'type'    => ( trucollector_option('caption_field') == 'r' ) ? 'richtextarea' : 'textarea',
+			'section' => 'general'
 		);
 
 		$this->settings['img_alt'] = array(
@@ -332,16 +340,6 @@ class trucollector_Theme_Options {
 							'0' => 'No, it is optional',
 							'1' => 'Yes, make it required'
 					)
-		);
-
-
-
-		$this->settings['def_text'] = array(
-			'title'   => __( 'Default Description' ),
-			'desc'    => __( 'Enter default content that will appear in the collecting form editing field if you want tp provide some example of the type of response you wish to collect (e.g. headers, place holder example descriptions). Leave blank to start with an empty form field.' ),
-			'std'     => '',
-			'type'    => ( trucollector_option('caption_field') == 'r' ) ? 'richtextarea' : 'textarea',
-			'section' => 'general'
 		);
 
 		$this->settings['show_sharedby'] = array(
