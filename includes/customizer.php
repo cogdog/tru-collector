@@ -282,7 +282,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 
 	// setting for image upload label
 	$wp_customize->add_setting( 'item_upload', array(
-		 'default'           => __( 'Upload an Image for this ' . ucfirst(get_trucollector_collection_single_item()), 'fukasawa'),
+		 'default'           => __( 'Upload an Image', 'fukasawa'),
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
@@ -314,7 +314,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		'item_upload_prompt',
 		    array(
 		        'label'    => __( 'Image Upload Prompt', 'fukasawa'),
-		        'description' => __( 'Directions for image uploads' ),
+		        'description' => __( 'Directions for uploads' ),
 		        'section'  => 'collect_form',
 		        'settings' => 'item_upload_prompt',
 		        'type'     => 'textarea'
@@ -347,7 +347,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 
 	// setting for image alternative text label prompt
 	$wp_customize->add_setting( 'item_img_alt_prompt', array(
-		 'default'           => __( 'To provide better web accessibility and search results, enter a short alternative text that can be substituted for this image.', 'fukasawa'),
+		 'default'           => __( 'To provide better web accessibility and search results, enter a short descriptive text that can be substituted for this image.', 'fukasawa'),
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
@@ -358,7 +358,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 		'item_img_alt_prompt',
 		    array(
 		        'label'    => __( 'Prompt for Image Alt Text', 'fukasawa'),
-		        'description' => __( 'Make specific directions for your site' ),
+		        'description' => __( '' ),
 		        'section'  => 'collect_form',
 		        'settings' => 'item_img_alt_prompt',
 		        'type'     => 'textarea'
@@ -369,7 +369,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 
 	// setting for author  label
 	$wp_customize->add_setting( 'item_author', array(
-		 'default'           => __( 'Who is Sharing the ' . ucfirst(get_trucollector_collection_single_item()) . '?', 'fukasawa'),
+		 'default'           => __( 'Shared By', 'fukasawa'),
 		 'type' => 'theme_mod',
 		 'sanitize_callback' => 'sanitize_text'
 	) );
@@ -454,7 +454,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 	if (  trucollector_option('use_source') > 0 ) {
 		// setting for image source  label
 		$wp_customize->add_setting( 'item_image_source', array(
-			 'default'           => __( 'Source of Image', 'fukasawa'),
+			 'default'           => __( 'Source', 'fukasawa'),
 			 'type' => 'theme_mod',
 			 'sanitize_callback' => 'sanitize_text'
 		) );
@@ -464,7 +464,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 			$wp_customize,
 			'item_image_source',
 				array(
-					'label'    => __( 'Image Source Label', 'fukasawa'),
+					'label'    => __( 'Source Label', 'fukasawa'),
 					'priority' => 24,
 					'description' => __( '' ),
 					'section'  => 'collect_form',
@@ -476,7 +476,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 
 		// setting for image source  prompt
 		$wp_customize->add_setting( 'item_image_source_prompt', array(
-			 'default'           => __( 'Enter name of a person, web site, etc to give credit for the image submitted above.', 'fukasawa'),
+			 'default'           => __( 'Enter name of a person, web site, etc to give credit for the ' . get_trucollector_collection_single_item() . ' submitted above.', 'fukasawa'),
 			 'type' => 'theme_mod',
 			 'sanitize_callback' => 'sanitize_text'
 		) );
@@ -486,9 +486,9 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 			$wp_customize,
 			'item_image_source_prompt',
 				array(
-					'label'    => __( 'Image Source Prompt', 'fukasawa'),
+					'label'    => __( 'Source Prompt', 'fukasawa'),
 					'priority' => 26,
-					'description' => __( 'Directions for the image source field' ),
+					'description' => __( '' ),
 					'section'  => 'collect_form',
 					'settings' => 'item_image_source_prompt',
 					'type'     => 'textarea'
@@ -501,7 +501,7 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 	if  ( trucollector_option('use_license') > 0 ) {
 		// setting for license  label
 		$wp_customize->add_setting( 'item_license', array(
-			 'default'           => __( ucfirst(get_trucollector_collection_single_item()) . ' License', 'fukasawa'),
+			 'default'           => __( 'Reuse License', 'fukasawa'),
 			 'type' => 'theme_mod',
 			 'sanitize_callback' => 'sanitize_text'
 		) );
@@ -533,9 +533,9 @@ function trucollector_register_theme_customizer( $wp_customize ) {
 			$wp_customize,
 			'item_license_prompt',
 				array(
-					'label'    => __( 'Image License Prompt', 'fukasawa'),
+					'label'    => __( 'License Prompt', 'fukasawa'),
 					'priority' => 28,
-					'description' => __( 'Directions for the license selection' ),
+					'description' => __( '' ),
 					'section'  => 'collect_form',
 					'settings' => 'item_license_prompt',
 					'type'     => 'textarea'
@@ -925,7 +925,7 @@ function trucollector_form_item_upload() {
 	 if ( get_theme_mod( 'item_upload') != "" ) {
 	 	echo get_theme_mod( 'item_upload');
 	 }	else {
-	 	echo 'Upload an Image for this ' . ucfirst(get_trucollector_collection_single_item());
+	 	echo 'Upload an Image';
 	 }
 }
 
@@ -938,11 +938,14 @@ function trucollector_form_item_upload_prompt() {
 }
 
 
-function trucollector_form_item_img_alt() {
-	 if ( get_theme_mod( 'item_img_alt') != "" ) {
-	 	echo get_theme_mod( 'item_img_alt');
+function trucollector_form_item_img_alt( $mode = 'echo' ) {
+// echo or get the image alt text
+	$output = ( get_theme_mod( 'item_img_alt') != "" ) ? get_theme_mod( 'item_img_alt') : 'Image Alt Text';
+
+	 if ( $mode == 'get') {
+	 	return $output;
 	 }	else {
-	 	echo 'Image Alt Text';
+	 	echo $output;
 	 }
 }
 
@@ -954,12 +957,15 @@ function trucollector_form_item_img_alt_prompt() {
 	 }
 }
 
-function trucollector_form_item_author() {
-	 if ( get_theme_mod( 'item_author') != "" ) {
-	 	echo get_theme_mod( 'item_author');
+function trucollector_form_item_author( $mode = 'echo') {
+	$output = ( get_theme_mod( 'item_author') != "" ) ? get_theme_mod( 'item_author') : 'Shared By';
+
+	 if ( $mode == 'get') {
+	 	return $output;
 	 }	else {
-	 	echo 'Who is Sharing the ' . ucfirst(get_trucollector_collection_single_item()) . '?';
+	 	echo $output;
 	 }
+
 }
 
 function trucollector_form_item_author_prompt() {
@@ -986,11 +992,13 @@ function trucollector_form_item_description_prompt() {
 	 }
 }
 
-function trucollector_form_item_image_source() {
-	 if ( get_theme_mod( 'item_image_source') != "" ) {
-	 	echo get_theme_mod( 'item_image_source');
+function trucollector_form_item_image_source( $mode = 'echo') {
+	$output = ( get_theme_mod( 'item_image_source') != "" ) ? get_theme_mod( 'item_image_source') : 'Source' ;
+
+	 if ( $mode == 'get') {
+	 	return $output;
 	 }	else {
-	 	echo 'Source of Image';
+	 	echo $output;
 	 }
 }
 
@@ -998,15 +1006,17 @@ function trucollector_form_item_image_source_prompt() {
 	 if ( get_theme_mod( 'item_image_source_prompt') != "" ) {
 	 	echo get_theme_mod( 'item_image_source_prompt');
 	 }	else {
-	 	echo 'Enter name of a person, web site, etc to give credit for the image submitted above.';
+	 	echo 'Enter name of a person, web site, etc to give credit for the ' . get_trucollector_collection_single_item() . ' submitted above.';
 	 }
 }
 
-function trucollector_form_item_license() {
-	 if ( get_theme_mod( 'item_license') != "" ) {
-	 	echo get_theme_mod( 'item_license');
+function trucollector_form_item_license( $mode = 'echo' ) {
+		$output = ( get_theme_mod( 'item_license') != "" ) ? get_theme_mod( 'item_license') : 'Reuse License';
+
+	 if ( $mode == 'get') {
+	 	return $output;
 	 }	else {
-	 	echo ucfirst(get_trucollector_collection_single_item()) . ' License';
+	 	echo $output;
 	 }
 }
 
@@ -1015,14 +1025,6 @@ function trucollector_form_item_license_prompt() {
 	 	echo get_theme_mod( 'item_license_prompt');
 	 }	else {
 	 	echo 'Select the appropriate reuse license for this ' . get_trucollector_collection_single_item() . '.';
-	 }
-}
-
-function trucollector_get_display_license_label() {
-	 if ( get_theme_mod( 'display_license_label') != "" ) {
-	 	return get_theme_mod( 'display_license_label');
-	 }	else {
-	 	return 'Reuse License';
 	 }
 }
 

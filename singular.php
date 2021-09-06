@@ -6,7 +6,9 @@ if  (  is_single() ) {
 	//  get post meta
 	$wSource = get_post_meta( $post->ID, 'source', 1 );
 	$wAuthor = get_post_meta( $post->ID, 'shared_by', 1 );
-	$wLicense = get_post_meta( $post->ID, 'license', 1 );
+
+
+	$wLicense = (get_post_meta( $post->ID, 'license', 1 )) ? get_post_meta( $post->ID, 'license', 1 ) : 'u' ;
 
 	// festured image
 	$wFeatureImageID = get_post_thumbnail_id( $post->ID);
@@ -14,6 +16,9 @@ if  (  is_single() ) {
 	$wAlt = get_post_meta($wFeatureImageID, '_wp_attachment_image_alt', true);
 
 }
+
+$item_label = get_trucollector_collection_single_item();
+
 ?>
 
 <div class="content thin">
@@ -93,7 +98,7 @@ if  (  is_single() ) {
 
 							<?php  if ( is_single() AND is_preview() ):?>
 								<div class="notify"><span class="symbol icon-info"></span>
-This is a preview of your <?php echo get_trucollector_collection_single_item()?> that shows how it will look when published. <a href="#" onclick="self.close();return false;">Close this window/tab</a> when done to return to the submission form. Make any changes and check the info again or if it is ready, click <strong>Share Now</strong>
+This is a preview of your <?php echo $item_label?> that shows how it will look when published. <a href="#" onclick="self.close();return false;">Close this window/tab</a> when done to return to the submission form. Make any changes and check the info again or if it is ready, click <strong>Share Now</strong>
 							</div>
 							<?php endif?>
 
@@ -104,30 +109,26 @@ This is a preview of your <?php echo get_trucollector_collection_single_item()?>
 						<div class="splot_meta">
 						<p>
 						<?php
-							// Sharer
-
-
 
 							if (  trucollector_option('show_sharedby') AND !empty($wAuthor) ) {
-								echo '<strong>Shared by:</strong> ' . $wAuthor . '<br />';
+								echo '<strong>' . trucollector_form_item_author('get') . ':</strong> ' . $wAuthor . '<br />';
 							}
 
-
 							if ( ( trucollector_option('use_source') > 0 )  AND !empty($wSource) ) {
-								echo '<strong>Image Credit:</strong> ' .  make_links_clickable($wSource)  . '<br />';
+								echo '<strong>' . trucollector_form_item_image_source('get') . ':</strong> ' .  make_links_clickable($wSource)  . '<br />';
 							}
 
 							 // alt descriptions y'all should be doing
-							 echo '<strong>' . trucollector_form_item_img_alt_get() . ':</strong> ' .  $wAlt  . '<br />';
+							 echo '<strong>' . trucollector_form_item_img_alt('get') . ':</strong> ' .  $wAlt  . '<br />';
 
 							if  ( trucollector_option('use_license') > 0 AND !empty($wLicense) ) {
-								echo '<strong>Reuse License:</strong> ';
+								echo '<strong>' . trucollector_form_item_license('get') . ':</strong> ';
 								trucollector_the_license( $wLicense );
 								echo '<br />';
 
 								// display attribution?
 								if  ( trucollector_option( 'show_attribution' ) == 1 ) {
-									echo '<strong>Attribution Text:</strong><br /><textarea rows="2" onClick="this.select()" style="height:80px;">' . trucollector_attributor( $wLicense, get_the_title(), $wSource ) . '</textarea>';
+									echo '<strong>Attribution Text:</strong><br /><textarea rows="2" onClick="this.select()" style="height:4rem;">' . trucollector_attributor( $wLicense, get_the_title(), $wSource ) . '</textarea>';
 								}
 							}
 
@@ -135,7 +136,7 @@ This is a preview of your <?php echo get_trucollector_collection_single_item()?>
 				    		<?php if  ( trucollector_option( 'show_link' ) != 0 AND has_post_thumbnail() ) :?>
 
 							<form>
-								<label for="link">Link to image:</label>
+								<label for="link">Image Link:</label>
 									<input type="text" class="form-control" id="link" value="<?php $iurl = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'full' ); echo $iurl[0];  ?>" onClick="this.select();" />
 							</form>
 
@@ -155,7 +156,7 @@ This is a preview of your <?php echo get_trucollector_collection_single_item()?>
 
 
 					<?php if ( is_single() AND is_preview() ):?>
-						<div class="notify"><span class="symbol icon-info"></span> Once done reviewing your <?php echo get_trucollector_collection_single_item()?>, <a href="#" onclick="self.close();return false;">Close this window/tab</a> to return to the editing form.</div>
+						<div class="notify"><span class="symbol icon-info"></span> Once done reviewing your <?php echo $item_label?>, <a href="#" onclick="self.close();return false;">Close this window/tab</a> to return to the editing form.</div>
 					<?php endif?>
 
 					</div><!-- .post-content -->
@@ -192,7 +193,7 @@ This is a preview of your <?php echo get_trucollector_collection_single_item()?>
 
 
 
-								<?php edit_post_link( __( 'Edit post', 'fukasawa' ), '<li>', '</li>' ); ?>
+								<?php edit_post_link( __( 'Edit ' . ucfirst($item_label), 'fukasawa' ), '<li>', '</li>' ); ?>
 							</ul>
 							<div class="clear"></div>
 
@@ -214,12 +215,10 @@ This is a preview of your <?php echo get_trucollector_collection_single_item()?>
 						$prev_post = get_previous_post();
 						$next_post = get_next_post();
 
-						$nav_label = get_trucollector_collection_single_item();
-
 						if ( $prev_post ) : ?>
 
 							<a class="post-nav-prev" href="<?php echo get_permalink( $prev_post->ID ); ?>">
-								<p>&larr; <?php _e( 'Previous ' . $nav_label, 'fukasawa' ); ?></p>
+								<p>&larr; <?php _e( 'Previous ' . $item_label, 'fukasawa' ); ?></p>
 							</a>
 
 							<?php
@@ -228,7 +227,7 @@ This is a preview of your <?php echo get_trucollector_collection_single_item()?>
 						if ( $next_post ) : ?>
 
 							<a class="post-nav-next" href="<?php echo get_permalink( $next_post->ID ); ?>">
-								<p><?php _e( 'Next ' . $nav_label, 'fukasawa' ); ?> &rarr;</p>
+								<p><?php _e( 'Next ' . $item_label, 'fukasawa' ); ?> &rarr;</p>
 							</a>
 
 							<?php

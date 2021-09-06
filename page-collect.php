@@ -97,12 +97,12 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 		}
 
 
+		 if ( $wTitle == '' ) $errors[] = '<strong>Title Missing</strong> - enter a descriptive title for this ' . get_trucollector_collection_single_item() . '.';
+
 		// do we have image?
  		if ( $wFeatureImageID == 0) {
  			$errors[] = '<strong>Image File Missing</strong> - upload the image you wish to add to represent this ' . get_trucollector_collection_single_item() . '.';
  		}
-
- 		if ( $wTitle == '' ) $errors[] = '<strong>Title Missing</strong> - enter a descriptive title for this ' . get_trucollector_collection_single_item() . '.';
 
  		 if (  trucollector_option('img_alt') == '1' AND $wAlt == '' ) $errors[] = '<strong>Image Alternative Text Missing</strong> - please enter text description to make your image accessible for visually impaired visitors.';
 
@@ -110,7 +110,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
   		if (  trucollector_option('use_source') == '2' AND $wSource == '' ) $errors[] = '<strong>Source Missing</strong> - please the name or organization to credit as the source of this image.';
 
-  		if (  trucollector_option('use_license') == '2' AND $wLicense == '--' ) $errors[] = '<strong>License Not Selected</strong> - select an appropriate license for this ' . get_trucollector_collection_single_item() . '.';
+  		if (  trucollector_option('use_license') == '2' AND $wLicense == '--' ) $errors[] = '<strong>No License Selected</strong> - select an appropriate license for this ' . get_trucollector_collection_single_item() . '.';
 
 		// test for email only if enabled in options
 		if ( trucollector_option('show_email') == '1' )   {
@@ -518,6 +518,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 
 				<form  id="collectorform" class="collectorform" method="post" action="" enctype="multipart/form-data">
+
 					<fieldset id="theTitle">
 					<label for="wTitle"><?php trucollector_form_item_title() ?> (required)</label><br />
 					<p><?php trucollector_form_item_title_prompt() ?> </p>
@@ -548,10 +549,6 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 						?>
 
 						<input id="wDefThumbURL" name="wDefThumbURL" type="hidden" value="<?php echo $defthumb[0]?>" />
-
-
-
-
 						</div>
 
 						<p><?php trucollector_form_item_upload_prompt() ?> <span id="uploadresponse"><?php echo $w_thumb_status?></span><br clear="left"></p>
@@ -560,7 +557,9 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 							<input type="file" accept="image/*" name="wUploadImage" id="wUploadImage">
 							<p id="dropmessage">Drag file or click to select file to upload</p>
 						</div>
+					</fieldset>
 
+				<fieldset id="theAlt">
 					<?php
   						$required = (trucollector_option('img_alt') == 1) ? '(required)' : '(highly reccomennded)';
   				   ?>

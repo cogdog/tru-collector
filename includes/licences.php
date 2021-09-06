@@ -19,15 +19,22 @@ function trucollector_get_licences() {
 }
 
 function trucollector_the_license( $lcode = '--' ) {
-	// output the ttitle of a license
-
+	// output the title of a license
 
 	// passed by form with no menu selected
 	if ($lcode != '--') {
 
+		// get  possible licenses
 		$all_licenses = trucollector_get_licences();
 
-		echo $all_licenses[$lcode];
+		if (array_key_exists( $lcode, $all_licenses ) ) {
+			echo $all_licenses[$lcode];
+		} else {
+			echo 'no license found for key "' .  $lcode . '"';
+		}
+	} else {
+		echo 'no license identified';
+
 	}
 }
 
@@ -60,18 +67,18 @@ function trucollector_attributor( $license, $work_title, $work_creator='') {
 
 	$all_licenses = trucollector_get_licences();
 
-	$work_str = ( $work_creator == '') ? '"' . $work_title . '"' : '"' . $work_title . '" by or via "' . $work_creator  . '" ';
+	$work_str = ( $work_creator == '') ? '"' . $work_title . '"' : '"' . $work_title . '" by ' . $work_creator;
 
 	switch ( $license ) {
 
 		case '?':
 		case '--':
 		case 'u':
-			return ( $work_str .  '" license status: unknown.' );
+			return ( $work_str .  ' has no known license status.' );
 			break;
 
 		case 'c':
-			return ( $work_str .  '" is &copy; All Rights Reserved.' );
+			return ( $work_str .  ' is &copy; All Rights Reserved.' );
 			break;
 
 		case 'cc0':
