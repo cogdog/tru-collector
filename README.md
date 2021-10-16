@@ -334,6 +334,30 @@ To present the link just as a URL, simply use
 
 which will produce the hyperlink like http://www.themostamazingwebsiteontheinternet.com/ -- all links will open in a new window.
 
+## Shortcode to Display All Tags
+
+By request for a site that had more than 45 tags (that is the maximum that can be displayed in the Tag Cloud widget.
+
+The basic use is just
+
+`[taglist]`
+
+which displays all tags used in alphabetical order, each linked to an archive, and the number of times used listed.
+
+Optional parameters include:
+
+* `number=10` limit to ten tags (default=0 or all tags)
+* `show_count=false` hides the display of the number of times tag used (default=true)
+* `orderby="count"` to order results by the number of times tag used (default="name")
+* `order="DESC"` to list in descending order (default="ASC")
+* `hide_empty=0` to list tags not used (default=1)
+
+In use, this will display the 20 most used tags
+
+`[taglist number=20 orderby="count" order="DESC"]`
+
+
+
 ## Optional / Suggested Add-ons
 
 ### Add Public Ratings
@@ -399,6 +423,7 @@ Go collect stuff!
 
 ## Relatively New Features
 
+* **Tag List shortcode** Use to display a list of all used tags for sites that use more than the 45 that can be shown in widget cloud
 * **Image Alt Displayed** alternative descriptions now displayed in the SPLOT meta data box below a single entry. Also, a new theme option where it can be set as a required item. And a Customizer option to change the label and prompt for the image alt text fields.
 * **Tag Suggestions** Tags entry field provides autocomplete suggestions
 * **Authorless** Removed need for the secret WordPress account, all contributions made without dashboard access. Removed "desk" template, no longer needed. New drop zone for uploading images, plus inline image uploader added to rich text editor. 
