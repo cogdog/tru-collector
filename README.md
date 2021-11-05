@@ -88,6 +88,7 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 * [UDG Agora Image Pool](http://udg.theagoraonline.net/imagepool) used by University of Guadalajara faculty and students sharing media in the UDG Agora Project
 * [Virtual VSTE 2020](https://vste.org/vstevirtual2020/) Online Learning Virtual Showcase
 * [What's Happening?](http://whatshappeningart.com/) "An Experimental Journey of Artistic Inquiry"
+* [Wicked Problems](https://wicked.liberatedlearner.ca/) student stories collected for the Liberated Learner Project
 * [Wordbox](http://origin.coventry.domains/wordbox/) Coventry University Art and Design Skills Hub
 * [Your Mineral Site](https://yourmineralsite.mineralcollective.com/)
 
