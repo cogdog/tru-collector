@@ -217,13 +217,15 @@ Enter any email addresses who should be notified of new submissions; you can use
 
 ### Sort Options
 
-The default settings are for typical blogs where newest content is displayed first. The sort options allow you to change that across the site- the home page, category/tag archives, and search results.
+The default settings are for typical blogs where newest content is displayed first. The sort options allow you to change that across the site- the home page and category/tag archives, as well as making that change only in certain areas.
 
-![](images/index-sorting.jpg)
+![](images/item-sorting.jpg)
 
 **Date Published** is the default option, the order is **Descending**, or newest first, change to **Ascending** to have oldest items appear first. 
 
 Change the sort otder to **Title** to... yes... sort items alphabetically by each item's title.  Use **Ascending** for alphabetical order (A-Z) or **Descending** to reverse (Z-A).
+
+Use the Sort Applies To option to specify where the alternative sorting is applied (for example, just on tags archive, or just the home page).
 
 
 ### Fields and Options for Items
@@ -424,6 +426,8 @@ Go collect stuff!
 
 ## Relatively New Features
 
+
+* **Sorting Options Expanded** New option to change default reverse chronological order of items to be everywhere, on home, in tags, in categories, or in tags AND categories.
 * **Tag List shortcode** Use to display a list of all used tags for sites that use more than the 45 that can be shown in widget cloud
 * **Image Alt Displayed** alternative descriptions now displayed in the SPLOT meta data box below a single entry. Also, a new theme option where it can be set as a required item. And a Customizer option to change the label and prompt for the image alt text fields.
 * **Tag Suggestions** Tags entry field provides autocomplete suggestions

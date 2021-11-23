@@ -248,8 +248,8 @@ class trucollector_Theme_Options {
 		$this->settings['sort_heading'] = array(
 			'section' => 'general',
 			'title'   => '', // Not used for headings.
-			'desc'	 => 'Index Page Sorting',
-			'std'    => 'Set the order of items on home page, search results, and archives.',
+			'desc'	 => 'Item Sorting',
+			'std'    => 'Set the order of items on home page and archives.',
 			'type'    => 'heading'
 		);
 
@@ -261,7 +261,7 @@ class trucollector_Theme_Options {
 			'type'    => 'radio',
 			'std'     => 'date',
 			'choices' => array (
-							'date' => 'Date Published',
+							'date' => 'Date Published (default)',
 							'title' => 'Title',
 					)
 		);
@@ -273,12 +273,25 @@ class trucollector_Theme_Options {
 			'type'    => 'radio',
 			'std'     => 'DESC',
 			'choices' => array (
-							'DESC' => 'Descending',
+							'DESC' => 'Descending  (default)',
 							'ASC' => 'Ascending',
 					)
 		);
 
-
+		$this->settings['sort_applies'] = array(
+			'section' => 'general',
+			'title'   => __( 'Sort Applied To'),
+			'desc'    => '',
+			'type'    => 'radio',
+			'std'     => 'all',
+			'choices' => array (
+							'all' => 'All Items',
+							'front' => 'Front Page Only',
+							'cat' => 'Categories Only',
+							'tag' => 'Tags Only',
+							'tagcat' => 'Categories and Tags'
+					)
+		);
 
 		// ------- single item
 		$this->settings['single_heading'] = array(
@@ -444,7 +457,6 @@ class trucollector_Theme_Options {
 			'std'     => get_option('default_category'),
 			'choices' => $cat_options
 		);
-
 
 		$this->settings['show_tags'] = array(
 			'section' => 'general',

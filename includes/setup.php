@@ -80,7 +80,7 @@ function trucollector_change_post_label() {
     $submenu['edit.php'][16][0] = $thing_name .' Tags';
     echo '';
 
-    add_submenu_page('edit.php', 'Collectable for Review', 'Collectable for Review', 'edit_pages', 'edit.php?post_status=draft&post_type=post' );
+    add_submenu_page('edit.php', 'Collectable for Review', 'Collectable for Review', 'edit_pages', 'edit.php?post_status=pending&post_type=post' );
 }
 
 // change the prompts and stuff for posts to be relevant to collectables
@@ -148,13 +148,47 @@ add_action( 'pre_get_posts', 'trucollector_order_items' );
 
 function trucollector_order_items( $query ) {
 
-	if ( $query->is_main_query() ) {
-		if (  $query->is_home() OR $query->is_archive() ) {
-			$query->set( 'orderby', trucollector_option('sort_by')  );
-			$query->set( 'order', trucollector_option('sort_direction') );
-		}
+	if ( !is_admin() && $query->is_main_query()  ) {
 
-	}
+
+		switch (trucollector_option('sort_applies')) {
+
+			case 'all':
+				if (  $query->is_home() OR $query->is_archive() ) {
+					$query->set( 'orderby', trucollector_option('sort_by')  );
+					$query->set( 'order', trucollector_option('sort_direction') );
+				}
+				break;
+
+			case 'front':
+				if (  $query->is_home() ) {
+					$query->set( 'orderby', trucollector_option('sort_by')  );
+					$query->set( 'order', trucollector_option('sort_direction') );
+				}
+				break;
+			case 'tag':
+				if (  $query->is_tag() ) {
+					$query->set( 'orderby', trucollector_option('sort_by')  );
+					$query->set( 'order', trucollector_option('sort_direction') );
+				}
+				break;
+			case 'cat':
+				if (  $query->is_category() ) {
+					$query->set( 'orderby', trucollector_option('sort_by')  );
+					$query->set( 'order', trucollector_option('sort_direction') );
+				}
+				break;
+			case 'tagcat':
+				if (  $query->is_archive() ) {
+					$query->set( 'orderby', trucollector_option('sort_by')  );
+					$query->set( 'order', trucollector_option('sort_direction') );
+				}
+				break;
+
+		} // switch
+
+	} // if  main query
+
 }
 
 # -----------------------------------------------------------------
@@ -344,9 +378,9 @@ function add_trucollector_scripts() {
    		wp_enqueue_script( 'mce-view', '', array('tiny_mce') );
 
  		// tinymce mods
-		add_filter("mce_external_plugins", "trucollector_register_buttons");
-		add_filter('mce_buttons','trucollector_tinymce_buttons');
-		add_filter('mce_buttons_2','trucollector_tinymce_2_buttons');
+		add_filter("mce_external_plugins", "trucollector_register_buttons", 20);
+		add_filter('mce_buttons','trucollector_tinymce_buttons', 20);
+		add_filter('mce_buttons_2','trucollector_tinymce_2_buttons', 20);
 
 
 		// custom jquery for the uploader on the form
@@ -373,7 +407,6 @@ function add_trucollector_scripts() {
 		wp_enqueue_script( 'jquery.editlink' );
 	}
 }
-
 
 # -----------------------------------------------------------------
 # Comments
