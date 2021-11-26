@@ -35,20 +35,20 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 * [Ada Lovelace Day](https://thinking.is.ed.ac.uk/ald2017/) 
 * [Animal Body Plans](http://bio2290.trubox.ca/) Biology 2290 at TRU
 * [Bavaradio](https://bavaradio.com/)
-* [Beyond The Hill](https://bthcovid19.com/) Hamilton College Community Covid-19 Archive
 * [Bingobones](http://bingobones.com/) Skulls and their Stories from some fun at the Open Education 2018 project
 * [Brand Storytelling](https://jmc3353.adamcroom.com/brandstorytelling/) Ad Copy Layout, University of Oklahoma
 * [Cafecrema](https://cafecrema.procaffination.ca/) Cat pix
+* [Canadian Undergraduate Research Network – Events and Opportunities](https://curnopportunitiesandevents.trubox.ca/)
 * [The Compendium of Bothersome Beasties](http://creditcontinue.coventry.domains/beasties/) from Coventry University is a tool for self-reflection and formative assessment.
 * [CogDogRoo Image Collector](https://cog.dog/roo/collector/) for Alan Levine's Nov 2017 Workshops in Victoria, Australia
+* [Course (Re)design Institute ](https://cri.trubox.ca/) Thompson Rivers University
 * [Coventry University Digital Leaders](http://digitalleaders.coventry.domains/who/)
 * [Covid19 and LCC - Our Story In Images](https://livetogether.openlcc.net/covid19images/) Lansing Community Colleges
 * [Cup of Tea With Ms E](https://cupofteawithmse.opened.ca/)
 * [Digital Truth Making Conference](https://www2.hu-berlin.de/digitaltruthmaking/network/) used for participant intros, networking (password protected but [see tweeted screenshot](https://twitter.com/cogdog/status/1314619929006534657))
 * [Do It Ourselves](https://dio.trubox.ca/) Meme images collected for GEOG 2221: Regional Geography of Canada (TRU)
 * [DoOO Something](https://iwanna.dooosomething.org/) "Domain of One’s Own projects often start with domains/sites for individuals, but they can also include any other sites that individual or groups of staff and students might want the freedom to create for themselves."
-* [EduHack Directory](https://eduhack.eu/coursedirectory/)
-* [EduHackathon](https://polito.eduhack.eu/)
+* [EduHackathon](http://polito.eduhack.eu/)
 * [Extraordinary Stories of Open and Online in the Covid-19 Era](https://splot.ca/extraordinary/)
 * [Fanny Central](https://fannycentral.com/) for collecting inappropriately captioned old images. 
 * [Femedtech Quilt of Care and Justice in Open Education](https://quilt.femedtech.net/) showcases quilt sections shared
@@ -71,7 +71,6 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 * [Online Ecosystem Maps](http://a202dmll.coventry.domains/maps/) a gallery of maps created by students enrolled in the A202DMLL Module (Develop your Online Presence & Own your Web Domain) at Coventry University.
 * [Online Worlds](http://coventry.domains/online-worlds/) another Coventry activity for collecting images of how people see their online worlds. 
 * [OWLTEH Catalogue](http://catalogue.owlteh.org/) Open Web For Learning & Teaching Expertise Hub -- a Catalogue of the Open Web: applications, platforms, techologies, or concepts
-* [PlayBox - CreativeCulture Compendium of Games for Playful Learning](https://playbox.mycapsule.my/) "Open space that acts as a resource centre for sharing creative and innovative artefacts used for gamification in STEAM subjects"
 * [Learning on/with the Open Web Participants](https://conf.owlteh.org/participants/) 
 * [Learning on/with the Open Web Conference Photos](https://www.conf.owlteh.org/photos/)
 * [The Legend of Extend](https://play.learningnuggets.ca/cms) Terry Greene's card collection
@@ -87,6 +86,7 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 * [This is Us!](https://www.socialbingo.coventry.domains/) people from Coventry University for Staff Conference & Excellence Awards 2020
 * [UDG Agora Image Pool](http://udg.theagoraonline.net/imagepool) used by University of Guadalajara faculty and students sharing media in the UDG Agora Project
 * [Virtual VSTE 2020](https://vste.org/vstevirtual2020/) Online Learning Virtual Showcase
+* [VISA 1110 Gradating Studio](https://visa4910.trubox.ca/) from TRU course eVISA 1110 Course: History of Art
 * [What's Happening?](http://whatshappeningart.com/) "An Experimental Journey of Artistic Inquiry"
 * [Wicked Problems](https://wicked.liberatedlearner.ca/) student stories collected for the Liberated Learner Project
 * [Wordbox](http://origin.coventry.domains/wordbox/) Coventry University Art and Design Skills Hub
