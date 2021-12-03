@@ -143,51 +143,89 @@ function trucollector_queryvars( $qvars ) {
 	return $qvars;
 }
 
-// options for post order on front page
+
+// -----  sort ordering
+
 add_action( 'pre_get_posts', 'trucollector_order_items' );
 
 function trucollector_order_items( $query ) {
 
+	// check for not being an admin screem and a main query
 	if ( !is_admin() && $query->is_main_query()  ) {
 
-
+		// test on the settings
 		switch (trucollector_option('sort_applies')) {
 
 			case 'all':
-				if (  $query->is_home() OR $query->is_archive() ) {
-					$query->set( 'orderby', trucollector_option('sort_by')  );
-					$query->set( 'order', trucollector_option('sort_direction') );
+				// use sorting on home, all archives, and search results
+				if (  $query->is_home() OR $query->is_archive() OR $query->is_search() ) {
+					splotbox_query_set($query);
 				}
 				break;
 
 			case 'front':
 				if (  $query->is_home() ) {
-					$query->set( 'orderby', trucollector_option('sort_by')  );
-					$query->set( 'order', trucollector_option('sort_direction') );
+					// use sorting on home only
+					splotbox_query_set($query);
 				}
 				break;
 			case 'tag':
 				if (  $query->is_tag() ) {
-					$query->set( 'orderby', trucollector_option('sort_by')  );
-					$query->set( 'order', trucollector_option('sort_direction') );
+					// tag archive
+					splotbox_query_set($query);
 				}
 				break;
 			case 'cat':
 				if (  $query->is_category() ) {
-					$query->set( 'orderby', trucollector_option('sort_by')  );
-					$query->set( 'order', trucollector_option('sort_direction') );
+					// category archive
+					splotbox_query_set($query);
 				}
 				break;
 			case 'tagcat':
-				if (  $query->is_archive() ) {
-					$query->set( 'orderby', trucollector_option('sort_by')  );
-					$query->set( 'order', trucollector_option('sort_direction') );
+				if (  $query->is_tag() OR $query->is_category() ) {
+					// any archive that made it this far
+					splotbox_query_set($query);
 				}
 				break;
 
 		} // switch
 
 	} // if  main query
+
+}
+
+function splotbox_query_set ($the_query) {
+	//utility to set the query as per the theme settings
+	$the_query->set( 'orderby', trucollector_option('sort_by')  );
+	$the_query->set( 'order', trucollector_option('sort_direction') );
+
+}
+
+function trucollector_get_sort_description() {
+	// get a description of sort direction for use in archives
+
+	$descrip = ' Listed by ' . ucfirst(trucollector_option('sort_by'));
+
+	if (trucollector_option('sort_by') == 'date' ) {
+
+		if ( trucollector_option('sort_direction') == 'ASC' ) {
+			$descrip .= ' (Oldest to Newest)';
+		} else {
+			$descrip .= ' (Newest to Oldest)';
+		}
+
+	} else {
+
+		if ( trucollector_option('sort_direction') == 'ASC' ) {
+			$descrip .= ' (A-Z)';
+		} else {
+			$descrip .= ' (Z-A)';
+		}
+
+	}
+
+
+	return ($descrip);
 
 }
 
