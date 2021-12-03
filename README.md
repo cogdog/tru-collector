@@ -225,7 +225,7 @@ The default settings are for typical blogs where newest content is displayed fir
 
 Change the sort otder to **Title** to... yes... sort items alphabetically by each item's title.  Use **Ascending** for alphabetical order (A-Z) or **Descending** to reverse (Z-A).
 
-Use the Sort Applies To option to specify where the alternative sorting is applied (for example, just on tags archive, or just the home page).
+Use the **Sort Applies To** option to specify where the alternative sorting is applied (for example, just on tags archive, or just the home page).
 
 
 ### Fields and Options for Items
@@ -319,7 +319,9 @@ Use the page to find links to the ones you wish to use and add to your site's me
 
 For extra flexibility there is a `[licensed]` shortcode that can be used in a widget or any page to display the same index list in a sidebar. By default, it lists only licenses used (e.g. it skips licenses with zero uses); to show all licenses, use the code `[licensed show="all"]`.
 
-## Shortcode Adding Hyperlinks to Simple Captions
+## Shortcodes 
+
+###  Adding Hyperlinks to Simple Captions
 
 Any HTML put into the plain text editor for the caption is stripped out. But a new feature allows hyperlinks to be created using a "shortcode" format:
 
@@ -337,7 +339,7 @@ To present the link just as a URL, simply use
 
 which will produce the hyperlink like http://www.themostamazingwebsiteontheinternet.com/ -- all links will open in a new window.
 
-## Shortcode to Display All Tags
+### Display All Tags
 
 By request for a site that had more than 45 tags (that is the maximum that can be displayed in the Tag Cloud widget.
 
@@ -351,6 +353,7 @@ Optional parameters include:
 
 * `number=10` limit to ten tags (default=0 or all tags)
 * `show_count=false` hides the display of the number of times tag used (default=true)
+* `mincount=2` will only show tags used 2 or more times (default=1)
 * `orderby="count"` to order results by the number of times tag used (default="name")
 * `order="DESC"` to list in descending order (default="ASC")
 * `hide_empty=0` to list tags not used (default=1)
@@ -358,6 +361,10 @@ Optional parameters include:
 In use, this will display the 20 most used tags
 
 `[taglist number=20 orderby="count" order="DESC"]`
+
+### Count of Published items
+
+Use [splotcount] to display the number of all published items
 
 
 

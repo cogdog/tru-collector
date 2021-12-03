@@ -25,7 +25,7 @@ function trucollector_hyperlink( $atts )  {
 add_shortcode("taglist", "trucollector_taglist");
 
 function trucollector_taglist( $atts )  {
-  	extract(shortcode_atts( array( "number" => '0', "show_count" => true, "orderby" => 'name', "order" => "ASC", "hide_empty" => 1 ), $atts ));
+  	extract(shortcode_atts( array( "number" => '0', "show_count" => true, "orderby" => 'name', "order" => "ASC", "hide_empty" => 1, "mincount" => '1' ), $atts ));
 
   	// set args
 	$tags = get_tags(array(
@@ -41,9 +41,11 @@ function trucollector_taglist( $atts )  {
     	$output .= '<ul class="taglist">';
 
         foreach ($tags as $tag) {
-          $output .= '<li><a href="'. get_term_link($tag).'">'. $tag->name .'</a>';
-          if ($show_count)  $output .= ' (' . $tag->count . ')';
-          $output .= '</li>';
+          if ($tag->count >= $mincount) {
+			  $output .= '<li><a href="'. get_term_link($tag).'">'. $tag->name .'</a>';
+			  if ($show_count)  $output .= ' (' . $tag->count . ')';
+			  $output .= '</li>';
+		  }
         }
 
     	$output .= '</ul>';
@@ -92,5 +94,12 @@ function trucollector_license_list( $atts )  {
 	}
 
 	return $output;
+}
+
+// ----- short code to show number of published items
+add_shortcode('splotcount', 'splot_count_splots');
+
+function splot_count_splots() {
+	return wp_count_posts()->publish;
 }
 ?>
