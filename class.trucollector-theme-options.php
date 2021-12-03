@@ -432,13 +432,14 @@ class trucollector_Theme_Options {
 
 		$this->settings['show_cats'] = array(
 			'section' => 'general',
-			'title'   => __( 'Show the categories menu on collection form and item displays?'),
+			'title'   => __( 'Use categories as options for submission or only for admin use'),
 			'desc'    => '',
 			'type'    => 'radio',
 			'std'     => '1',
 			'choices' => array (
-							'0' => 'No',
-							'1' => 'Yes'
+							'0' => 'No, do not use categories',
+							'1' => 'Yes, options on share form and display on single item',
+							'2' => 'Yes, but used only by admin to organize (not on collect form)'
 					)
 		);
 
@@ -460,13 +461,15 @@ class trucollector_Theme_Options {
 
 		$this->settings['show_tags'] = array(
 			'section' => 'general',
-			'title'   => __( 'Show the tags entry on collection form and item displays?'),
-			'desc'    => '',
+			'title'   => __( 'Show/use tags?'),
+			'desc'    => 'Use tags as options for submission or only for admin use',
 			'type'    => 'radio',
 			'std'     => '1',
 			'choices' => array (
-							'0' => 'No',
-							'1' => 'Yes'
+							'0' => 'No, do not use tags',
+							'1' => 'Yes, options on share form and display on single item',
+							'2' => 'Yes, but used only by admin to organize (not on collec form)'
+
 					)
 		);
 

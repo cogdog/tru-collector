@@ -436,6 +436,7 @@ Go collect stuff!
 
 * **Sorting Options Expanded** New option to change default reverse chronological order of items to be everywhere, on home, in tags, in categories, or in tags AND categories.
 * **Tag List shortcode** Use to display a list of all used tags for sites that use more than the 45 that can be shown in widget cloud
+* **Admin Only Use of Tags/Categories** Theme options can be set to let tags and categories be set only by admins for internal organization, and not shown on writing form
 * **Image Alt Displayed** alternative descriptions now displayed in the SPLOT meta data box below a single entry. Also, a new theme option where it can be set as a required item. And a Customizer option to change the label and prompt for the image alt text fields.
 * **Tag Suggestions** Tags entry field provides autocomplete suggestions
 * **Authorless** Removed need for the secret WordPress account, all contributions made without dashboard access. Removed "desk" template, no longer needed. New drop zone for uploading images, plus inline image uploader added to rich text editor. 

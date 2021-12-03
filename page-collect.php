@@ -653,7 +653,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 				<?php endif?>
 
 
-				<?php if (trucollector_option('show_cats') ):?>
+				<?php if (trucollector_option('show_cats')  == '1'  ):?>
 
 					<fieldset  id="theCats">
 						<label for="wCats"><?php trucollector_form_item_categories() ?></label>
@@ -681,7 +681,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 				<?php endif?>
 
 
-				<?php if (trucollector_option('show_tags') ):?>
+				<?php if (trucollector_option('show_tags') == '1' ):?>
 					<fieldset  id="theTags">
 						<label for="wTags"><?php  trucollector_form_item_tags() ?></label>
 						<p><?php  trucollector_form_item_tags_prompt() ?></p>
