@@ -37,6 +37,9 @@ function trucollector_enqueue_options_scripts() {
 	// custom jquery for the options admin screen
 	wp_register_script( 'trucollector_options_js' , get_stylesheet_directory_uri() . '/js/jquery.trucollector-options.js', null , '1.0', TRUE );
 	wp_enqueue_script( 'trucollector_options_js' );
+	
+	// css for splot  options
+	wp_enqueue_style( 'trucollector-options', get_stylesheet_directory_uri() . '/css/trucollector-options.css' );
 }
 
 function trucollector_load_theme_options() {

@@ -604,6 +604,18 @@ function trucollector_tinymce_settings( $settings ) {
     xhr.send(formData);
   }';
 
+	// for ios Safari issue
+	// https://stackoverflow.com/a/70266933/2418186
+	$settings['setup'] = 'function(editor){
+           editor.on(\'OpenWindow\', function(e){
+                jQuery(\'.mce-browsebutton button\').on(\'touchend\', function(event) {
+                    jQuery(this).click();
+                });
+            });
+            editor.on(\'CloseWindow\', function(e){
+                 jQuery(\'.mce-browsebutton button\').off(\'touchend\');
+            });
+         }';
 	return $settings;
 }
 
@@ -625,9 +637,8 @@ function trucollector_tinymce_buttons($buttons) {
 		if ( ( $key = array_search($notneeded,$buttons) ) !== false ) unset($buttons[$key]);
 	}
 
-	// now add the image button in, and the second one that acts like a label
+	// now add the image button in
 	$buttons[] = 'image';
-	$buttons[] = 'imgbutton';
 
 	return $buttons;
  }

@@ -102,17 +102,23 @@ class trucollector_Theme_Options {
 
 	/*  display documentation in a tab */
 	public function display_docs() {
-		// This displays on the "Documentation" tab.
+		// This displays on the "Documentation" using docsify-this to render directly from repo
 
 	 	echo '<div class="wrap">
 		<h1>TRU Collector Documentation</h1>
 		<h2 class="nav-tab-wrapper">
 		<a class="nav-tab" href="?page=trucollector-options">Settings</a>
-		<a class="nav-tab nav-tab-active" href="?page=trucollector-docs">Documentation</a></h2>';
+		<a class="nav-tab nav-tab-active" href="?page=trucollector-docs">Documentation</a></h2>
+		<p>The most current TRU Collector documentation is displayed below (<a href="https://docsify-this.net/?basePath=https://raw.githubusercontent.com/cogdog/tru-collector/master/&amp;toc=true" target="_blank">view in a new window</a>). Generated with <a href="https://docsify-this.net/" target="_blank">Docsify This</a>.</p>';
 
-		include( get_stylesheet_directory() . '/includes/trucollector-theme-options-docs.php');
+		echo '<div class="iframe-container">
+		
+		
+		<iframe src="https://docsify-this.net/?basePath=https://raw.githubusercontent.com/cogdog/tru-collector/master/" title="TRU Collector Documentation" allowfullscreen><a href="https://docsify-this.net/?basePath=https://raw.githubusercontent.com/cogdog/tru-collector/master/&toc=true" target="_blank">View Documentation</a></iframe>
+		</div>
+	</div>';
 
-		echo '</div>';
+
 	}
 
 
@@ -568,7 +574,7 @@ class trucollector_Theme_Options {
 
 	public function display_general() {
 		// section heading for general setttings
-		echo '<p>These settings manaage the behavior and appearance of your site. There are quite a few of them!</p>';
+		echo '<p>These settings manage the behavior and appearance of your TRU Collector powered site. There are quite a few of them! Check the documentation tab for all the details.</p>';
 	}
 
 
