@@ -109,12 +109,12 @@ class trucollector_Theme_Options {
 		<h2 class="nav-tab-wrapper">
 		<a class="nav-tab" href="?page=trucollector-options">Settings</a>
 		<a class="nav-tab nav-tab-active" href="?page=trucollector-docs">Documentation</a></h2>
-		<p>The most current TRU Collector documentation is displayed below (<a href="https://docsify-this.net/?basePath=https://raw.githubusercontent.com/cogdog/tru-collector/master/&amp;toc=true" target="_blank">view in a new window</a>). Generated with <a href="https://docsify-this.net/" target="_blank">Docsify This</a>.</p>';
+		<p>The most current TRU Collector documentation is displayed below (<a href="https://docsify-this.net/?basePath=https://raw.githubusercontent.com/cogdog/tru-collector/master&homepage=docs.md&sidebar=true#/">view in a new window</a>). Generated with <a href="https://docsify-this.net/" target="_blank">Docsify This</a>.</p>';
 
 		echo '<div class="iframe-container">
 		
 		
-		<iframe src="https://docsify-this.net/?basePath=https://raw.githubusercontent.com/cogdog/tru-collector/master/" title="TRU Collector Documentation" allowfullscreen><a href="https://docsify-this.net/?basePath=https://raw.githubusercontent.com/cogdog/tru-collector/master/&toc=true" target="_blank">View Documentation</a></iframe>
+		<iframe src="https://docsify-this.net/?basePath=https://raw.githubusercontent.com/cogdog/tru-collector/master&homepage=docs.md#/" title="TRU Collector Documentation" allowfullscreen></iframe>
 		</div>
 	</div>';
 
@@ -574,7 +574,7 @@ class trucollector_Theme_Options {
 
 	public function display_general() {
 		// section heading for general setttings
-		echo '<p>These settings manage the behavior and appearance of your TRU Collector powered site. There are quite a few of them! Check the documentation tab for all the details.</p>';
+		echo '<p>These settings manage the behavior and appearance of your TRU Collector powered site. There are quite a few of them! Check the documentation tab for all the details.</p><p>If this kind of stuff has any value to you, please consider supporting me so I can do more!</p><p style="text-align:center"><a href="https://patreon.com/cogdog" target="_blank"><img src="https://cogdog.github.io/images/badge-patreon.png" alt="donate on patreon"></a> &nbsp; <a href="https://paypal.me/cogdog" target="_blank"><img src="https://cogdog.github.io/images/badge-paypal.png" alt="donate on paypal"></a></p>';
 	}
 
 
