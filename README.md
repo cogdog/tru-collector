@@ -170,9 +170,9 @@ TRU Collector has a Custom REST API endpoint that is used to offer up random pho
 * [Glitch a Random SPLOT Image](https://cogdog.github.io/splotlab/glitchsplot/) (see [blog post](https://cogdogblog.com/2019/04/glitch-a-splot/))
 
 
-## Relatively New Features
+## New Features
 
-
+* **Embedded Docs** Making use of Doscify This to include always [the most up to date documentation](https://github.com/cogdog/tru-collector/blob/master/docs.md) from inside the TRU Collector Options, see Documentation tab.
 * **Sorting Options Expanded** New option to change default reverse chronological order of items to be everywhere, on home, in tags, in categories, or in tags AND categories.
 * **Tag List shortcode** Use to display a list of all used tags for sites that use more than the 45 that can be shown in widget cloud
 * **Admin Only Use of Tags/Categories** Theme options can be set to let tags and categories be set only by admins for internal organization, and not shown on writing form
