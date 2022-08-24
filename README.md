@@ -28,7 +28,7 @@ See below a long list of example sites to hopefully inspire you.
 
 ## So You are Interested in Making a TRU Collector Site?
 
-The next section includes several options and instructions for installing the theme. Once set up, see the documentation of the theme options and other WordPress features. This is [now separated as it's own link here](https://github.com/cogdog/tru-collector/blob/master/README.md) but can also be viewed in a more readable format - [see the Docs!](https://docsify-this.net/?basePath=https://raw.githubusercontent.com/cogdog/tru-collector/master&homepage=docs.md&sidebar=true#/) (thanks to [Docsify This](https://docsify-this.net/)).
+The next section includes several options and instructions for installing the theme. Once set up, see the documentation of the theme options and other WordPress features. This is [now separated as it's own link here](https://github.com/cogdog/tru-collector/blob/master/docs.md) but can also be viewed in a more readable format - [see the Docs!](https://docsify-this.net/?basePath=https://raw.githubusercontent.com/cogdog/tru-collector/master&homepage=docs.md&sidebar=true#/) (thanks to [Docsify This](https://docsify-this.net/)).
 
 
 ## Installing TRU Collector
