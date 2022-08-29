@@ -5,7 +5,7 @@ Template Name: Add to Collection
 */
 
 // set blanks
-$wTitle =  $wSource = $wTags = $wNotes = $wEmail = $wAlt = $w_thumb_status = '';
+$wTitle =  $wSource = $wTags = $wNotes = $wEmail = $wAlt = $w_thumb_status = $wAccess = '';
 $wFeatureImageID = $wCommentNotify = $post_id =  0;
 $is_re_edit = $linkEmailed = $wAccessCodeOk = $is_published = false;
 $errors = array();
@@ -25,10 +25,11 @@ $wAltRequired = trucollector_option('img_alt');
 $wLicense = '--'; // default license
 $all_licenses = trucollector_get_licences();
 
-// see if we have an incoming clear the code form variable only on writing form
+// see if we have an incoming clear the code form variable only on collection form
 // ignored if options are not to use it or we are in the customizer
+// Thanks @troywelcg for catching a parenthetical error
 
-$wAccessCodeOk = isset( $_POST['wAccessCodeOk'] ) ? true : (is_customize_preview()) ? true : false;
+$wAccessCodeOk = ((isset( $_POST['wAccessCodeOk'] )) ? true : (is_customize_preview())) ? true : false;
 
 // check that an access code is in play and it's not been yet passed
 if ( !empty( trucollector_option('accesscode') ) AND !$wAccessCodeOk ) {
@@ -171,6 +172,7 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 
 
 			$post_status = trucollector_option('new_item_status');
+
 			if ($post_status == 'draft') $post_status = 'pending'; // fix wrong status from older versions
 
 			if ( isset( $_POST['makeit'] ) ) {
@@ -186,10 +188,8 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 				if  ( $post_status == 'publish' ) {
 					// feed back for published item
 
-
 					// feed back for published item
 					$feedback_msg = 'Your ' . get_trucollector_collection_single_item()  . '  "' . $wTitle . '" has been published! ';
-
 
 					// if user provided email address (only possible if the feature enabled), send instructions to use link to edit
 
@@ -205,10 +205,9 @@ if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_P
 					$message = 'A new ' . get_trucollector_collection_single_item() . ' <strong>"' . $wTitle . '"</strong> written by <strong>' . $wAuthor . '</strong> has been published to ' . get_bloginfo() . '. You can <a href="'. site_url() . '/?p=' . $post_id  . '">view it now</a>';
 
 
-				} elseif ( $post_status == 'pending' ) {
+				} else {
 
 					$feedback_msg = 'Your ' . get_trucollector_collection_single_item()  . '  "' . $wTitle . '" is now in the queue for publishing. ';
-
 
 					if ( $wEmail != '' ) {
 						$feedback_msg .= 'Since you provided an email address, a message has been sent to <strong>' . $wEmail . '</strong>  with a special link that can be used at any time later to edit this ' . get_trucollector_collection_single_item() . '. ';
