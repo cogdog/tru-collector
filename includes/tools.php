@@ -79,7 +79,14 @@ function trucollector_get_license_page_id() {
 		return ( trucollector_option( 'license_page' ) );
 	} else {
 		// older versions of SPLOT use the slug
-		return ( get_page_by_path('licensed')->ID );
+		
+		// got path?
+		if (get_page_by_path('licensed')) {
+			return ( get_page_by_path('licensed')->ID );
+		} else {
+			// got nothing
+			return 0;
+		}
 	}
 }
 
@@ -242,14 +249,10 @@ function set_html_content_type() {
 	return 'text/html';
 }
 
-function br2nl ( $string )
-// from http://php.net/manual/en/function.nl2br.php#115182
-{
-    return preg_replace('/\<br(\s*)?\/?\>/i', PHP_EOL, $string);
-}
 
 function make_links_clickable( $text ) {
 //----	h/t http://stackoverflow.com/a/5341330/2418186
     return preg_replace('!(((f|ht)tp(s)?://)[-a-zA-Zа-яА-Я()0-9@:%_+.~#?&;//=]+)!i', '<a href="$1">$1</a>', $text);
 }
+
 ?>

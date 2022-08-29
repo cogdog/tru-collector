@@ -275,10 +275,12 @@ function trucollector_rewrite_rules() {
 
 
    $license_page_id = trucollector_get_license_page_id();
-
-   add_rewrite_rule( '^licensed/([^/]+)/page/([0-9]{1,})/?',  'index.php?page_id=' . $license_page_id . '&flavor=$matches[1]&paged=$matches[2]','top');
-
-	add_rewrite_rule( '^licensed/([^/]*)/?',  'index.php?page_id=' . $license_page_id . '&flavor=$matches[1]','top');
+   
+   // if we have a valid page, add rule
+   if  ($license_page_id) {
+		add_rewrite_rule( '^licensed/([^/]+)/page/([0-9]{1,})/?',  'index.php?page_id=' . $license_page_id . '&flavor=$matches[1]&paged=$matches[2]','top');
+		add_rewrite_rule( '^licensed/([^/]*)/?',  'index.php?page_id=' . $license_page_id . '&flavor=$matches[1]','top');
+	}
 
 }
 

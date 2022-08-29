@@ -25,7 +25,7 @@ function trucollector_hyperlink( $atts )  {
 add_shortcode("taglist", "trucollector_taglist");
 
 function trucollector_taglist( $atts )  {
-  	extract(shortcode_atts( array( "number" => '0', "show_count" => true, "orderby" => 'name', "order" => "ASC", "hide_empty" => 1, "mincount" => '1' ), $atts ));
+  	extract(shortcode_atts( array( "number" => 0, "show_count" => true, "orderby" => 'name', "order" => "ASC", "hide_empty" => 1, "mincount" => 1 ), $atts ));
 
   	// set args
 	$tags = get_tags(array(
