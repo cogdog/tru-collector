@@ -17,13 +17,16 @@ This Wordpress Theme powers [TRU Collector](http://splot.ca/collector/) a site t
 
 The options allow you to create a simple Upload and go mode, but you can also allow (and require or not), captions, a source description (maybe more than *hey, I found it on GOOGLE*) or a complete rich text editor, and choose a selection of licenses to apply.
 
-You can even enable an address that allows people to publish directly to your collection by old fashioned email.
-
 *Why TRU?* I developed these initially [while on a fellowship](http://cogdog.trubox.ca) at [Thompson Rivers University](http://tru.ca/) as one of a suite of [SPLOT tools](http://splot.ca/splots/).
 
-If you have problems, feature suggestions, piles of unmarked bills to send my way, please [contact me via the issues area](https://github.com/cogdog/tru-collector/issues) on this repo.
+If you have problems, feature suggestions, questions piles of unmarked bills to send my way, please [contact me via the discussions area](https://github.com/cogdog/tru-collector/discussions/) on this repo.
+For more info about TRU Collector, click away
 
-See below a long list of example sites to hopefully inspire you. 
+* [TRU Collector](https://splot.ca/splots/tru-collector/) the original home if there is one (splot.ca)
+* [Overly detailed Blog Posts About TRU Collector](https://splot.ca/splots/tru-collector/) (cogdogblog.com)
+* [Talk About TRU Collector](https://github.com/cogdog/tru-collector/discussions) (Github Discussions)
+
+See below a long list of example sites to hopefully inspire you. You will also find the steps and options for installing TRU Collector and reading it's lively documentation.
 
 
 ## So You are Interested in Making a TRU Collector Site?
@@ -139,9 +142,9 @@ You can also get a copy of the Widgets used on that site too. First install/acti
 * [The Legend of Extend](https://play.learningnuggets.ca/cms) Terry Greene's card collection
 * [LIB 100 Online](https://lib100.info/) Wake Forest University
 * [Reclaim Roadshow Participants](https://roadshow.reclaimhosting.com/participants/)
+* [Sommi Porta](https://somni.arganee.world/) am assignment collection for Networked Narratives
 * [SPLOT Collector](http://splot.ca/collector/) - the development and very first site, stuff can and will break
 * [Students Writing on Material Culture in China](https://hst137.tdh.bergbuilds.domains/projectfall20/) for HST 137 at Muhlenberg College
-* [Summer Camp SPLOT](https://trubox.ca/splot/) Thompson Rivers University 
 * [T3+BLENDLAC 2020](http://mariocandof.digital.brynmawr.edu/t3blendlac2020/) Conference participants
 * [Tech Collect](https://techcollect.cbsinkinson.com/) CU Boulder
 * [Templebreedy Archive](https://deochandoras.com/) Collecting tombstones!
@@ -161,6 +164,8 @@ You can also get a copy of the Widgets used on that site too. First install/acti
 * Samantha Clarke presenting the way TRU Collector was used to build the [The Compendium of Bothersome Beasties](http://creditcontinue.coventry.domains/beasties/) at the ALTC 2018 Conference https://www.youtube.com/watch?v=e1f5PY-uREE
 
 *  At Muhlenberg College Tineke D'Haeseleer <a href="https://tdh.bergbuilds.domains/pedagogy/splot/">published a guide to using SPLOTS and especially TRU Collector</a> for her history courses, but read to the bottom to learn how one our students put it to use for <a href="http://joliegirgis.bergbuilds.domains/cms/category/plants/">her project on plants used in traditional Chinese medicine</a>.
+
+* [Summer Camp SPLOT](https://trubox.ca/splot/) a Thompson Rivers University 
 
 ### Experiment Lab
 
