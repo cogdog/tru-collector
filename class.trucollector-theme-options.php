@@ -109,15 +109,13 @@ class trucollector_Theme_Options {
 		<h2 class="nav-tab-wrapper">
 		<a class="nav-tab" href="?page=trucollector-options">Settings</a>
 		<a class="nav-tab nav-tab-active" href="?page=trucollector-docs">Documentation</a></h2>
-		<p>The most current TRU Collector documentation is displayed below (<a href="https://docsify-this.net/?basePath=https://raw.githubusercontent.com/cogdog/tru-collector/master&homepage=docs.md&sidebar=true#/">view in a new window</a>). Generated with <a href="https://docsify-this.net/" target="_blank">Docsify This</a>.</p>';
+		<p>The most current TRU Collector documentation is displayed below (<a href="https://docsify-this.net/?basePath=https://raw.githubusercontent.com/cogdog/tru-collector/master&homepage=docs.md&sidebar=true#/">view in a new window</a>), generated on the fly with <a href="https://docsify-this.net/" target="_blank">Docsify This</a>.</p>';
 
 		echo '<div class="iframe-container">
 		
-		
-		<iframe src="https://docsify-this.net/?basePath=https://raw.githubusercontent.com/cogdog/tru-collector/master&homepage=docs.md#/" title="TRU Collector Documentation" allowfullscreen></iframe>
+		<iframe src="https://docsify-this.net/?basePath=https://raw.githubusercontent.com/cogdog/tru-collector/master&homepage=docs.md&toc-narrow=true#/" title="TRU Collector Documentation" allowfullscreen></iframe>
 		</div>
 	</div>';
-
 
 	}
 
