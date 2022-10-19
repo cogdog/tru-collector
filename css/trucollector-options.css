@@ -14,3 +14,9 @@
    top: 0;
    width: 100%;
 }
+
+span.description {
+    padding: 0.8rem 4rem 0.8rem 0;
+    display: block;
+    font-style: italic;
+}

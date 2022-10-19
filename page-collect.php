@@ -65,13 +65,13 @@ if ( !empty( trucollector_option('accesscode') ) AND !$wAccessCodeOk ) {
 if ( isset( $_POST['trucollector_form_make_submitted'] ) && wp_verify_nonce( $_POST['trucollector_form_make_submitted'], 'trucollector_form_make' ) ) {
 
  		// grab the variables from the form
- 		$wTitle = 					sanitize_text_field( stripslashes( $_POST['wTitle'] ) );
+ 		$wTitle = 					( isset ($_POST['wTitle'] ) ) ?  sanitize_text_field( stripslashes( $_POST['wTitle'] ) ) : '';
  		$wAuthor = 					( isset ($_POST['wAuthor'] ) ) ? sanitize_text_field( stripslashes($_POST['wAuthor']) ) : 'Anonymous';
- 		$wTags = 					sanitize_text_field( $_POST['wTags'] );
- 		$wEmail = 					sanitize_text_field( $_POST['wEmail'] );
- 		$wText = 					wp_kses_post( $_POST['wText'] );
- 		$wSource = 					sanitize_text_field( stripslashes( $_POST['wSource'] ) );
- 		$wNotes = 					sanitize_text_field( stripslashes( $_POST['wNotes'] ) );
+ 		$wTags = 					( isset ($_POST['wTags'] ) ) ? sanitize_text_field( $_POST['wTags'] ) : '';
+ 		$wEmail = 					( isset ($_POST['wEmail'] ) ) ? sanitize_text_field( $_POST['wEmail'] ) : ''; 
+ 		$wText = 					( isset ($_POST['wText'] ) ) ? wp_kses_post( $_POST['wText'] ) : '';
+ 		$wSource = 					( isset ($_POST['wSource'] ) ) ?  sanitize_text_field( stripslashes( $_POST['wSource'] ) ) : '';
+ 		$wNotes = 					( isset ($_POST['wNotes'] ) ) ?  sanitize_text_field( stripslashes( $_POST['wNotes'] ) ) : '';
 
  		$wFeatureImageID =			( isset ( $_POST['wFeatureImage'] ) ) ? $_POST['wFeatureImage'] : 0;
 

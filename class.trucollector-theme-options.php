@@ -472,7 +472,7 @@ class trucollector_Theme_Options {
 			'choices' => array (
 							'0' => 'No, do not use tags',
 							'1' => 'Yes, options on share form and display on single item',
-							'2' => 'Yes, but used only by admin to organize (not on collec form)'
+							'2' => 'Yes, but used only by admin to organize (not on collection form)'
 
 					)
 		);
