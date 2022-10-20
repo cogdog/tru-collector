@@ -1,4 +1,4 @@
-# How to Installi the TRU Collector Theme
+# How to Install the TRU Collector Theme
 
 [:house: TRU Collector](README.md) | 
 [:mag: Examples in Action](examples.md)  | 
