@@ -1,7 +1,7 @@
 # How to Install the TRU Collector Theme
 
 [:house: TRU Collector](README.md) | 
-[:mag: Examples in Action](examples.md)  | 
+[:mag: Examples](examples.md)  | 
 :rocket: **Installing** | 
 [:book: Documentation](docs.md) | 
 [:speech_balloon: Discussions](https://github.com/cogdog/tru-collector/discussions)

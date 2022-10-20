@@ -32,7 +32,7 @@ For more info about TRU Collector, see
 For inspiration I offer [a collection of other sites](examples.md) using this theme, then provide  [details on how to install it](install.md), and once set up, the [documentation](docs.md) for customizing it in WordPress. The same documentation is available in the theme options and also in a more readable format - [see the Docs!](https://docsify-this.net/?basePath=https://raw.githubusercontent.com/cogdog/tru-collector/master&homepage=docs.md&sidebar=true#/) (thanks to [Docsify This](https://docsify-this.net/)).
 
 [:house: TRU Collector](README.md) |
-[:mag: Examples in Action](examples.md) | 
+[:mag: Examples](examples.md) | 
 [:rocket: Installing](install.md) | 
 [:book: Documentation](docs.md) | 
 [:speech_balloon: Discussions](https://github.com/cogdog/tru-collector/discussions)

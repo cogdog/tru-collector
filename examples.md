@@ -1,7 +1,7 @@
 # See TRU Collector In Action
 
 [:house: TRU Collector](README.md) |
-:mag: **Examples in Action** | 
+:mag: **Examples** | 
 [:rocket: Installing](install.md) | 
 [:book: Documentation](docs.md) |
 [:speech_balloon: Discussions](https://github.com/cogdog/tru-collector/discussions)
