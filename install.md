@@ -1,4 +1,4 @@
-## How to Installi the TRU Collector Theme
+# How to Installi the TRU Collector Theme
 
 [:house: TRU Collector](README.md) | 
 [:mag: Examples in Action](examples.md)  | 
@@ -11,7 +11,7 @@ Using this theme requires a self-hosted--or institutionally hosted (lucky you)--
 
 The TRU Collector is a child theme based on [the free and elegant Fukasawa theme by Anders Noren](https://wordpress.org/themes/fukasawa). Install this theme first from within the Wordpress Dashboard under **Appearance** -- **Themes** searching on `Fukasawa`.
 
-### Installing TRU Collector from Scratch
+## Installing TRU Collector from Scratch
 
 (1) Create a fresh new Wordpress site. 
 
@@ -27,7 +27,7 @@ The zip can be uploaded directly to your site via **Themes** in the Wordpress da
 
 As of WordPress version 5.5, themes uploaded as .ZIP files can now be updated the same way you installed it. Just download the newest version, and update it by going to **Themes** in the Wordpress dashboard, then **Add Theme** and finally **Upload Theme**. You will be asked to confirm updating the theme with the newer version.  
 
-### Installing TRU Collector in One Click with WP Pusher (get automatic updates!)
+## Installing TRU Collector in One Click with WP Pusher (get automatic updates!)
 
 To have your site stay up to date automatically, I recommend trying the [WP Pusher plugin](https://wppusher.com/) which makes it easier to install themes and plugins that are published in GitHub. It takes a few steps to set up, but it's the most direct way to get updates to the theme.
 
@@ -47,7 +47,7 @@ Woah Neo?
 
 Not only does this install the theme without any messy download/uploads, each time I update the theme on GitHub, your site will be automatically updated to the newest version.  
 
-### Installing From Reclaim Hosting
+## Installing From Reclaim Hosting
 
 If you are wise enough to host your web sites at [Reclaim Hosting](http://reclaimhosting.com/) you have the option of installing a fully functioning site with this theme ([a copy of the demo site](http://lab.cogdogblog.com/collector/)) including recommended plugins, configured settings and sample content, all done  in one click. *But wait there is more!* With this method of installing your site, future updates to the theme are automatically added to your site (though not as frequently as the WP Pusher method).
 

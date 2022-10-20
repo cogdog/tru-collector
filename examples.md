@@ -1,4 +1,4 @@
-## Examples
+# Examples
 
 [:house: TRU Collector](README.md) |
 :mag: **Examples in Action** | 
@@ -8,7 +8,7 @@
 
 If you are wondering what a TRU Collector powered site can do, explore this long list of other sites it has been seen in action. To add a new site, you are welcome to fork this repo,, edit the list, and submit as a change. If that's too much, just drop a note in the [TRU Collector discussion area](https://github.com/cogdog/tru-collector/discussions).
 
-### See TRU Collector In Action
+## See TRU Collector In Action
 
 * [Ada Lovelace Day](https://thinking.is.ed.ac.uk/ald2017/) 
 * [Animal Body Plans](http://bio2290.trubox.ca/) Biology 2290 at TRU
@@ -70,7 +70,7 @@ If you are wondering what a TRU Collector powered site can do, explore this long
 * [Wordbox](http://origin.coventry.domains/wordbox/) Coventry University Art and Design Skills Hub
 * [Your Mineral Site](https://yourmineralsite.mineralcollective.com/)
 
-### More TRU Collector Sightings
+## More TRU Collector Sightings
 
 * Samantha Clarke presenting the way TRU Collector was used to build the [The Compendium of Bothersome Beasties](http://creditcontinue.coventry.domains/beasties/) at the ALTC 2018 Conference https://www.youtube.com/watch?v=e1f5PY-uREE
 
@@ -78,7 +78,7 @@ If you are wondering what a TRU Collector powered site can do, explore this long
 
 * [Summer Camp SPLOT](https://trubox.ca/splot/) at Thompson Rivers University 
 
-### Experiment Lab
+## Experiment Lab
 
 TRU Collector has a Custom REST API endpoint that is used to offer up random photos from a site. See [The SPLOT Image Truck is Here!](https://cogdogblog.com/2019/03/splot-truck/) and these demo sites
 
