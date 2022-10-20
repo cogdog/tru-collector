@@ -1,9 +1,15 @@
 # TRU Collector Documentation
-by Alan Levine http://cog.dog/ 
 
-These instructions are a reference for the settings and other WordPress features within the [TRU Collector SPLOT theme](https://github.com/cogdog/tru-collector) (look there for more details about the theme, examples, how to blame me for problems, etc).
+[:house: TRU Collector](README.md) 
+[:mag: Examples in Action](examples.md)
+[:rocket: Installing](install.md)
+:book: Documentation **docs.md**
 
-*In this theme Wordpress, `Posts` are renamed `Collectables` but have all the attributes of garden variety blog posts.* 
+These is a reference for the settings and making use of other WordPress features in the [TRU Collector SPLOT theme](https://github.com/cogdog/tru-collector)
+
+Speaking of WordPress...
+
+*In this theme, `Posts` are renamed `Collectables` but have all the attributes of garden variety blog posts.* 
 
 ![Renamed Posts Menu](images/collectables.jpg "collectables menu")
 
