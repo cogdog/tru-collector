@@ -1,4 +1,4 @@
-# Examples
+# See TRU Collector In Action
 
 [:house: TRU Collector](README.md) |
 :mag: **Examples in Action** | 
@@ -8,7 +8,7 @@
 
 If you are wondering what a TRU Collector powered site can do, explore this long list of other sites it has been seen in action. To add a new site, you are welcome to fork this repo,, edit the list, and submit as a change. If that's too much, just drop a note in the [TRU Collector discussion area](https://github.com/cogdog/tru-collector/discussions).
 
-## See TRU Collector In Action
+## Examples
 
 * [Ada Lovelace Day](https://thinking.is.ed.ac.uk/ald2017/) 
 * [Animal Body Plans](http://bio2290.trubox.ca/) Biology 2290 at TRU
