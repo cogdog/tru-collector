@@ -1,9 +1,9 @@
 # TRU Collector Documentation
 
-[:house: TRU Collector](README.md) 
-[:mag: Examples in Action](examples.md)
-[:rocket: Installing](install.md)
-:book: Documentation **docs.md**
+[:house: TRU Collector](README.md) | 
+[:mag: Examples in Action](examples.md)  | 
+[:rocket: Installing](install.md)  | 
+:book: **Documentation**
 
 These is a reference for the settings and making use of other WordPress features in the [TRU Collector SPLOT theme](https://github.com/cogdog/tru-collector)
 
