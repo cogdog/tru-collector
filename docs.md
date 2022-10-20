@@ -3,7 +3,9 @@
 [:house: TRU Collector](README.md) | 
 [:mag: Examples in Action](examples.md)  | 
 [:rocket: Installing](install.md)  | 
-:book: **Documentation**
+:book: **Documentation** | 
+[:speech_balloon: Discussions](https://github.com/cogdog/tru-collector/discussions)
+
 
 These is a reference for the settings and making use of other WordPress features in the [TRU Collector SPLOT theme](https://github.com/cogdog/tru-collector)
 
