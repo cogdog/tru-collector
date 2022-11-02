@@ -1,20 +1,20 @@
 # TRU Collector Wordpress Theme
 by Alan Levine http://cogdog.info/ or http://cogdogblog.com/
 
------
-*If this kind of stuff has any value to you, please consider supporting me so I can do more!*
+[![Wordpress version badge](https://img.shields.io/badge/version-32.45-green.svg)](https://github.com/cogdog/tru-collector/blob/master/style.css)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-[![Support me on Patreon](http://cogdog.github.io/images/badge-patreon.png)](https://patreon.com/cogdog) [![Support me on via PayPal](http://cogdog.github.io/images/badge-paypal.png)](https://paypal.me/cogdog)
+:house: TRU Collector |
+[:mag: Examples](examples.md) | 
+[:rocket: Installing](install.md) | 
+[:book: Documentation](docs.md) | 
+[:speech_balloon: Discussions](https://github.com/cogdog/tru-collector/discussions)
 
------ 
+This Wordpress Theme powers [TRU Collector](http://splot.ca/collector/) a site to allow collections of items (termed "collectables") where contributions can be made without any logins. The user never sees any sign of the innards of Wordpress but can create posts for each collectable. 
 
 ![Sample Collectables Site](images/collector-site.jpg "Sample Collectables Site")
 
-## What is this?
-
-This Wordpress Theme powers [TRU Collector](http://splot.ca/collector/) a site to allow collections of items (termed "collectables") where contributions can be made without any  logins. The user never sees any sign of the innards of Wordpress but can create posts for each collectable. 
-
-The options allow you to create a simple Upload and go mode, but you can also allow (and require or not), captions, a source description (maybe more than *hey, I found it on GOOGLE*) or a complete rich text editor, and choose a selection of licenses to apply.
+The theme options allow you to create a simple upload and go mode, but you can also allow (and require or not)-- captions, a source description (maybe more than *hey, I found it on GOOGLE*) or via complete rich text editor, longer and srucured writing, and you can offer a selection of reuse licenses to apply.
 
 *Why TRU?* I developed these initially [while on a fellowship](http://cogdog.trubox.ca) at [Thompson Rivers University](http://tru.ca/) as one of a suite of [SPLOT tools](http://splot.ca/splots/).
 
@@ -23,19 +23,15 @@ If you have problems, feature suggestions, questions piles of unmarked bills to 
 For more info about TRU Collector, see
 
 * [TRU Collector](https://splot.ca/splots/tru-collector/) the original home if there is one (splot.ca)
-* [Overly detailed Blog Posts About TRU Collector](https://splot.ca/splots/tru-collector/) (cogdogblog.com)
+* [Overly detailed Blog Posts About TRU Collector](https://cogdogblog.com/tag/tru-collector/) (cogdogblog.com)
 * [Talk About TRU Collector](https://github.com/cogdog/tru-collector/discussions) (Github Discussions)
 
 
 ## So You are Interested a TRU Collector Site?
 
-For inspiration I offer [a collection of other sites](examples.md) using this theme, then provide  [details on how to install it](install.md), and once set up, the [documentation](docs.md) for customizing it in WordPress. The same documentation is available in the theme options and also in a more readable format - [see the Docs!](https://docsify-this.net/?basePath=https://raw.githubusercontent.com/cogdog/tru-collector/master&homepage=docs.md&sidebar=true#/) (thanks to [Docsify This](https://docsify-this.net/)).
+Awesome!
 
-[:house: TRU Collector](README.md) |
-[:mag: Examples](examples.md) | 
-[:rocket: Installing](install.md) | 
-[:book: Documentation](docs.md) | 
-[:speech_balloon: Discussions](https://github.com/cogdog/tru-collector/discussions)
+For inspiration I offer [a collection of other sites](examples.md) using this theme, then provide  [details on how to install it](install.md), and once set up, the [documentation](docs.md) for customizing it in WordPress. The same documentation is available in the theme options and also in a more readable format - [see the Docs!](https://docsify-this.net/?basePath=https://raw.githubusercontent.com/cogdog/tru-collector/master&homepage=docs.md&sidebar=true#/) (thanks to [Docsify This](https://docsify-this.net/)).
 
 ## With Thanks
 
@@ -45,6 +41,9 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 
 [![Thompson Rivers University](https://cogdog.github.io/images/tru.jpg)](https://tru.ca) [![Reclaim Hosting](https://cogdog.github.io/images/reclaim.jpg)](https://reclaimhosting.com) [![OpenETC](https://cogdog.github.io/images/openetc.jpg)](https://opened.ca) [![Disruptive Media Learning Lab](https://cogdog.github.io/images/dmll.jpg)](https://dmll.org.uk/)   [![Supporters on Patreon](https://cogdog.github.io/images/patreon.jpg)](https://patreon.com/cogdog) 
 
+*If this kind of stuff has any value to you, please consider supporting me so I can do more!*
+
+[![Support me on Patreon](http://cogdog.github.io/images/badge-patreon.png)](https://patreon.com/cogdog) [![Support me on via PayPal](http://cogdog.github.io/images/badge-paypal.png)](https://paypal.me/cogdog)----- 
 
 
 ## New Features

@@ -1,13 +1,6 @@
 # How to Install the TRU Collector Theme
 
-[:house: TRU Collector](README.md) | 
-[:mag: Examples](examples.md)  | 
-:rocket: **Installing** | 
-[:book: Documentation](docs.md) | 
-[:speech_balloon: Discussions](https://github.com/cogdog/tru-collector/discussions)
-
-
-Using this theme requires a self-hosted--or institutionally hosted (lucky you)-- Wordpress site (the kind that you download from [wordpress.org](http://www.wordpress.org). You cannot use this theme on the free "wordpress.com" site unless you have a business plan. Maybe check out [Reclaim Hosting](https://reclaimhosting.com/)  to set up your own hosting space. They are awesome.
+Using this theme requires a self-hosted-- or institutionally hosted (lucky you)-- Wordpress site (the kind that you download from [wordpress.org](http://www.wordpress.org). You cannot use this theme on the free "wordpress.com" site unless you have a business plan. Maybe check out [Reclaim Hosting](https://reclaimhosting.com/)  to set up your own hosting space. They are awesome.
 
 The TRU Collector is a child theme based on [the free and elegant Fukasawa theme by Anders Noren](https://wordpress.org/themes/fukasawa). Install this theme first from within the Wordpress Dashboard under **Appearance** -- **Themes** searching on `Fukasawa`.
 
