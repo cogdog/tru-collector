@@ -38,8 +38,9 @@ function trucollector_get_splot_meta_for_api( $object ) {
 add_action( 'rest_api_init', function () {
   // redister a route for just random images, accept a paraemeter for the number of random images to fetch
   register_rest_route( 'splotcollector/v1', '/randy/(?P<n>\d+)', array(
-    'methods' => 'GET',
+    'methods'  => WP_REST_Server::READABLE,
     'callback' => 'trucollector_randy',
+    'permission_callback' => '__return_true',
 	 'args' => array(
 		  'n' => array(
 				'validate_callback' => function($param, $request, $key) {
@@ -52,8 +53,9 @@ add_action( 'rest_api_init', function () {
   	
   // redister a route for pechaflickr requests, accept a paraemeter for the number of random images to fetch
   register_rest_route( 'splotcollector/v1', '/pechaflickr/(?P<n>\d+)/tag/(?P<tag>.*)', array(
-    'methods' => 'GET',
+    'methods'  => WP_REST_Server::READABLE,
     'callback' => 'trucollector_pechaflickr',
+     'permission_callback' => '__return_true',
 	 'args' => array(
 		  'n' => array(
 				'validate_callback' => function($param, $request, $key) {

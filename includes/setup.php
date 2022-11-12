@@ -140,6 +140,7 @@ function trucollector_queryvars( $qvars ) {
 	$qvars[] = 'elink'; // for edit link requests
 	$qvars[] = 'wid'; // id for sending email edit link
 	$qvars[] = 'ispre'; // flag for preview when not logged in
+	$qvars[] =  'collector'; // for the collector name
 	return $qvars;
 }
 
@@ -343,6 +344,94 @@ function splot_save_post_random_check( $post_id ) {
         // re-hook this function
         add_action( 'save_post', 'splot_save_post_random_check' );
 
+    }
+}
+
+
+
+# -----------------------------------------------------------------
+# Modify Posts Menu
+# -----------------------------------------------------------------
+
+// first remove the WP Author column, not needed
+add_filter( 'manage_posts_columns', 'trucollector_custom_posts_columns' );
+ 
+
+// redo the posts columns
+function trucollector_custom_posts_columns( $columns ) {
+	
+	// remmove wordpress author column
+	unset(
+		$columns['author']
+	);
+  
+  // now add new column for the SPLOT author
+  $columns['collector'] = 'Collector';
+  
+  // move the writer column
+  // h/t https://www.isitwp.com/change-wordpress-admin-post-columns-order/
+  $n_columns = array();
+  $move = 'collector'; // what to move
+  $before = 'categories'; // move before this
+  foreach($columns as $key => $value) {
+    if ($key==$before){
+      $n_columns[$move] = $move;
+    }
+      $n_columns[$key] = $value;
+  }
+  return $n_columns;
+}
+
+
+// populate the writers column
+add_action('manage_posts_custom_column', 'trucollector_columns_content', 10, 2);
+
+// Show splot author name 
+function trucollector_columns_content($column_name, $post_id) {
+    if ($column_name == 'collector') {
+    	echo '<a href="' . admin_url( 'edit.php?collector=' . urlencode(get_post_meta( $post_id, 'shared_by', true  ))) . '">' . get_post_meta( $post_id, 'shared_by', true  ) .  '</a>' ;
+    }
+}
+
+// enable writer as a sortable column
+add_filter( 'manage_edit-post_sortable_columns', 'trucollector_manage_sortable_columns' );
+
+function trucollector_manage_sortable_columns( $sortable_columns ) {
+
+   $sortable_columns[ 'collector' ] = 'collector';
+   return $sortable_columns;
+
+}
+
+// Query adjustments for writer columns
+add_action( 'pre_get_posts', 'trucollector_query_sort');
+
+function trucollector_query_sort( $query ) {
+	
+	// admin stuff!
+    if ( is_admin() ) {
+    
+    	// column sort by writer
+        if ($query->get( 'orderby') == 'collector' ) {
+        	$query->set('meta_key','shared_by');
+        	$query->set('orderby','meta_value');
+    	}
+
+		// check to display posts just by the SPLOT collector name
+		if ( get_query_var('collector') ) {
+			$query->set( 'meta_key', 'shared_by' );
+			$query->set( 'meta_value', $query->query_vars['collector'] );
+		}
+		
+	} else {
+		// public check for writer value
+    	if ( get_query_var('collector') ) {
+    		$query->set( 'meta_key', 'shared_by' );
+        	$query->set( 'meta_value', urldecode( get_query_var('collector') ) );
+
+    	} else { 	
+       	 	return;
+       	}
     }
 }
 

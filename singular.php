@@ -6,14 +6,13 @@ if  (  is_single() ) {
 	//  get post meta
 	$wSource = get_post_meta( $post->ID, 'source', 1 );
 	$wAuthor = get_post_meta( $post->ID, 'shared_by', 1 );
-
-
 	$wLicense = (get_post_meta( $post->ID, 'license', 1 )) ? get_post_meta( $post->ID, 'license', 1 ) : 'u' ;
 
 	// festured image
 	$wFeatureImageID = get_post_thumbnail_id( $post->ID);
+	
     // get image alt tag
-	$wAlt = get_post_meta($wFeatureImageID, '_wp_attachment_image_alt', true);
+	$wAlt = ( get_post_meta($wFeatureImageID, '_wp_attachment_image_alt', true) ) ? get_post_meta($wFeatureImageID, '_wp_attachment_image_alt', true) : 'None provided' ;
 
 }
 
@@ -111,7 +110,7 @@ This is a preview of your <?php echo $item_label?> that shows how it will look w
 						<?php
 
 							if (  trucollector_option('show_sharedby') AND !empty($wAuthor) ) {
-								echo '<strong>' . trucollector_form_item_author('get') . ':</strong> ' . $wAuthor . '<br />';
+								echo '<strong>' . trucollector_form_item_author('get') . ':</strong> <a href="' . get_site_url() . '/?collector=' . urlencode($wAuthor) . '">' . $wAuthor . '</a><br />';
 							}
 
 							if ( ( trucollector_option('use_source') > 0 )  AND !empty($wSource) ) {

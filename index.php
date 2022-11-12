@@ -7,9 +7,13 @@
 		$paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
 		$archive_title = '';
 		$archive_subtitle = '';
+		$by_collector = false;
+
+
 
 		if ( is_archive() ) {
 			$archive_title = $wp_query->found_posts . ' ' . get_the_archive_title();
+
 		} elseif ( is_search() ) {
 			$archive_title = sprintf(
 						_n(
@@ -20,11 +24,22 @@
 						),
 						number_format_i18n( $wp_query->found_posts ),
 						get_search_query());
+		} elseif (get_query_var('collector')) {
+			
+			if ( $wp_query->found_posts == 1) {
+				//get the plural right, yes this is the lazy way
+				$archive_title = $wp_query->found_posts . ' ' . get_trucollector_collection_single_item() .  ' collected by: ' . urldecode(get_query_var('collector'));	
+			} else {
+				$archive_title = $wp_query->found_posts . ' ' . get_trucollector_collection_plural_item() .  ' collected by: ' . urldecode(get_query_var('collector'));	
+			}	
+			
+			$by_collector = true;	
+						
 		} elseif ( $paged > 1 ) {
 			$archive_title = sprintf( __( ' (page %1$s of %2$s)', 'fukasawa' ), $paged, $wp_query->max_num_pages );
 		}
 
-		if ( ( is_archive() || is_search() ) && 1 < $wp_query->max_num_pages ) {
+		if ( ( is_archive() || is_search() || $by_collector ) && 1 < $wp_query->max_num_pages ) {
 			$archive_subtitle = sprintf( __( ' (page %1$s of %2$s)', 'fukasawa' ), $paged, $wp_query->max_num_pages );
 		}
 
@@ -71,6 +86,7 @@
 					$template_part_name = get_post_type() == 'post' ? get_post_format() : get_post_type();
 					get_template_part( 'content', $template_part_name );
 				endwhile;
+				
 
 				?>
 

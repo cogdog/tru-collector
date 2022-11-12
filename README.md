@@ -23,7 +23,7 @@ If you have problems, feature suggestions, questions piles of unmarked bills to 
 For more info about TRU Collector, see
 
 * [TRU Collector](https://splot.ca/splots/tru-collector/) the original home if there is one (splot.ca)
-* [Overly detailed Blog Posts About TRU Collector](https://cogdogblog.com/tag/tru-collector/) (cogdogblog.com)
+* [Overly detailed Blog Posts About TRU Collector](https://cogdogblog.com/tag/trucollector/) (cogdogblog.com)
 * [Talk About TRU Collector](https://github.com/cogdog/tru-collector/discussions) (Github Discussions)
 
 
@@ -47,6 +47,8 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 
 
 ## New Features
+
+* **Collector Names** Updated dashboard view to replace WordPress author column with name of person contributing items, clickable to filter, plus public views by name also can be made into a link
 
 * **Embedded Docs** Making use of Doscify This to include always [the most up to date documentation](https://github.com/cogdog/tru-collector/blob/master/docs.md) from inside the TRU Collector Options, see Documentation tab.
 * **Sorting Options Expanded** New option to change default reverse chronological order of items to be everywhere, on home, in tags, in categories, or in tags AND categories.
