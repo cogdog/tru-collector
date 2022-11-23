@@ -290,6 +290,27 @@ You will see results instantly, and you might try different values of the width 
 
 Once it seems sized appropriately, click "Publish"
 
+## Updating The TRU Collector theme
+
+
+
+Current version [![Wordpress version badge](https://img.shields.io/badge/version-2.5-green.svg)](https://github.com/cogdog/truwriter/blob/master/style.css)
+
+Compare this to the version of TRU Collector reported in your list of themes. Note that WordPress's reporting of themes being up to date does **not** reflect custom themes such as this one.  If what you see is less than the version above, here is how to update your copy of TRU Writer. 
+
+If you [installed TRU Collector using the WP-Pusher plugin[(https://github.com/cogdog/tru-collector/blob/master/install.md#installing-tru-collector-in-one-click-with-wp-pusher-get-automatic-updates), updates can be made automatic or done in one click!
+
+Otherwise, if you installed manually, updates are not too hard to do.
+
+
+*This applies if you are running WordPress on your own web hosting platform where you have the ability to install themes and plugins. If you are on a shared/multisite WordPress server, please contact your friendly technical admins and request that they update TRU Writer.*
+
+Custom (a.k.a unique!) WordPress themes like TRU Collector are installed by uploading a `.zip` file. They can now be updated the same way you installed it. It's that easy! 
+
+Just [download the newest version of TRU Collector as a .zip ](https://github.com/cogdog/tru-collector/archive/refs/heads/master.zip). Now in your WordPress Dashboard, go to **Themes**, then **Add Theme** and finally **Upload Theme**. You will be asked to confirm updating the theme with the newer version.  
+
+When done, your site should report this current version as active.
+
 ## Got Questions
 
 This is quite a lot to take in, but these options and settings have been designed to allow you to change the way your site works that other wise would require custom programming. They also reflect the feedback of other users of TRU Collector.

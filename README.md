@@ -1,7 +1,7 @@
 # TRU Collector Wordpress Theme
 by Alan Levine http://cogdog.info/ or http://cogdogblog.com/
 
-[![Wordpress version badge](https://img.shields.io/badge/version-32.45-green.svg)](https://github.com/cogdog/tru-collector/blob/master/style.css)
+[![Wordpress version badge](https://img.shields.io/badge/version-2.5-green.svg)](https://github.com/cogdog/tru-collector/blob/master/style.css)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 :house: TRU Collector |
@@ -23,15 +23,17 @@ If you have problems, feature suggestions, questions piles of unmarked bills to 
 For more info about TRU Collector, see
 
 * [TRU Collector](https://splot.ca/splots/tru-collector/) the original home if there is one (splot.ca)
-* [Overly detailed Blog Posts About TRU Collector](https://cogdogblog.com/tag/trucollector/) (cogdogblog.com)
+* [Overly detailed blog posts About TRU Collector](https://cogdogblog.com/tag/trucollector/) (cogdogblog.com)
 * [Talk About TRU Collector](https://github.com/cogdog/tru-collector/discussions) (Github Discussions)
 
 
 ## So You are Interested a TRU Collector Site?
 
-Awesome!
+Awesome! You are about to enter a whole new universe of SPLOT/
 
-For inspiration I offer [a collection of other sites](examples.md) using this theme, then provide  [details on how to install it](install.md), and once set up, the [documentation](docs.md) for customizing it in WordPress. The same documentation is available in the theme options and also in a more readable format - [see the Docs!](https://docsify-this.net/?basePath=https://raw.githubusercontent.com/cogdog/tru-collector/master&homepage=docs.md&sidebar=true#/) (thanks to [Docsify This](https://docsify-this.net/)).
+For inspiration I offer [a collection of other sites](examples.md) using this theme, then provide  [details on how to install it](install.md), and once set up, the [documentation](docs.md) for customizing it in WordPress (plus details on how to update). The same documentation is available in the theme options and also in a more readable format - [see the Docs!](https://docsify-this.net/?basePath=https://raw.githubusercontent.com/cogdog/tru-collector/master&homepage=docs.md&sidebar=true#/) (thanks to [Docsify This](https://docsify-this.net/)).
+
+Again, if you have questions, please make use of the [Discussion Area](https://github.com/cogdog/truwriter/discussions).
 
 ## With Thanks
 
@@ -49,8 +51,7 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 ## New Features
 
 * **Collector Names** Updated dashboard view to replace WordPress author column with name of person contributing items, clickable to filter, plus public views by name also can be made into a link
-
-* **Embedded Docs** Making use of Doscify This to include always [the most up to date documentation](https://github.com/cogdog/tru-collector/blob/master/docs.md) from inside the TRU Collector Options, see Documentation tab.
+* **Embedded Docs** Making use of Doscify This to include always [the most up to date documentation](https://github.com/cogdog/tru-collector/blob/master/docs.md) from inside the TRU Collector Options, see the Documentation tab.
 * **Sorting Options Expanded** New option to change default reverse chronological order of items to be everywhere, on home, in tags, in categories, or in tags AND categories.
 * **Tag List shortcode** Use to display a list of all used tags for sites that use more than the 45 that can be shown in widget cloud
 * **Admin Only Use of Tags/Categories** Theme options can be set to let tags and categories be set only by admins for internal organization, and not shown on writing form
@@ -63,9 +64,7 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 * **Comment Options**  The email entry form now has an option to require entry, as well as another one to allow content creator to choose to receive email notifications of comments.
 * **Post Publishing Editing** Not enabled by default, but a new theme option can add to the collection form an email field (optional) that sends a user a special link that can be used to edit an entry later. This also adds a button to single item pages that can request the edit link.
 **Options for Special Pages**  No longer are pages for the Welcome Desk (where access codes are entered) and Collector form required to have a set URL; you can create any Page desired for these functions, and set them as the active ones via the theme options.
-
-[![SPLOT Previews](http://img.youtube.com/vi/6trhgkbt7hA/0.jpg)](https://www.youtube.com/watch?v=6trhgkbt7hA "SPLOT Previews")
-
+* **Previews available** See [this video for a taste of a new feature](https://www.youtube.com/watch?v=6trhgkbt7hA) to see how your item will look before you submit it.
 * **Name the items** New customizer panel to create the name of the item/items in the collection displayed below the site name (replacing generic "item/items")
 * **Better Rich Text Editor** the visual editor will now embed media WordPress supports (YouTube, twitter, soundcloud, etc)
 * **Preview Option** on collect form allows reviewing content in overlay preview before submitting (embedded tweets do not render in preview, just a big space).
@@ -78,3 +77,8 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 * **Display Order Options** Theme options now allows front page, archive, search results can be sorted by date published (default) or by title, and also the order can be ascending or descending
 * **Options Refreshed** Recoded the theme options better organized and also so documentation now links to GitHub most recent documentation (what you are looking at!)
 
+:house: TRU Collector |
+[:mag: Examples](examples.md) | 
+[:rocket: Installing](install.md) | 
+[:book: Documentation](docs.md) | 
+[:speech_balloon: Discussions](https://github.com/cogdog/tru-collector/discussions)

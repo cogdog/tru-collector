@@ -40,16 +40,6 @@ Woah Neo?
 
 Not only does this install the theme without any messy download/uploads, each time I update the theme on GitHub, your site will be automatically updated to the newest version.  
 
-## Installing From Reclaim Hosting
-
-If you are wise enough to host your web sites at [Reclaim Hosting](http://reclaimhosting.com/) you have the option of installing a fully functioning site with this theme ([a copy of the demo site](http://lab.cogdogblog.com/collector/)) including recommended plugins, configured settings and sample content, all done  in one click. *But wait there is more!* With this method of installing your site, future updates to the theme are automatically added to your site (though not as frequently as the WP Pusher method).
-
-In your cpanel, under **Applications** go to **All Applications**. This theme is available listed under Fratured Applications; just install from there.
-
-![](images/reclaim-featured.jpg "Reclaim Hosting Featured Applications")
-
-*Note that unlike other WordPress installs, this one will not preserve your username/password, so be sure to save that information.* When it's done, log into your new site and start making it your own following the steps below.
-
 ## Inserting Demo Content
 
 If you want a site that is not completely empty, after setting up with WP-Pusher or from scratch, you can import all the content set up on the [public demo site](https://lab.cogdogblog.com/collector). 
