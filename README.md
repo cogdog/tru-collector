@@ -29,7 +29,7 @@ For more info about TRU Collector, see
 
 ## So You are Interested a TRU Collector Site?
 
-Awesome! You are about to enter a whole new universe of SPLOT/
+Awesome! You are about to enter a whole new universe of SPLOT.
 
 For inspiration I offer [a collection of other sites](examples.md) using this theme, then provide  [details on how to install it](install.md), and once set up, the [documentation](docs.md) for customizing it in WordPress (plus details on how to update). The same documentation is available in the theme options and also in a more readable format - [see the Docs!](https://docsify-this.net/?basePath=https://raw.githubusercontent.com/cogdog/tru-collector/master&homepage=docs.md&sidebar=true#/) (thanks to [Docsify This](https://docsify-this.net/)).
 
