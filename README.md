@@ -50,6 +50,7 @@ The original TRU Collector was developed under a [Thompson Rivers University Ope
 
 ## New Features
 
+* **PHP 8 It (Not)** Minor updates for PHP 8 compliance, wishfully thinking. 
 * **Collector Names** Updated dashboard view to replace WordPress author column with name of person contributing items, clickable to filter, plus public views by name also can be made into a link
 * **Embedded Docs** Making use of Doscify This to include always [the most up to date documentation](https://github.com/cogdog/tru-collector/blob/master/docs.md) from inside the TRU Collector Options, see the Documentation tab.
 * **Sorting Options Expanded** New option to change default reverse chronological order of items to be everywhere, on home, in tags, in categories, or in tags AND categories.

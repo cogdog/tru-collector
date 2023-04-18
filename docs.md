@@ -298,7 +298,7 @@ Current version [![Wordpress version badge](https://img.shields.io/badge/version
 
 Compare this to the version of TRU Collector reported in your list of themes. Note that WordPress's reporting of themes being up to date does **not** reflect custom themes such as this one.  If what you see is less than the version above, here is how to update your copy of TRU Writer. 
 
-If you [installed TRU Collector using the WP-Pusher plugin[(https://github.com/cogdog/tru-collector/blob/master/install.md#installing-tru-collector-in-one-click-with-wp-pusher-get-automatic-updates), updates can be made automatic or done in one click!
+If you [installed TRU Collector using the WP-Pusher plugin](https://github.com/cogdog/tru-collector/blob/master/install.md#installing-tru-collector-in-one-click-with-wp-pusher-get-automatic-updates), updates can be made automatic or done in one click!
 
 Otherwise, if you installed manually, updates are not too hard to do.
 
@@ -310,6 +310,8 @@ Custom (a.k.a unique!) WordPress themes like TRU Collector are installed by uplo
 Just [download the newest version of TRU Collector as a .zip ](https://github.com/cogdog/tru-collector/archive/refs/heads/master.zip). Now in your WordPress Dashboard, go to **Themes**, then **Add Theme** and finally **Upload Theme**. You will be asked to confirm updating the theme with the newer version.  
 
 When done, your site should report this current version as active.
+
+Also if you previously installed TRU Collector via the Reclaim Hosting on click installers, [these are no longer updated](https://www.reclaimhosting.com/friendly-reminder-about-custom-installers/) (sorry)! See the [SPLOT Guidebook for steps to update your SPLOTs by a manual pop the clutch approach](https://github.com/cogdog/splotlab/blob/master/guides/wordpress.md#updating-reclaim-hostings-custom-installed-splots).
 
 ## Got Questions
 

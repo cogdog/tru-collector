@@ -12,7 +12,7 @@ If you are wondering what a TRU Collector powered site can do, explore this long
 * [Bryn Mawr College International Forum Gallery](https://intlforumgallery.snwallace.digital.brynmawr.edu/)
 * [Cafecrema](https://cafecrema.procaffination.ca/) Cat pix
 * [Canadian Undergraduate Research Network – Events and Opportunities](https://curnopportunitiesandevents.trubox.ca/)
-* [The Compendium of Bothersome Beasties](http://creditcontinue.coventry.domains/beasties/) from Coventry University is a tool for self-reflection and formative assessment.
+* [The Compendium of Bothersome Beasties](http://web.archive.org/web/20200809202054/https://creditcontinue.coventry.domains/beasties/) from Coventry University is a tool for self-reflection and formative assessment (WayBack Machine archive)
 * [CogDogRoo Image Collector](https://cog.dog/roo/collector/) for Alan Levine's Nov 2017 Workshops in Victoria, Australia
 * [Course (Re)design Institute ](https://cri.trubox.ca/) Thompson Rivers University
 * [Coventry University Digital Leaders](http://digitalleaders.coventry.domains/who/)
@@ -25,7 +25,6 @@ If you are wondering what a TRU Collector powered site can do, explore this long
 * [DoOO Something](https://iwanna.dooosomething.org/) "Domain of One’s Own projects often start with domains/sites for individuals, but they can also include any other sites that individual or groups of staff and students might want the freedom to create for themselves."
 * [EduHackathon](http://polito.eduhack.eu/)
 * [Extraordinary Stories of Open and Online in the Covid-19 Era](https://splot.ca/extraordinary/)
-* [Fanny Central](https://fannycentral.com/) for collecting inappropriately captioned old images. 
 * [FemEdtech Tribute Radio](https://femedtechradio.trubox.ca/)
 * [Femedtech Quilt of Care and Justice in Open Education](https://quilt.femedtech.net/) showcases quilt sections shared
 * [Fleming Techbank](http://techbank.flemingdomains.ca/) Fleming College's Digital Learning Technologies Inventory
@@ -45,6 +44,7 @@ If you are wondering what a TRU Collector powered site can do, explore this long
 * [Memes and Animated GIFs](https://memeworkshop.trubox.ca/) for a TRU workshop
 * [Memes and GIFs Again](https://memeworkshop2.trubox.ca/)  second iteration of the TRU workshop
 * [Mineral Books](https://mwynau.com/)
+* [Modern to Contemporary France](http://fdconst.ds.lib.uw.edu/Wordpress/)
 * [OER18 Photos](https://oer18.oerconf.org/media/) photos for April 2018 conference in Bristol, UK.
 * [OER20 Who is Who](https://oer20.oerconf.org/socialbingo/)
 * [Oh No Not the Followers of the Apocalypse](http://ohnonotthe.followersoftheapocalyp.se/) FOTA Images from David Kernohan
@@ -58,6 +58,7 @@ If you are wondering what a TRU Collector powered site can do, explore this long
 * [Reflections on Being a Learning Coach at TRU](https://learningcoach.trubox.ca/)
 * [Sommi Porta](https://somni.arganee.world/) am assignment collection for Networked Narratives
 * [SPLOT Collector](http://splot.ca/collector/) - the development and very first site, stuff can and will break
+* [SPLOT Collector8](https://cog.dog/collector/) - another test version proving this old thing works in PHP8!
 * [Students Writing on Material Culture in China](https://hst137.tdh.bergbuilds.domains/projectfall20/) for HST 137 at Muhlenberg College
 * [T3+BLENDLAC 2020](http://mariocandof.digital.brynmawr.edu/t3blendlac2020/) Conference participants
 * [Tech Collect](https://techcollect.cbsinkinson.com/) CU Boulder
