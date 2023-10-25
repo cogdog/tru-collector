@@ -25,6 +25,7 @@ function trucollector_hyperlink( $atts )  {
 add_shortcode("taglist", "trucollector_taglist");
 
 function trucollector_taglist( $atts )  {
+	// get attributes passed to shortcode
   	extract(shortcode_atts( array( "number" => 0, "show_count" => true, "orderby" => 'name', "order" => "ASC", "hide_empty" => 1, "mincount" => 1 ), $atts ));
 
   	// set args
@@ -38,7 +39,7 @@ function trucollector_taglist( $atts )  {
 	));
 
 	if ($tags) {
-    	$output .= '<ul class="taglist">';
+    	$output = '<ul class="taglist">';
 
         foreach ($tags as $tag) {
           if ($tag->count >= $mincount) {

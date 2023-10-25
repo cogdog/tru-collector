@@ -48,6 +48,7 @@ function trucollector_setup () {
 
   }
 
+  trucollector_rewrite_rules();
   flush_rewrite_rules();
 
 }
