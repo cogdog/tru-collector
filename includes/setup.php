@@ -48,6 +48,7 @@ function trucollector_setup () {
 
   }
 
+
   trucollector_rewrite_rules();
   flush_rewrite_rules();
 
@@ -161,32 +162,32 @@ function trucollector_order_items( $query ) {
 			case 'all':
 				// use sorting on home, all archives, and search results
 				if (  $query->is_home() OR $query->is_archive() OR $query->is_search() ) {
-					splotbox_query_set($query);
+					trucollector_query_set($query);
 				}
 				break;
 
 			case 'front':
 				if (  $query->is_home() ) {
 					// use sorting on home only
-					splotbox_query_set($query);
+					trucollector_query_set($query);
 				}
 				break;
 			case 'tag':
 				if (  $query->is_tag() ) {
 					// tag archive
-					splotbox_query_set($query);
+					trucollector_query_set($query);
 				}
 				break;
 			case 'cat':
 				if (  $query->is_category() ) {
 					// category archive
-					splotbox_query_set($query);
+					trucollector_query_set($query);
 				}
 				break;
 			case 'tagcat':
 				if (  $query->is_tag() OR $query->is_category() ) {
 					// any archive that made it this far
-					splotbox_query_set($query);
+					trucollector_query_set($query);
 				}
 				break;
 
@@ -196,7 +197,7 @@ function trucollector_order_items( $query ) {
 
 }
 
-function splotbox_query_set ($the_query) {
+function trucollector_query_set ($the_query) {
 	//utility to set the query as per the theme settings
 	$the_query->set( 'orderby', trucollector_option('sort_by')  );
 	$the_query->set( 'order', trucollector_option('sort_direction') );

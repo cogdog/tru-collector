@@ -10,6 +10,7 @@ class trucollector_Theme_Options {
 	private $sections;
 	private $checkboxes;
 	private $settings;
+	private $section_callbacks;
 
 	/* Initialize */
 	function __construct() {
@@ -17,6 +18,7 @@ class trucollector_Theme_Options {
 		// This will keep track of the checkbox options for the validate_settings function.
 		$this->checkboxes = array();
 		$this->settings = array();
+		$this->section_callbacks = array();
 		$this->get_settings();
 
 		$this->sections['general'] = __( 'General Settings' );
