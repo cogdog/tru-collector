@@ -6,6 +6,7 @@ If you are wondering what a TRU Collector powered site can do, explore this long
 
 * [Ada Lovelace Day](https://thinking.is.ed.ac.uk/ald2017/) 
 * [Animal Body Plans](http://bio2290.trubox.ca/) Biology 2290 at TRU
+* [Award for Excellence in Online Teaching Showcase](https://showcase.trentonlineblog.ca/) (2021, Trent University)
 * [Bavaradio](https://bavaradio.com/)
 * [Bingobones](http://bingobones.com/) Skulls and their Stories from some fun at the Open Education 2018 project
 * [Brand Storytelling](https://jmc3353.adamcroom.com/brandstorytelling/) Ad Copy Layout, University of Oklahoma
@@ -36,6 +37,8 @@ If you are wondering what a TRU Collector powered site can do, explore this long
 * [Inclusive Design Un-Guide Reflection Bank](http://inclusivedesign.middcreate.net/reflect/)
 * [Image Pool](http://imagepool.trubox.ca/) - used for TRU workshops on finding images on the web 
 * [Imagery VISA 1101_01](http://imagery.trubox.ca/) collecting images from participants in TRU’s VISA 1110 Course: History of Art
+* [Interculturalextraneity Collection](https://interculturalextraneity.com/collections/) (Intro to American Studies class) 
+* [Interculturalextraneity Digital Collection](https://interculturalextraneity.com/digitalcollection/) (American Cultural Studies class) 
 * [JPN230 Disaster and Recovery](https://takatay.sites.wfu.edu/2020JPN230/) Wake Forest University
 * [Learning on/with the Open Web Participants](https://conf.owlteh.org/participants/) 
 * [Learning on/with the Open Web Conference Photos](https://www.conf.owlteh.org/photos/)
@@ -44,6 +47,7 @@ If you are wondering what a TRU Collector powered site can do, explore this long
 * [Memes and Animated GIFs](https://memeworkshop.trubox.ca/) for a TRU workshop
 * [Memes and GIFs Again](https://memeworkshop2.trubox.ca/)  second iteration of the TRU workshop
 * [Mineral Books](https://mwynau.com/)
+* [Minor Characters](https://minorcharacters.trubox.ca/) (TRU ENGL4780 Minor Characters in Film and Literature)
 * [Modern to Contemporary France](http://fdconst.ds.lib.uw.edu/Wordpress/)
 * [OER18 Photos](https://oer18.oerconf.org/media/) photos for April 2018 conference in Bristol, UK.
 * [OER20 Who is Who](https://oer20.oerconf.org/socialbingo/)
@@ -53,9 +57,11 @@ If you are wondering what a TRU Collector powered site can do, explore this long
 * [OpenMed Album](http://oercollector.openmedproject.eu/) Open Images from OpenMed meetings
 * [Online Ecosystem Maps](http://a202dmll.coventry.domains/maps/) a gallery of maps created by students enrolled in the A202DMLL Module (Develop your Online Presence & Own your Web Domain) at Coventry University.
 * [Online Worlds](http://coventry.domains/online-worlds/) another Coventry activity for collecting images of how people see their online worlds. 
+[Origins of Contemporary Southeast Asia](https://asia1000.asianstudies.buffscreate.net/tag/burma/) final projects, from ASIA 1000, University of Colorado
 * [OWLTEH Catalogue](http://catalogue.owlteh.org/) Open Web For Learning & Teaching Expertise Hub -- a Catalogue of the Open Web: applications, platforms, techologies, or concepts
 * [Reclaim Roadshow Participants](https://roadshow.reclaimhosting.com/participants/)
 * [Reflections on Being a Learning Coach at TRU](https://learningcoach.trubox.ca/)
+* [Sadly Robotic Metaphors for AI](https://sadlyrobotic.cogdogblog.com/)
 * [Sommi Porta](https://somni.arganee.world/) am assignment collection for Networked Narratives
 * [SPLOT Collector](http://splot.ca/collector/) - the development and very first site, stuff can and will break
 * [SPLOT Collector8](https://cog.dog/collector/) - another test version proving this old thing works in PHP8!

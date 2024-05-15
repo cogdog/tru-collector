@@ -279,20 +279,18 @@ The images as shown in a single item view are meant by the theme to fill the spa
 
 This is a job for adding some custom CSS to your own site (navigate to a single item and use the Customize link in the black admin bar). Then under "Additional CSS" try this bit of styling, it sizes them to half the width of the page and adds a bit of space (margin) at the top.
 
-````
+```
 .single .featured-media img {
     width: 50%;
     margin: 5% auto 0;
 }
-````
+```
 
 You will see results instantly, and you might try different values of the width and/or adjust the first percentage for margin (that puts space at the top).
 
 Once it seems sized appropriately, click "Publish"
 
 ## Updating The TRU Collector theme
-
-
 
 Current version [![Wordpress version badge](https://img.shields.io/badge/version-2.5-green.svg)](https://github.com/cogdog/truwriter/blob/master/style.css)
 
