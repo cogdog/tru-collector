@@ -67,7 +67,9 @@ If you are wondering what a TRU Collector powered site can do, explore this long
 * [SPLOT Collector8](https://cog.dog/collector/) - another test version proving this old thing works in PHP8!
 * [Students Writing on Material Culture in China](https://hst137.tdh.bergbuilds.domains/projectfall20/) for HST 137 at Muhlenberg College
 * [T3+BLENDLAC 2020](http://mariocandof.digital.brynmawr.edu/t3blendlac2020/) Conference participants
-* [Tech Collect](https://techcollect.cbsinkinson.com/) CU Boulder
+* [Teaching & Learning with AI
+Resource Repository](https://teachandlearnai.com/) University of Colorado Boulder
+* [Tech Collect](https://techcollect.cbsinkinson.com/) University of Colorado Boulder
 * [Templebreedy Archive](https://deochandoras.com/) Collecting tombstones!
 * [Things That Make Me Smile](http://erikaab.ds.lib.uw.edu/smile/) Things great and small that brought joy to us in 2020.
 * [This is Us!](https://www.socialbingo.coventry.domains/) people from Coventry University for Staff Conference & Excellence Awards 2020
