@@ -40,6 +40,7 @@ If you are wondering what a TRU Collector powered site can do, explore this long
 * [Interculturalextraneity Collection](https://interculturalextraneity.com/collections/) (Intro to American Studies class) 
 * [Interculturalextraneity Digital Collection](https://interculturalextraneity.com/digitalcollection/) (American Cultural Studies class) 
 * [JPN230 Disaster and Recovery](https://takatay.sites.wfu.edu/2020JPN230/) Wake Forest University
+* [LeaderShare](https://leadershare.ca/) Stories of leadership from Peter Greene
 * [Learning on/with the Open Web Participants](https://conf.owlteh.org/participants/) 
 * [Learning on/with the Open Web Conference Photos](https://www.conf.owlteh.org/photos/)
 * [The Legend of Extend](https://play.learningnuggets.ca/cms) Terry Greene's card collection
